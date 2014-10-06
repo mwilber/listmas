@@ -88,13 +88,13 @@ class JSONAPI extends CI_Controller {
 					if( $tr->children(0)->innertext == "Description" ){
 						$description = html_entity_decode($tr->children(2)->innertext);
 					}
-					if( $tr->children(0)->innertext == "Size/Weight" ){
-						$sizeweight = html_entity_decode($tr->children(2)->innertext);
-					}
+					//if( $tr->children(0)->innertext == "Size/Weight" ){
+					//	$sizeweight = html_entity_decode($tr->children(2)->innertext);
+					//}
 				//}
 			}
 			
-			$prodData = array('prodName'=>$description, 'prodSize'=>floatval($sizeweight), 'prodUnit'=>trim(str_replace(floatval($sizeweight), "", $sizeweight)), 'prodUpc'=>$pUpc);		
+			$prodData = array('prodName'=>$description, 'prodUpc'=>$pUpc);		
 			$nId = $this->prod_model->Add($prodData);
 			$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
 		}

@@ -8,9 +8,9 @@ class Prod_Model extends CI_Model
 	var $rq = "prodName";		//Required field (you'll need to mod the form validation if there isn't one)
 	var $fields = array(
 		 'prodName' => array('label'=>'Name','type'=>'varchar','constraint'=>50),
-		 'unitId' => array('label'=>'Unit','type'=>'int'),
-		 'prodSize' => array('label'=>'Size','type'=>'decimal','constraint'=>'10,2'),
-		 'prodUnit' => array('label'=>'Name','type'=>'varchar','constraint'=>20),
+		 'prodRemoteId' => array('label'=>'Remote Id','type'=>'int'),
+		 'prodDescription' => array('label'=>'Desc','type'=>'varchar','constraint'=>200),
+		 'prodPhoto' => array('label'=>'Photo','type'=>'varchar','constraint'=>200),
 		 'prodUpc' => array('label'=>'UPC','type'=>'varchar','constraint'=>50),
 		);
 		
