@@ -1,0 +1,21 @@
+<ons-page ng-controller="ProdDetailCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center">Product</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="app.slidingMenu.setMainPage('list.html', {closeMenu: true});">Close</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <form>
+        <ons-button class="add-btn" ng-click="ScanBarcode()">SCAN</ons-button>
+        <label>Name</label><input class="add-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
+        <label>Size</label><input class="add-input" placeholder="Size" type="number" step="any" ng-model="grocery.prodSize" ng-model-instant />
+        <label>Unit</label><input class="add-input" placeholder="Unit" type="text" ng-model="grocery.prodUnit" ng-model-instant />
+        <ons-button class="add-btn" ng-click="SaveGrocery()">Save</ons-button>
+    </form>
+
+</ons-page>

@@ -1,0 +1,26 @@
+<ons-page ng-controller="GroceryListCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center">List</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="ClearPurchased()">Clear</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <form>
+        <ons-button class="add-btn" ng-click="ScanBarcode()">Barcode</ons-button>
+        <ons-button class="add-btn" ng-click="GetPhoto()">Photo</ons-button>
+    </form>
+    
+    <ons-list>
+      <ons-list-item  ng-repeat="grocery in groceries" ng-controller="GroceryListing" class="thumbnail grocery-listing">
+            <!--<input type="checkbox" ng-model="grocery.done" ng-click="modal.show('modal')"/>-->
+            <span ng-class="(grocery.prodPrice>0) ? 'done-true' : ''" ng-click="ShowDetails(grocery)">{{grocery.prodName}}</span>
+            <!--<span class="price">$<input type="number" ng-model="grocery.prodPrice" ng-click="grocery.prodPrice = ''"/></span>-->
+      </ons-list-item>
+    </ons-list>
+
+</ons-page>

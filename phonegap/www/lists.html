@@ -1,0 +1,26 @@
+<ons-page ng-controller="ShopListCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center">My Lists</div>
+        <div class="right">
+            
+        </div>
+    </ons-toolbar>
+    
+    <form>
+        <input class="add-input" placeholder="New List..." type="text" ng-model="formListText" ng-model-instant />
+        <ons-button class="add-btn" ng-click="AddList()">Add</ons-button>
+    </form>
+    
+    <ons-list>
+      <ons-list-item  ng-repeat="shoplist in shoplists" ng-click="SetActiveList(shoplist.shoplistId)" class="thumbnail grocery-listing">
+            <span ng-class="">{{shoplist.shoplistName}}</span>
+      </ons-list-item>
+    </ons-list>
+    
+    <ons-button ng-click="ClearDb()">Clear DB</ons-button>
+
+</ons-page>
