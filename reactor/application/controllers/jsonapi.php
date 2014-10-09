@@ -66,7 +66,7 @@ class JSONAPI extends CI_Controller {
 	}
 	
 
-	function upcscan($pUpc){
+	function upcscan_old($pUpc){
 		$this->load->model('prod_model');
 		
 		$tmprec = $this->prod_model->Get(array('prodUpc'=>$pUpc));
@@ -100,6 +100,124 @@ class JSONAPI extends CI_Controller {
 		}
 		
 		$this->_JSONout();
+	}
+
+	function upcscan($pUpc){
+		$this->load->model('prod_model');
+		
+		$tmprec = $this->prod_model->Get(array('prodUpc'=>$pUpc));
+		
+		if(count($tmprec) > 0){
+			$this->_response->data = $tmprec[0];
+		}else{
+			$description = "";
+			
+			$url="http://ecs.amazonaws.com/onca/xml?".
+				"Service=AWSECommerceService&".
+				"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
+				"AssociateTag=listmas-20&".
+				"Operation=ItemSearch&".
+				"Keywords=".$pUpc."&".
+				"SearchIndex=All";
+				//"BrowseNode=XXX&".
+				//"sort=XXX&".
+				//"ResponseGroup=XXX";
+				
+			$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z'; 
+			$host = parse_url($url,PHP_URL_HOST); 
+			$timestamp = gmstrftime("%Y-%m-%dT%H:%M:%S.000Z"); 
+			$url=$url. "&Timestamp=" . $timestamp; 
+			$paramstart = strpos($url,"?"); 
+			$workurl = substr($url,$paramstart+1); 
+			$workurl = str_replace(",","%2C",$workurl); 
+			$workurl = str_replace(":","%3A",$workurl); 
+			$params = explode("&",$workurl); 
+			sort($params); 
+			$signstr = "GET\n" . $host . "\n/onca/xml\n" . implode("&",$params); 
+			$signstr = base64_encode(hash_hmac('sha256', $signstr, $secret, true)); 
+			$signstr = urlencode($signstr); 
+			$signedurl = $url . "&Signature=" . $signstr; 
+			$request = $signedurl;
+				
+			$response = simplexml_load_file($request);
+			
+			//print_r($response->Items->Item[0]->ItemAttributes->Title);
+			
+			$description = $response->Items->Item[0]->ItemAttributes->Title;
+			
+			
+			$prodData = array('prodName'=>$description, 'prodUpc'=>$pUpc);		
+			$nId = $this->prod_model->Add($prodData);
+			$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
+		}
+		
+		$this->_JSONout();
+	}
+	
+	function aztest(){
+		$this->load->helper('aws_signed_request');
+		
+		$public_key = 'AKIAJNX6ZS7EMGNEGMFQ';
+		$private_key = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
+		$associate_tag = 'listmas-20';
+		
+		// generate signed URL
+		$request = aws_signed_request('com', array(
+		        'Operation' => 'ItemSearch',
+		        'Keywords' => '017754155993',
+				'AssociateTag' => 'listmas-20'), $public_key, $private_key, $associate_tag);
+		
+		// do request (you could also use curl etc.)
+		$response = @file_get_contents($request);
+		print_r($response);
+		if ($response === FALSE) {
+		    echo "Request failed.\n";
+		} else {
+		    // parse XML
+		    $pxml = simplexml_load_string($response);
+		    if ($pxml === FALSE) {
+		        echo "Response could not be parsed.\n";
+		    } else {
+		        if (isset($pxml->Items->Item->ItemAttributes->Title)) {
+		            echo $pxml->Items->Item->ItemAttributes->Title, "\n";
+		        }
+		    }
+		}
+	}
+	
+	function aztestb(){
+		$url="http://ecs.amazonaws.com/onca/xml?".
+			"Service=AWSECommerceService&".
+			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
+			"AssociateTag=listmas-20&".
+			"Operation=ItemSearch&".
+			"Keywords=017754155993&".
+			"SearchIndex=All";
+			//"BrowseNode=XXX&".
+			//"sort=XXX&".
+			//"ResponseGroup=XXX";
+			
+		$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z'; 
+		$host = parse_url($url,PHP_URL_HOST); 
+		$timestamp = gmstrftime("%Y-%m-%dT%H:%M:%S.000Z"); 
+		$url=$url. "&Timestamp=" . $timestamp; 
+		$paramstart = strpos($url,"?"); 
+		$workurl = substr($url,$paramstart+1); 
+		$workurl = str_replace(",","%2C",$workurl); 
+		$workurl = str_replace(":","%3A",$workurl); 
+		$params = explode("&",$workurl); 
+		sort($params); 
+		$signstr = "GET\n" . $host . "\n/onca/xml\n" . implode("&",$params); 
+		$signstr = base64_encode(hash_hmac('sha256', $signstr, $secret, true)); 
+		$signstr = urlencode($signstr); 
+		$signedurl = $url . "&Signature=" . $signstr; 
+		$request = $signedurl;
+			
+		$response = simplexml_load_file($request);
+		
+		//print_r($response->Items->Item[0]->ItemAttributes->Title);
+		
+		echo $response->Items->Item[0]->ItemAttributes->Title;
 	}
 
 }
