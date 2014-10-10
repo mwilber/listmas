@@ -107,21 +107,24 @@ class JSONAPI extends CI_Controller {
 		
 		$tmprec = $this->prod_model->Get(array('prodUpc'=>$pUpc));
 		
-		if(count($tmprec) > 0){
+		//if(count($tmprec) > 0){
+		if(false){
 			$this->_response->data = $tmprec[0];
 		}else{
 			$description = "";
+			$image = "";
 			
 			$url="http://ecs.amazonaws.com/onca/xml?".
 				"Service=AWSECommerceService&".
 				"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
 				"AssociateTag=listmas-20&".
-				"Operation=ItemSearch&".
-				"Keywords=".$pUpc."&".
-				"SearchIndex=All";
+				"Operation=ItemLookup&".
+				"IdType=UPC&".
+				"ItemId=".$pUpc."&".
+				"SearchIndex=All&".
 				//"BrowseNode=XXX&".
 				//"sort=XXX&".
-				//"ResponseGroup=XXX";
+				"ResponseGroup=Medium";
 				
 			$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z'; 
 			$host = parse_url($url,PHP_URL_HOST); 
@@ -141,14 +144,14 @@ class JSONAPI extends CI_Controller {
 				
 			$response = simplexml_load_file($request);
 			
-			//print_r($response->Items->Item[0]->ItemAttributes->Title);
+			if( isset($response->Items->Item[0]->ItemAttributes->Title) ){
+				$description = $response->Items->Item[0]->ItemAttributes->Title;
+				if( isset($response->Items->Item[0]->MediumImage->URL) ) $image = $response->Items->Item[0]->MediumImage->URL;
 			
-			$description = $response->Items->Item[0]->ItemAttributes->Title;
-			
-			
-			$prodData = array('prodName'=>$description, 'prodUpc'=>$pUpc);		
-			$nId = $this->prod_model->Add($prodData);
-			$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
+				$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUpc'=>$pUpc);		
+				$nId = $this->prod_model->Add($prodData);
+				$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
+			}
 		}
 		
 		$this->_JSONout();
