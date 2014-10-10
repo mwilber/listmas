@@ -107,8 +107,8 @@ class JSONAPI extends CI_Controller {
 		
 		$tmprec = $this->prod_model->Get(array('prodUpc'=>$pUpc));
 		
-		//if(count($tmprec) > 0){
-		if(false){
+		if(count($tmprec) > 0){
+		//if(false){
 			$this->_response->data = $tmprec[0];
 		}else{
 			$description = "";
