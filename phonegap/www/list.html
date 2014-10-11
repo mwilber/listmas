@@ -2,25 +2,25 @@
 
     <ons-toolbar>
         <div class="left">
-            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="app.slidingMenu.setMainPage('lists.html', {closeMenu: true});"><ons-icon icon="chevron-left"></ons-icon> Back</ons-toolbar-button>
         </div>
         <div class="center">List</div>
         <div class="right">
-            <ons-toolbar-button ng-click="ClearPurchased()">Clear</ons-toolbar-button>
+            <!--<ons-toolbar-button ng-click="ClearPurchased()">Clear</ons-toolbar-button>-->
         </div>
     </ons-toolbar>
     
-    <form>
-        <ons-button class="add-btn" ng-click="ScanBarcode()">Barcode</ons-button>
-        <ons-button class="add-btn" ng-click="GetPhoto()">Photo</ons-button>
-    </form>
-    
-    <ons-list>
-      <ons-list-item  ng-repeat="grocery in groceries" ng-controller="GroceryListing" class="thumbnail grocery-listing">
-            <!--<input type="checkbox" ng-model="grocery.done" ng-click="modal.show('modal')"/>-->
-            <span ng-class="(grocery.prodPrice>0) ? 'done-true' : ''" ng-click="ShowDetails(grocery)">{{grocery.prodName}}</span>
-            <!--<span class="price">$<input type="number" ng-model="grocery.prodPrice" ng-click="grocery.prodPrice = ''"/></span>-->
+    <ons-list class="prodlist">
+      <ons-list-item  ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing">
+            <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">{{grocery.prodName}}</span>
+            <div class="prodPhoto" style="background-image:url({{grocery.prodPhoto}});"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
       </ons-list-item>
     </ons-list>
+    
+    <form class="foot_ctrl">
+        <h3>Add Item</h3>
+        <ons-button class="capture-btn" ng-click="ScanBarcode()" icon="bars"><span class="fa fa-barcode fa-lg"></span>Barcode</ons-button>
+        <ons-button class="capture-btn" ng-click="GetPhoto()"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+    </form>
 
 </ons-page>

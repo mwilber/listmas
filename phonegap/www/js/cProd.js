@@ -4,7 +4,7 @@ function($scope, $http, ggActiveProd) {
     $scope.grocery = ggActiveProd.GetActiveProd();
     $scope.scanstatus = "SCAN";
     
-    $scope.db = openDatabase('ggamer', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
+    $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     
     console.log('Prod Details', $scope.grocery);
     
@@ -39,8 +39,22 @@ function($scope, $http, ggActiveProd) {
         
         console.log("Saving updates...", $scope.grocery);
         $scope.db.transaction(function (tx) {
-            tx.executeSql("UPDATE tblProd SET prodName=?, prodSize=?, prodUnit=? WHERE prodId=?", 
-                [$scope.grocery.prodName, $scope.grocery.prodSize, $scope.grocery.unitId, $scope.grocery.prodId], $scope.UpdateTotal);
+            tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=? WHERE prodId=?", 
+                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodId], function(){alert("saved!");});
+        });
+        
+        return false;
+    };
+    
+    $scope.DeleteGrocery = function () {
+        
+        console.log("Deleting Grocery", $scope.grocery);
+        $scope.db.transaction(function (tx) {
+            tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.grocery.prodId], function(tx, response){
+                //$scope.UpdateGroceryList
+                console.log('Deleting from prodlist: '+$scope.grocery.prodId);
+                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
+            });
         });
         
         return false;

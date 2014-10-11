@@ -2,7 +2,7 @@
 
     <ons-toolbar>
         <div class="left">
-            <ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>
+            <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
         </div>
         <div class="center">Product</div>
         <div class="right">
@@ -11,11 +11,16 @@
     </ons-toolbar>
     
     <form>
-        <ons-button class="add-btn" ng-click="ScanBarcode()">SCAN</ons-button>
-        <label>Name</label><input class="add-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
-        <label>Size</label><input class="add-input" placeholder="Size" type="number" step="any" ng-model="grocery.prodSize" ng-model-instant />
-        <label>Unit</label><input class="add-input" placeholder="Unit" type="text" ng-model="grocery.prodUnit" ng-model-instant />
+        <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
+        <div class="detail-photo" style="background-image:url({{grocery.prodPhoto}});"></div>
+        <textarea class="detail-input" placeholder="Description" type="text" ng-model="grocery.prodDescription"></textarea>
+        
+    </form>
+    
+    <form class="foot_ctrl">
+        <h3></h3>
         <ons-button class="add-btn" ng-click="SaveGrocery()">Save</ons-button>
+        <ons-button class="delete-btn" ng-click="DeleteGrocery()">Delete</ons-button>
     </form>
 
 </ons-page>
