@@ -119,6 +119,11 @@ class ProdList_Model extends CI_Model
 		$this->db->delete($this->table, array($this->pk => $pId)); 	
 	}
 	
+	function DeleteList($slId)
+	{
+		$this->db->delete($this->table, array("shopListId" => $slId)); 	
+	}
+	
 	
 	/** Upload Methods **/
 	

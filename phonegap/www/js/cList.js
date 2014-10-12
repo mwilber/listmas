@@ -34,6 +34,44 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         return $scope.groceries.length;
     };
     
+    $scope.DoPublish = function(){
+            console.log('Publishing...');
+            var pubData = {
+                list:{
+                    shoplistId:0,
+                    shoplistName:"",
+                },
+                prod:[],
+            };
+            $scope.db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                    pubData.list.shoplistId = result.rows.item(0).shoplistRemoteId;
+                    pubData.list.shoplistRemoteId = result.rows.item(0).shoplistId;
+                    pubData.list.shoplistName = result.rows.item(0).shoplistName;
+                    for( var idx = 0; idx < result.rows.length; idx++){
+                        pubData.prod.push({
+                            prodId: result.rows.item(idx).prodId,
+                            prodName: result.rows.item(idx).prodName,
+                            prodPhoto: result.rows.item(idx).prodPhoto,
+                            prodDescription: result.rows.item(idx).prodDescription,
+                            prodUrl: result.rows.item(idx).prodUrl,
+                            prodUpc: result.rows.item(idx).prodUpc,
+                        });
+                    }
+                    console.log(pubData);
+                    //$http.post('http://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){console.log(response);});
+                    $http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                    	console.log("Saving list...",response);
+				        $scope.db.transaction(function (tx) {
+				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
+				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){alert("saved!");}, function(result, error){console.log(error);});
+				        });
+                    });
+                    
+                }, function(result, error){alert('error'); console.log(error);});
+            });
+    };
+    
     
     $scope.AddGrocery = function () {
         //$scope.groceries.push({text:$scope.formGroceryText, purchased:false, price: 0});
@@ -96,8 +134,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
 
     
     $scope.ScanBarcode = function(){
-        //$scope.GetBarcode('014633731804');
-        //return false;
+        $scope.GetBarcode('014633731804');
+        return false;
         window.plugins.barcodeScanner.scan( function(result) {
                     //alert("We got a barcode\n" +
                     //          "Result: " + result.text + "\n" +
@@ -112,8 +150,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     
     $scope.GetBarcode = function(pUpc){
         $scope.scanstatus = "checking";
-        //$http.get('http://gibson.loc/grocerygamer/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
-        $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
+        $http.get('http://gibson.loc/listmas/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
+        //$http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
             console.log(response);
             var prodName = response.data.prodName;
             var prodPhoto = response.data.prodPhoto;

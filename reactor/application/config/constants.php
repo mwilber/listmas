@@ -74,5 +74,16 @@ define('FOPEN_READ_WRITE_CREATE_STRICT', 'x+b');
 define('SHOW_DEBUG_BACKTRACE', TRUE);
 
 
+define('UPLOAD_DIR','../uploads');
+define('CREATE_FOLDERS',true);
+define('BACKGROUND_COLOR',null);
+define('JPEG_IMAGE_QUALITY',80);
+
+define('CRYPT_SALT','polloloco');
+
+define('OAUTH_STRATEGY_IDX',0);
+define('APP_ROOT','/');
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

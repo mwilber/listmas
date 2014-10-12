@@ -113,6 +113,7 @@ class JSONAPI extends CI_Controller {
 		}else{
 			$description = "";
 			$image = "";
+			$pUrl = "";
 			
 			$url="http://ecs.amazonaws.com/onca/xml?".
 				"Service=AWSECommerceService&".
@@ -144,11 +145,15 @@ class JSONAPI extends CI_Controller {
 				
 			$response = simplexml_load_file($request);
 			
+			//print_r($response->Items->Item[0]->DetailPageURL);
+			//die;
+			
 			if( isset($response->Items->Item[0]->ItemAttributes->Title) ){
 				$description = $response->Items->Item[0]->ItemAttributes->Title;
 				if( isset($response->Items->Item[0]->MediumImage->URL) ) $image = $response->Items->Item[0]->MediumImage->URL;
+				if( isset($response->Items->Item[0]->DetailPageURL) ) $pUrl = $response->Items->Item[0]->DetailPageURL;
 			
-				$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUpc'=>$pUpc);		
+				$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl, 'prodUpc'=>$pUpc);		
 				$nId = $this->prod_model->Add($prodData);
 				$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
 			}

@@ -34,10 +34,6 @@
 			<?php foreach( $fields as $name=>$props ): ?>
 			<?php if(substr_compare($name, 'Id', -2, 2) === 0): ?>
 				<td class="join" ref="<?=base_url()?><?=substr($name, 0, -2);?>/detail/<?=$record->$name?>"><a href='<?=base_url()?><?=substr($name, 0, -2);?>/edit/<?=$record->$name?>' ><?=$record->$name?></a></td>
-			<?php elseif($name == 'prodPhoto'): ?>
-				<td><img src="<?=$record->$name?>" width="100"/></td>
-			<?php elseif($name == 'prodUrl'): ?>
-				<td><a href="<?=$record->$name?>">Link</a></td>
 			<?php else: ?>
 				<td><?=$record->$name?></td>
 			<?php endif; ?>

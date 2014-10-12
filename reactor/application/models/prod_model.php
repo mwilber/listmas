@@ -11,6 +11,7 @@ class Prod_Model extends CI_Model
 		 'prodRemoteId' => array('label'=>'Remote Id','type'=>'int'),
 		 'prodDescription' => array('label'=>'Desc','type'=>'varchar','constraint'=>200),
 		 'prodPhoto' => array('label'=>'Photo','type'=>'varchar','constraint'=>200),
+		 'prodUrl' => array('label'=>'URL','type'=>'varchar','constraint'=>200),
 		 'prodUpc' => array('label'=>'UPC','type'=>'varchar','constraint'=>50),
 		);
 		
