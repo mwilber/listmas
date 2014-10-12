@@ -39,8 +39,8 @@ function($scope, $http, ggActiveProd) {
         
         console.log("Saving updates...", $scope.grocery);
         $scope.db.transaction(function (tx) {
-            tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=? WHERE prodId=?", 
-                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodId], function(){alert("saved!");});
+            tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=?, prodUrl=? WHERE prodId=?", 
+                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
         });
         
         return false;

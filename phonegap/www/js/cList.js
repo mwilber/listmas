@@ -22,6 +22,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                             prodName: result.rows.item(idx).prodName,
                             prodPhoto: result.rows.item(idx).prodPhoto,
                             prodDescription: result.rows.item(idx).prodDescription,
+                            prodUrl: result.rows.item(idx).prodUrl,
                         });
                     }
                     $scope.$apply();
@@ -59,9 +60,9 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                         });
                     }
                     console.log(pubData);
-                    //$http.post('http://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){console.log(response);});
-                    $http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
-                    	console.log("Saving list...",response);
+                    $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
+                    //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                        console.log("Saving list...",response);
 				        $scope.db.transaction(function (tx) {
 				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
 				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){alert("saved!");}, function(result, error){console.log(error);});
@@ -134,8 +135,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
 
     
     $scope.ScanBarcode = function(){
-        $scope.GetBarcode('014633731804');
-        return false;
+        //$scope.GetBarcode('014633731804');
+        //return false;
         window.plugins.barcodeScanner.scan( function(result) {
                     //alert("We got a barcode\n" +
                     //          "Result: " + result.text + "\n" +
@@ -150,34 +151,37 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     
     $scope.GetBarcode = function(pUpc){
         $scope.scanstatus = "checking";
-        $http.get('http://gibson.loc/listmas/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
-        //$http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
+        //$http.get('http://gibson.loc/grocerygamer/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
+        $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
             console.log(response);
             var prodName = response.data.prodName;
             var prodPhoto = response.data.prodPhoto;
+            var prodUrl = response.data.prodUrl;
             var prodUpc = response.data.prodUpc;
             $scope.db.transaction(function (tx) {
                 console.log('Adding Product');
                 console.log(prodName);
+                console.log(prodUrl);
                 console.log(prodUpc);
-                tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUpc) VALUES ( ?, ?, ?)', [prodName, prodPhoto, prodUpc], function(tx, response){
+                tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [prodName, prodPhoto, prodUrl, prodUpc], function(tx, response){
                     //$scope.UpdateGroceryList
                     console.log('Inserting into prodlist: '+response.insertId);
-                    tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(tx, response){
-                        tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.prodlistId=?', [response.insertId], function(tx, result){
-                            var tempGrocery = {
-                                    prodId: result.rows.item(0).prodId,
-                                    prodName: result.rows.item(0).prodName,
-                                    prodPhoto: result.rows.item(0).prodPhoto,
-                                    prodDescription: result.rows.item(0).prodDescription,
-                                }
-                            console.log("Switching to detail");
-                            console.log(tempGrocery);
-                            ggActiveProd.SetActiveProd(tempGrocery);
-                            app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
-                        });
-                    });
-                });
+                    tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList), function(result, error){console.log(error);}; //function(tx, response){
+                        //tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.prodlistId=?', [response.insertId], function(tx, result){
+                        //    var tempGrocery = {
+                        //            prodId: result.rows.item(0).prodId,
+                        //            prodName: result.rows.item(0).prodName,
+                        //            prodPhoto: result.rows.item(0).prodPhoto,
+                        //            prodDescription: result.rows.item(0).prodDescription,
+                        //        }
+                        //    console.log("Switching to detail");
+                        //    console.log(tempGrocery);
+                        //    ggActiveProd.SetActiveProd(tempGrocery);
+                        //    app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+                        //});
+                        
+                    //});
+                }, function(result, error){console.log(error);});
             });
             $scope.formGroceryText = '';
         });

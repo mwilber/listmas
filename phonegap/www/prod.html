@@ -6,7 +6,7 @@
         </div>
         <div class="center">Product</div>
         <div class="right">
-            <ons-toolbar-button ng-click="app.slidingMenu.setMainPage('list.html', {closeMenu: true});">Close</ons-toolbar-button>
+            <ons-toolbar-button ng-click="DeleteGrocery()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -14,13 +14,14 @@
         <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
         <div class="detail-photo" style="background-image:url({{grocery.prodPhoto}});"></div>
         <textarea class="detail-input" placeholder="Description" type="text" ng-model="grocery.prodDescription"></textarea>
+        <input class="detail-input" placeholder="URL" type="text" ng-model="grocery.prodUrl" ng-model-instant />
         
     </form>
     
     <form class="foot_ctrl">
         <h3></h3>
-        <ons-button class="add-btn" ng-click="SaveGrocery()">Save</ons-button>
-        <ons-button class="delete-btn" ng-click="DeleteGrocery()">Delete</ons-button>
+        <ons-button class="add-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
+        <ons-button class="close-btn" ng-click="app.slidingMenu.setMainPage('list.html', {closeMenu: true})"><ons-icon icon="times"></ons-icon></ons-button>
     </form>
 
 </ons-page>
