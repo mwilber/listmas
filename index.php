@@ -18,16 +18,26 @@
 		
 		//echo IdObfuscator::encode(221);
 		
-		$conn = mysql_connect($db['default']['hostname'], $db['default']['username'], $db['default']['password']) 
-	  		or die("Unable to connect to MySQL");
+		//$conn = mysqli_connect($db['default']['hostname'], $db['default']['username'], $db['default']['password']) 
+	  	//	or die("Unable to connect to MySQL");
+			
+		try {
+		    $dbh = new PDO("mysql:host=".$db['default']['hostname'].";dbname=".$db['default']['database'], $db['default']['username'], $db['default']['password']);
+		    /*** echo a message saying we have connected ***/
+		    //echo 'Connected to database';
+		    }
+		catch(PDOException $e)
+		    {
+		    echo $e->getMessage();
+		    }
 			
 		//select a database to work with
-		$dbc = mysql_select_db($db['default']['database'],$conn) 
-		  or die("Could not select examples");
+		//$dbc = mysqli_select_db($db['default']['database'],$conn) 
+		//  or die("Could not select examples");
 		
 		$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
 		//echo $sql;
-		$listRS = mysql_query($sql);
+		$listRS = $dbh->query($sql);
 //		$list = mysql_fetch_assoc($listRS);
 		
 				
@@ -43,20 +53,22 @@
 //			$social['image'] = $checkin['checkinPhoto'];
 //		}
 		
-		mysql_close($conn);
+		//mysql_close($conn);
+		
+		$dbh = null;
 	}
 
 ?>
 <h1>coming soon....</h1>
 <?php if(isset($_GET['l'])): ?>
 <ul>
-	<?php while($li = mysql_fetch_array( $listRS )): ?>
+	<?php foreach( $listRS as $li): ?>
 		<li>
 			<a href="<?=$li['prodUrl']?>">
 			<img src="<?=$li['prodPhoto']?>" width="100"/>
 			<?=$li['prodName']?>
 			</a>
 		</li>
-	<?php endwhile; ?>
+	<?php endforeach; ?>
 </ul>
 <?php endif; ?>
