@@ -103,9 +103,9 @@ class JSONAPI extends CI_Controller {
 	}
 
 	function upcscan($pUpc){
-		$this->load->model('prod_model');
+		$this->load->model('upc_model');
 		
-		$tmprec = $this->prod_model->Get(array('prodUpc'=>$pUpc));
+		$tmprec = $this->upc_model->Get(array('prodUpc'=>$pUpc));
 		
 		if(count($tmprec) > 0){
 		//if(false){
@@ -153,11 +153,21 @@ class JSONAPI extends CI_Controller {
 				if( isset($response->Items->Item[0]->MediumImage->URL) ) $image = $response->Items->Item[0]->MediumImage->URL;
 				if( isset($response->Items->Item[0]->DetailPageURL) ) $pUrl = $response->Items->Item[0]->DetailPageURL;
 			
-				$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl, 'prodUpc'=>$pUpc);		
-				$nId = $this->prod_model->Add($prodData);
-				$this->_response->data = $this->prod_model->Get(array('prodId'=>$nId));
+				$prodData = array('upcName'=>$description, 'upcPhoto'=>$image, 'upcUrl'=>$pUrl, 'upcUpc'=>$pUpc);		
+				$nId = $this->upc_model->Add($prodData);
+				$this->_response->data = $this->upc_model->Get(array('upcId'=>$nId));
+				//$tmpUpc[0]->prodName = $tmpUpc[0]->upcName;
+				//$this->_response->data = $tmpUpc;
 			}
 		}
+
+		$tmpProd = new stdClass();
+		$tmpProd->prodName = $this->_response->data->upcName;
+		$tmpProd->prodDescription = $this->_response->data->upcDescription;
+		$tmpProd->prodPhoto = $this->_response->data->upcPhoto;
+		$tmpProd->prodUrl = $this->_response->data->upcUrl;
+		$tmpProd->prodUpc = $this->_response->data->upcUpc;
+		$this->_response->data = $tmpProd;
 		
 		$this->_JSONout();
 	}
