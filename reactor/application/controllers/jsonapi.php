@@ -105,7 +105,7 @@ class JSONAPI extends CI_Controller {
 	function upcscan($pUpc){
 		$this->load->model('upc_model');
 		
-		$tmprec = $this->upc_model->Get(array('prodUpc'=>$pUpc));
+		$tmprec = $this->upc_model->Get(array('upcUpc'=>$pUpc));
 		
 		if(count($tmprec) > 0){
 		//if(false){
