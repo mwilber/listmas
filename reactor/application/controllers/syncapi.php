@@ -19,7 +19,7 @@ class SyncAPI extends CI_Controller {
 	}
 	
 	function _JSONout(){
-		header('Access-Control-Allow-Origin: *');
+		//header('Access-Control-Allow-Origin: *');
 		header('Content-type: application/json');
 		echo json_encode($this->_response);
 	}
