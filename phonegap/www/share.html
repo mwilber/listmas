@@ -1,0 +1,25 @@
+<ons-page ng-controller="ShareCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+        </div>
+        <div class="center">Share</div>
+        <div class="right">
+            <!--<ons-toolbar-button ng-click="DeleteGrocery()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
+        </div>
+    </ons-toolbar>
+    
+    <form>
+        <input class="detail-input" placeholder="Name" type="text" ng-model="list.shoplistUrl" ng-model-instant />
+    </form>
+    
+    <ons-button class="link-btn" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View In Browser</ons-button>
+    
+    <form class="foot_ctrl">
+        <h3></h3>
+        <ons-button class="add-btn" ng-click="DoPublish()"><ons-icon icon="check"></ons-icon> Publish</ons-button>
+        <ons-button class="close-btn" ng-click="app.slidingMenu.setMainPage('list.html', {closeMenu: true})"><ons-icon icon="times"></ons-icon></ons-button>
+    </form>
+
+</ons-page>

@@ -1,8 +1,5 @@
 ggControllers.controller('GroceryListCtrl', ['$scope', '$filter', '$timeout', '$http', 'ggActiveList', 'ggActiveProd', 
 function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
-    
-    // if the active list isn't set. redirect to the list menu
-    if( ggActiveList.GetActiveList() == 0 ) app.slidingMenu.setMainPage('lists.html', {closeMenu: true});
    
     $scope.groceries = [ ];
     $scope.checkoutTotal = 0;
@@ -27,50 +24,12 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                     }
                     $scope.$apply();
                     $scope.UpdateTotal();
-                }, function(result, error){alert('error a'); console.log(error);});
+                }, function(result, error){console.log(error);});
             });
     };
     
     $scope.getTotalGroceries = function () {
         return $scope.groceries.length;
-    };
-    
-    $scope.DoPublish = function(){
-            console.log('Publishing...');
-            var pubData = {
-                list:{
-                    shoplistId:0,
-                    shoplistName:"",
-                },
-                prod:[],
-            };
-            $scope.db.transaction(function (tx) {
-                tx.executeSql('SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
-                    pubData.list.shoplistId = result.rows.item(0).shoplistRemoteId;
-                    pubData.list.shoplistRemoteId = result.rows.item(0).shoplistId;
-                    pubData.list.shoplistName = result.rows.item(0).shoplistName;
-                    for( var idx = 0; idx < result.rows.length; idx++){
-                        pubData.prod.push({
-                            prodId: result.rows.item(idx).prodId,
-                            prodName: result.rows.item(idx).prodName,
-                            prodPhoto: result.rows.item(idx).prodPhoto,
-                            prodDescription: result.rows.item(idx).prodDescription,
-                            prodUrl: result.rows.item(idx).prodUrl,
-                            prodUpc: result.rows.item(idx).prodUpc,
-                        });
-                    }
-                    console.log(pubData);
-                    $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
-                    //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
-                        console.log("Saving list...",response);
-				        $scope.db.transaction(function (tx) {
-				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
-				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){alert("saved!");}, function(result, error){console.log(error);});
-				        });
-                    });
-                    
-                }, function(result, error){alert('error'); console.log(error);});
-            });
     };
     
     
@@ -221,7 +180,12 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         //modal.show();
     };
     
-    $scope.UpdateGroceryList();
+    // if the active list isn't set. redirect to the list menu
+    if( ggActiveList.GetActiveList() == 0 ){
+        app.slidingMenu.setMainPage('lists.html', {closeMenu: true});
+    }else{
+        $scope.UpdateGroceryList();
+    }
 }]);
 
 
