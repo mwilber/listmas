@@ -76,8 +76,8 @@ class SyncAPI extends CI_Controller {
 		$this->load->model('prodlist_model');
 		$this->load->model('shoplist_model');
 		
-		if( $obj->list->shoplistId > 0 ){
-			$slTmp = $this->shoplist_model->Get(array('shopListId'=>$obj->list->shoplistId));
+		if( intval($obj->list->shoplistId) > 0 ){
+			$slTmp = $this->shoplist_model->Get(array('shopListId'=>intval($obj->list->shoplistId)));
 			$slId = $slTmp->shopListId;
 		}else{
 			$slId = $this->shoplist_model->Add(array('shoplistName'=>$obj->list->shoplistName));

@@ -3,6 +3,10 @@
 
 <a href="<?=base_url()?><?=$this->uri->segment(1);?>/add" class="button" style="float:left; margin-right:5px;">Add Item</a>
 <a href="<?=base_url()?><?=$this->uri->segment(1);?>/csv" class="button" style="float:left; margin-right:5px;">Export CSV</a>
+<form action="<?=base_url()?><?=$this->uri->segment(1);?>/asin" method="post">
+	<input type="text" name="asin"/>
+	<input type="submit" class="button" style="float:left; margin-right:5px;" value="Add ASIN"/>
+</form>
 
 <?if($this->session->flashdata('flashError')):?>
 <div class='flashError'>

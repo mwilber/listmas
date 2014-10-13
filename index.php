@@ -64,7 +64,7 @@
 <ul>
 	<?php foreach( $listRS as $li): ?>
 		<li>
-			<a href="<?=$li['prodUrl']?>">
+			<a href="<?=$li['prodUrl']?>" target="blank">
 			<img src="<?=$li['prodPhoto']?>" width="100"/>
 			<?=$li['prodName']?>
 			</a>
