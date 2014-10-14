@@ -7,7 +7,7 @@
 #
 # Host: us-cdbr-iron-east-01.cleardb.net (MySQL 5.5.37-log)
 # Database: heroku_1db178c00d9cf9b
-# Generation Time: 2014-10-13 18:33:38 +0000
+# Generation Time: 2014-10-13 22:05:28 +0000
 # ************************************************************
 
 
@@ -62,9 +62,9 @@ CREATE TABLE `tblprod_sav` (
 DROP TABLE IF EXISTS `tblprodlist`;
 
 CREATE TABLE `tblprodlist` (
-  `prodListId` int(11) NOT NULL AUTO_INCREMENT,
+  `prodListId` bigint(11) NOT NULL AUTO_INCREMENT,
   `shopListId` int(11) DEFAULT NULL,
-  `prodId` int(11) DEFAULT NULL,
+  `prodId` bigint(11) DEFAULT NULL,
   `prodListDateAdded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`prodListId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

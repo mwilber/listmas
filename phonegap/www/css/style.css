@@ -1,3 +1,39 @@
+.dialog{
+    color:#666;
+    background:#fff;
+    border-radius:5px;
+    width: 80%;
+    padding: 5%;
+    white-space: normal;
+    text-align: justify;
+    margin-left: 5%;
+}
+
+.dialog p{
+    margin:0px 0px 20px 0px;
+}
+
+.dialog .control-btn{
+    width: 48%;
+    height: 50px;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.dialog .control-btn:first{
+    margin-right:4%;
+}
+
+.dialog .wide-btn{
+    width: 100%;
+    text-align: center;
+}
+
 .delete-btn .toolbar-button{
     color:#f00;
 }
@@ -28,6 +64,11 @@
     line-height: 1.25em;
     /* width: 100%; */
     margin-left: 60px;
+}
+
+.list .list__item .wrapper{
+    width:100%;
+    min-height:60px;
 }
 
 .foot_ctrl{

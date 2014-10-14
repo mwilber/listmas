@@ -6,6 +6,8 @@ function($scope, $filter, $timeout, ggActiveList) {
    
     $scope.shoplists = [ ];
     $scope.checkoutTotal = 0;
+    $scope.listDeleteName = "";
+    $scope.listDeleteId = "";
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     $scope.db.transaction(function (tx) {
@@ -13,6 +15,31 @@ function($scope, $filter, $timeout, ggActiveList) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProdlist (prodlistId INTEGER PRIMARY KEY, prodlistRemoteId INTEGER, prodId INTEGER, shoplistId INTEGER, prodPrice REAL DEFAULT 0, prodQty REAL DEFAULT 0, prodlistTimeStamp INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
     });
+    
+    if( localStorage.getItem("activeList") !== null ){
+        ggActiveList.SetActiveList(localStorage.getItem("activeList"));
+        app.navi.pushPage('list.html');
+    }
+    
+    $scope.DoDelete = function(pId, pName){
+       $scope.listDeleteName = pName;
+       $scope.listDeleteId = pId;
+       $scope.$apply();
+       modal.show('modal'); 
+    };
+    
+    $scope.DeleteList = function () {
+        
+        console.log("Deleting List", $scope.listDeleteId);
+        $scope.db.transaction(function (tx) {
+            tx.executeSql('DELETE FROM tblShoplist WHERE shoplistId=?', [$scope.listDeleteId], function(tx, response){
+                $scope.UpdateShopList();
+                modal.hide();
+            });
+        });
+        
+        return false;
+    };
     
     $scope.UpdateShopList = function(tx, response){
             console.log('Getting Shop Lists');
@@ -27,7 +54,7 @@ function($scope, $filter, $timeout, ggActiveList) {
                         });
                     }
                     $scope.$apply();
-                }, function(result, error){alert('error a'); console.log(error);});
+                }, function(result, error){console.log(error);});
             });
     };
     
@@ -48,15 +75,8 @@ function($scope, $filter, $timeout, ggActiveList) {
     $scope.SetActiveList = function(event){
         console.log('SetActiveList', event);
         ggActiveList.SetActiveList(event);
-        app.slidingMenu.setMainPage('list.html', {closeMenu: true});
-    };
-    
-    $scope.ClearDb = function () {
-        $scope.db.transaction(function (tx) {
-            tx.executeSql("DROP TABLE IF EXISTS tblProd");
-            tx.executeSql("DROP TABLE IF EXISTS tblProdlist");
-            tx.executeSql("DROP TABLE IF EXISTS tblShoplist");
-        });
+        //app.slidingMenu.setMainPage('list.html', {closeMenu: true});
+        app.navi.pushPage('list.html');
     };
     
     $scope.UpdateShopList();

@@ -40,10 +40,14 @@ function($scope, $http, ggActiveProd) {
         console.log("Saving updates...", $scope.grocery);
         $scope.db.transaction(function (tx) {
             tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=?, prodUrl=? WHERE prodId=?", 
-                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
+                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.navi.popPage());
         });
         
         return false;
+    };
+    
+    $scope.DoDelete = function(){
+       modal.show('modal'); 
     };
     
     $scope.DeleteGrocery = function () {
@@ -53,7 +57,7 @@ function($scope, $http, ggActiveProd) {
             tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.grocery.prodId], function(tx, response){
                 //$scope.UpdateGroceryList
                 console.log('Deleting from prodlist: '+$scope.grocery.prodId);
-                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
+                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.navi.popPage());
             });
         });
         

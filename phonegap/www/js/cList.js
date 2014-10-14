@@ -4,8 +4,26 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.groceries = [ ];
     $scope.checkoutTotal = 0;
     $scope.activeShopListId = 0;
+    $scope.scanStatus = false;
+    $scope.shareStatus = false;
+    $scope.shoplistName = "List";
+    $scope.prodDeleteName = "";
+    $scope.prodDeleteId = "";
+    
+    app.navi.on('postpop',function(){
+        try{
+            $scope.UpdateGroceryList();
+        }catch(exception){
+            console.log("not in grocery list");
+        }
+        });
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
+    
+    $scope.GoBack = function(){
+        localStorage.removeItem('activeList');
+        app.navi.popPage();
+    };
     
     $scope.UpdateGroceryList = function(tx, response){
             console.log('Getting Product List', ggActiveList.GetActiveList());
@@ -22,10 +40,39 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                             prodUrl: result.rows.item(idx).prodUrl,
                         });
                     }
+                    if( $scope.groceries.length > 0 ) $scope.shareStatus = true;
+                    console.log('shareStatus', $scope.shareStatus);
                     $scope.$apply();
                     $scope.UpdateTotal();
                 }, function(result, error){console.log(error);});
             });
+            $scope.db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                    $scope.shoplistName = result.rows.item(0).shoplistName;
+                    $scope.$apply();
+                }, function(result, error){console.log(error);});
+            });
+    };
+    
+    $scope.DoDelete = function(pId, pName){
+       $scope.prodDeleteName = pName;
+       $scope.prodDeleteId = pId;
+       $scope.$apply();
+       mdelete.show('modal'); 
+    };
+    
+    $scope.DeleteGrocery = function () {
+        
+        console.log("Deleting Grocery", $scope.prodDeleteId);
+        $scope.db.transaction(function (tx) {
+            tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.prodDeleteId], function(tx, response){
+                //$scope.UpdateGroceryList
+                console.log('Deleting from prodlist: '+$scope.prodDeleteId);
+                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.prodDeleteId], function(){$scope.UpdateGroceryList(); $scope.$apply(); mdelete.hide();}); 
+            });
+        });
+        
+        return false;
     };
     
     $scope.getTotalGroceries = function () {
@@ -49,6 +96,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.GetPhoto = function(){
+        modal.hide();
         navigator.camera.getPicture($scope.PhotoSuccess, $scope.PhotoFail, { 
     	    quality: 80,
 	        destinationType: 0,
@@ -81,7 +129,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                         console.log("Switching to detail");
                         console.log(tempGrocery);
                         ggActiveProd.SetActiveProd(tempGrocery);
-                        app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+                        //app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+                        app.navi.pushPage('prod.html');
                     });
                 });
             });
@@ -94,7 +143,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
 
     
     $scope.ScanBarcode = function(){
-        //$scope.GetBarcode('014633731804');
+        $scope.scanStatus = true;
+        //$scope.GetBarcode('0146337318040000');
         //return false;
         window.plugins.barcodeScanner.scan( function(result) {
                     //alert("We got a barcode\n" +
@@ -113,36 +163,41 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         //$http.get('http://gibson.loc/grocerygamer/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
         $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
             console.log(response);
-            var prodName = response.data.prodName;
-            var prodPhoto = response.data.prodPhoto;
-            var prodUrl = response.data.prodUrl;
-            var prodUpc = response.data.prodUpc;
-            $scope.db.transaction(function (tx) {
-                console.log('Adding Product');
-                console.log(prodName);
-                console.log(prodUrl);
-                console.log(prodUpc);
-                tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [prodName, prodPhoto, prodUrl, prodUpc], function(tx, response){
-                    //$scope.UpdateGroceryList
-                    console.log('Inserting into prodlist: '+response.insertId);
-                    tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList), function(result, error){console.log(error);}; //function(tx, response){
-                        //tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.prodlistId=?', [response.insertId], function(tx, result){
-                        //    var tempGrocery = {
-                        //            prodId: result.rows.item(0).prodId,
-                        //            prodName: result.rows.item(0).prodName,
-                        //            prodPhoto: result.rows.item(0).prodPhoto,
-                        //            prodDescription: result.rows.item(0).prodDescription,
-                        //        }
-                        //    console.log("Switching to detail");
-                        //    console.log(tempGrocery);
-                        //    ggActiveProd.SetActiveProd(tempGrocery);
-                        //    app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+            $scope.scanStatus = false;
+            if( response.data.prodName === null ){
+                //alert("nothing found");
+                modal.show('modal');
+            }else{
+                var prodName = response.data.prodName;
+                var prodPhoto = response.data.prodPhoto;
+                var prodUrl = response.data.prodUrl;
+                var prodUpc = response.data.prodUpc;
+                $scope.db.transaction(function (tx) {
+                    console.log('Adding Product');
+                    console.log(prodName);
+                    console.log(prodUrl);
+                    console.log(prodUpc);
+                    tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [prodName, prodPhoto, prodUrl, prodUpc], function(tx, response){
+                        //$scope.UpdateGroceryList
+                        console.log('Inserting into prodlist: '+response.insertId);
+                        tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList), function(result, error){console.log(error);}; //function(tx, response){
+                            //tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.prodlistId=?', [response.insertId], function(tx, result){
+                            //    var tempGrocery = {
+                            //            prodId: result.rows.item(0).prodId,
+                            //            prodName: result.rows.item(0).prodName,
+                            //            prodPhoto: result.rows.item(0).prodPhoto,
+                            //            prodDescription: result.rows.item(0).prodDescription,
+                            //        }
+                            //    console.log("Switching to detail");
+                            //    console.log(tempGrocery);
+                            //    ggActiveProd.SetActiveProd(tempGrocery);
+                            //    app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+                            //});
+                            
                         //});
-                        
-                    //});
-                }, function(result, error){console.log(error);});
-            });
-            $scope.formGroceryText = '';
+                    }, function(result, error){console.log(error);});
+                });
+            }
         });
     };
     
@@ -176,13 +231,15 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         console.log("Detail", pDetail);
         ggActiveProd.SetActiveProd(pDetail);
         //TODO: Add new detail page here
-        app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+        //app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+        app.navi.pushPage('prod.html');
         //modal.show();
     };
     
     // if the active list isn't set. redirect to the list menu
     if( ggActiveList.GetActiveList() == 0 ){
-        app.slidingMenu.setMainPage('lists.html', {closeMenu: true});
+        //app.slidingMenu.setMainPage('lists.html', {closeMenu: true});
+        app.navi.pushPage('lists.html');
     }else{
         $scope.UpdateGroceryList();
     }
@@ -193,6 +250,7 @@ ggControllers.controller('GroceryListing', ['$scope', '$filter', '$timeout',
 function($scope, $filter, $timeout) {
     
     $scope.timeout;
+    $scope.scanStatus = "Barcodez";
     
     $scope.SavePrice = function(newVal, oldVal) {
         if (newVal != oldVal) {

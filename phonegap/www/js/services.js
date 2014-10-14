@@ -11,6 +11,7 @@ ggServices.service('ggActiveList', [
             },
             SetActiveList: function(value) {
                 activeList = value;
+                localStorage.setItem("activeList", activeList);
             }
         };
     }

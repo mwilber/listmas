@@ -3,7 +3,8 @@ function($scope, $http, ggActiveList) {
    
     $scope.list = {};
     $scope.activeShopListId = 0;
-    $scope.scanstatus = "SCAN";
+    $scope.publishStatus = false;
+    $scope.publishResultTxt = "";
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     
@@ -27,10 +28,11 @@ function($scope, $http, ggActiveList) {
     };
     
     $scope.ViewWebPage = function(){
-        window.open('http://mylistmas.herokuapp.com/index.php?l='+$scope.list.shoplistUrl, '_system');
+        window.open('http://mylistmas.herokuapp.com/index.php?l='+$scope.list.shoplistUrl, '_system', 'location=no');
     };
     
     $scope.DoPublish = function(){
+            $scope.publishStatus = true;
             console.log('Publishing...');
             var pubData = {
                 list:{
@@ -60,7 +62,12 @@ function($scope, $http, ggActiveList) {
                         console.log("Saving list...",response);
     			        $scope.db.transaction(function (tx) {
 				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
-				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){alert("saved!");}, function(result, error){console.log(error);});
+				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
+                                    $scope.publishStatus = false;
+                                    $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
+                                    modal.show('modal');
+                                    $scope.UpdateListDetails();
+                                }, function(result, error){console.log(error);});
 				        });
                     });
                     
@@ -85,7 +92,7 @@ function($scope, $http, ggActiveList) {
         console.log("Saving updates...", $scope.grocery);
         $scope.db.transaction(function (tx) {
             tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=?, prodUrl=? WHERE prodId=?", 
-                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
+                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.navi.pushPage('list.html'));
         });
         
         return false;
@@ -98,7 +105,7 @@ function($scope, $http, ggActiveList) {
             tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.grocery.prodId], function(tx, response){
                 //$scope.UpdateGroceryList
                 console.log('Deleting from prodlist: '+$scope.grocery.prodId);
-                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.slidingMenu.setMainPage('list.html', {closeMenu: true}));
+                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.navi.pushPage('list.html'));
             });
         });
         

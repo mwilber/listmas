@@ -12,6 +12,7 @@
     <script src="js/cProd.js"></script>
     <script src="js/cSync.js"></script>
     <script src="js/cShare.js"></script>
+    <script src="js/cDev.js"></script>
     <script src="js/services.js"></script>
     <script>
         var Listmas = angular.module('Listmas', ['onsen','ggServices','ggControllers']);
@@ -21,7 +22,8 @@
     
 </head>
 <body>
-    <ons-sliding-menu var="app.slidingMenu" menu-page="menu.html" main-page="list.html" side="left" type="overlay" max-slide-distance="200px">
-    </ons-sliding-menu>
+    <!--<ons-sliding-menu var="app.slidingMenu" menu-page="menu.html" main-page="list.html" side="left" type="overlay" max-slide-distance="200px">
+    </ons-sliding-menu>-->
+    <ons-navigator page="lists.html" var="app.navi"></ons-navigator>
 </body>
 </html>
