@@ -1,0 +1,58 @@
+/* Colors */
+
+body{
+	background:#ccc;
+}
+
+.panel h1, .popup h1{
+	background:#666;
+    color: #fff;
+}
+
+.panel, .popup {
+	color: #333;
+}
+
+a.close span {
+	color: #72695B;
+}
+
+a.postshare span {
+	/*color: #F5F2ED;*/
+}
+
+
+.panel {
+	background: #fff;
+	
+}
+
+.popup {
+	background:#F5F2ED;
+	border: solid 5px #333;
+}
+
+.panel .linearlist li, .popup .linearlist li {
+	background:#fff;
+	border-bottom: solid 1px #ccc;	
+}
+
+.panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
+	color:#999;	
+}
+
+.panel .linearlist li .detail-btn{
+	border-top: solid 1px #fff;
+	border-left: solid 1px #fff;
+	border-right: solid 1px #fff;
+	background:#eee;
+	color:#999;
+}
+
+.panel .linearlist li a, .popup .linearlist li a{
+	color:#333;
+}
+
+.panel .linearlist li .prodname span{
+	color:#999;
+}

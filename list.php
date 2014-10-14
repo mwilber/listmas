@@ -26,14 +26,25 @@
 			
 		$stmt = $dbh->prepare("SELECT shoplistName FROM tblShoplist WHERE shoplistId=".$_GET['l']); 
 		$stmt->execute(); 
-		$titleRS = $stmt->fetch();
-		//print_r($titleRS['shoplistName']);
-		$social['title'] = "My Listmas : ".$titleRS['shoplistName'];
-		
-		$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
-		$listRS = $dbh->query($sql);
-		
-		$dbh = null;
+		if( $stmt->rowCount() <= 0 ){
+			//
+			$rootpg = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . "/";
+			if( $_SERVER['HTTP_HOST'] == "gibson.loc" ){
+				$rootpg .= "listmas/";
+			}
+			header("Location: ".$rootpg);
+			//print_r($rootpg);
+			die();
+		}else{
+			$titleRS = $stmt->fetch();
+			//print_r($titleRS['shoplistName']);
+			$social['title'] = "My Listmas : ".$titleRS['shoplistName'];
+			
+			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
+			$listRS = $dbh->query($sql);
+			
+			$dbh = null;
+		}
 	}
 
 ?>
@@ -76,6 +87,7 @@
 		<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/color.css" />
         <title>My Listmas : $titleRS['shoplistName']</title>
         
         <script type="text/javascript">
@@ -112,9 +124,25 @@
 						<?php foreach( $listRS as $li): ?>
 							<li>
 								<a href="<?=$li['prodUrl']?>" target="blank">
-								<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
-								<?=$li['prodName']?>
+									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
+									<div class="prodname">
+										<?=$li['prodName']?>
+										<br/>
+										<span class="description"><?=$li['prodDescription']?></span>
+									</div>
+									<?php if( $li['prodUrl'] != "" ): ?>
+										<div class="produrl">
+											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
+											More Info
+											<?php else: ?>
+											Buy This
+											<?php endif; ?>
+											</span>
+											<span class="fa fa-angle-right"></span>
+										</div>
+									<?php endif; ?>
 								</a>
+								<!--<a href="#" class="detail-btn fa fa-angle-down"></a>-->
 							</li>
 						<?php endforeach; ?>
 					</ul>
