@@ -53,6 +53,8 @@ function($scope, $filter, $timeout, ggActiveList) {
                             shoplistName: result.rows.item(idx).shoplistName,
                         });
                     }
+                    
+                    //if($scope.shoplists.length <= 0) help.show('modal');
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });
@@ -67,6 +69,8 @@ function($scope, $filter, $timeout, ggActiveList) {
             console.log(listName);
             tx.executeSql('INSERT INTO tblShoplist (shoplistName) VALUES ( ?)', [listName], function(tx, response){
                 $scope.UpdateShopList();
+                ggActiveList.SetActiveList(response.insertId);
+                app.navi.pushPage('list.html');
             });
         });
         $scope.formListText = '';

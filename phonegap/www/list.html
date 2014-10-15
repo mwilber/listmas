@@ -14,7 +14,7 @@
         <div class="dialog">
             <p>No product information could be found. Would you like to take a picture instead?</p>
             <ons-button class="control-btn" ng-click="GetPhoto()"><ons-icon icon="camera"></ons-icon></ons-button>
-            <ons-button class="control-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
@@ -22,7 +22,7 @@
         <div class="dialog">
             <p>Do you want to delete the item: <strong>{{prodDeleteName}}</strong>?</p>
             <ons-button class="control-btn delete-btn" ng-click="DeleteGrocery()"><ons-icon icon="trash-o"></ons-icon></ons-button>
-            <ons-button class="control-btn" onclick="mdelete.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mdelete.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
         
     </ons-modal>
@@ -39,7 +39,7 @@
     <form class="foot_ctrl">
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>Barcode</ons-button>
-        <ons-button class="capture-btn" ng-click="GetPhoto()"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="TestPhoto()"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
     </form>
 
 </ons-page>

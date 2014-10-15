@@ -14,19 +14,14 @@
         <div class="dialog">
             <p>Do you want to delete the list: <strong>{{listDeleteName}}</strong>?</p>
             <ons-button class="control-btn delete-btn" ng-click="DeleteList()"><ons-icon icon="trash-o"></ons-icon></ons-button>
-            <ons-button class="control-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
         
     </ons-modal>
     
-    <form>
-        <input class="add-input" placeholder="My List Name..." type="text" ng-model="formListText" ng-model-instant />
-        <ons-button class="add-btn" ng-click="AddList()">Add</ons-button>
-    </form>
-    
     <ons-list>
       <ons-list-item  ng-repeat="shoplist in shoplists" ng-click="SetActiveList(shoplist.shoplistId)" class="thumbnail grocery-listing">
-            <ons-gesture-detector ng-if="shoplist.shoplistName!='74362.1541'" ng-hold="DoDelete(shoplist.shoplistId, shoplist.shoplistName)">
+            <ons-gesture-detector ng-hold="DoDelete(shoplist.shoplistId, shoplist.shoplistName)">
             <span ng-class="">{{shoplist.shoplistName}}</span>
             </ons-gesture-detector>
             <ons-button ng-if="shoplist.shoplistName=='74362.1541'" class="add-btn" ng-click="app.navi.pushPage('dev.html')">Dev</ons-button>
@@ -38,5 +33,10 @@
         <ons-button ng-click="AddJames()">Add James</ons-button>
         <ons-button ng-click="ClearDb()">Clear DB</ons-button>
     </form>-->
+    <form class="foot_ctrl">
+        <h3>Make a list</h3>
+        <input class="add-input" placeholder="List Name..." type="text" ng-model="formListText" ng-model-instant />
+        <ons-button class="add-btn" ng-click="AddList()"><span class="fa fa-plus fa-lg"></span></ons-button>
+    </form>
 
 </ons-page>

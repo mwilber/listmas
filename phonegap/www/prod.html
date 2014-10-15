@@ -19,7 +19,7 @@
         
     </ons-modal>
     
-    <form>
+    <form class="detail-form">
         <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
         <div class="detail-photo" style="background-image:url({{grocery.prodPhoto}});"></div>
         <textarea class="detail-input" placeholder="Description" type="text" ng-model="grocery.prodDescription"></textarea>
@@ -29,7 +29,7 @@
     
     <form class="foot_ctrl">
         <h3></h3>
-        <ons-button class="add-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
+        <ons-button class="save-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
         <ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>
     </form>
 

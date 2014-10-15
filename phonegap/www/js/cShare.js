@@ -28,7 +28,7 @@ function($scope, $http, ggActiveList) {
     };
     
     $scope.ViewWebPage = function(){
-        window.open('http://mylistmas.herokuapp.com/index.php?l='+$scope.list.shoplistUrl, '_system', 'location=no');
+        window.open('http://www.mylistmas.com/l/'+$scope.list.shoplistUrl, '_system', 'location=no');
     };
     
     $scope.DoPublish = function(){

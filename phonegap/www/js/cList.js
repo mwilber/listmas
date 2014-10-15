@@ -5,7 +5,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.checkoutTotal = 0;
     $scope.activeShopListId = 0;
     $scope.scanStatus = false;
-    $scope.shareStatus = false;
+    $scope.shareStatus = true;
     $scope.shoplistName = "List";
     $scope.prodDeleteName = "";
     $scope.prodDeleteId = "";

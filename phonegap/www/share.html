@@ -17,9 +17,9 @@
         </div>
     </ons-modal>
     
-    <form>
+    <!--<form>
         <input class="detail-input" placeholder="Unpublished" type="text" ng-model="list.shoplistUrl" ng-model-instant />
-    </form>
+    </form>-->
     <div id="unpublished" ng-if="!list.shoplistUrl">
         <p>Tap the button below to publish your list and share with family and friends.</p>
     </div>
@@ -31,7 +31,7 @@
     
     <form class="foot_ctrl">
         <h3></h3>
-        <ons-button class="add-btn" ng-click="DoPublish()" should-spin="{{publishStatus}}" disabled="{{publishStatus}}" animation="zoom-in"><ons-icon icon="check"></ons-icon> Publish</ons-button>
+        <ons-button class="publish-btn" ng-click="DoPublish()" should-spin="{{publishStatus}}" disabled="{{publishStatus}}" animation="zoom-in"><ons-icon icon="check"></ons-icon> Publish</ons-button>
         <ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>
     </form>
 
