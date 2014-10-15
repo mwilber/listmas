@@ -170,13 +170,13 @@ html, body{
 .panel{
     color:#eee;
 	position:absolute;
-	top:50px;
 	left:5%;
 	width:90%;
 	min-height:100%;
 	background:#FAF6F1;
 	padding:0px;
 	display: none;
+	margin: 50px 0px;
 }
 
 .panel h1{
@@ -870,12 +870,17 @@ a.postshare{
 		width:100%;
 		top:0px;
 		left:0px;
+		margin:0px;
 	}
 	
 	.panel h1 {
 		font-size: 24px;
 		line-height: 26px;
 		padding: 10px 0px;
+	}
+	
+	.panel .content{
+		margin-bottom:50px;
 	}
 
 

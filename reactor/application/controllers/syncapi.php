@@ -76,15 +76,12 @@ class SyncAPI extends CI_Controller {
 		$this->load->model('prodlist_model');
 		$this->load->model('shoplist_model');
 		
-		if(isset($obj->list->shoplistId)){
-		
 			if( intval($obj->list->shoplistId) > 0 ){
 				$slTmp = $this->shoplist_model->Get(array('shopListId'=>intval($obj->list->shoplistId)));
 				$slId = $slTmp->shopListId;
 			}else{
 				$slId = $this->shoplist_model->Add(array('shoplistName'=>$obj->list->shoplistName));
 			}
-			
 			
 			// Clear out existing prods
 			$this->prodlist_model->DeleteList($slId);
@@ -131,7 +128,7 @@ class SyncAPI extends CI_Controller {
 			$this->_response->data->shoplistId = $slId;
 			$this->_response->data->shoplistRemoteId = $obj->list->shoplistRemoteId;
 			$this->_response->data->shoplistUrl = IdObfuscator::encode($slId);
-		}
+
 		
 		$this->_JSONout();
 		
