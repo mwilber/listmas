@@ -9,6 +9,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.shoplistName = "List";
     $scope.prodDeleteName = "";
     $scope.prodDeleteId = "";
+    $scope.showHelp = false;
     
     app.navi.on('postpop',function(){
         try{
@@ -23,6 +24,12 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.GoBack = function(){
         localStorage.removeItem('activeList');
         app.navi.popPage();
+    };
+    
+    $scope.DoShare = function(){
+        if( $scope.groceries.length > 0 ){
+            app.navi.pushPage('share.html');
+        }
     };
     
     $scope.UpdateGroceryList = function(tx, response){
@@ -42,6 +49,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                     }
                     if( $scope.groceries.length > 0 ) $scope.shareStatus = true;
                     console.log('shareStatus', $scope.shareStatus);
+                    if($scope.groceries.length > 0){ $scope.showHelp = false; }else{ $scope.showHelp = true; }
                     $scope.$apply();
                     $scope.UpdateTotal();
                 }, function(result, error){console.log(error);});
@@ -96,7 +104,11 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.GetPhoto = function(){
-        modal.hide();
+        try{
+            malt.hide();
+        }catch(exception){
+            console.log('problem hiding modal');
+        }
         navigator.camera.getPicture($scope.PhotoSuccess, $scope.PhotoFail, { 
     	    quality: 80,
 	        destinationType: 0,
@@ -125,6 +137,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                                 prodName: result.rows.item(0).prodName,
                                 prodPhoto: result.rows.item(0).prodPhoto,
                                 prodDescription: result.rows.item(0).prodDescription,
+                                prodUrl: result.rows.item(0).prodUrl,
                             }
                         console.log("Switching to detail");
                         console.log(tempGrocery);
@@ -138,22 +151,24 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.PhotoFail = function(message) {
-        alert('Failed because: ' + message);
+        console.log('Failed because: ' + message);
     };
 
     
     $scope.ScanBarcode = function(){
         $scope.scanStatus = true;
-        //$scope.GetBarcode('0146337318040000');
+        //$scope.GetBarcode('014633731804');
         //return false;
         window.plugins.barcodeScanner.scan( function(result) {
-                    //alert("We got a barcode\n" +
-                    //          "Result: " + result.text + "\n" +
-                    //          "Format: " + result.format + "\n" +
-                    //          "Cancelled: " + result.cancelled);
+                    if( localStorage.getItem("showUpc") == 1 ){
+                        alert("We got a barcode\n" +
+                                  "Result: " + result.text + "\n" +
+                                  "Format: " + result.format + "\n" +
+                                  "Cancelled: " + result.cancelled);
+                    }
                     $scope.GetBarcode(result.text);
                 }, function(error) {
-                    alert("Scanning failed: " + error);
+                    console.log("Scanning failed: " + error);
                 }
             );
     };
@@ -166,7 +181,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             $scope.scanStatus = false;
             if( response.data.prodName === null ){
                 //alert("nothing found");
-                modal.show('modal');
+                malt.show('modal');
             }else{
                 var prodName = response.data.prodName;
                 var prodPhoto = response.data.prodPhoto;

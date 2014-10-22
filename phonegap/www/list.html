@@ -6,15 +6,15 @@
         </div>
         <div class="center">{{shoplistName}}</div>
         <div class="right">
-            <ons-toolbar-button ng-click="app.navi.pushPage('share.html');" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon> Share</ons-toolbar-button>
+            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon> Share</ons-toolbar-button>
         </div>
     </ons-toolbar>
     
-    <ons-modal var="modal">
+    <ons-modal var="malt">
         <div class="dialog">
             <p>No product information could be found. Would you like to take a picture instead?</p>
             <ons-button class="control-btn" ng-click="GetPhoto()"><ons-icon icon="camera"></ons-icon></ons-button>
-            <ons-button class="control-btn close-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="malt.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
@@ -35,6 +35,15 @@
             </ons-gesture-detector>
       </ons-list-item>
     </ons-list>
+    
+    <div class="help hlist" ng-if="showHelp">
+        <div class="toolbar">
+            Add some items to your list. Then share it with family and friends.
+        </div>
+        <div class="footbar">
+            Add items to your list by scanning a UPC barcode or taking a photograph.
+        </div>
+    </div>
     
     <form class="foot_ctrl">
         <h3>Add Item</h3>

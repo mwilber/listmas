@@ -3,6 +3,8 @@ function($scope, $http, ggActiveList) {
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     localStorage.removeItem('activeList');
+    $scope.showUpc = localStorage.getItem("showUpc");
+    
     
     $scope.ClearDb = function () {
         $scope.db.transaction(function (tx) {
@@ -21,6 +23,16 @@ function($scope, $http, ggActiveList) {
                 app.navi.resetToPage('lists.html', {})
             });
         });
+    };
+    
+    $scope.ShowUpc = function() {
+        if( localStorage.getItem("showUpc") == 1 ){
+            localStorage.setItem("showUpc", 0);
+        }else{
+            localStorage.setItem("showUpc", 1);
+        }
+        $scope.showUpc = localStorage.getItem("showUpc");
+        $scope.$apply();
     };
 
 }]);

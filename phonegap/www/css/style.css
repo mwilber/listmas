@@ -40,13 +40,17 @@
 
 .list{
     padding-bottom:100px;
-    border-bottom:none;
+    border:none;
 }
 
 .list .list__item{
-    min-height:60px;
-    padding:5px;
+    min-height:50px;
+    padding:10px;
+    border:none;
     border-bottom: 1px solid #ddd;
+    float: left;
+    clear: left;
+    width: 100%;
 }
 
 .list .list__item img, .list .list__item .prodPhoto{
@@ -69,7 +73,7 @@
 
 .list .list__item .wrapper{
     width:100%;
-    min-height:60px;
+    min-height:50px;
 }
 
 .foot_ctrl{
@@ -192,6 +196,110 @@ form label{
     padding:5px;
 }
 
-.modal.help{
+.sharelist .button{
+    width:100%;
+}
+
+.sharelist .button.em-btn{
+    color:#fff;
+    background:#999;
+}
+
+.sharelist .button.fb-btn{
+    color:#fff;
+	background:#3b5998;
+}
+
+.sharelist .button.tw-btn{
+	color:#fff;
+	background:#00aced;
+}
+
+.sharelist .button.gp-btn{
+	color:#fff;
+	background:#dd4b39;
+}
+
+.sharelist .button.pn-btn{
+	color:#fff;
+	background:#cb2027;
+}
+
+.sharelist .button.fs-btn{
+	color:#fff;
+	background:#0072b1;
+}
+
+.help{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
     z-index:1000 !important;
+}
+
+.help .footbar, .help .toolbar{
+    position:absolute;
+    left:5%;
+    bottom:125px;
+    width:80%;
+    height:auto;
+    padding:5%;
+    background:#fff;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: justify;
+    font-size: 1.1em;
+}
+
+.help .footbar:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 255, 255, 0);
+	border-top-color: #ffffff;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.help .toolbar{
+    left: 5%;
+    top: 70px;
+    bottom: initial;
+}
+
+.help .toolbar:after {
+    bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+	border-color: rgba(255, 255, 255, 0);
+	border-bottom-color: #ffffff;
+	border-width: 10px;
+	margin-left: -10px;
+}
+
+.help.hlist .toolbar:after{
+    left:90%;
+}
+
+
+.help.hshare .footbar{
+    bottom:100px;
+}
+
+.help.hshare .footbar:after{
+    left:20%;
 }

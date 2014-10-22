@@ -8,6 +8,7 @@ function($scope, $filter, $timeout, ggActiveList) {
     $scope.checkoutTotal = 0;
     $scope.listDeleteName = "";
     $scope.listDeleteId = "";
+    $scope.showHelp = false;
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     $scope.db.transaction(function (tx) {
@@ -53,26 +54,28 @@ function($scope, $filter, $timeout, ggActiveList) {
                             shoplistName: result.rows.item(idx).shoplistName,
                         });
                     }
-                    
-                    //if($scope.shoplists.length <= 0) help.show('modal');
+                    if($scope.shoplists.length > 0){ $scope.showHelp = false; }else{ $scope.showHelp = true; }
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });
+            
     };
     
     
     $scope.AddList = function () {
         //$scope.groceries.push({text:$scope.formGroceryText, purchased:false, price: 0});
         var listName = $scope.formListText;
-        $scope.db.transaction(function (tx) {
-            console.log('Adding List');
-            console.log(listName);
-            tx.executeSql('INSERT INTO tblShoplist (shoplistName) VALUES ( ?)', [listName], function(tx, response){
-                $scope.UpdateShopList();
-                ggActiveList.SetActiveList(response.insertId);
-                app.navi.pushPage('list.html');
+        if( listName != "" && typeof listName !== "undefined"){
+            $scope.db.transaction(function (tx) {
+                console.log('Adding List');
+                console.log(listName);
+                tx.executeSql('INSERT INTO tblShoplist (shoplistName) VALUES ( ?)', [listName], function(tx, response){
+                    $scope.UpdateShopList();
+                    ggActiveList.SetActiveList(response.insertId);
+                    app.navi.pushPage('list.html');
+                });
             });
-        });
+        }
         $scope.formListText = '';
     };
     

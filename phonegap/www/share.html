@@ -10,10 +10,10 @@
         </div>
     </ons-toolbar>
     
-    <ons-modal var="modal">
+    <ons-modal var="pubresult">
         <div class="dialog">
             <p>{{publishResultTxt}}</p>
-            <ons-button class="wide-btn" onclick="modal.hide()"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="wide-btn" onclick="pubresult.hide()"><ons-icon icon="check"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
@@ -21,11 +21,40 @@
         <input class="detail-input" placeholder="Unpublished" type="text" ng-model="list.shoplistUrl" ng-model-instant />
     </form>-->
     <div id="unpublished" ng-if="!list.shoplistUrl">
-        <p>Tap the button below to publish your list and share with family and friends.</p>
+        <!--<p>Tap the button below to publish your list and share with family and friends.</p>-->
     </div>
     
     <div id="published" ng-if="list.shoplistUrl">
-        <ons-button class="link-btn" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View In Browser</ons-button>
+        <ons-list class="sharelist">
+            <ons-list-item>
+                <ons-button class="em-btn" ng-click="EmShare()"><ons-icon icon="envelope"></ons-icon> Share with email</ons-button>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-button class="tw-btn" ng-click="TwShare()"><ons-icon icon="twitter"></ons-icon> Share on Twitter</ons-button>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-button class="fb-btn" ng-click="FbShare()"><ons-icon icon="facebook"></ons-icon> Share on Facebook</ons-button>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-button class="pn-btn" ng-click="PnShare()"><ons-icon icon="pinterest"></ons-icon> Share on Pinterest</ons-button>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-button class="gp-btn" ng-click="GpShare()"><ons-icon icon="google-plus"></ons-icon> Share on Google+</ons-button>
+            </ons-list-item>
+            <ons-list-item></ons-list-item>
+            <ons-list-item>
+                <ons-button class="link-btn" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View In Browser</ons-button>
+            </ons-list-item>
+        </ons-list>
+    </div>
+    
+    <div class="help hshare" ng-if="showHelp">
+        <!--<div class="toolbar">
+            Name your list and add it to start.
+        </div>-->
+        <div class="footbar">
+            Press the PUBLISH button to add and update your list on the web. Then share it with your family and friends. 
+        </div>
     </div>
     
     

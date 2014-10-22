@@ -10,7 +10,10 @@
         </div>
     </ons-toolbar>
     
-    <ons-button ng-click="AddJames()">Add James</ons-button>
-    <ons-button ng-click="ClearDb()">Clear DB</ons-button>
+    <ul>
+        <li><ons-button ng-click="AddJames()">Add James</ons-button></li>
+        <li><ons-button ng-click="ClearDb()">Clear DB</ons-button></li>
+        <li><ons-button ng-click="ShowUpc()">Show/Hide UPC Alert</ons-button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{showUpc}}</li>
+    </ul>
 
 </ons-page>

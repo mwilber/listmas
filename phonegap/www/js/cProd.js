@@ -47,7 +47,7 @@ function($scope, $http, ggActiveProd) {
     };
     
     $scope.DoDelete = function(){
-       modal.show('modal'); 
+       mpdel.show('modal'); 
     };
     
     $scope.DeleteGrocery = function () {

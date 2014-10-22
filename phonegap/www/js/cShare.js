@@ -5,6 +5,15 @@ function($scope, $http, ggActiveList) {
     $scope.activeShopListId = 0;
     $scope.publishStatus = false;
     $scope.publishResultTxt = "";
+    $scope.showHelp = false;
+    $scope.shareUrlRoot = "http://www.mylistmas.com/l/";
+    $scope.metadata = {
+        title:"My Listmas", 
+        link:"http://www.mylistmas.com", 
+        image:"http://www.mylistmas.com/fbshare.png",
+        message:"Check out my list",
+        description:"Slogan"
+    };
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     
@@ -22,6 +31,7 @@ function($scope, $http, ggActiveList) {
                         $scope.list.shoplistUrl = result.rows.item(0).shoplistUrl;
                     }
                     console.log('sharing:',$scope.list);
+                    if($scope.list.shoplistUrl){ $scope.showHelp = false; }else{ $scope.showHelp = true; }
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });
@@ -60,55 +70,62 @@ function($scope, $http, ggActiveList) {
                     $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
                     //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
                         console.log("Saving list...",response);
-    			        $scope.db.transaction(function (tx) {
-				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
-				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
-                                    $scope.publishStatus = false;
-                                    $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
-                                    modal.show('modal');
-                                    $scope.UpdateListDetails();
-                                }, function(result, error){console.log(error);});
-				        });
+                        if (typeof response.data.shoplistUrl === "undefined") {
+                            $scope.publishStatus = false;
+                            $scope.UpdateListDetails();
+                            alert('Something went wrong. Please try again.');
+                        }else{
+        			        $scope.db.transaction(function (tx) {
+    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
+    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
+                                        $scope.publishStatus = false;
+                                        $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
+                                        pubresult.show('modal');
+                                        $scope.UpdateListDetails();
+                                    }, function(result, error){
+                                        $scope.publishStatus = false;
+                                        $scope.UpdateListDetails();
+                                        alert('Something went wrong. Please try again.');
+                                    });
+    				        });
+                        }
+                    }).error(function(){
+                        $scope.publishStatus = false;
+                        $scope.UpdateListDetails();
+                        alert('Something went wrong. Please try again.');
                     });
                     
                 }, function(result, error){alert('error'); console.log(error);});
             });
     };
     
-    $scope.GetBarcode = function(pUpc){
-        $scope.scanstatus = "checking";
-        //$http.get('http://gibson.loc/grocerygamer/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
-        $http.get('http://grocerygamer.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
-            console.log(response);
-            $scope.grocery.prodName = response.data.prodName;
-            $scope.grocery.prodSize = parseFloat(response.data.prodSize);
-            $scope.grocery.prodUnit = response.data.prodUnit;
-            $scope.grocery.prodUpc = response.data.prodUpc;
-        });
-    };
-    
-    $scope.SaveGrocery = function () {
-        
-        console.log("Saving updates...", $scope.grocery);
-        $scope.db.transaction(function (tx) {
-            tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=?, prodUrl=? WHERE prodId=?", 
-                [$scope.grocery.prodName, $scope.grocery.prodDescription, $scope.grocery.prodUrl, $scope.grocery.prodId], app.navi.pushPage('list.html'));
-        });
-        
+    $scope.FbShare = function(){
+        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=314668331957423&link="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
+        window.open(fbcontent, '_system');
         return false;
     };
     
-    $scope.DeleteGrocery = function () {
-        
-        console.log("Deleting Grocery", $scope.grocery);
-        $scope.db.transaction(function (tx) {
-            tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.grocery.prodId], function(tx, response){
-                //$scope.UpdateGroceryList
-                console.log('Deleting from prodlist: '+$scope.grocery.prodId);
-                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.grocery.prodId], app.navi.pushPage('list.html'));
-            });
-        });
-        
+    $scope.TwShare = function(){
+        var twurl = "https://mobile.twitter.com/compose/tweet?status="+escape($scope.metadata.title)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl);
+        window.open(twurl, '_system');
+        return false;
+    };
+    
+    $scope.EmShare = function(){
+        var emurl = "mailto:?subject="+escape($scope.metadata.title)+"&body="+escape($scope.metadata.message)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl);
+        window.open(emurl, '_system');
+        return false;
+    };
+    
+    $scope.GpShare = function(){
+        var gpcontent = "https://plus.google.com/share?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&description="+escape($scope.metadata.description);
+        window.open(gpcontent, '_system');
+        return false;
+    };
+    
+    $scope.PnShare = function(){
+        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape($scope.metadata.image)+"&description="+escape($scope.metadata.message);
+        window.open(pncontent, '_system');
         return false;
     };
     
