@@ -4,9 +4,9 @@
         <div class="left">
             <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
         </div>
-        <div class="center">Listmas</div>
+        <div class="center"><img src="images/app_logo.png" width="44" height="44" /></div>
         <div class="right">
-            
+            <ons-toolbar-button ng-click="app.navi.pushPage('info.html');"><ons-icon icon="info-circle"></ons-icon></ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -20,7 +20,7 @@
     </ons-modal>
     
     <ons-list>
-      <ons-list-item  ng-repeat="shoplist in shoplists" ng-click="SetActiveList(shoplist.shoplistId)" class="thumbnail grocery-listing">
+      <ons-list-item modifier="chevron" ng-repeat="shoplist in shoplists" ng-click="SetActiveList(shoplist.shoplistId)" class="thumbnail grocery-listing">
             <ons-gesture-detector ng-hold="DoDelete(shoplist.shoplistId, shoplist.shoplistName)">
             <span ng-class="">{{shoplist.shoplistName}}</span>
             </ons-gesture-detector>

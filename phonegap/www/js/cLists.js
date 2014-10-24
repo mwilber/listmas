@@ -33,9 +33,11 @@ function($scope, $filter, $timeout, ggActiveList) {
         
         console.log("Deleting List", $scope.listDeleteId);
         $scope.db.transaction(function (tx) {
-            tx.executeSql('DELETE FROM tblShoplist WHERE shoplistId=?', [$scope.listDeleteId], function(tx, response){
-                $scope.UpdateShopList();
-                modal.hide();
+            tx.executeSql('DELETE FROM tblProdlist WHERE shoplistId=?', [$scope.listDeleteId], function(tx, response){
+                tx.executeSql('DELETE FROM tblShoplist WHERE shoplistId=?', [$scope.listDeleteId], function(tx, response){
+                    $scope.UpdateShopList();
+                    modal.hide();
+                });
             });
         });
         

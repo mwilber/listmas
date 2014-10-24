@@ -34,8 +34,12 @@
     text-align: center;
 }
 
-.delete-btn .toolbar-button{
-    color:#f00;
+.navigation-bar {
+    text-transform: uppercase;
+}
+
+.navigation-bar__title{
+    font-weight:bold;
 }
 
 .list{
@@ -51,6 +55,37 @@
     float: left;
     clear: left;
     width: 100%;
+}
+
+.list__item:first-child:last-child {
+    border-top: none; 
+    border-bottom: 1px solid #ddd;
+}
+
+.sharelist.list .list__item{
+    min-height:50px;
+    padding:10px 10px 0px 10px;
+    border:none;
+    border: none;
+}
+
+.list__item.edit:before {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    color: #ddd;
+    line-height: 28px;
+    height: 28px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f040";
 }
 
 .list .list__item img, .list .list__item .prodPhoto{
@@ -108,12 +143,12 @@
     font-weight: bold;
 }
 
-.foot_ctrl .button span.fa{
-    padding-right:10px;
+.foot_ctrl .button.wide-btn {
+    width: 100%;
 }
 
-.button.close-btn{
-    background-color:#666;
+.foot_ctrl .button span.fa{
+    padding-right:10px;
 }
 
 .detail-form {
@@ -159,24 +194,24 @@ form label{
 }
 
 .add-input {
-  width: 66%;
-  height: 40px;
-  float: left;
-  border: none;
-  padding: 10px 0;
-  font-size: 20px;
-  text-indent: 5px;
-  border: none;
-  margin:2%;
+    width: 66%;
+    height: 40px;
+    float: left;
+    border: none;
+    padding: 5px 0;
+    font-size: 20px;
+    text-indent: 5px;
+    border: none;
+    margin: 5px;
 }
 .add-btn, .foot_ctrl .add-btn {
     width: 26%;
     border: none;
-    height: 60px;
+    height: 50px;
     text-align: center;
-    line-height: 14px;
-    margin: 2%;
-    padding: 25px 0;
+    line-height: 32px;
+    margin: 5px;
+    padding: 10px 0;
     font-size: 14px;
 }
 

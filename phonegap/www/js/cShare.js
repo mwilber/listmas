@@ -10,7 +10,7 @@ function($scope, $http, ggActiveList) {
     $scope.metadata = {
         title:"My Listmas", 
         link:"http://www.mylistmas.com", 
-        image:"http://www.mylistmas.com/fbshare.png",
+        image:"http://www.mylistmas.com/icon_512.png",
         message:"Check out my list",
         description:"Slogan"
     };
@@ -100,7 +100,7 @@ function($scope, $http, ggActiveList) {
     };
     
     $scope.FbShare = function(){
-        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=314668331957423&link="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
+        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=360989144063992&link="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
         window.open(fbcontent, '_system');
         return false;
     };

@@ -3,6 +3,7 @@
     <ons-toolbar>
         <div class="left">
             <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="app.navi.popPage()"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>  
         </div>
         <div class="center">Share</div>
         <div class="right">
@@ -41,10 +42,6 @@
             <ons-list-item>
                 <ons-button class="gp-btn" ng-click="GpShare()"><ons-icon icon="google-plus"></ons-icon> Share on Google+</ons-button>
             </ons-list-item>
-            <ons-list-item></ons-list-item>
-            <ons-list-item>
-                <ons-button class="link-btn" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View In Browser</ons-button>
-            </ons-list-item>
         </ons-list>
     </div>
     
@@ -59,9 +56,10 @@
     
     
     <form class="foot_ctrl">
-        <h3></h3>
+        <!--<h3></h3>-->
         <ons-button class="publish-btn" ng-click="DoPublish()" should-spin="{{publishStatus}}" disabled="{{publishStatus}}" animation="zoom-in"><ons-icon icon="check"></ons-icon> Publish</ons-button>
-        <ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>
+        <ons-button class="link-btn" ng-if="list.shoplistUrl" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View</ons-button>
+        <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
     </form>
 
 </ons-page>

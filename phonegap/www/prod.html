@@ -3,10 +3,11 @@
     <ons-toolbar>
         <div class="left">
             <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="app.navi.popPage()"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>  
         </div>
-        <div class="center">Product</div>
+        <div class="center">Details</div>
         <div class="right">
-            <ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>
+            <!--<ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
         </div>
     </ons-toolbar>
     
@@ -28,9 +29,8 @@
     </form>
     
     <form class="foot_ctrl">
-        <h3></h3>
-        <ons-button class="save-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
-        <ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>
+        <ons-button class="save-btn wide-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
+        <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
     </form>
 
 </ons-page>
