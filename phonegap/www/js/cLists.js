@@ -22,6 +22,24 @@ function($scope, $filter, $timeout, ggActiveList) {
         app.navi.pushPage('list.html');
     }
     
+    app.navi.on('postpush',function(event){
+        try{
+            console.log('push', event);
+            ga('send', 'event', 'panel', 'push', event.enterPage.name);
+        }catch(exception){
+            console.log("ga fail");
+        }
+    });
+    
+    $scope.SetUpGA = function(){
+        alert(device.uuid);
+        ga('create', 'UA-76054-30', {
+            'storage': 'none',
+            'clientId':device.uuid
+        });
+        ga('send', 'pageview', {'page': '/index.html'});  
+    };
+    
     $scope.DoDelete = function(pId, pName){
        $scope.listDeleteName = pName;
        $scope.listDeleteId = pId;
@@ -30,6 +48,12 @@ function($scope, $filter, $timeout, ggActiveList) {
     };
     
     $scope.DeleteList = function () {
+        
+        try{
+            ga('send', 'event', 'button', 'click', 'list_delete', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         
         console.log("Deleting List", $scope.listDeleteId);
         $scope.db.transaction(function (tx) {
@@ -60,11 +84,15 @@ function($scope, $filter, $timeout, ggActiveList) {
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });
-            
     };
     
     
     $scope.AddList = function () {
+        try{
+            ga('send', 'event', 'button', 'click', 'list_add', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         //$scope.groceries.push({text:$scope.formGroceryText, purchased:false, price: 0});
         var listName = $scope.formListText;
         if( listName != "" && typeof listName !== "undefined"){
@@ -89,4 +117,5 @@ function($scope, $filter, $timeout, ggActiveList) {
     };
     
     $scope.UpdateShopList();
+    
 }]);

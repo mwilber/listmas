@@ -17,7 +17,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         }catch(exception){
             console.log("not in grocery list");
         }
-        });
+    });
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     
@@ -70,7 +70,11 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.DeleteGrocery = function () {
-        
+        try{
+            ga('send', 'event', 'button', 'click', 'prod_delete', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         console.log("Deleting Grocery", $scope.prodDeleteId);
         $scope.db.transaction(function (tx) {
             tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.prodDeleteId], function(tx, response){
@@ -89,6 +93,11 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     
     
     $scope.AddGrocery = function () {
+        try{
+            ga('send', 'event', 'button', 'click', 'prod_add', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         //$scope.groceries.push({text:$scope.formGroceryText, purchased:false, price: 0});
         var prodName = $scope.formGroceryText;
         $scope.db.transaction(function (tx) {
@@ -104,6 +113,11 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.GetPhoto = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'photo', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         try{
             malt.hide();
         }catch(exception){
@@ -156,6 +170,11 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
 
     
     $scope.ScanBarcode = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'barcode', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
         $scope.scanStatus = true;
         //$scope.GetBarcode('014633731804');
         //return false;

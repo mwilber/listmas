@@ -111,6 +111,17 @@
     min-height:50px;
 }
 
+.infolist .list__item{
+    line-height: 24px;
+    padding: 10px 20px;
+    text-align: justify;
+    border: none;
+}
+
+.infolist .list__item:first-child:last-child{
+    border: none;
+}
+
 .foot_ctrl{
     position:fixed;
     bottom:0px;
@@ -217,6 +228,15 @@ form label{
 
 .foot_ctrl .button.add-btn span.fa {
     padding-right: 0px;
+}
+
+.zeta{
+    text-transform: lowercase;
+    font-family: serif;
+    font-size: 30px;
+    padding-right: 10px;
+    line-height: 0px;
+    vertical-align: sub;
 }
 
 .price{

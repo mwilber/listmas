@@ -37,6 +37,12 @@ function($scope, $http, ggActiveProd) {
     
     $scope.SaveGrocery = function () {
         
+        try{
+            ga('send', 'event', 'button', 'click', 'prod_save', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
+        
         console.log("Saving updates...", $scope.grocery);
         $scope.db.transaction(function (tx) {
             tx.executeSql("UPDATE tblProd SET prodName=?, prodDescription=?, prodUrl=? WHERE prodId=?", 
