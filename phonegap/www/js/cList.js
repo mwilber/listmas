@@ -185,9 +185,17 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                                   "Format: " + result.format + "\n" +
                                   "Cancelled: " + result.cancelled);
                     }
+                    if( result.cancelled || result.text == "" ){
+                        $scope.scanStatus = false;
+                        $scope.$apply();
+                        return false;
+                    }
                     $scope.GetBarcode(result.text);
                 }, function(error) {
                     console.log("Scanning failed: " + error);
+                    $scope.scanStatus = false;
+                    $scope.$apply();
+                    return false;
                 }
             );
     };

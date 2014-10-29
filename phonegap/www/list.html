@@ -48,7 +48,7 @@
     <form class="foot_ctrl">
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>Barcode</ons-button>
-        <ons-button class="capture-btn" ng-click="TestPhoto()"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
     </form>
 
 </ons-page>
