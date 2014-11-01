@@ -26,6 +26,21 @@
             </ons-gesture-detector>
             <ons-button ng-if="shoplist.shoplistName=='74362.1541'" class="add-btn" ng-click="app.navi.pushPage('dev.html')">Dev</ons-button>
       </ons-list-item>
+      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
+            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
+            <span ng-class="">Lia</span>
+            </ons-gesture-detector>
+      </ons-list-item>
+      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
+            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
+            <span ng-class="">Lizzy</span>
+            </ons-gesture-detector>
+      </ons-list-item>
+      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
+            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
+            <span ng-class="">Matt</span>
+            </ons-gesture-detector>
+      </ons-list-item>
     </ons-list>
     
     <div class="help hlists" ng-if="showHelp">
