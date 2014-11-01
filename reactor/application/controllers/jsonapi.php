@@ -102,6 +102,71 @@ class JSONAPI extends CI_Controller {
 		$this->_JSONout();
 	}
 
+	function azsearch($pSearch = ""){
+		$url="http://ecs.amazonaws.com/onca/xml?".
+			"Service=AWSECommerceService&".
+			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
+			"AssociateTag=listmas-20&".
+			"Operation=ItemSearch&".
+			"Keywords=".urlencode($pSearch)."&".
+			/*"IdType=UPC&".
+			"ItemId=".$pUpc."&".*/
+			"SearchIndex=All&".
+			//"BrowseNode=XXX&".
+			//"sort=XXX&".
+			"ResponseGroup=Medium";
+
+		//echo $url;
+
+		$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
+		$host = parse_url($url,PHP_URL_HOST);
+		$timestamp = gmstrftime("%Y-%m-%dT%H:%M:%S.000Z");
+		$url=$url. "&Timestamp=" . $timestamp;
+		$paramstart = strpos($url,"?");
+		$workurl = substr($url,$paramstart+1);
+		$workurl = str_replace(",","%2C",$workurl);
+		$workurl = str_replace(":","%3A",$workurl);
+		$workurl = str_replace("+","%20",$workurl);
+		$params = explode("&",$workurl);
+		sort($params);
+		//print_r($params);
+		$signstr = "GET\n" . $host . "\n/onca/xml\n" . implode("&",$params);
+		$signstr = base64_encode(hash_hmac('sha256', $signstr, $secret, true));
+		$signstr = urlencode($signstr);
+		$signedurl = $url . "&Signature=" . $signstr;
+		$request = $signedurl;
+
+		//echo $request;
+		//die;
+
+		$response = simplexml_load_file($request);
+
+		//print_r($response->Items->Item[0]->DetailPageURL);
+		//die;
+
+		if( isset($response->Items->Item[0]->ItemAttributes->Title ) ){
+
+			$this->_response->data = array();
+
+			for( $idx=0; $idx<10; $idx++){
+				if( isset($response->Items->Item[$idx]->ItemAttributes->Title) ){
+					$description = (string)$response->Items->Item[$idx]->ItemAttributes->Title;
+					if( isset($response->Items->Item[$idx]->MediumImage->URL) ) $image = (string)$response->Items->Item[$idx]->MediumImage->URL;
+					if( isset($response->Items->Item[$idx]->DetailPageURL) ) $pUrl = (string)$response->Items->Item[$idx]->DetailPageURL;
+
+					$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl);
+					array_push($this->_response->data, (object)$prodData);
+					//$nId = $this->upc_model->Add($prodData);
+					//$this->_response->data = $this->upc_model->Get(array('upcId'=>$nId));
+					//$tmpUpc[0]->prodName = $tmpUpc[0]->upcName;
+					//$this->_response->data = $tmpUpc;
+				}
+			}
+		}
+
+		$this->_JSONout();
+	}
+
 	function upcscan($pUpc = "999"){
 		$this->load->model('upc_model');
 
