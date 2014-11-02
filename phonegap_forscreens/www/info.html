@@ -1,0 +1,32 @@
+<ons-page ng-controller="InfoCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="app.navi.popPage()"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>  
+        </div>
+        <div class="center">Info</div>
+        <div class="right">
+            <!--<ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
+        </div>
+    </ons-toolbar>
+    <ons-list class="infolist">
+        <ons-list-item>
+            <p>
+                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list either by taking a photograph, or scanning its UPC barcode. When your list is ready, share it on the web with family and friends. You can add and remove items on your list and any time.
+            </p>
+            <p>
+                Your Listmas lists are as private or public as you choose. Listmas only stores what you enter in your list, it does not gather any personally identifiable information. You choose who sees your list by sharing it. Whether it be a private list for a few family members, or a public list for the world to shower you with gifts, it’s up to you.
+            </p>
+            <p>
+                Listmas was created by Internet software developer Matthew Wilber. For more information, visit greenzeta.com
+            </p>
+        </ons-list-item>
+    </ons-list>
+    
+    <form class="foot_ctrl">
+        <ons-button class="save-btn wide-btn" ng-click="ViewGZPage()"><span class="zeta">&zeta;</span> Other GreenZeta Apps</ons-button>
+        <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
+    </form>
+
+</ons-page>

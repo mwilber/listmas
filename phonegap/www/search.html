@@ -1,0 +1,30 @@
+<ons-page ng-controller="SearchCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="app.navi.popPage()"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center">{{searchterm}}</div>
+        <div class="right">
+        </div>
+    </ons-toolbar>
+    
+    
+    <ons-list>
+      <ons-list-item modifier="plus" ng-repeat="searchitem in searchdata" ng-click="AddItem(searchitem.prodName, searchitem.prodPhoto, searchitem.prodUrl)" class="thumbnail grocery-listing add">
+            <div class="wrapper">
+            <span class="prodName" ng-class="">{{searchitem.prodName}}</span>
+            <div class="prodPhoto" style="background-image:url({{searchitem.prodPhoto}});"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
+            </div>
+      </ons-list-item>
+    </ons-list>
+    
+
+    <form class="foot_ctrl">
+        <h3>Search for Something</h3>
+        <input class="add-input" placeholder="Name or Keywords" type="text" ng-model="formListText" ng-model-instant />
+        <ons-button class="add-btn" ng-click="DoSearch()"><span class="fa fa-search fa-lg"></span></ons-button>
+    </form>
+
+</ons-page>

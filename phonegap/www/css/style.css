@@ -88,6 +88,25 @@
     content: "\f040";
 }
 
+.list__item.add:before {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    color: #ddd;
+    line-height: 28px;
+    height: 28px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f055";
+}
+
 .list .list__item img, .list .list__item .prodPhoto{
     width: 50px;
     height: 50px;
@@ -160,6 +179,17 @@
 
 .foot_ctrl .button span.fa{
     padding-right:10px;
+}
+
+.list_foot_ctrl .button {
+    width: 32%;
+    border-right-width: 0px;
+    font-size: 12px;
+}
+
+.list_foot_ctrl .button span.fa{
+    padding-right:7px;
+    font-size:20px;
 }
 
 .detail-form {

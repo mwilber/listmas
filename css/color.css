@@ -1,11 +1,11 @@
 /* Colors */
 
 body{
-	background:#ccc;
+	background:#a9dcff;
 }
 
 .panel h1, .popup h1{
-	background:#666;
+	background:#e3343f;
     color: #fff;
 }
 
@@ -24,7 +24,7 @@ a.postshare span {
 
 .panel {
 	background: #fff;
-	
+
 }
 
 .popup {
@@ -34,11 +34,11 @@ a.postshare span {
 
 .panel .linearlist li, .popup .linearlist li {
 	background:#fff;
-	border-bottom: solid 1px #ccc;	
+	border-bottom: solid 1px #ccc;
 }
 
 .panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
-	color:#999;	
+	color:#999;
 }
 
 .panel .linearlist li .detail-btn{
@@ -55,4 +55,20 @@ a.postshare span {
 
 .panel .linearlist li .prodname span{
 	color:#999;
+}
+
+.panel .linearlist li .button{
+	background:#666;
+}
+
+.panel .linearlist li .button.buy{
+	background:#4eb94b;
+}
+
+.panel .linearlist li .button span{
+	color:#fff;
+}
+
+.panel .linearlist li .button.buy span{
+	color:#fff;
 }

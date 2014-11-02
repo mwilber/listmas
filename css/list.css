@@ -36,7 +36,7 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    background:url(../images/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:50%;
@@ -91,13 +91,13 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
@@ -114,7 +114,7 @@ h1 {
 
 .smooth_zoom_preloader {
 		background-image: url(../images/preloader.gif);
-	}	
+	}
 	.smooth_zoom_icons {
 		background-image: url(../images/icons.png);
 	}
@@ -128,17 +128,15 @@ html, body{
 #header{
 	position: absolute;
 	z-index:4000;
-	background:#161008;
-	background:transparent;
-	color:#FFFFB2;
-	width: 100%;
+	background: rgba(0,0,0,0.4);
+	width: 80%;
 	height:50px;
-	text-align:right;
+	text-align:center;
 	overflow:hidden;
-	display:none;
-	padding: 10px 0px;
+	padding: 10px 10%;
 	top:0px;
 	right:0px;
+  display:none;
 }
 
 #container{
@@ -211,18 +209,10 @@ html, body{
   	width:200px;
   	height:100%;
   	color:#fff;
-  	background: -moz-linear-gradient(left,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 58%, rgba(0,0,0,0.65) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0)), color-stop(58%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.65) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.65) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.65) 100%); /* IE10+ */
-	background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 58%,rgba(0,0,0,0.65) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=1 ); /* IE6-9 */
-	background: rgba(0,0,0,0.4);
-	text-align: center;
-	font-size: 100px;
-	line-height: 200px;
-	text-decoration:none;
+  	text-align: center;
+  	font-size: 50px;
+    line-height: 50px;
+  	text-decoration:none;
 }
 
 .panel h2{
@@ -369,7 +359,7 @@ a.close, a.postshare{
 	width:auto;
 	text-transform: uppercase;
 	color:#161008;
-	
+
 }
 
 a.postshare{
@@ -512,7 +502,7 @@ a.postshare{
 	font-size: 24px;
 	margin: 0px 2% 0px 0px;
 	padding: 5px;
-	width: 50%;
+	width: 52%;
 }
 
 .panel .linearlist li .prodname span{
@@ -525,15 +515,16 @@ a.postshare{
 	font-size: 20px;
 	line-height:20px;
 	margin: 3% 0px 0px 0px;
-	width: 24%;
+	width: 20%;
 	vertical-align:middle;
 	text-align:right;
+  padding-right: 2%;
 }
 
 .panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
 	display: inline-block;
   vertical-align: middle;
-  line-height: normal; 
+  line-height: normal;
 }
 
 .panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa{
@@ -541,7 +532,7 @@ a.postshare{
 	font-size: 70px;
 	display: inline-block;
   	vertical-align: middle;
-  	line-height: normal; 
+  	line-height: normal;
 }
 
 .panel .linearlist li .detail-btn{
@@ -588,6 +579,17 @@ a.postshare{
 	background: rgba(0,0,0,0.4);
 }
 
+.panel .header a, #header.header a.showapp{
+  width: 200px;
+  position: absolute;
+  right: 2%;
+  top: 10px;
+}
+
+#header.header a{
+  background:transparent;
+}
+
 .panel .header a.showdirections, .panel .header a.showwebsite, .panel .header a.showinfo{
 	margin-right:200px;
 }
@@ -600,7 +602,7 @@ a.postshare{
 	overflow-y: visible;
 }
 
-.button{
+/*.button{
 	padding:15px 25px;
 	margin:auto;
 	text-decoration: none;
@@ -612,7 +614,7 @@ a.postshare{
 	text-align: center;
 	font-size:28px;
 	line-height: 38px;
-}
+}*/
 
 .button.toggle{
 	color: #161008;
@@ -620,8 +622,8 @@ a.postshare{
 }
 
 .button.toggle.selected{
-	
-	
+
+
 	color: #FFFFB2;
 	border-color: #161008;
 	background-color: #161008;
@@ -672,15 +674,15 @@ a.postshare{
 {
 	background-color: #5B6664;
 	-moz-border-radius: 10px;
-	border-radius: 10px; 
+	border-radius: 10px;
 }
 
 #info .jspTrack
 {
 	background-color: transparent;
-	background-color: rgba(91, 102, 100, 0.5); 
+	background-color: rgba(91, 102, 100, 0.5);
 	-moz-border-radius: 10px;
-	border-radius: 10px; 
+	border-radius: 10px;
 }
 
 #info .jspCap
@@ -848,37 +850,37 @@ a.postshare{
 }
 
 
-@media only screen 
+@media only screen
 	and (min-width : 1000px) {
-		
+
 	.panel{
 		width:800px;
 		top:100px;
 		left:50%;
 		margin-left:-400px;
 	}
-		
+
 }
 
 
 /* Tablet */
-@media only screen 
+@media only screen
 	and (max-width : 800px) {
 	/* Styles */
-	
+
 	.panel{
 		width:100%;
 		top:0px;
 		left:0px;
 		margin:0px;
 	}
-	
+
 	.panel h1 {
 		font-size: 24px;
 		line-height: 26px;
 		padding: 10px 0px;
 	}
-	
+
 	.panel .content{
 		margin-bottom:50px;
 	}
@@ -907,49 +909,49 @@ a.postshare{
 	.panel .header a.showuserlocation{
 		margin-right:150px;
 	}
-	
+
 	.panel .header {
 		height: 75px;
 	}
 	.panel .tabs li a {
 		font-size: 18px;
 	}
-	
-	
+
+
 	.panel .linearlist li, .popup .linearlist li {
 		font-size: 18px;
 	}
-	
+
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
 		display: block;
 		float: left;
 		font-size: 18px;
 	}
-	
+
 	.panel .linearlist li .prodname span {
 		font-size: 12px;
 	}
-	
+
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
 		font-size: 18px;
 		line-height: 18px;
 	}
-	
+
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
 		font-size: 70px;
 	}
-	
-	
+
+
 	#footer{
 		height: 28px;
 	}
-	
+
 	#footer a.gz {
 		line-height: 23px;
 		font-size: 16px;
 		padding: 1px 10px 6px 0px;
 	}
-	
+
 	#footer a.gz .badge {
 		font-size: 20px;
 		margin-left: 0px;
@@ -957,50 +959,51 @@ a.postshare{
 		line-height: 23px;
 		padding: 5px 11px;
 	}
-	
+
 
 }
 
 /* Phone */
-@media only screen 
-	and (max-width : 500px) {
-		
+@media only screen
+	and (max-width : 600px) {
+
 	.panel h1 {
 		font-size: 18px;
 	}
-	
+
 	.panel .linearlist li {
 		min-height: 60px;
 		padding:10px;
 	}
-	
+
 	.panel .linearlist li .icon {
 		width:50px;
 		height:50px;
 	}
-	
+
 	.panel .linearlist li a, .popup .linearlist li a {
 		font-size: 14px;
 	}
-	
+
 	.panel .linearlist li, .popup .linearlist li {
 		font-size: 14px;
 	}
-	
+
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
 		font-size: 14px;
+    width:46%;
 	}
-	
+
 	.panel .linearlist li .prodname span {
 		font-size: 10px;
 	}
-	
+
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
 		font-size: 14px;
 		line-height: 14px;
 		width: 22%;
 	}
-	
+
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
 		font-size: 40px;
 	}

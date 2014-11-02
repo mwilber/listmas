@@ -1,0 +1,36 @@
+<ons-page ng-controller="ProdDetailCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="app.navi.popPage()"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>  
+        </div>
+        <div class="center">Details</div>
+        <div class="right">
+            <!--<ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
+        </div>
+    </ons-toolbar>
+    
+    <ons-modal var="mpdel">
+        <div class="dialog">
+            <p>Do you want to delete this item?</p>
+            <ons-button class="control-btn delete-btn" ng-click="DeleteGrocery()"><ons-icon icon="trash-o"></ons-icon></ons-button>
+            <ons-button class="control-btn" onclick="mpdel.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+        
+    </ons-modal>
+    
+    <form class="detail-form">
+        <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
+        <div class="detail-photo" style="background-image:url({{grocery.prodPhoto}});"></div>
+        <textarea class="detail-input" placeholder="Description" type="text" ng-model="grocery.prodDescription"></textarea>
+        <input class="detail-input" placeholder="URL" type="text" ng-model="grocery.prodUrl" ng-model-instant />
+        
+    </form>
+    
+    <form class="foot_ctrl">
+        <ons-button class="save-btn wide-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
+        <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
+    </form>
+
+</ons-page>

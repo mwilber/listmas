@@ -10,7 +10,7 @@ function($scope, $http, ggActiveList) {
     $scope.metadata = {
         title:"My Listmas", 
         link:"http://www.mylistmas.com", 
-        image:"http://www.mylistmas.com/icon_512.png",
+        image:"http://www.mylistmas.com/icons/icon_512.png",
         message:"Check out my list",
         description:"Slogan"
     };

@@ -28,36 +28,6 @@
     </ons-modal>
     
     <ons-list class="prodlist">
-      <ons-list-item class="thumbnail grocery-listing edit">
-            <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
-            <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">ChargerCity Exclusive Apple iPad Mini Google Nexus</span>
-            <div class="prodPhoto" style="background-image:url(http://ecx.images-amazon.com/images/I/51qrzVbDVlL._SL160_.jpg);"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
-            </ons-gesture-detector>
-      </ons-list-item>
-
-    
-      <ons-list-item class="thumbnail grocery-listing edit">
-            <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
-            <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">Minecraft Redstone Ore by Think Geek</span>
-            <div class="prodPhoto" style="background-image:url(http://ecx.images-amazon.com/images/I/413mfEsR-nL._SL160_.jpg);"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
-            </ons-gesture-detector>
-      </ons-list-item>
-
-    
-      <ons-list-item class="thumbnail grocery-listing edit">
-            <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
-            <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">Mega Bloks Call of Duty Juggernaut</span>
-            <div class="prodPhoto" style="background-image:url(http://ecx.images-amazon.com/images/I/51cPMRalWbL._SL160_.jpg);"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
-            </ons-gesture-detector>
-      </ons-list-item>
-
-    
-      <ons-list-item class="thumbnail grocery-listing edit">
-            <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
-            <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">Mega Bloks Call of Duty Zombies Outbreak Collector</span>
-            <div class="prodPhoto" style="background-image:url(http://ecx.images-amazon.com/images/I/51OdPFmWg%2BL._SL160_.jpg);"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
-            </ons-gesture-detector>
-      </ons-list-item>
       <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing edit">
             <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
             <span class="prodName" ng-class="(grocery.prodPrice>0) ? 'done-true' : ''">{{grocery.prodName}}</span>
@@ -75,10 +45,11 @@
         </div>
     </div>
     
-    <form class="foot_ctrl">
+    <form class="foot_ctrl list_foot_ctrl">
         <h3>Add Item</h3>
-        <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>Barcode</ons-button>
+        <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>UPC</ons-button>
         <ons-button class="capture-btn" ng-click="TestPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span>Search</ons-button>
     </form>
 
 </ons-page>
