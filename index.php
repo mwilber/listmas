@@ -59,10 +59,10 @@
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
               </p>
               <h3>Coming soon to Android and iOS</h3>
-              <div class="storelinks">
+              <!--<div class="storelinks">
                 <a id="playstore" style="float:left; margin-right:20px; margin-left:100px;" href="#" target="_blank"><img src="images/playstore.png" style="height:45px;"/></a>
                 <a id="playstore" style="float:left; clear:none;" href="#" target="_blank"><img src="images/appstore.png" style="height:45px;"/></a>
-              </div>
+              </div>-->
             </div>
             <div class="col1">&nbsp;</div>
             <div class="col3" style="text-align: center;">
