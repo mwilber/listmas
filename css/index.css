@@ -68,6 +68,10 @@ body{
   letter-spacing: 0.07em;
 }
 
+.content{
+  margin-top: 5%;
+}
+
 .container p{
   margin: 20px 15px;
   text-align: justify;
@@ -112,6 +116,7 @@ body{
 
 #screenshot{
   width:80%;
+  max-width:200px;
   margin:25px 10% 0px 10%;
 }
 

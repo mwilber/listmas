@@ -56,16 +56,16 @@
                 Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by taking a photograph, or scanning a UPC barcode. Items scanned in by barcode are automatically linked to their Amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
               </p>
               <p>
-                Listmas only stores information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
+                Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
               </p>
               <h3>Coming soon to Android and iOS</h3>
-              <!--<div class="storelinks">
+              <div class="storelinks">
                 <a id="playstore" style="float:left; margin-right:20px; margin-left:100px;" href="#" target="_blank"><img src="images/playstore.png" style="height:45px;"/></a>
                 <a id="playstore" style="float:left; clear:none;" href="#" target="_blank"><img src="images/appstore.png" style="height:45px;"/></a>
-              </div>-->
+              </div>
             </div>
             <div class="col1">&nbsp;</div>
-            <div class="col3">
+            <div class="col3" style="text-align: center;">
               <img id="screenshot" src="images/screenshot.png"/>
             </div>
             <div class="col1">&nbsp;</div>
