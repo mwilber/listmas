@@ -213,7 +213,43 @@ class JSONAPI extends CI_Controller {
 
 			$response = simplexml_load_file($request);
 
-			//print_r($response->Items->Item[0]->DetailPageURL);
+			if( !isset($response->Items->Item[0]) ){
+					// Try looking for ISBN
+					$url="http://ecs.amazonaws.com/onca/xml?".
+						"Service=AWSECommerceService&".
+						"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
+						"AssociateTag=listmas-20&".
+						"Operation=ItemLookup&".
+						"IdType=ISBN&".
+						"ItemId=".$pUpc."&".
+						"SearchIndex=All&".
+						//"BrowseNode=XXX&".
+						//"sort=XXX&".
+						"ResponseGroup=Medium";
+
+					$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
+					$host = parse_url($url,PHP_URL_HOST);
+					$timestamp = gmstrftime("%Y-%m-%dT%H:%M:%S.000Z");
+					$url=$url. "&Timestamp=" . $timestamp;
+					$paramstart = strpos($url,"?");
+					$workurl = substr($url,$paramstart+1);
+					$workurl = str_replace(",","%2C",$workurl);
+					$workurl = str_replace(":","%3A",$workurl);
+					$params = explode("&",$workurl);
+					sort($params);
+					$signstr = "GET\n" . $host . "\n/onca/xml\n" . implode("&",$params);
+					$signstr = base64_encode(hash_hmac('sha256', $signstr, $secret, true));
+					$signstr = urlencode($signstr);
+					$signedurl = $url . "&Signature=" . $signstr;
+					$request = $signedurl;
+
+					//echo $request;
+					//die;
+
+					$response = simplexml_load_file($request);
+			}
+
+			//print_r($response);
 			//die;
 
 			if( isset($response->Items->Item[0]->ItemAttributes->Title) ){
