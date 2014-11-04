@@ -53,7 +53,7 @@
                 <span>LISTMAS</span>
               </div>
               <p>
-                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by taking a photograph, or scanning a UPC barcode. Items scanned in by barcode are automatically linked to their Amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
+                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by taking a photograph, scanning a UPC barcode, or searching amazon.com. Items added via search or barcode are automatically linked to their amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
               </p>
               <p>
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.

@@ -38,6 +38,7 @@
 				<td><?=$record->$name?></td>
 			<?php endif; ?>
 			<?php endforeach; ?>
+			<td><a href='http://www.mylistmas.com/l/<?=$record->hash?>' target='_blank'>View</a></td>
 			<td><a href='<?=base_url()?><?=$this->uri->segment(1);?>/edit/<?=$record->$pk?>'>Edit</a></td>
 			<td><a href='<?=base_url()?><?=$this->uri->segment(1);?>/delete/<?=$record->$pk?>'>Delete</a></td>
 		</tr>

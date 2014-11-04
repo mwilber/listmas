@@ -28,3 +28,12 @@ function AppInit(){
 // 
     // panel['home'].Load();
 }
+
+function ShowDetail(pTarget){
+    if( $(pTarget).hasClass('expand') ){
+        $('.panel .linearlist li').removeClass('expand');
+    }else{
+        $('.panel .linearlist li').removeClass('expand');
+        $(pTarget).addClass('expand');
+    }
+}

@@ -1,5 +1,7 @@
 <?php
 
+	$listTitle = "My Listmas";
+
 	$social = array();
 	$social['title'] = "My Listmas";
 	$social['description'] = "";
@@ -39,6 +41,7 @@
 			$titleRS = $stmt->fetch();
 			//print_r($titleRS['shoplistName']);
 			$social['title'] = "My Listmas - ".$titleRS['shoplistName'];
+			$listTitle = $titleRS['shoplistName'];
 
 			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
 			$listRS = $dbh->query($sql);
@@ -104,7 +107,8 @@
 
 
 			<div id="home" class="panel" style="display:block;">
-				<h1 class="name"><span class="dsk"><?=$social['title']?></span></h1>
+				<a class="info" href="/index.php"><span class="fa fa-info-circle"></span></a>
+				<h1 class="name"><a href="/index.php"><img src="images/logo.png" height="75"/></a><br/><span class="dsk"><?=$listTitle?></span></h1>
 				<!--<div class="header">
 					<img id="homeview" src="img/homebanner.jpg"/>
 					<a class="showapp fa fa-mobile-phone" style="right:75px; width: 200px;" target="_blank"> <span style="font-size:18px;">Get the App!</span></a>
@@ -115,8 +119,8 @@
 					<?php if(isset($_GET['l'])): ?>
 					<ul class="linearlist">
 						<?php foreach( $listRS as $li): ?>
-							<li>
-								<a href="<?=$li['prodUrl']?>" target="blank">
+							<li onclick="ShowDetail(this)">
+								<div>
 									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
 									<div class="prodname">
 										<?=$li['prodName']?>
@@ -124,7 +128,7 @@
 										<span class="description"><?=$li['prodDescription']?></span>
 									</div>
 									<?php if( $li['prodUrl'] != "" ): ?>
-										<div class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>">
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>">
 											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
 											More Info
 											<?php else: ?>
@@ -132,9 +136,9 @@
 											<?php endif; ?>
 											</span>
 											<span class="fa fa-angle-right"></span>
-										</div>
+										</a>
 									<?php endif; ?>
-								</a>
+								</div>
 								<!--<a href="#" class="detail-btn fa fa-angle-down"></a>-->
 							</li>
 						<?php endforeach; ?>
@@ -149,7 +153,7 @@
     <?php endforeach; ?>
 
 		<div id="footer">
-        	<a href="#" onclick="window.open('policy.php', '_system'); _gaq.push(['_trackEvent', 'External', 'Privacy Policy', '']); return false;" class="policy">
+        	<a href="#" onclick="window.open('/policy.php', '_system'); _gaq.push(['_trackEvent', 'External', 'Privacy Policy', '']); return false;" class="policy">
 				Privacy Policy
 			</a>
         	<a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); _gaq.push(['_trackEvent', 'External', 'GreenZeta', '']); return false;" class="gz">
