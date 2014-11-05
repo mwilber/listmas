@@ -167,14 +167,14 @@ html, body{
 
 .panel{
     color:#eee;
-	position:absolute;
-	left:5%;
+	/*position:absolute;
+	left:5%;*/
 	width:90%;
 	min-height:100%;
 	background:#FAF6F1;
 	padding:0px;
 	display: none;
-	margin: 50px 0px;
+	margin: 50px auto;
 }
 
 .panel h1{
@@ -278,14 +278,19 @@ font-weight: bold;
 	overflow-y: auto;
 }
 
+.name a img{
+  margin-right: -90px;
+}
+
 .info{
 	display: block;
 	float: right;
 	color: #fff;
 	margin: 5px 25px;
 	font-size: 48px;
-	position: absolute;
+	position: relative;
 	right: 0px;
+  width: 40px;
 }
 
 /*.popup{
@@ -522,10 +527,10 @@ a.postshare{
 
 .panel .linearlist li .produrl, .popup .linearlist li .produrl{
 	display: block;
-	float: left;
+	float: right;
 	font-size: 20px;
 	line-height:20px;
-	margin: 0px 0px 0px 0px;
+	margin: 0px 15px 0px 0px;
 	width: 20%;
 	vertical-align:middle;
 	text-align:right;
@@ -573,8 +578,8 @@ a.postshare{
 }
 
 .panel .linearlist li.expand .produrl{
-	position: absolute;
-	right:3%;
+	/*position: absolute;
+	right:3%;*/
 }
 
 .panel .linearlist li.expand .prodname {
@@ -828,6 +833,43 @@ width: 90%;
 	margin-left: -36px;
 }
 
+#background{
+
+}
+
+.clouds{
+  position:absolute;
+  top:-20px;
+  left:0%;
+  width:100%;
+  height:140px;
+  background: transparent url('../images/bkg_cloud.png') top center repeat-x;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.clouds .clouds{
+  width:120%;
+}
+
+.ground{
+  position:relative;
+  bottom:0%;
+  left:0%;
+  width:100%;
+  height: 500px;
+  background: transparent url('../images/bkg_ground.png') bottom center repeat-x;
+  z-index:-1;
+  overflow:hidden;
+  margin-top: -320px;
+}
+
+.tree{
+  display: block;
+  position: relative;
+  float:left;
+}
+
 #footer{
 	position: fixed;
 	float:right;
@@ -882,9 +924,9 @@ width: 90%;
 
 	.panel{
 		width:800px;
-		top:100px;
-		left:50%;
-		margin-left:-400px;
+		margin-top:100px;
+		/*left:50%;
+		margin-left:-400px;*/
 	}
 
 }
@@ -894,6 +936,10 @@ width: 90%;
 @media only screen
 	and (max-width : 800px) {
 	/* Styles */
+
+  body{
+    background:#fff;
+  }
 
 	.panel{
 		width:100%;
@@ -967,6 +1013,10 @@ width: 90%;
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
 		font-size: 70px;
 	}
+
+  .scenery{
+    display:none;
+  }
 
 
 	#footer{

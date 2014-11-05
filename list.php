@@ -97,36 +97,27 @@
 		</script>
     </head>
     <body>
-        <div id="header" class="header">
-					<img id="logo" src="icons/icon_256.png" height="100%">
-        	<a class="showapp fa fa-mobile-phone" style="" target="_blank"> <span style="font-size:18px;">Get the App!</span></a>
-        	<!--<a class="showtweeter fa fa-twitter" href="#" onclick="window.open('http://www.twitter.com/tpiapp', '_system'); _gaq.push(['_trackEvent', 'External', 'Twitter', '']); return false;" style="right:200px;"> </a>
-					<a class="showuserlocation fa fa-location-arrow" target="_blank"> </a>
-					<a class="showinfo fa fa-info-circle" target="_blank"> </a>-->
-        </div>
+			<!--<div id="background">-->
+				<div class="clouds scenery">
+					<div class="clouds">
+						<div class="clouds"></div>
+					</div>
+				</div>
 
-
+			<!--</div>-->
+      <div id="header" class="header">
+				<img id="logo" src="icons/icon_256.png" height="100%">
+      	<a class="showapp fa fa-mobile-phone" style="" target="_blank"> <span style="font-size:18px;">Get the App!</span></a>
+      </div>
 			<div id="home" class="panel" style="display:block;">
 				<a class="info" href="/index.php"><span class="fa fa-info-circle"></span></a>
 				<h1 class="name"><a href="/index.php"><img src="images/logo.png" height="75"/></a><br/><span class="dsk"><?=$listTitle?></span></h1>
-				<!--<div class="header">
-					<img id="homeview" src="img/homebanner.jpg"/>
-					<a class="showapp fa fa-mobile-phone" style="right:75px; width: 200px;" target="_blank"> <span style="font-size:18px;">Get the App!</span></a>
-					<a class="showuserprofile fa fa-user" target="_blank"> </a>
-					<a class="showinfo fa fa-info-circle" target="_blank"> </a>
-				</div>-->
 				<div class="content">
 					<?php if(isset($_GET['l'])): ?>
 					<ul class="linearlist">
 						<?php foreach( $listRS as $li): ?>
 							<li onclick="ShowDetail(this)">
 								<div>
-									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
-									<div class="prodname">
-										<?=$li['prodName']?>
-										<br/>
-										<span class="description"><?=$li['prodDescription']?></span>
-									</div>
 									<?php if( $li['prodUrl'] != "" ): ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>">
 											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
@@ -138,6 +129,12 @@
 											<span class="fa fa-angle-right"></span>
 										</a>
 									<?php endif; ?>
+									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
+									<div class="prodname">
+										<?=$li['prodName']?>
+										<br/>
+										<span class="description"><?=$li['prodDescription']?></span>
+									</div>
 								</div>
 								<!--<a href="#" class="detail-btn fa fa-angle-down"></a>-->
 							</li>
@@ -151,6 +148,14 @@
 			<?php foreach( $listRS as $li): ?>
 
     <?php endforeach; ?>
+
+		<div class="clearfix"></div>
+
+		<div class="ground scenery">
+			<?php for($idx = 0; $idx < 10; $idx++): ?>
+			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 180 , 300 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
+			<?php endfor; ?>
+		</div>
 
 		<div id="footer">
         	<a href="#" onclick="window.open('/policy.php', '_system'); _gaq.push(['_trackEvent', 'External', 'Privacy Policy', '']); return false;" class="policy">
