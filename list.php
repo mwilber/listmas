@@ -119,7 +119,7 @@
 							<li onclick="ShowDetail(this)">
 								<div>
 									<?php if( $li['prodUrl'] != "" ): ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>">
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'web', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
 											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
 											More Info
 											<?php else: ?>
@@ -181,11 +181,13 @@
 		  _gaq.push(['_setAccount', 'UA-76054-30']);
 		  _gaq.push(['_trackPageview']);
 
-		  (function() {
-		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		  })();
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-76054-30', 'auto');
+		  ga('send', 'pageview');
 
 		</script>
     </body>
