@@ -962,6 +962,10 @@ width: 90%;
     background:#fff;
   }
 
+  .pgheader{
+    display:none;
+  }
+
 	.panel{
 		width:100%;
 		top:0px;
