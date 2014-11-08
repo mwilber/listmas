@@ -26,6 +26,28 @@
         <meta property="fb:admins" content="631337813" />
         <meta property="og:description" content="<?=$social['description']?>" />
 
+        <!-- Twitter Summary Card -->
+        <!--<meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="@greenzeta">
+        <meta name="twitter:title" content="<?=$social['title']?>">
+        <meta name="twitter:description" content="<?=$social['description']?>">
+        <meta name="twitter:creator" content="@greenzeta">
+        <meta name="twitter:image:src" content="<?=$social['image']?>">
+        <meta name="twitter:domain" content="mylistmas.com">-->
+
+        <meta name="twitter:card" content="app">
+        <meta name="twitter:description" content="<?=$social['description']?>">
+        <meta name="twitter:app:country" content="US">
+        <!--<meta name="twitter:app:name:iphone" content="Listmas">
+        <meta name="twitter:app:id:iphone" content="">
+        <meta name="twitter:app:url:iphone" content="">
+        <meta name="twitter:app:name:ipad" content="Cannonball">
+        <meta name="twitter:app:id:ipad" content="">
+        <meta name="twitter:app:url:ipad" content="">-->
+        <meta name="twitter:app:name:googleplay" content="Listmas">
+        <meta name="twitter:app:id:googleplay" content="com.greenzeta.listmas">
+        <meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=com.greenzeta.listmas">
+
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -77,11 +99,11 @@
               <p>
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
               </p>
-              <h3>Coming soon to Android and iOS</h3>
-              <!--<div class="storelinks">
+              <h3>Coming soon to Apple iOS and Amazon FireOS</h3>
+              <div class="storelinks">
                 <a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style="height:45px;"/></a>
-                <a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'android', 0);"><img src="images/appstore.png" style="height:45px;"/></a>
-              </div>-->
+                <!--<a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'android', 0);"><img src="images/appstore.png" style="height:45px;"/></a>-->
+              </div>
             </div>
             <div class="col1">&nbsp;</div>
             <div class="col3 colcon" style="text-align: center;">

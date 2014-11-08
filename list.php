@@ -75,13 +75,26 @@
 
 
 		<!-- Twitter Summary Card -->
-		<meta name="twitter:card" content="summary">
+		<!--<meta name="twitter:card" content="summary">
 		<meta name="twitter:site" content="@greenzeta">
 		<meta name="twitter:title" content="<?=$social['title']?>">
 		<meta name="twitter:description" content="<?=$social['description']?>">
-		<meta name="twitter:creator" content="@tpiapp">
+		<meta name="twitter:creator" content="@greenzeta">
 		<meta name="twitter:image:src" content="<?=$social['image']?>">
-		<meta name="twitter:domain" content="mylistmas.com">
+		<meta name="twitter:domain" content="mylistmas.com">-->
+
+		<meta name="twitter:card" content="app">
+		<meta name="twitter:description" content="<?=$social['description']?>">
+		<meta name="twitter:app:country" content="US">
+		<!--<meta name="twitter:app:name:iphone" content="Listmas">
+		<meta name="twitter:app:id:iphone" content="">
+		<meta name="twitter:app:url:iphone" content="">
+		<meta name="twitter:app:name:ipad" content="Cannonball">
+		<meta name="twitter:app:id:ipad" content="">
+		<meta name="twitter:app:url:ipad" content="">-->
+		<meta name="twitter:app:name:googleplay" content="Listmas">
+		<meta name="twitter:app:id:googleplay" content="com.greenzeta.listmas">
+		<meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=com.greenzeta.listmas">
 
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
 		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
