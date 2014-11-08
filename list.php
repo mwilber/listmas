@@ -14,7 +14,12 @@
 		include('reactor/application/config/database.php');
 		include('reactor/application/helpers/idobfuscator_helper.php');
 
-		if( !is_numeric($_GET['l']) ) $_GET['l'] = IdObfuscator::decode($_GET['l']);
+		//
+		if($_SERVER["HTTP_HOST"] == "gibson.loc"){
+			if( !is_numeric($_GET['l']) ) $_GET['l'] = IdObfuscator::decode($_GET['l']);
+		}else{
+			$_GET['l'] = IdObfuscator::decode($_GET['l']);
+		}
 
 		try {
 		    $dbh = new PDO("mysql:host=".$db['default']['hostname'].";dbname=".$db['default']['database'], $db['default']['username'], $db['default']['password']);
