@@ -25,15 +25,17 @@ function AppInit(){
 	// panel['locationoptions'] = new LocationOptions();
 	// panel['checkinpop'] = new CheckinPop();
 	// panel['share'] = new Share();
-// 
+//
     // panel['home'].Load();
 }
 
 function ShowDetail(pTarget){
     if( $(pTarget).hasClass('expand') ){
         $('.panel .linearlist li').removeClass('expand');
+        ga('send', 'event', 'list', 'click', 'collapse', 0);
     }else{
         $('.panel .linearlist li').removeClass('expand');
         $(pTarget).addClass('expand');
+        ga('send', 'event', 'list', 'click', 'expand', 0);
     }
 }

@@ -60,6 +60,9 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+body, html{
+  height:100%;
+}
 
 body{
   color:#fff;
@@ -68,8 +71,27 @@ body{
   letter-spacing: 0.07em;
 }
 
+.header{
+  width: 100%;
+  float: left;
+}
+
+.header .sociallinks{
+  float:right;
+  margin:20px 20px;
+}
+
+.header .sociallinks a{
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  width: 50px;
+  font-size: 20px;
+}
+
 .content{
-  margin-top: 5%;
+  margin-top: 2%;
+  margin-bottom: 250px;
 }
 
 .container p{
@@ -85,7 +107,9 @@ body{
 }
 
 .container .storelinks{
-  margin-top: 50px;
+  margin-top: 30px;
+  height: 50px;
+  text-align: center;
 }
 
 #logo{
@@ -113,12 +137,60 @@ body{
   margin: 0px auto;
 }
 
+.container{
+  min-height:100%;
+}
+
+.colcon{
+  margin-bottom:30px;
+}
+
 
 #screenshot{
   width:80%;
   max-width:200px;
   margin:25px 10% 0px 10%;
 }
+
+
+#background{
+
+}
+
+.clouds{
+  position:absolute;
+  top:-20px;
+  left:0%;
+  width:100%;
+  height:140px;
+  background: transparent url('../images/bkg_cloud.png') top center repeat-x;
+  z-index:-1;
+  overflow:hidden;
+  display:none;
+}
+
+.clouds .clouds{
+  width:120%;
+}
+
+.ground{
+  position:relative;
+  bottom:0%;
+  left:0%;
+  width:100%;
+  height: 300px;
+  background: transparent url('../images/bkg_ground.png') bottom center repeat-x;
+  z-index:-1;
+  overflow:hidden;
+  margin-top: -300px;
+}
+
+.tree{
+  display: block;
+  position: relative;
+  float:left;
+}
+
 
 #footer{
   position: fixed;
@@ -170,6 +242,32 @@ body{
 }
 
 
+/* Tablet */
+@media only screen
+  and (max-width : 800px) {
+  /* Styles */
+
+
+  #footer{
+    height: 28px;
+  }
+
+  #footer a.gz {
+    line-height: 23px;
+    font-size: 12px;
+    padding: 1px 10px 6px 0px;
+  }
+
+  #footer a.gz .badge {
+    font-size: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    line-height: 23px;
+    padding: 5px 11px;
+  }
+
+
+}
 
 
 

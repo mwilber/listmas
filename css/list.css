@@ -125,6 +125,27 @@ html, body{
 	font-size:24px;
 }
 
+.pgheader{
+  width: 100%;
+  float: left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.pgheader .sociallinks{
+  float:right;
+  margin:20px 20px;
+}
+
+.pgheader .sociallinks a{
+  color:#a9dcff;
+  text-decoration:none;
+  text-align:center;
+  width: 50px;
+  font-size: 20px;
+}
+
 #header{
 	position: absolute;
 	z-index:4000;

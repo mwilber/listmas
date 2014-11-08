@@ -4,8 +4,8 @@
 
 	$social = array();
 	$social['title'] = "My Listmas";
-	$social['description'] = "";
-	$social['image'] = "http://www.mylistmas.com/img/fb_icon.png";
+	$social['description'] = "Create and share your holiday wishlist with Listmas.";
+	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
 	$social['link'] = "http://www.mylistmas.com/";
 
 	if(isset($_GET['l'])){
@@ -79,15 +79,17 @@
 		<meta name="twitter:domain" content="mylistmas.com">
 
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi" />
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link href='fonts/opensans_regular_macroman/stylesheet.css' rel='stylesheet' type='text/css'>
 		<link href='fonts/opensans_bold_macroman' rel='stylesheet' type='text/css'>
 		<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/list.css" />
-        <link rel="stylesheet" type="text/css" href="css/color.css" />
-        <title>My Listmas : $titleRS['shoplistName']</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/list.css" />
+    <link rel="stylesheet" type="text/css" href="css/color.css" />
+    <title>My Listmas : $titleRS['shoplistName']</title>
 
-        <script type="text/javascript">
+    <script type="text/javascript">
 		var social = [];
 			social['title'] = "<?=$social['title']?>";
 			social['description'] = "<?=$social['description']?>";
@@ -102,6 +104,15 @@
 					<div class="clouds">
 						<div class="clouds"></div>
 					</div>
+				</div>
+
+				<div class="pgheader">
+						<div class="sociallinks">
+							<a href="https://twitter.com/home?status=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas:%20http://www.mylistmas.com" class="fa fa-twitter" target="_blank"></a>
+							<a href="https://plus.google.com/share?url=http://www.mylistmas.com" class="fa fa-google-plus" target="_blank"></a>
+							<a href="https://pinterest.com/pin/create/button/?url=http://www.mylistmas.com&media=http://www.mylistmas.com/icons/icon_512.png&description=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas." class="fa fa-pinterest" target="_blank"></a>
+							<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=$social['link']?>&picture=<?=$social['image']?>&name=<?=$social['title']?>&message=&description=<?=$social['description']?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+						</div>
 				</div>
 
 			<!--</div>-->
@@ -119,7 +130,7 @@
 							<li onclick="ShowDetail(this)">
 								<div>
 									<?php if( $li['prodUrl'] != "" ): ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'web', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'list', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
 											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
 											More Info
 											<?php else: ?>
@@ -158,10 +169,10 @@
 		</div>
 
 		<div id="footer">
-        	<a href="#" onclick="window.open('/policy.php', '_system'); _gaq.push(['_trackEvent', 'External', 'Privacy Policy', '']); return false;" class="policy">
+        	<a href="#" onclick="window.open('/policy.php', '_system'); ga('send', 'event', 'web', 'click', 'policy', 0); return false;" class="policy">
 				Privacy Policy
 			</a>
-        	<a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); _gaq.push(['_trackEvent', 'External', 'GreenZeta', '']); return false;" class="gz">
+        	<a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); ga('send', 'event', 'web', 'click', 'GreenZeta', 0); return false;" class="gz">
 				<span class="badge">&zeta;</span>
 				&nbsp;&nbsp;A GreenZeta Production
 			</a>
