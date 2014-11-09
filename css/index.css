@@ -130,6 +130,25 @@ body{
   display:none;
 }
 
+.content p.sample{
+  text-align:center;
+  width:100%;
+  margin: 20px 0px;
+}
+
+.sample a{
+  font-weight: bold;
+  color: #e3343f;
+  text-decoration: none;
+  background: #fff;
+  display: block;
+  width: 240px;
+  margin: 0px auto;
+  padding: 15px 0px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
 #playstore{
   clear:both;
   width: 135px;

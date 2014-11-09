@@ -93,15 +93,19 @@
                 <img src="images/logo.png" width="50%" height="50%"/>
                 <span>LISTMAS</span>
               </div>
+              <p class="sample">
+                <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
+              </p>
               <p>
                 Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by taking a photograph, scanning a UPC barcode, or searching amazon.com. Items added via search or barcode are automatically linked to their amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
               </p>
               <p>
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
               </p>
-              <h3>Coming soon to Apple iOS and Amazon FireOS</h3>
+              <h3>Coming soon to Apple iOS</h3>
               <div class="storelinks">
-                <a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style="height:45px;"/></a>
+                <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
+                <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
                 <!--<a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'android', 0);"><img src="images/appstore.png" style="height:45px;"/></a>-->
               </div>
             </div>
