@@ -102,11 +102,11 @@
               <p>
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
               </p>
-              <h3>Coming soon to Apple iOS</h3>
+              <!--<h3>Coming soon to Apple iOS</h3>-->
               <div class="storelinks">
                 <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
+                <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
                 <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
-                <!--<a id="" style="" href="#" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'android', 0);"><img src="images/appstore.png" style="height:45px;"/></a>-->
               </div>
             </div>
             <div class="col1">&nbsp;</div>

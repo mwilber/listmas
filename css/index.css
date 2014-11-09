@@ -112,6 +112,10 @@ body{
   text-align: center;
 }
 
+.container .storelinks a img{
+  margin-bottom: 5px;
+}
+
 #logo{
   margin:30px 0px;
   text-align:center;
