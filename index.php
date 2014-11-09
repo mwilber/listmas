@@ -40,13 +40,10 @@
         <meta name="twitter:app:country" content="US">
         <meta name="twitter:app:name:iphone" content="Listmas">
         <meta name="twitter:app:id:iphone" content="935516617">
-        <meta name="twitter:app:url:iphone" content="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8">
         <meta name="twitter:app:name:ipad" content="Listmas">
         <meta name="twitter:app:id:ipad" content="935516617">
-        <meta name="twitter:app:url:ipad" content="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8">
         <meta name="twitter:app:name:googleplay" content="Listmas">
         <meta name="twitter:app:id:googleplay" content="com.greenzeta.listmas">
-        <meta name="twitter:app:url:googleplay" content="https://play.google.com/store/apps/details?id=com.greenzeta.listmas">
 
         <meta name="viewport" content="width=device-width">
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
