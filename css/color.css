@@ -42,10 +42,6 @@ a.postshare span {
 }
 
 .panel .linearlist li .detail-btn{
-	border-top: solid 1px #fff;
-	border-left: solid 1px #fff;
-	border-right: solid 1px #fff;
-	background:#eee;
 	color:#999;
 }
 

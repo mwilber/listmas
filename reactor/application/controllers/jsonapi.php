@@ -167,7 +167,23 @@ class JSONAPI extends CI_Controller {
 		$this->_JSONout();
 	}
 
-	function upcscan($pUpc = "999"){
+	function qrscan($pQr){
+
+		$this->load->helpers('idobfuscator_helper');
+		$this->load->model('prod_model');
+
+		$pQr = IdObfuscator::decode($pQr);
+
+		$this->_response->data = $this->prod_model->Get(array('prodId'=>$pQr));
+
+	}
+
+	function upcscan($pUpc = "999", $pQr = ""){
+
+		if ($pUpc == "qr") {
+		    $this->qrscan($pQr);
+		}else{
+
 		$this->load->model('upc_model');
 
 		$tmprec = $this->upc_model->Get(array('upcUpc'=>$pUpc));
@@ -275,6 +291,8 @@ class JSONAPI extends CI_Controller {
 		if( isset($this->_response->data->upcUrl) ) $tmpProd->prodUrl = $this->_response->data->upcUrl; else $tmpProd->prodUrl = null;
 		if( isset($this->_response->data->upcUpc) ) $tmpProd->prodUpc = $this->_response->data->upcUpc; else $tmpProd->prodUpc = null;
 		$this->_response->data = $tmpProd;
+
+		}
 
 		$this->_JSONout();
 	}

@@ -145,7 +145,7 @@
 					<?php if(isset($_GET['l'])): ?>
 					<ul class="linearlist">
 						<?php foreach( $listRS as $li): ?>
-							<li onclick="ShowDetail(this)">
+							<li>
 								<div>
 									<?php if( $li['prodUrl'] != "" ): ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'list', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
@@ -158,14 +158,17 @@
 											<span class="fa fa-angle-right"></span>
 										</a>
 									<?php endif; ?>
-									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
-									<div class="prodname">
+									<div class="prodqr">
+										qr/<?=IdObfuscator::encode($li['prodId'])?>
+									</div>
+									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')" onclick="ShowDetail(this)"></div>
+									<div class="prodname" onclick="ShowDetail(this)">
 										<?=$li['prodName']?>
 										<br/>
 										<span class="description"><?=$li['prodDescription']?></span>
 									</div>
+									<div class="detail-btn fa fa-angle-down" onclick="ShowDetail(this)"></div>
 								</div>
-								<!--<a href="#" class="detail-btn fa fa-angle-down"></a>-->
 							</li>
 						<?php endforeach; ?>
 					</ul>

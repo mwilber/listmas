@@ -573,9 +573,11 @@ a.postshare{
 }
 
 .panel .linearlist li .detail-btn{
-	margin:20px 0px 0px 0px;
-	padding:0px;
-	text-align:center;
+	margin:0px 0px 0px 0px;
+	padding: 0px;
+	text-align: center;
+	width: 100%;
+	font-size: 28px;
 }
 
 .panel .linearlist li .icon, .popup .linearlist li .icon{
