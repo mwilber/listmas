@@ -367,10 +367,4 @@ class JSONAPI extends CI_Controller {
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
-                                                                s->Item[0]->ItemAttributes->Title;
-	}
-
-}
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+                    
