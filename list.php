@@ -159,6 +159,8 @@
 										</a>
 									<?php endif; ?>
 									<div class="prodqr">
+										<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=qr/<?=IdObfuscator::encode($li['prodId'])?>&choe=UTF-8" style="display:none;"/>
+
 									</div>
 									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')" onclick="ShowDetail(this)"></div>
 									<div class="prodname" onclick="ShowDetail(this)">
