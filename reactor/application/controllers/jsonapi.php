@@ -62,7 +62,6 @@ class JSONAPI extends CI_Controller {
 		}
 
 		$prodData = array('prodName'=>$description, 'prodSize'=>floatval($sizeweight), 'prodUnit'=>trim(str_replace(floatval($sizeweight), "", $sizeweight)));
-
 	}
 
 
@@ -171,8 +170,9 @@ class JSONAPI extends CI_Controller {
 
 		$this->load->helpers('idobfuscator_helper');
 		$this->load->model('prod_model');
-
-		$pQr = IdObfuscator::decode($pQr);
+		
+		//echo html_entity_decode($pQr);
+		//$pQr = IdObfuscator::decode(html_entity_decode($pQr));
 
 		$this->_response->data = $this->prod_model->Get(array('prodId'=>$pQr));
 
@@ -367,4 +367,3 @@ class JSONAPI extends CI_Controller {
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */
-                                                                ers/welcome.php */
