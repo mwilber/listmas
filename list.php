@@ -159,7 +159,6 @@
 										</a>
 									<?php endif; ?>
 									<div class="prodqr">
-										qr/<?=IdObfuscator::encode($li['prodId'])?>
 									</div>
 									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')" onclick="ShowDetail(this)"></div>
 									<div class="prodname" onclick="ShowDetail(this)">
