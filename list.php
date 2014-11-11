@@ -222,4 +222,4 @@
 		  ga('create', 'UA-76054-30', 'auto');
 		  ga('send', 'pageview');
 
-		</script
+		</scrip            
