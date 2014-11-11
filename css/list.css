@@ -591,11 +591,13 @@ a.postshare{
     position: relative;
 	background-size: cover;
 	background-position: center center;
+	background-repeat: no-repeat;
 }
 
 .panel .linearlist li.expand .icon{
 	width: 30%;
 	padding: 30%;
+	background-size: contain;
 }
 
 .panel .linearlist li.expand .produrl{
@@ -1031,8 +1033,8 @@ width: 90%;
 	}
 
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
-		font-size: 18px;
-		line-height: 18px;
+		font-size: 16px;
+		line-height: 16px;
 	}
 
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
