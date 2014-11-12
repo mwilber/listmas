@@ -147,19 +147,22 @@
 						<?php foreach( $listRS as $li): ?>
 							<li>
 								<div>
-									<?php if( $li['prodUrl'] != "" ): ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'list', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
-											<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
-											More Info
-											<?php else: ?>
-											Buy This
-											<?php endif; ?>
-											</span>
-											<span class="fa fa-angle-right"></span>
-										</a>
-									<?php endif; ?>
-									<div class="prodqr">
-										.<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=qr/<?=$li['prodId']?>&choe=UTF-8" style="display:none;"/>
+									<div class="rtblock">
+										<?php if( $li['prodUrl'] != "" ): ?>
+											<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'list', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
+												<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
+												More Info
+												<?php else: ?>
+												Buy This
+												<?php endif; ?>
+												</span>
+												<span class="fa fa-angle-right"></span>
+											</a>
+										<?php endif; ?>
+										<div class="prodqr">
+											<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=qr/<?=$li['prodId']?>&choe=UTF-8"/>
+											<a href="/qr.php" target="_blank">Scan this QR code with the Listmas app to add this item to your own list. Click here for more information.</a>
+										</div>
 									</div>
 									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')" onclick="ShowDetail(this)"></div>
 									<div class="prodname" onclick="ShowDetail(this)">

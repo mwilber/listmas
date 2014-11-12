@@ -182,6 +182,7 @@ class JSONAPI extends CI_Controller {
 
 		if ($pUpc == "qr") {
 		    $this->qrscan($pQr);
+		}elseif(strpos(urldecode($pUpc),'http://www.mylistmas.com/qr/') !== false){
 		}else{
 
 		$this->load->model('upc_model');

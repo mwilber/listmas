@@ -548,14 +548,24 @@ a.postshare{
 
 .panel .linearlist li .produrl, .popup .linearlist li .produrl{
 	display: block;
-	float: right;
-	font-size: 20px;
-	line-height:20px;
-	margin: 0px 15px 0px 0px;
-	width: 20%;
-	vertical-align:middle;
-	text-align:right;
-  padding-right: 2%;
+  font-size: 20px;
+  line-height: 20px;
+  margin: 0px 0px 0px 0px;
+  width: 90%;
+  vertical-align: middle;
+  text-align: right;
+  padding-right: 10%;
+}
+
+.panel .linearlist li .rtblock{
+  display: block;
+  float: right;
+  font-size: 20px;
+  line-height:20px;
+  margin: 0px 15px 0px 0px;
+  width: 20%;
+  vertical-align:middle;
+  text-align:right;
 }
 
 .panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
@@ -570,6 +580,24 @@ a.postshare{
 	display: inline-block;
   	vertical-align: middle;
   	line-height: normal;
+}
+
+.panel .linearlist li .prodqr{
+  display:none;
+}
+
+.panel .linearlist li.expand .prodqr{
+  display:block;
+}
+
+.panel .linearlist li .prodqr img{
+  width:100%;
+}
+
+.panel .linearlist li .prodqr a{
+  font-size: 10px;
+  text-align: center;
+  line-height: 12px;
 }
 
 .panel .linearlist li .detail-btn{
@@ -1039,6 +1067,10 @@ width: 90%;
 		line-height: 16px;
 	}
 
+  .panel .linearlist li .rtblock {
+    width: 22%;
+  }
+
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
 		font-size: 70px;
 	}
@@ -1105,13 +1137,21 @@ width: 90%;
 	}
 
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
-		font-size: 14px;
+		font-size: 12px;
 		line-height: 14px;
-		width: 22%;
 	}
+
+  .panel .linearlist li .rtblock {
+    width: 24%;
+  }
 
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
 		font-size: 40px;
 	}
+
+  .panel .linearlist li .prodqr a{
+    font-size: 8px;
+    line-height: 10px;
+  }
 
 }
