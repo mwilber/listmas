@@ -3,10 +3,10 @@
 	$listTitle = "My Listmas";
 
 	$social = array();
-	$social['title'] = "My Listmas";
+	$social['title'] = "Check Out My Holiday Wish List";
 	$social['description'] = "Create and share your holiday wishlist with Listmas.";
 	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
-	$social['link'] = "http://www.mylistmas.com/";
+	$social['link'] = "http://www.mylistmas.com".$_SERVER[REQUEST_URI];
 
 	if(isset($_GET['l'])){
 		define('BASEPATH', str_replace('\\', '/', $system_path));
@@ -126,10 +126,10 @@
 
 				<div class="pgheader">
 						<div class="sociallinks">
-							<a href="https://twitter.com/home?status=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas:%20http://www.mylistmas.com" class="fa fa-twitter" target="_blank"></a>
-							<a href="https://plus.google.com/share?url=http://www.mylistmas.com" class="fa fa-google-plus" target="_blank"></a>
-							<a href="https://pinterest.com/pin/create/button/?url=http://www.mylistmas.com&media=http://www.mylistmas.com/icons/icon_512.png&description=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas." class="fa fa-pinterest" target="_blank"></a>
-							<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=$social['link']?>&picture=<?=$social['image']?>&name=<?=$social['title']?>&message=&description=<?=$social['description']?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+							<a href="https://twitter.com/home?status=<?=rawurlencode("Check Out My Holiday Wish List: ".$social['link']." #listmas")?>" class="fa fa-twitter" target="_blank"></a>
+							<a href="https://plus.google.com/share?url=<?=$social['link']?>" class="fa fa-google-plus" target="_blank"></a>
+							<a href="https://pinterest.com/pin/create/button/?url=<?=$social['link']?>&media=http://www.mylistmas.com/icons/icon_512.png&description=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas." class="fa fa-pinterest" target="_blank"></a>
+							<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=$social['link']?>&picture=<?=$social['image']?>&name=Check Out My Holiday Wish List&message=&description=<?=$social['description']?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
 						</div>
 				</div>
 
@@ -161,7 +161,7 @@
 										<?php endif; ?>
 										<div class="prodqr">
 											<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=qr/<?=$li['prodId']?>&choe=UTF-8"/>
-											<a href="/qr.php" target="_blank">Scan this QR code with the Listmas app to add this item to your own list. Click here for more information.</a>
+											<a href="/qr.php">Scan this QR code with the Listmas app to add this item to your own list. Click here for more information.</a>
 										</div>
 									</div>
 									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')" onclick="ShowDetail(this)"></div>
