@@ -537,9 +537,9 @@ a.postshare{
 	display: block;
 	float: left;
 	font-size: 24px;
-	margin: 0px 2% 0px 0px;
+	margin: 0px 0px 0px 0px;
 	padding: 5px;
-	width: 52%;
+	width: 74%;
 }
 
 .panel .linearlist li .prodname span{
@@ -566,6 +566,16 @@ a.postshare{
   width: 20%;
   vertical-align:middle;
   text-align:right;
+}
+
+.panel .linearlist li .ltblock{
+  display: block;
+  float: left;
+  font-size: 20px;
+  line-height:20px;
+  margin: 0px 15px 0px 0px;
+  width: 75%;
+  cursor:pointer;
 }
 
 .panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
@@ -606,6 +616,7 @@ a.postshare{
 	text-align: center;
 	width: 100%;
 	font-size: 28px;
+  cursor:pointer;
 }
 
 .panel .linearlist li .icon, .popup .linearlist li .icon{
@@ -625,8 +636,8 @@ a.postshare{
 }
 
 .panel .linearlist li.expand .icon{
-	width: 30%;
-	padding: 30%;
+	width: 48%;
+	padding: 48%;
 	background-size: contain;
 }
 
@@ -638,7 +649,7 @@ a.postshare{
 .panel .linearlist li.expand .prodname {
 margin: 0px 2% 0px 2%;
 padding: 1% 5% 5% 1%;
-width: 90%;
+width: 120%;
 }
 
 

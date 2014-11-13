@@ -9,6 +9,8 @@ class ShopList_Model extends CI_Model
 	var $fields = array(
 		 'shopListName' => array('label'=>'Name','type'=>'varchar','constraint'=>50),
 		 'shopListData' => array('label'=>'Data','type'=>'varchar','constraint'=>500),
+		 'shopListCode' => array('label'=>'Code','type'=>'varchar','constraint'=>200),
+		 'shopListImage' => array('label'=>'Name','type'=>'varchar','constraint'=>200),
 		 //'storeId' => array('label'=>'Store','type'=>'int'),
 		 //'profileId' => array('label'=>'Profile','type'=>'int'),
 		 'shopListCheckoff' => array('label'=>'Checkoff','type'=>'tinyint'),

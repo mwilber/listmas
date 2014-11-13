@@ -1,6 +1,6 @@
-ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList', 
+ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList',
 function($scope, $http, ggActiveList) {
-   
+
     $scope.list = {};
     $scope.activeShopListId = 0;
     $scope.publishStatus = false;
@@ -8,17 +8,17 @@ function($scope, $http, ggActiveList) {
     $scope.showHelp = false;
     $scope.shareUrlRoot = "http://www.mylistmas.com/l/";
     $scope.metadata = {
-        title:"My Listmas", 
-        link:"http://www.mylistmas.com", 
+        title:"My Listmas",
+        link:"http://www.mylistmas.com",
         image:"http://www.mylistmas.com/icons/icon_512.png",
         message:"Check out my list",
         description:"Slogan"
     };
-    
+
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
-    
+
     console.log('Prod Details', $scope.grocery);
-    
+
     $scope.UpdateListDetails = function(tx, response){
             console.log('Getting List', ggActiveList.GetActiveList());
             if( response != undefined ) console.log(response.insertId);
@@ -36,7 +36,7 @@ function($scope, $http, ggActiveList) {
                 }, function(result, error){console.log(error);});
             });
     };
-    
+
     $scope.ViewWebPage = function(){
         try{
             ga('send', 'event', 'button', 'click', 'viewlist', 0);
@@ -45,7 +45,7 @@ function($scope, $http, ggActiveList) {
         }
         window.open('http://www.mylistmas.com/l/'+$scope.list.shoplistUrl, '_system', 'location=no');
     };
-    
+
     $scope.DoPublish = function(){
         try{
             ga('send', 'event', 'button', 'click', 'publish', 0);
@@ -86,7 +86,7 @@ function($scope, $http, ggActiveList) {
                             alert('Something went wrong. Please try again.');
                         }else{
         			        $scope.db.transaction(function (tx) {
-    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
+    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?",
     				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
                                         $scope.publishStatus = false;
                                         $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
@@ -104,11 +104,11 @@ function($scope, $http, ggActiveList) {
                         $scope.UpdateListDetails();
                         alert('Something went wrong. Please try again.');
                     });
-                    
+
                 }, function(result, error){alert('error'); console.log(error);});
             });
     };
-    
+
     $scope.FbShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_fb', 0);
@@ -119,7 +119,7 @@ function($scope, $http, ggActiveList) {
         window.open(fbcontent, '_system');
         return false;
     };
-    
+
     $scope.TwShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_tw', 0);
@@ -130,7 +130,7 @@ function($scope, $http, ggActiveList) {
         window.open(twurl, '_system');
         return false;
     };
-    
+
     $scope.EmShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_em', 0);
@@ -141,7 +141,7 @@ function($scope, $http, ggActiveList) {
         window.open(emurl, '_system');
         return false;
     };
-    
+
     $scope.GpShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_gp', 0);
@@ -152,7 +152,7 @@ function($scope, $http, ggActiveList) {
         window.open(gpcontent, '_system');
         return false;
     };
-    
+
     $scope.PnShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_pn', 0);
@@ -163,7 +163,7 @@ function($scope, $http, ggActiveList) {
         window.open(pncontent, '_system');
         return false;
     };
-    
+
     $scope.UpdateListDetails();
 
 }]);
