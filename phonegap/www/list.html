@@ -6,7 +6,7 @@
         </div>
         <div class="center">{{shoplistName}}</div>
         <div class="right">
-            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon>Share</ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -41,14 +41,14 @@
             Add some items to your list. Then share it with family and friends.
         </div>
         <div class="footbar">
-            Add items to your list by scanning a UPC barcode or taking a photograph. Long-press an item to remove it from your list.
+            Add items to your list by scanning a UPC barcode, taking a photograph or searching amazon.com. Long-press an item to remove it from your list.
         </div>
     </div>
     
     <form class="foot_ctrl list_foot_ctrl">
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>UPC</ons-button>
-        <ons-button class="capture-btn" ng-click="TestPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span>Search</ons-button>
     </form>
 

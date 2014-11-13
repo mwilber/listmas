@@ -2,7 +2,7 @@ ggControllers.controller('ProdDetailCtrl', ['$scope', '$http', 'ggActiveProd',
 function($scope, $http, ggActiveProd) {
    
     $scope.grocery = ggActiveProd.GetActiveProd();
-    $scope.scanstatus = "SCAN";
+    $scope.scanStatus = false;
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     

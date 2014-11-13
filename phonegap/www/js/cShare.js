@@ -1,6 +1,6 @@
-ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList',
+ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList', 
 function($scope, $http, ggActiveList) {
-
+   
     $scope.list = {};
     $scope.activeShopListId = 0;
     $scope.publishStatus = false;
@@ -8,35 +8,48 @@ function($scope, $http, ggActiveList) {
     $scope.showHelp = false;
     $scope.shareUrlRoot = "http://www.mylistmas.com/l/";
     $scope.metadata = {
-        title:"My Listmas",
-        link:"http://www.mylistmas.com",
+        title:"Check Out My Holiday Wish List", 
+        link:"http://www.mylistmas.com", 
         image:"http://www.mylistmas.com/icons/icon_512.png",
-        message:"Check out my list",
-        description:"Slogan"
+        message:"My Listmas",
+        description:"Create and share your holiday wish list with Listmas!"
     };
-
+    
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
-
-    console.log('Prod Details', $scope.grocery);
-
-    $scope.UpdateListDetails = function(tx, response){
-            console.log('Getting List', ggActiveList.GetActiveList());
-            if( response != undefined ) console.log(response.insertId);
+    
+    //console.log('Prod Details', $scope.grocery);
+    
+    $scope.UpdateListDetails = function(){
+            //console.log('Getting List', ggActiveList.GetActiveList());
+            //if( response != undefined ) console.log(response.insertId);
             $scope.db.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM tblShoplist WHERE tblShoplist.shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
-                    console.log(result);
+                    //console.log(result.rows.length);
                     $scope.list = {};
+                    //console.log("checking length");
                     if( result.rows.length > 0 ){
+                        console.log(result.rows.item(0).shoplistName);
                         $scope.list.shoplistName = result.rows.item(0).shoplistName;
+                        console.log($scope.list.shoplistName);
+                        console.log(result.rows.item(0).shoplistUrl);
                         $scope.list.shoplistUrl = result.rows.item(0).shoplistUrl;
+                        console.log($scope.list.shoplistUrl);
                     }
-                    console.log('sharing:',$scope.list);
-                    if($scope.list.shoplistUrl){ $scope.showHelp = false; }else{ $scope.showHelp = true; }
+                    //console.log('sharing:',$scope.list.length);
+                    if(typeof $scope.list.shoplistUrl === 'undefined'){ $scope.showHelp = true; }else{ $scope.showHelp = false; }
+                    //if($scope.showHelp){
+                    //    console.log("showing help");
+                    //}else{
+                    //    console.log("not showing help");
+                    //}
+                    //console.log('scope.showHelp:',$scope.showHelp);
                     $scope.$apply();
-                }, function(result, error){console.log(error);});
+                    //setTimeout(function(){$scope.$apply();}, 1000);
+                }, function(result, error){console.log(error);$scope.$apply();});
+                $scope.$apply();
             });
     };
-
+    
     $scope.ViewWebPage = function(){
         try{
             ga('send', 'event', 'button', 'click', 'viewlist', 0);
@@ -45,7 +58,7 @@ function($scope, $http, ggActiveList) {
         }
         window.open('http://www.mylistmas.com/l/'+$scope.list.shoplistUrl, '_system', 'location=no');
     };
-
+    
     $scope.DoPublish = function(){
         try{
             ga('send', 'event', 'button', 'click', 'publish', 0);
@@ -86,7 +99,7 @@ function($scope, $http, ggActiveList) {
                             alert('Something went wrong. Please try again.');
                         }else{
         			        $scope.db.transaction(function (tx) {
-    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?",
+    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
     				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
                                         $scope.publishStatus = false;
                                         $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
@@ -104,11 +117,12 @@ function($scope, $http, ggActiveList) {
                         $scope.UpdateListDetails();
                         alert('Something went wrong. Please try again.');
                     });
-
-                }, function(result, error){alert('error'); console.log(error);});
+                    
+                }, function(result, error){ $scope.UpdateListDetails(); console.log(error);});
             });
+            $scope.UpdateListDetails();
     };
-
+    
     $scope.FbShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_fb', 0);
@@ -119,7 +133,7 @@ function($scope, $http, ggActiveList) {
         window.open(fbcontent, '_system');
         return false;
     };
-
+    
     $scope.TwShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_tw', 0);
@@ -130,18 +144,18 @@ function($scope, $http, ggActiveList) {
         window.open(twurl, '_system');
         return false;
     };
-
+    
     $scope.EmShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_em', 0);
         }catch(exception){
             console.log("ga fail");
         }
-        var emurl = "mailto:?subject="+escape($scope.metadata.title)+"&body="+escape($scope.metadata.message)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl);
+        var emurl = "mailto:?subject="+escape($scope.metadata.title)+"&body="+escape($scope.metadata.message)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"%0D%0A%0D%0A"+escape($scope.metadata.description)+" "+escape($scope.metadata.link);
         window.open(emurl, '_system');
         return false;
     };
-
+    
     $scope.GpShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_gp', 0);
@@ -152,18 +166,18 @@ function($scope, $http, ggActiveList) {
         window.open(gpcontent, '_system');
         return false;
     };
-
+    
     $scope.PnShare = function(){
         try{
             ga('send', 'event', 'button', 'click', 'share_pn', 0);
         }catch(exception){
             console.log("ga fail");
         }
-        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape($scope.metadata.image)+"&description="+escape($scope.metadata.message);
+        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape($scope.metadata.image)+"&description="+escape($scope.metadata.title);
         window.open(pncontent, '_system');
         return false;
     };
-
+    
     $scope.UpdateListDetails();
 
 }]);

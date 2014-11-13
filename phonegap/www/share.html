@@ -22,7 +22,7 @@
         <input class="detail-input" placeholder="Unpublished" type="text" ng-model="list.shoplistUrl" ng-model-instant />
     </form>-->
     <div id="unpublished" ng-if="!list.shoplistUrl">
-        <!--<p>Tap the button below to publish your list and share with family and friends.</p>-->
+        <p>Press the PUBLISH button to add and update your list on the web. Then share it with your family and friends.</p>
     </div>
     
     <div id="published" ng-if="list.shoplistUrl">
@@ -45,7 +45,7 @@
         </ons-list>
     </div>
     
-    <div class="help hshare" ng-if="showHelp">
+    <div class="help hshare" ng-if="!list.shoplistUrl">
         <!--<div class="toolbar">
             Name your list and add it to start.
         </div>-->

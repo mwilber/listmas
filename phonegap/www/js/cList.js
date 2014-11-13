@@ -201,8 +201,9 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.GetBarcode = function(pUpc){
-        $scope.scanstatus = "checking";
+        //$scope.scanstatus = "checking";
         //$http.get('http://gibson.loc/grocerygamer/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
+        //window.open('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+btoa(pUpc), '_system', 'location=no');
         $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/upcscan/'+pUpc).success(function(response){
             console.log(response);
             $scope.scanStatus = false;

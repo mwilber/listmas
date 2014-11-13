@@ -24,7 +24,7 @@
     <form class="foot_ctrl">
         <h3>Search for Something</h3>
         <input class="add-input" placeholder="Name or Keywords" type="text" ng-model="formListText" ng-model-instant />
-        <ons-button class="add-btn" ng-click="DoSearch()"><span class="fa fa-search fa-lg"></span></ons-button>
+        <ons-button class="add-btn" ng-click="DoSearch()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-search fa-lg"></span></ons-button>
     </form>
 
 </ons-page>

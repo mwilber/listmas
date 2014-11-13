@@ -21,6 +21,7 @@ function($scope, $filter, $http, $timeout, ggActiveList) {
     
     
     $scope.DoSearch = function () {
+        $scope.scanStatus = true;
         var listName = $scope.formListText;
         if( listName != "" && typeof listName !== "undefined"){
             console.log('Searching For');
@@ -29,6 +30,7 @@ function($scope, $filter, $http, $timeout, ggActiveList) {
                 console.log(response.data);
                 //$scope.scanStatus = false;
                 $scope.searchdata = response.data;
+                $scope.scanStatus = false;
                 $scope.$apply();
                 
             });

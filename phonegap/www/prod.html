@@ -7,7 +7,7 @@
         </div>
         <div class="center">Details</div>
         <div class="right">
-            <!--<ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="DoDelete()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -15,7 +15,7 @@
         <div class="dialog">
             <p>Do you want to delete this item?</p>
             <ons-button class="control-btn delete-btn" ng-click="DeleteGrocery()"><ons-icon icon="trash-o"></ons-icon></ons-button>
-            <ons-button class="control-btn" onclick="mpdel.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mpdel.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
         
     </ons-modal>
@@ -29,7 +29,7 @@
     </form>
     
     <form class="foot_ctrl">
-        <ons-button class="save-btn wide-btn" ng-click="SaveGrocery()"><ons-icon icon="check"></ons-icon></ons-button>
+        <ons-button class="save-btn wide-btn" ng-click="SaveGrocery()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><ons-icon icon="check"></ons-icon></ons-button>
         <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
     </form>
 
