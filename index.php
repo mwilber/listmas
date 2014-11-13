@@ -2,7 +2,7 @@
 
   $social = array();
   $social['title'] = "My Listmas";
-  $social['description'] = "Create and share your holiday wishlist with Listmas.";
+  $social['description'] = "Make your #wishlist with Listmas ";
   $social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
   $social['link'] = "http://www.mylistmas.com/";
 
@@ -75,10 +75,10 @@
 
         <div class="header">
           <div class="sociallinks">
-            <a href="https://twitter.com/home?status=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas:%20http://www.mylistmas.com" class="fa fa-twitter" target="_blank"></a>
-            <a href="https://plus.google.com/share?url=http://www.mylistmas.com" class="fa fa-google-plus" target="_blank"></a>
-            <a href="https://pinterest.com/pin/create/button/?url=http://www.mylistmas.com&media=http://www.mylistmas.com/icons/icon_512.png&description=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas." class="fa fa-pinterest" target="_blank"></a>
-            <a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=$social['link']?>&picture=<?=$social['image']?>&name=<?=$social['title']?>&message=&description=<?=$social['description']?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+            <a href="https://twitter.com/home?status=<?=urlencode($social['description'])?>:%20<?=urlencode($social['link'])?>" class="fa fa-twitter" target="_blank"></a>
+            <a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+            <a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=http://www.mylistmas.com/icons/icon_512.png&description=<?=urlencode($social['description'])?>" class="fa fa-pinterest" target="_blank"></a>
+            <a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
           </div>
         </div>
 
@@ -94,7 +94,7 @@
                 <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
               </p>
               <p>
-                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by taking a photograph, scanning a UPC barcode, or searching amazon.com. Items added via search or barcode are automatically linked to their amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
+                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by shooting a photograph, scanning a UPC barcode, or searching amazon.com. Items added via search or barcode are automatically linked to their amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
               </p>
               <p>
                 Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.

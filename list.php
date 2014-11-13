@@ -3,8 +3,8 @@
 	$listTitle = "My Listmas";
 
 	$social = array();
-	$social['title'] = "Check Out My Holiday Wish List";
-	$social['description'] = "Create and share your holiday wishlist with Listmas.";
+	$social['title'] = "Check Out My List";
+	$social['description'] = "Make your #wishlist with Listmas";
 	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
 	$social['link'] = "http://www.mylistmas.com".$_SERVER[REQUEST_URI];
 
@@ -45,7 +45,7 @@
 		}else{
 			$titleRS = $stmt->fetch();
 			//print_r($titleRS['shoplistName']);
-			$social['title'] = "My Listmas - ".$titleRS['shoplistName'];
+			$pgTitle = "My Listmas :".$titleRS['shoplistName'];
 			$listTitle = $titleRS['shoplistName'];
 
 			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
@@ -62,7 +62,7 @@
 	    <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title><?=$social['title']?></title>
+		<title><?=$pgTitle?></title>
 		<meta name="description" content="<?=$social['description']?>">
 		<meta name="author" content="Matthew Wilber">
 		<meta property="og:title" content="<?=$social['title']?>" />
@@ -125,12 +125,12 @@
 				</div>
 
 				<div class="pgheader">
-						<div class="sociallinks">
-							<a href="https://twitter.com/home?status=<?=rawurlencode("Check Out My Holiday Wish List: ".$social['link']." #listmas")?>" class="fa fa-twitter" target="_blank"></a>
-							<a href="https://plus.google.com/share?url=<?=$social['link']?>" class="fa fa-google-plus" target="_blank"></a>
-							<a href="https://pinterest.com/pin/create/button/?url=<?=$social['link']?>&media=http://www.mylistmas.com/icons/icon_512.png&description=Create%20and%20share%20your%20holiday%20wish%20list%20with%20Listmas." class="fa fa-pinterest" target="_blank"></a>
-							<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=$social['link']?>&picture=<?=$social['image']?>&name=Check Out My Holiday Wish List&message=&description=<?=$social['description']?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
-						</div>
+					<div class="sociallinks">
+						<a href="https://twitter.com/home?status=<?=urlencode($social['title'])?>:%20<?=urlencode($social['link'])?>%20<?=urlencode($social['description'])?>" class="fa fa-twitter" target="_blank"></a>
+						<a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+						<a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=http://www.mylistmas.com/icons/icon_512.png&description=<?=urlencode($social['title'])?><?=urlencode('! ')?><?=urlencode($social['description'])?><?=urlencode('.')?>" class="fa fa-pinterest" target="_blank"></a>
+						<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+					</div>
 				</div>
 
 			<!--</div>-->
