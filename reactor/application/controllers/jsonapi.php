@@ -105,7 +105,7 @@ class JSONAPI extends CI_Controller {
 		$url="http://ecs.amazonaws.com/onca/xml?".
 			"Service=AWSECommerceService&".
 			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
-			"AssociateTag=listmas04-20&".
+			"AssociateTag=mwilbercom-20&".
 			"Operation=ItemSearch&".
 			"Keywords=".urlencode($pSearch)."&".
 			/*"IdType=UPC&".
@@ -170,7 +170,7 @@ class JSONAPI extends CI_Controller {
 
 		$this->load->helpers('idobfuscator_helper');
 		$this->load->model('prod_model');
-		
+
 		//echo html_entity_decode($pQr);
 		//$pQr = IdObfuscator::decode(html_entity_decode($pQr));
 
@@ -200,7 +200,7 @@ class JSONAPI extends CI_Controller {
 			$url="http://ecs.amazonaws.com/onca/xml?".
 				"Service=AWSECommerceService&".
 				"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
-				"AssociateTag=listmas04-20&".
+				"AssociateTag=mwilbercom-20&".
 				"Operation=ItemLookup&".
 				"IdType=UPC&".
 				"ItemId=".$pUpc."&".
@@ -235,7 +235,7 @@ class JSONAPI extends CI_Controller {
 					$url="http://ecs.amazonaws.com/onca/xml?".
 						"Service=AWSECommerceService&".
 						"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
-						"AssociateTag=listmas04-20&".
+						"AssociateTag=mwilbercom-20&".
 						"Operation=ItemLookup&".
 						"IdType=ISBN&".
 						"ItemId=".$pUpc."&".
@@ -303,13 +303,13 @@ class JSONAPI extends CI_Controller {
 
 		$public_key = 'AKIAJNX6ZS7EMGNEGMFQ';
 		$private_key = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
-		$associate_tag = 'listmas04-20';
+		$associate_tag = 'mwilbercom-20';
 
 		// generate signed URL
 		$request = aws_signed_request('com', array(
 		        'Operation' => 'ItemSearch',
 		        'Keywords' => '017754155993',
-				'AssociateTag' => 'listmas04-20'), $public_key, $private_key, $associate_tag);
+				'AssociateTag' => 'mwilbercom-20'), $public_key, $private_key, $associate_tag);
 
 		// do request (you could also use curl etc.)
 		$response = @file_get_contents($request);
@@ -333,7 +333,7 @@ class JSONAPI extends CI_Controller {
 		$url="http://ecs.amazonaws.com/onca/xml?".
 			"Service=AWSECommerceService&".
 			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
-			"AssociateTag=listmas04-20&".
+			"AssociateTag=mwilbercom-20&".
 			"Operation=ItemSearch&".
 			"Keywords=017754155993&".
 			"SearchIndex=All";
