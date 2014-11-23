@@ -191,9 +191,11 @@
 		<div class="clearfix"></div>
 
 		<div class="ground scenery">
+
 			<?php for($idx = 0; $idx < 10; $idx++): ?>
-			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 180 , 300 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
+			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 160 , 250 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
 			<?php endfor; ?>
+			<img class="cabin" src="images/bkg_cabin.png" style="top:<?=mt_rand ( 45 , 55 )?>px; left:<?=((45)+mt_rand ( 0 , 9 ))?>%;"/>
 		</div>
 
 		<div id="footer">

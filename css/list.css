@@ -195,7 +195,7 @@ html, body{
 	background:#FAF6F1;
 	padding:0px;
 	display: none;
-	margin: 50px auto;
+	margin: 100px auto 50px auto;
 }
 
 .panel h1{
@@ -537,6 +537,7 @@ a.postshare{
 	display: block;
 	float: left;
 	font-size: 24px;
+  line-height: 28px;
 	margin: 0px 0px 0px 0px;
 	padding: 5px;
 	width: 74%;
@@ -574,7 +575,7 @@ a.postshare{
   font-size: 20px;
   line-height:20px;
   margin: 0px 15px 0px 0px;
-  width: 75%;
+  width: 70%;
   cursor:pointer;
 }
 
@@ -925,12 +926,18 @@ width: 120%;
   background: transparent url('../images/bkg_ground.png') bottom center repeat-x;
   z-index:-1;
   overflow:hidden;
-  margin-top: -320px;
+  margin-top: -150px;
 }
 
 .tree{
   display: block;
   position: relative;
+  float:left;
+}
+
+.cabin{
+  display: block;
+  position: absolute;
   float:left;
 }
 
@@ -992,6 +999,10 @@ width: 120%;
 		/*left:50%;
 		margin-left:-400px;*/
 	}
+
+  .panel .linearlist li .ltblock {
+    width: 72%;
+  }
 
 }
 
@@ -1062,11 +1073,15 @@ width: 120%;
 	.panel .linearlist li, .popup .linearlist li {
 		font-size: 18px;
 	}
+  .panel .linearlist li .ltblock {
+    width: 70%;
+  }
 
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
 		display: block;
 		float: left;
 		font-size: 18px;
+    line-height: 20px;
 	}
 
 	.panel .linearlist li .prodname span {
@@ -1138,9 +1153,13 @@ width: 120%;
 		font-size: 14px;
 	}
 
+  .panel .linearlist li .ltblock {
+    width: 68%;
+  }
+
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
 		font-size: 14px;
-    width:46%;
+    width: 70%;
 	}
 
 	.panel .linearlist li .prodname span {
