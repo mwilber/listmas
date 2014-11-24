@@ -196,6 +196,7 @@
 			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 160 , 250 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
 			<?php endfor; ?>
 			<img class="cabin" src="images/bkg_cabin.png" style="top:<?=mt_rand ( 45 , 55 )?>px; left:<?=((45)+mt_rand ( 0 , 9 ))?>%;"/>
+			<img class="cabin" src="images/bkg_snowman.png" style="top:<?=mt_rand ( 355 , 375 )?>px; left:<?=mt_rand ( 5 , 45 )?>%;"/>
 		</div>
 
 		<div id="footer">
