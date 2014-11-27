@@ -22,7 +22,7 @@
 		}
 
 		try {
-		    $dbh = new PDO("mysql:host=".$db['default']['hostname'].";dbname=".$db['default']['database'], $db['default']['username'], $db['default']['password']);
+		    $dbh = new PDO("mysql:host=".$db['default']['hostname'].";dbname=".$db['default']['database'].";charset=utf8", $db['default']['username'], $db['default']['password'],array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
 		    /*** echo a message saying we have connected ***/
 		    //echo 'Connected to database';
 		    }
@@ -59,7 +59,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-	    <meta charset="utf-8">
+	  <meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<title><?=$pgTitle?></title>
