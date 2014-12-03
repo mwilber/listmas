@@ -1154,12 +1154,15 @@ width: 120%;
 	}
 
   .panel .linearlist li .ltblock {
-    width: 68%;
+    width: 70%;
+    margin-right: 0px;
   }
 
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
-		font-size: 14px;
-    width: 70%;
+		font-size: 12px;
+    width: 66%;
+    padding: 0px 5px;
+    line-height:14px;
 	}
 
 	.panel .linearlist li .prodname span {
@@ -1167,7 +1170,7 @@ width: 120%;
 	}
 
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
-		font-size: 12px;
+		font-size: 11px;
 		line-height: 14px;
 	}
 
