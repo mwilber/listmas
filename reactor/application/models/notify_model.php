@@ -1,16 +1,18 @@
 <?php
 
-class ProdList_Model extends CI_Model
+class Notify_Model extends CI_Model
 {
-	var $table = "tblProdList";
-	var $pk = "prodListId";
-	var $ds = "prodListDateAdded";  //Default sortby field
-	var $rq = "shopListId";		//Required field (you'll need to mod the form validation if there isn't one)
+	var $table = "tblNotify";
+	var $pk = "notifyId";
+	var $ds = "notifyDateAdded";  //Default sortby field
+	var $rq = "notifyType";		//Required field (you'll need to mod the form validation if there isn't one)
 	var $fields = array(
-		 'shopListId' => array('label'=>'List','type'=>'int'),
-		 'prodId' => array('label'=>'Product','type'=>'int'),
-		 'prodAppId' => array('label'=>'AppId','type'=>'int'),
-		 'prodListDateAdded' => array('label'=>'Date Added','type'=>'timestamp'),
+        'shoplistUrl' => array('label'=>'List','type'=>'varchar','constraint'=>100),
+        'prodId' => array('label'=>'Prod','type'=>'int'),
+        'prodAppId' => array('label'=>'App Prod','type'=>'int'),
+        'notifyType' => array('label'=>'Type','type'=>'int'),
+		'notifyText' => array('label'=>'Text','type'=>'varchar','constraint'=>1000),
+        'notifyRead' => array('label'=>'Read','type'=>'int'),
 		);
 
 
@@ -87,38 +89,6 @@ class ProdList_Model extends CI_Model
 		return $query->result();
 	}
 
-	function GetWithDetails($options = array()){
-
-		$this->db->join('tblProd', 'tblProdlist.prodId = tblProd.prodId');
-		$this->db->join('tblShoplist', 'tblProdlist.shoplistId = tblShoplist.shoplistId');
-
-		foreach ($this->fields as $key => $value) {
-			if(isset($options[$key]))
-			$this->db->where($key, $options[$key]);
-		}
-		if(isset($options[$this->pk]))
-		$this->db->where($this->pk, $options[$this->pk]);
-
-		// limit / offset
-		if(isset($options['limit']) && isset($options['offset']))
-		$this->db->limit($options['limit'], $options['offset']);
-		else if(isset($options['limit']))
-		$this->db->limit($options['limit']);
-
-		// sort
-		if(isset($options['sortBy']) && isset($options['sortDirection']))
-		$this->db->order_by($options['sortBy'], $options['sortDirection']);
-
-		$query = $this->db->get($this->table);
-		//echo "SQL:".$this->db->last_query();
-
-		if(isset($options['count'])) return $query->num_rows();
-
-		if(isset($options[$this->pk])) return $query->row(0);
-
-		return $query->result();
-	}
-
 	function Add($options = array())
 	{
 		// required values
@@ -150,11 +120,6 @@ class ProdList_Model extends CI_Model
 	function Delete($pId)
 	{
 		$this->db->delete($this->table, array($this->pk => $pId));
-	}
-
-	function DeleteList($slId)
-	{
-		$this->db->delete($this->table, array("shopListId" => $slId));
 	}
 
 

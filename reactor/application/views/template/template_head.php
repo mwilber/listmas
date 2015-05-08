@@ -26,7 +26,7 @@
 			<nav>
 				<ul>
 					<? if( $this->session->userdata('userEmail') ): ?>
-						<!-- Add nav elements here --><li><a href="<?= base_url() ?>upc" class="upc">Upc</a></li><li><a href="<?= base_url() ?>prodlist" class="prodlist">Prodlist</a></li><li><a href="<?= base_url() ?>shoplist" class="shoplist">Shoplist</a></li><li><a href="<?= base_url() ?>prod" class="prod">Prod</a></li>
+						<!-- Add nav elements here --><li><a href="<?= base_url() ?>notify" class="notify">Notify</a></li><li><a href="<?= base_url() ?>upc" class="upc">Upc</a></li><li><a href="<?= base_url() ?>prodlist" class="prodlist">Prodlist</a></li><li><a href="<?= base_url() ?>shoplist" class="shoplist">Shoplist</a></li><li><a href="<?= base_url() ?>prod" class="prod">Prod</a></li>
 						<li><a href="<?= base_url() ?>user" class="users">Users</a></li>
 						<li><a href="<?= base_url() ?>admin/builder" class="builder">Builder</a></li>
 						<li><a href="<?= base_url() ?>admin/logout" class="logout">Log Out</a></li>

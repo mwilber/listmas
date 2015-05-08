@@ -41,6 +41,41 @@ class SyncAPI extends CI_Controller {
 		}
 	}
 
+	function _ProcessProd($pProd){
+
+		$pProd->prodRemoteId = $pProd->prodId;
+		unset($pProd->prodId);
+
+		if( strpos($pProd->prodPhoto, "data:image/png;base64,") === 0 ){
+			// Process the photo
+			$imageData = explode('base64,',$pProd->prodPhoto);
+			$imageData = $this->prod_model->manageFile64($imageData[1], UPLOAD_DIR, '');
+
+
+			$twitterLayer = new ImageWorkshop(array(
+				'imageFromPath' => UPLOAD_DIR."/".$imageData,
+			));
+
+			// Resize the image so the smallest dimension equals the desired dimension
+			if( $twitterLayer->getWidth() > $twitterLayer->getHeight() ){
+				$twitterLayer->resizeInPixel(null, 1024, true);
+			}else{
+				$twitterLayer->resizeInPixel(1024, null, true);
+			}
+			$twitterLayer->cropInPixel(1024, 1024, 0, 0, 'MM');
+
+			$image = $twitterLayer->getResult();
+
+			//header('Content-type: image/jpeg');
+			//imagejpeg($image, null, 95); // JPG with a quality of 95%
+			$twitterLayer->save(UPLOAD_DIR."/", $imageData, CREATE_FOLDERS, BACKGROUND_COLOR, JPEG_IMAGE_QUALITY);
+
+
+			$pProd->prodPhoto = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
+		}
+
+		return $pProd;
+	}
 
 	function gallerylist(){
 		$this->load->model('artwork_model');
@@ -88,43 +123,40 @@ class SyncAPI extends CI_Controller {
 			$listCode = $slTmp->shopListCode;
 
 			// Clear out existing prods
-			$this->prodlist_model->DeleteList($slId);
+			//$this->prodlist_model->DeleteList($slId);
 
+			$listRS = $this->prodlist_model->Get(array('shopListId'=>$slId));
 
-			foreach( $obj->prod as $prod ){
-				$prod->prodRemoteId = $prod->prodId;
-				unset($prod->prodId);
+			foreach( $listRS as $rsprod ){
 
-				if( strpos($prod->prodPhoto, "data:image/png;base64,") === 0 ){
-					// Process the photo
-					$imageData = explode('base64,',$prod->prodPhoto);
-					$imageData = $this->prod_model->manageFile64($imageData[1], UPLOAD_DIR, '');
+				$foundRS = false;
 
+				foreach( $obj->prod as $key=>$prod ){
 
-					$twitterLayer = new ImageWorkshop(array(
-					    'imageFromPath' => UPLOAD_DIR."/".$imageData,
-					));
+					if( $prod->prodId == $rsprod->prodAppId ){
 
-					// Resize the image so the smallest dimension equals the desired dimension
-					if( $twitterLayer->getWidth() > $twitterLayer->getHeight() ){
-						$twitterLayer->resizeInPixel(null, 1024, true);
-					}else{
-						$twitterLayer->resizeInPixel(1024, null, true);
+						$foundRS = true;
+						$pId = $rsprod->prodId;
+						$fprod = $this->_ProcessProd($prod);
+						$fprod->prodId = $pId;
+
+						$this->prod_model->UpdateB($fprod);
+						unset($obj->prod[$key]);
+						break;
 					}
-					$twitterLayer->cropInPixel(1024, 1024, 0, 0, 'MM');
-
-					$image = $twitterLayer->getResult();
-
-					//header('Content-type: image/jpeg');
-					//imagejpeg($image, null, 95); // JPG with a quality of 95%
-					$twitterLayer->save(UPLOAD_DIR."/", $imageData, CREATE_FOLDERS, BACKGROUND_COLOR, JPEG_IMAGE_QUALITY);
-
-
-					$prod->prodPhoto = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
 				}
 
-				$pId = $this->prod_model->Add($prod);
-				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId));
+				if( !$foundRS ){
+					// Record not found in json so delete it
+					$this->prod_model->Delete($rsprod->prodId);
+					$this->prodlist_model->Delete($rsprod->prodListId);
+				}
+			}
+			// Add in any new items
+			foreach( $obj->prod as $key=>$prod ){
+				$fprod = $this->_ProcessProd($prod);
+				$pId = $this->prod_model->Add($fprod);
+				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId));
 			}
 
 			//IdObfuscator::encode($nId)
