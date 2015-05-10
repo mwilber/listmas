@@ -7,6 +7,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.scanStatus = false;
     $scope.shareStatus = true;
     $scope.shoplistName = "List";
+    $scope.shoplistUrl = "";
     $scope.prodDeleteName = "";
     $scope.prodDeleteId = "";
     $scope.showHelp = false;
@@ -57,6 +58,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             $scope.db.transaction(function (tx) {
                 tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
                     $scope.shoplistName = result.rows.item(0).shoplistName;
+                    $scope.shoplistUrl = result.rows.item(0).shoplistUrl;
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });
@@ -80,7 +82,8 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             tx.executeSql('DELETE FROM tblProd WHERE prodId=?', [$scope.prodDeleteId], function(tx, response){
                 //$scope.UpdateGroceryList
                 console.log('Deleting from prodlist: '+$scope.prodDeleteId);
-                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.prodDeleteId], function(){$scope.UpdateGroceryList(); $scope.$apply(); mdelete.hide();}); 
+                tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.prodDeleteId], function(){$scope.UpdateGroceryList(); $scope.$apply(); mdelete.hide(); mreminder.show('modal'); }); 
+                
             });
         });
         
@@ -246,6 +249,28 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     
     $scope.UpdateTotal = function(){
         
+        $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/notify/index/'+$scope.shoplistUrl).success(function(response){
+        //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+            console.log("List notifications...",response);
+            for( var jdx in $scope.groceries){
+                $scope.groceries[jdx].prodBought = "false";
+                $scope.groceries[jdx].notifyId = 0;
+            }
+            for( var idx in response.data){
+                for( var jdx in $scope.groceries){
+                    if( response.data[idx].prodAppId == $scope.groceries[jdx].prodId ){
+                        $scope.groceries[jdx].prodBought = "true";
+                        $scope.groceries[jdx].notifyId = response.data[idx].notifyId;
+                    }else{
+                        
+                    }
+                }
+            }
+            $scope.$apply();
+        }).error(function(){
+            //alert('Something went wrong. Please try again.');
+        });
+        
         $scope.checkoutTotal = 0;
         for( var idx=0; idx<$scope.groceries.length; idx++){
             $scope.checkoutTotal += parseFloat($scope.groceries[idx].prodPrice);
@@ -271,12 +296,26 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     
     $scope.ShowDetails = function (pDetail){
         
-        console.log("Detail", pDetail);
-        ggActiveProd.SetActiveProd(pDetail);
-        //TODO: Add new detail page here
-        //app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
-        app.navi.pushPage('prod.html');
-        //modal.show();
+        if(pDetail.prodBought=='true'){
+            $scope.prodDeleteName = pDetail.prodName;
+            $scope.prodDeleteId = pDetail.prodId;
+            $scope.$apply();
+            $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/notify/read/'+pDetail.notifyId).success(function(response){
+            //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                $scope.UpdateTotal();
+            }).error(function(){
+                alert('Something went wrong. Please try again.');
+            });
+            mbought.show('modal');
+        }else{
+            
+            console.log("Detail", pDetail);
+            ggActiveProd.SetActiveProd(pDetail);
+            //TODO: Add new detail page here
+            //app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
+            app.navi.pushPage('prod.html');
+            //modal.show();
+        }
     };
     
     // if the active list isn't set. redirect to the list menu

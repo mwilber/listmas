@@ -6,13 +6,14 @@ function($scope, $http, ggActiveList) {
     $scope.publishStatus = false;
     $scope.publishResultTxt = "";
     $scope.showHelp = false;
+    $scope.publishCopy = "Publish";
     $scope.shareUrlRoot = "http://www.mylistmas.com/l/";
     $scope.metadata = {
-        title:"Check Out My Holiday Wish List", 
+        title:"Check Out My List", 
         link:"http://www.mylistmas.com", 
-        image:"http://www.mylistmas.com/icons/icon_512.png",
+        image:"http://www.mylistmas.com/icons/icon_256.png",
         message:"My Listmas",
-        description:"Create and share your holiday wish list with Listmas!"
+        description:"Make your #wishlist with Listmas"
     };
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
@@ -36,7 +37,7 @@ function($scope, $http, ggActiveList) {
                         console.log($scope.list.shoplistUrl);
                     }
                     //console.log('sharing:',$scope.list.length);
-                    if(typeof $scope.list.shoplistUrl === 'undefined'){ $scope.showHelp = true; }else{ $scope.showHelp = false; }
+                    if(typeof $scope.list.shoplistUrl === 'undefined'){ $scope.showHelp = true; $scope.publishCopy = "Publish"; }else{ $scope.showHelp = false; $scope.publishCopy = "Update"; }
                     //if($scope.showHelp){
                     //    console.log("showing help");
                     //}else{
@@ -140,7 +141,7 @@ function($scope, $http, ggActiveList) {
         }catch(exception){
             console.log("ga fail");
         }
-        var twurl = "https://mobile.twitter.com/compose/tweet?status="+escape($scope.metadata.title)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl);
+        var twurl = "https://mobile.twitter.com/compose/tweet?status="+escape($scope.metadata.title)+escape(": ")+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+escape(" ")+escape($scope.metadata.description);
         window.open(twurl, '_system');
         return false;
     };
@@ -173,11 +174,12 @@ function($scope, $http, ggActiveList) {
         }catch(exception){
             console.log("ga fail");
         }
-        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape($scope.metadata.image)+"&description="+escape($scope.metadata.title);
+        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape('http://www.mylistmas.com/icons/icon_512.png')+"&description="+escape($scope.metadata.title)+escape('! ')+escape($scope.metadata.description)+escape('.');
         window.open(pncontent, '_system');
         return false;
     };
     
     $scope.UpdateListDetails();
+    $scope.$apply();
 
 }]);

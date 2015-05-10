@@ -105,6 +105,8 @@ function($scope, $filter, $timeout, ggActiveList) {
                     app.navi.pushPage('list.html');
                 });
             });
+        }else{
+            alert('Enter a name in the List Name field and then press the plus button.');
         }
         $scope.formListText = '';
     };
