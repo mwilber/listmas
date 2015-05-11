@@ -88,6 +88,25 @@
     content: "\f040";
 }
 
+.list__item.done-true:before {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    color: #f99;
+    line-height: 28px;
+    height: 28px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f06a";
+}
+
 .list__item.add:before {
     position: absolute;
     right: 16px;
@@ -230,8 +249,8 @@ form label{
 }
 
 .done-true {
-    text-decoration: line-through;
-    color: #ccc;
+    /*text-decoration: line-through;*/
+    color: #f33;
 }
 
 .add-input {

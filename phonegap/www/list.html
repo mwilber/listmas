@@ -35,14 +35,14 @@
     
     <ons-modal var="mbought">
         <div class="dialog">
-            <p>Someone claims to have bought this item: <strong>{{prodDeleteName}}</strong>. Do you want to keep it on the list, or delete it?</p>
+            <p>Someone said they have bought this item: <strong>{{prodDeleteName}}</strong>. <br/><br/>Close this box to keep it on the list or press the <strong>Delete</strong> button to remove it.</p>
             <ons-button class="control-btn delete-btn" ng-click="mbought.hide(); DoDelete(prodDeleteId, prodDeleteName);"><ons-icon icon="trash-o"></ons-icon></ons-button>
             <ons-button class="control-btn close-btn" onclick="mbought.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
     <ons-list class="prodlist">
-      <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing edit">
+      <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing" ng-class="(grocery.prodBought=='true') ? 'done-true' : 'edit'">
             <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
             <span class="prodName" ng-class="(grocery.prodBought=='true') ? 'done-true' : ''">{{grocery.prodName}}</span>
             <div class="prodPhoto" style="background-image:url({{grocery.prodPhoto}});"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->

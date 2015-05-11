@@ -301,7 +301,6 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             $scope.prodDeleteId = pDetail.prodId;
             $scope.$apply();
             $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/notify/read/'+pDetail.notifyId).success(function(response){
-            //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
                 $scope.UpdateTotal();
             }).error(function(){
                 alert('Something went wrong. Please try again.');
