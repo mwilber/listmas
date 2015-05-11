@@ -54,14 +54,28 @@ a.postshare span {
 }
 
 .panel .linearlist li .button{
-	background:#666;
+	background:transparent;
+	color:#444;
 }
 
 .panel .linearlist li .button.buy{
+	/*color:#4eb94b;*/
+}
+
+.panel .linearlist li .button.buy span{
 	background:#4eb94b;
 }
 
+.panel .linearlist li .button.gotit{
+	/*color:#ff6666;*/
+}
+
+.panel .linearlist li .button.gotit span{
+	background:#ff6666;
+}
+
 .panel .linearlist li .button span{
+	background:#666;
 	color:#fff;
 }
 

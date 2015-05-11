@@ -1,6 +1,7 @@
 <?php
 
 	$listTitle = "My Listmas";
+	$listUrl = "";
 
 	$social = array();
 	$social['title'] = "Check Out My List";
@@ -31,7 +32,7 @@
 		    echo $e->getMessage();
 		    }
 
-		$stmt = $dbh->prepare("SELECT shoplistName FROM tblShoplist WHERE shoplistId=".$_GET['l']);
+		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode FROM tblShoplist WHERE shoplistId=".$_GET['l']);
 		$stmt->execute();
 		if( $stmt->rowCount() <= 0 ){
 			//
@@ -44,11 +45,12 @@
 			die();
 		}else{
 			$titleRS = $stmt->fetch();
-			//print_r($titleRS['shoplistName']);
+			//print_r($titleRS);
 			$pgTitle = "My Listmas :".$titleRS['shoplistName'];
 			$listTitle = $titleRS['shoplistName'];
+			$listUrl = $titleRS['shopListCode'];
 
-			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
+			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
 			$listRS = $dbh->query($sql);
 
 			$dbh = null;
@@ -114,6 +116,16 @@
 			social['image'] = "<?=$social['image']?>";
 			social['link'] = "<?=$social['link']?>";
 
+			function NotifyBought(pUrl, pPid, pApid){
+				$.post('../reactor/jsonapi/notify/bought/1',{
+					shoplistUrl: pUrl,
+					prodId: pPid,
+					prodAppId: pApid
+				},function(response){
+					alert('notification sent');
+				});
+			}
+
 		</script>
     </head>
     <body>
@@ -148,20 +160,54 @@
 							<li>
 								<div>
 									<div class="rtblock">
-										<?php if( $li['prodUrl'] != "" ): ?>
-											<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button <?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>" onclick="ga('send', 'event', 'list', 'click', '<?=( strpos($li['prodUrl'], "amazon") === false ) ? "info" : "buy" ?>', 0);">
-												<span><?php if( strpos($li['prodUrl'], "amazon") === false ): ?>
-												More Info
-												<?php else: ?>
-												Buy This
-												<?php endif; ?>
-												</span>
-												<span class="fa fa-angle-right"></span>
-											</a>
+										<?php if( $li['notifyType'] == 1 && $li['notifyRead'] == 0 ): ?>
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button gotit" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
+											Someone Got This
+											<span class="fa fa-exclamation-triangle"></span>
+										</a>
+										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): ?>
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
+											Buy This
+											<span class="fa fa-money"></span>
+										</a>
+										<?php elseif( $li['prodUrl'] != "" ): ?>
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
+											Web Page
+											<span class="fa fa-link"></span>
+										</a>
+										<?php else: ?>
+										<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+											Bought It
+											<span class="fa fa-thumbs-o-up"></span>
+										</a>
 										<?php endif; ?>
+										<a href="#" class="prodbought button options" onclick="ShowDetail($(this).parent().parent().find('.detail-btn')); return false;">
+											Options
+											<span class="fa fa-bars"></span>
+										</a>
+										<div class="hiddenopts">
+											<?php if( $li['prodUrl'] != "" ): ?>
+												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
+													Web Page
+													<span class="fa fa-link"></span>
+												</a>
+												<?php if( strpos($li['prodUrl'], "amazon") > 1 && (isset($li['notifyType']) && $li['notifyRead'] == 0 ) ): ?>
+												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
+													Buy This
+													<span class="fa fa-money"></span>
+												</a>
+												<?php endif; ?>
+												<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+													Bought It
+													<span class="fa fa-thumbs-o-up"></span>
+												</a>
+											<?php endif; ?>
+
+
 										<div class="prodqr">
 											<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=qr/<?=$li['prodId']?>&choe=UTF-8"/>
 											<a href="/qr.php">Scan this QR code with the Listmas app to add this item to your own list. Click here for more information.</a>
+										</div>
 										</div>
 									</div>
 									<div class="ltblock" onclick="ShowDetail(this)">

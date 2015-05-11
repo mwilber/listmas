@@ -375,6 +375,10 @@ class JSONAPI extends CI_Controller {
 			case "read":
 				$this->_response->data = $this->notify_model->Update(array('notifyId'=>$pOp,'notifyRead'=>1));
 				break;
+			case "bought":
+				//$obj = json_decode($pOp);
+				$this->_response->data = $this->notify_model->Add(array('shoplistUrl'=>$_POST['shoplistUrl'],'prodId'=>$_POST['prodId'],'prodAppId'=>$_POST['prodAppId'],'notifyType'=>1,'notifyText'=>'Item Purchased','notifyRead'=>0));
+				break;
 		}
 
 		$this->_JSONout();
