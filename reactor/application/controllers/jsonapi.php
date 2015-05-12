@@ -384,6 +384,43 @@ class JSONAPI extends CI_Controller {
 		$this->_JSONout();
 	}
 
+	function getmeta($pUrl){
+
+		$pUrl = base64_decode($pUrl);
+		$this->_response->title = "";
+		$this->_response->description = "";
+		$this->_response->images = array();
+
+		//echo $pUrl;
+
+		$sites_html = file_get_contents($pUrl);
+
+		$html = new DOMDocument();
+		@$html->loadHTML($sites_html);
+
+		//Get all meta tags and loop through them.
+		foreach($html->getElementsByTagName('meta') as $meta) {
+		    switch($meta->getAttribute('property')){
+				case 'og:title':
+					$this->_response->title = $meta->getAttribute('content');
+					break;
+				case 'og:description':
+					$this->_response->description = $meta->getAttribute('content');
+					break;
+				case 'og:image':
+					array_push($this->_response->images, $meta->getAttribute('content'));
+					break;
+			}
+		}
+
+		// Get all of the iamges
+		foreach($html->getElementsByTagName('img') as $img) {
+			array_push($this->_response->images, $img->getAttribute('src'));
+		}
+
+		print_r($this->_response);
+	}
+
 }
 
 /* End of file welcome.php */
