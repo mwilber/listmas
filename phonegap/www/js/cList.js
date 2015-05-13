@@ -2,6 +2,7 @@ ggControllers.controller('GroceryListCtrl', ['$scope', '$filter', '$timeout', '$
 function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
    
     $scope.groceries = [ ];
+    $scope.metaurl = {title:"",images:[]};
     $scope.checkoutTotal = 0;
     $scope.activeShopListId = 0;
     $scope.scanStatus = false;
@@ -244,6 +245,50 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                     }, function(result, error){console.log(error);});
                 });
             }
+        });
+    };
+    
+    $scope.GetUrl = function(){
+        var testdata = {"error":{"type":0,"message":""},"title":"Electronic Gift Card","description":"Give the gift of RiffTrax! Whether young or old, male or female, alive or forever undead, everyone loves receiving the gift of RiffTrax! What better way to show a friend that you care than by sending them a free Battlefield Earth riff, allowing them to enjoy Mike and Co's hilarious commentary? And what better way to show an enemy that you detest them by sending them a free Battlefield Earth commentary, thereby forcing them to rent or purchase Battlefield Earth?","link":"http:\/\/www.rifftrax.com\/giftcard\/electronic-gift-card","images":["http:\/\/static.rifftrax.com\/sites\/default\/files\/RiffPlanet-Logo.png","http:\/\/static.rifftrax.com\/sites\/default\/files\/giftcards\/RTcredit-card.jpg","http:\/\/static.rifftrax.com\/files\/images\/RiffTraxPaymentTypes.png","http:\/\/static.rifftrax.com\/\/sites\/all\/themes\/atrt\/images\/couch.png","\/\/pixel.quantserve.com\/pixel\/p-M7szB2kU0md8q.gif","https:\/\/analytics.twitter.com\/i\/adsct?txn_id=l4o67&p_id=Twitter","\/\/t.co\/i\/adsct?txn_id=l4o67&p_id=Twitter"]};
+        //testdata = {"error":{"type":0,"message":""},"title":"Nintendo Wii U Super Mario 3D World and Nintendo Land","description":"Super Mario 3D World and Nintendo Land<br><br>Super Mario 3D World and Nintendo Land Set Includes:<br><ul><li>Black Wii U Console<\/li><br><li>Super Mario 3D World<\/li><br><li>Nintendo Land<\/li><br><li>Wii U AC Adapter<\/li><br><li>Wii U GamePad AC Adapter<\/li><br><li>High Speed HDMI Cable<\/li><br><li>Sensor Bar<\/li><br><li>Wii U GamePad Cradle<\/li><br><li>Wii U GamePad Stand Support<\/li><br><li>Wii U Console Stand<\/li><\/ul>","link":"http:\/\/www.toysrus.com\/product\/index.jsp?productId=49676136&prodFindSrc=pn&cp=11902634","images":["http:\/\/www.toysrus.com\/images\/tru_hdrLogo.gif\/graphics\/product_images\/pTRU1-19719161reg.jpg","\/cms_widgets\/23\/65\/2365820_assets\/gift-finder.png","\/cms_widgets\/23\/65\/2365820_assets\/gfit-finder.png","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","https:\/\/www.toysrus.com\/images\/spacer.gif","\/graphics\/product_images\/pTRU1-19719161t50.jpg","\/graphics\/product_images\/pTRU1-19719161_alternate1_t50.jpg","\/graphics\/tru_prod_images\/Nintendo-Wii-U-Super-Mario--pTRU1-19719161dt.jpg","\/images\/offerArrow.gif","\/images\/ESRB_36x50_E.gif","\/cms_widgets\/23\/10\/2310318_assets\/061314A_CS_RRU_CreditCardCMS01.jpg","\/cms_widgets\/23\/10\/2310318_assets\/061314A_CS_RRU_CreditCardCMS02.jpg","\/cms_widgets\/23\/10\/2310318_assets\/061314A_CS_RRU_CreditCardCMS03.jpg","http:\/\/www.toysrus.com\/images\/spacer.gif","\/graphics\/store_promo\/m10900884s35.gif","\/images\/VisaPrePaid_300x250.jpg","\/pwr\/engine\/images\/icon_popout.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/content\/09\/93\/56040033_503701_thumbnail.jpg","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/pwr\/engine\/images\/badge_vp_en_US.gif","\/pwr\/engine\/images\/icon_orange_help.gif","\/images\/VisaPrePaid_728x90.jpg","\/graphics\/product_images\/pTRU1-19719161reg.jpg",""]};
+        $scope.HandleUrl(testdata);
+    };
+    
+    $scope.HandleUrl = function(response){
+        console.log('urldata', response);
+        //$scope.images = response.images;
+        $scope.metaurl = {title:response.title,link:response.link,images:[]};
+        for(var idx in response.images){
+            var myImage = new Image();
+            myImage.onload = $scope.HandleImage;
+            myImage.src = response.images[idx];
+        }
+        mimg.show('modal');
+    };
+    
+    $scope.HandleImage = function(){
+        console.log('img loaded', this.src);
+        if( this.height > 150 && this.width > 150 ){
+            $scope.metaurl.images.push(this.src);
+        }
+        $scope.$apply();
+    };
+    
+    $scope.AddUrl = function(pTitle,pImage,pLink){
+        console.log(pTitle,pImage,pLink);
+        var prodName = pTitle;
+        var prodPhoto = pImage;
+        var prodUrl = pLink;
+        var prodUpc = "";
+        $scope.db.transaction(function (tx) {
+            console.log('Adding Product');
+            console.log(prodName);
+            console.log(prodUrl);
+            console.log(prodUpc);
+            tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [prodName, prodPhoto, prodUrl, prodUpc], function(tx, response){
+                console.log('Inserting into prodlist: '+response.insertId);
+                tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(tx, response){$scope.UpdateGroceryList(); mimg.hide();}), function(result, error){console.log(error);}; //function(tx, response){
+            }, function(result, error){console.log(error);});
         });
     };
     

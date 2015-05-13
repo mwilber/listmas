@@ -389,6 +389,7 @@ class JSONAPI extends CI_Controller {
 		$pUrl = base64_decode($pUrl);
 		$this->_response->title = "";
 		$this->_response->description = "";
+		$this->_response->link = $pUrl;
 		$this->_response->images = array();
 
 		//echo $pUrl;
@@ -418,7 +419,8 @@ class JSONAPI extends CI_Controller {
 			array_push($this->_response->images, $img->getAttribute('src'));
 		}
 
-		print_r($this->_response);
+		//print_r($this->_response);
+		$this->_JSONout();
 	}
 
 }

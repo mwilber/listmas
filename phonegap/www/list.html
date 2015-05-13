@@ -41,6 +41,15 @@
         </div>
     </ons-modal>
     
+    <ons-modal var="mimg">
+        <div class="dialog">
+            <ons-list-item ng-repeat="image in metaurl.images track by $index">
+                <img src="{{image}}" width="100%" ng-click="AddUrl(metaurl.title, image, metaurl.link)"/>
+            </ons-list-item>
+            <ons-button class="control-btn close-btn" onclick="mimg.hide()" style="width: 100%;"><ons-icon icon="check"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
     <ons-list class="prodlist">
       <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing" ng-class="(grocery.prodBought=='true') ? 'done-true' : 'edit'">
             <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
@@ -63,6 +72,7 @@
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>UPC</ons-button>
         <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="GetUrl()" disabled=""><span class="fa fa-globe fa-lg"></span>URL</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span>Search</ons-button>
     </form>
 
