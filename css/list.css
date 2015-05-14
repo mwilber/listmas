@@ -1153,13 +1153,13 @@ width: 120%;
 	}
 
   .panel .linearlist li .ltblock {
-    width: 60%;
+    width: 54%;
     margin-right: 0px;
   }
 
 	.panel .linearlist li .prodname, .popup .linearlist li .prodname {
-		font-size: 12px;
-    width: 66%;
+		font-size: 14px;
+    width: 68%;
     padding: 0px 5px;
     line-height:14px;
 	}
@@ -1169,16 +1169,16 @@ width: 120%;
 	}
 
 	.panel .linearlist li .produrl, .popup .linearlist li .produrl {
-		font-size: 11px;
+		font-size: 14px;
 		line-height: 14px;
 	}
 
   .panel .linearlist li .rtblock {
-    width: 24%;
+    width: 35%;
   }
 
 	.panel .linearlist li .produrl span.fa, .popup .linearlist li .produrl span.fa {
-		font-size: 40px;
+		font-size: 20px;
 	}
 
   .panel .linearlist li .prodqr a{
