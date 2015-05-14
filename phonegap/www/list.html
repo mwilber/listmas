@@ -70,10 +70,10 @@
     
     <form class="foot_ctrl list_foot_ctrl">
         <h3>Add Item</h3>
-        <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span>UPC</ons-button>
-        <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span>Photo</ons-button>
-        <ons-button class="capture-btn" ng-click="GetUrl()" disabled=""><span class="fa fa-globe fa-lg"></span>URL</ons-button>
-        <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span>Search</ons-button>
+        <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span><br/>UPC</ons-button>
+        <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span><br/>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="GetUrl()" disabled=""><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
+        <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
     </form>
 
 </ons-page>
