@@ -30,17 +30,21 @@ function AppInit(){
 }
 
 function ShowDetail(pTarget){
-    
+
     pTarget = $(pTarget).parent().parent();
-    
+
+    console.log( $(pTarget).find('.options').text() );
+
     if( $(pTarget).hasClass('expand') ){
         $('.panel .linearlist li').removeClass('expand');
         $('.panel .linearlist li .detail-btn').addClass('fa-angle-down');
+        $(pTarget).find('.options').html($(pTarget).find('.options').html().replace('Collapse','Options'));
         ga('send', 'event', 'list', 'click', 'collapse', 0);
     }else{
         $('.panel .linearlist li').removeClass('expand');
         $('.panel .linearlist li .detail-btn').addClass('fa-angle-down');
         $(pTarget).addClass('expand');
+        $(pTarget).find('.options').html($(pTarget).find('.options').html().replace('Options','Collapse'));
         $(pTarget).find('.detail-btn').removeClass('fa-angle-down').addClass('fa-angle-up');
         $(pTarget).find('.icon').css('background-image',$(pTarget).find('.icon').css('background-image').replace('SL160','SL'+$(pTarget).find('.icon').outerWidth()));
         ga('send', 'event', 'list', 'click', 'expand', 0);

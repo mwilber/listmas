@@ -2,6 +2,7 @@
 
 	$listTitle = "My Listmas";
 	$listUrl = "";
+	$listEnhanced = 0;
 
 	$social = array();
 	$social['title'] = "Check Out My List";
@@ -32,7 +33,7 @@
 		    echo $e->getMessage();
 		    }
 
-		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode FROM tblShoplist WHERE shoplistId=".$_GET['l']);
+		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode,shopListEnhanced FROM tblShoplist WHERE shoplistId=".$_GET['l']);
 		$stmt->execute();
 		if( $stmt->rowCount() <= 0 ){
 			//
@@ -49,6 +50,9 @@
 			$pgTitle = "My Listmas :".$titleRS['shoplistName'];
 			$listTitle = $titleRS['shoplistName'];
 			$listUrl = $titleRS['shopListCode'];
+			$listEnhanced = $titleRS['shopListEnhanced'];
+
+			//echo "|".$listEnhanced."|";
 
 			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
 			$listRS = $dbh->query($sql);
@@ -156,26 +160,26 @@
 				<div class="content">
 					<?php if(isset($_GET['l'])): ?>
 					<ul class="linearlist">
-						<?php foreach( $listRS as $li): ?>
+						<?php foreach( $listRS as $li): $snot = false; $sbuy = false; $sweb = false; $sbou = false; ?>
 							<li>
 								<div>
 									<div class="rtblock">
-										<?php if( $li['notifyType'] == 1 && $li['notifyRead'] == 0 ): ?>
+										<?php if( $listEnhanced == 1 && $li['notifyType'] == 1 && $li['notifyRead'] == 0 ): $snot = true; ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button gotit" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
 											Someone Got This
 											<span class="fa fa-exclamation-triangle"></span>
 										</a>
-										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): ?>
+									<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
 											Buy This
 											<span class="fa fa-money"></span>
 										</a>
-										<?php elseif( $li['prodUrl'] != "" ): ?>
+									<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
 											Web Page
 											<span class="fa fa-link"></span>
 										</a>
-										<?php else: ?>
+									<?php elseif($listEnhanced == 1): $sbou = true;?>
 										<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
 											Bought It
 											<span class="fa fa-thumbs-o-up"></span>
@@ -187,20 +191,24 @@
 										</a>
 										<div class="hiddenopts">
 											<?php if( $li['prodUrl'] != "" ): ?>
+												<?php if(!$sweb): ?>
 												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
 													Web Page
 													<span class="fa fa-link"></span>
 												</a>
-												<?php if( strpos($li['prodUrl'], "amazon") > 1 && (isset($li['notifyType']) && $li['notifyRead'] == 0 ) ): ?>
+												<?php endif; ?>
+												<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy ): ?>
 												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
 													Buy This
 													<span class="fa fa-money"></span>
 												</a>
 												<?php endif; ?>
+												<?php if($listEnhanced == 1 && !$sbou): ?>
 												<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
 													Bought It
 													<span class="fa fa-thumbs-o-up"></span>
 												</a>
+												<?php endif; ?>
 											<?php endif; ?>
 
 

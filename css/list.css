@@ -588,8 +588,12 @@ border-radius: 45px;
   cursor:pointer;
 }
 
-.panel .linearlist li .hiddenopts, .panel .linearlist li.expand .options{
-  display:none;
+.panel .linearlist li .hiddenopts{
+    display:none;
+}
+
+.panel .linearlist li.expand .options{
+  /*display:none;*/
 }
 
 .panel .linearlist li.expand .hiddenopts, .panel .linearlist li .options{
