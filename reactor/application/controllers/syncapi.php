@@ -241,8 +241,14 @@ class SyncAPI extends CI_Controller {
 			// Add in any new items
 			foreach( $obj->prod as $key=>$prod ){
 				$fprod = $this->_ProcessProd($prod);
+				$prodQty = 0;
+				if(isset($fprod->prodQty)){
+					$prodQty = $fprod->prodQty;
+					unset($fprod->prodQty);
+				}
+
 				$pId = $this->prod_model->Add($fprod);
-				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId));
+				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId, 'prodQty'=>$prodQty));
 			}
 
 			// Generate the mosiac
