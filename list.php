@@ -58,7 +58,7 @@
 
 			//echo "|".$titleRS['shopListImage']."|";
 
-			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
+			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l']." ORDER BY tblProdlist.prodQty DESC";
 			$listRS = $dbh->query($sql);
 
 			$dbh = null;
@@ -173,17 +173,17 @@
 											Someone Got This
 											<span class="fa fa-exclamation-triangle"></span>
 										</a>
-									<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
+										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
 											Buy This
 											<span class="fa fa-money"></span>
 										</a>
-									<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
+										<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
 											Web Page
 											<span class="fa fa-link"></span>
 										</a>
-									<?php elseif($listEnhanced == 1): $sbou = true;?>
+										<?php elseif($listEnhanced == 1): $sbou = true;?>
 										<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
 											Bought It
 											<span class="fa fa-thumbs-o-up"></span>

@@ -104,7 +104,7 @@ class SyncAPI extends CI_Controller {
 		$this->load->helper('imageworkshop_helper');
 		$this->load->library('s3');
 
-		$slTmp = $this->prodlist_model->GetWithDetails(array('tblProdlist.shopListId'=>$pId));
+		$slTmp = $this->prodlist_model->GetWithDetails(array('tblProdlist.shopListId'=>$pId,'sortBy'=>'prodQty','sortDirection'=>'DESC'));
 		$this->_response->data = $slTmp;
 
 		$mw = 510;
