@@ -107,7 +107,7 @@ class SyncAPI extends CI_Controller {
 		$slTmp = $this->prodlist_model->GetWithDetails(array('tblProdlist.shopListId'=>$pId));
 		$this->_response->data = $slTmp;
 
-		$mw = 360;
+		$mw = 510;
 		$tc = 3;
 
 		$twitterLayer = new ImageWorkshop(array(
@@ -158,8 +158,8 @@ class SyncAPI extends CI_Controller {
 
 		$remotefile = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
 
-		//header('Content-type: image/jpeg');
-		//imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
+		header('Content-type: image/jpeg');
+		imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
 
 		//Delete all the temp files
 		foreach(glob(UPLOAD_DIR.'/*_*.jpg') as $file)
