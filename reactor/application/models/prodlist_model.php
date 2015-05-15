@@ -10,6 +10,7 @@ class ProdList_Model extends CI_Model
 		 'shopListId' => array('label'=>'List','type'=>'int'),
 		 'prodId' => array('label'=>'Product','type'=>'int'),
 		 'prodAppId' => array('label'=>'AppId','type'=>'int'),
+		 'prodQty' => array('label'=>'Rating','type'=>'int'),
 		 'prodListDateAdded' => array('label'=>'Date Added','type'=>'timestamp'),
 		);
 
@@ -144,6 +145,23 @@ class ProdList_Model extends CI_Model
 		}
 
 		$this->db->where($this->pk, $options[$this->pk]);
+
+		$this->db->update($this->table);
+
+		return $this->db->affected_rows();
+	}
+
+	function UpdateQty($options = array())
+	{
+
+		// foreach ($this->fields as $key => $value) {
+		// 	if(isset($options[$key]))
+		// 		$this->db->set($key, $options[$key]);
+		// }
+		$this->db->set('prodQty', $options['prodQty']);
+
+		$this->db->where('prodId', $options['prodId']);
+		$this->db->where('shopListId', $options['shopListId']);
 
 		$this->db->update($this->table);
 

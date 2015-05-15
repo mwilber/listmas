@@ -221,6 +221,9 @@ class SyncAPI extends CI_Controller {
 						$fprod = $this->_ProcessProd($prod);
 						$fprod->prodId = $pId;
 
+						$this->prodlist_model->UpdateQty(array('prodQty'=>$fprod->prodQty,'prodId'=>$fprod->prodId,'shopListId'=>$slId));
+						unset($fprod->prodQty);
+
 						$this->prod_model->UpdateB($fprod);
 						unset($obj->prod[$key]);
 						break;
@@ -258,6 +261,9 @@ class SyncAPI extends CI_Controller {
 
 			$this->_response->data->shareImage = $mosurl;
 
+		}else{
+			$this->_response->error->type = -1;
+			$this->_response->error->message = "No list data found";
 		}
 		$this->_JSONout();
 
