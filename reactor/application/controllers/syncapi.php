@@ -221,8 +221,10 @@ class SyncAPI extends CI_Controller {
 						$fprod = $this->_ProcessProd($prod);
 						$fprod->prodId = $pId;
 
-						$this->prodlist_model->UpdateQty(array('prodQty'=>$fprod->prodQty,'prodId'=>$fprod->prodId,'shopListId'=>$slId));
-						unset($fprod->prodQty);
+						if(isset($fprod->prodQty)){
+							$this->prodlist_model->UpdateQty(array('prodQty'=>$fprod->prodQty,'prodId'=>$fprod->prodId,'shopListId'=>$slId));
+							unset($fprod->prodQty);
+						}
 
 						$this->prod_model->UpdateB($fprod);
 						unset($obj->prod[$key]);
