@@ -136,6 +136,13 @@ class SyncAPI extends CI_Controller {
 			    'imageFromPath' => UPLOAD_DIR."/".$filename,
 			));
 			//echo (($mw/$tc)*floor($idx/$tc))."|";
+
+			if( $tileLayer->getWidth() > $tileLayer->getHeight() && $tileLayer->getHeight() < ($mw/$tc) ){
+				$tileLayer->resizeInPixel(null, ($mw/$tc)+50, true);
+			}elseif( $tileLayer->getWidth() < ($mw/$tc) ){
+				$tileLayer->resizeInPixel(($mw/$tc)+50, null, true);
+			}
+
 			$tileLayer->cropInPixel(($mw/$tc), ($mw/$tc), 0, 0, 'MM');
 			$twitterLayer->addLayer(($idx+1), $tileLayer, (($mw/$tc)*($tp%$tc)), (($mw/$tc)*floor($tp/$tc)), "LT");
 

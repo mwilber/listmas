@@ -150,7 +150,8 @@ class JSONAPI extends CI_Controller {
 			for( $idx=0; $idx<10; $idx++){
 				if( isset($response->Items->Item[$idx]->ItemAttributes->Title) ){
 					$description = (string)$response->Items->Item[$idx]->ItemAttributes->Title;
-					if( isset($response->Items->Item[$idx]->MediumImage->URL) ) $image = (string)$response->Items->Item[$idx]->MediumImage->URL;
+					if( isset($response->Items->Item[$idx]->LargeImage->URL) ) $image = (string)$response->Items->Item[$idx]->LargeImage->URL;
+					elseif( isset($response->Items->Item[$idx]->MediumImage->URL) ) $image = (string)$response->Items->Item[$idx]->MediumImage->URL;
 					if( isset($response->Items->Item[$idx]->DetailPageURL) ) $pUrl = (string)$response->Items->Item[$idx]->DetailPageURL;
 
 					$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl);

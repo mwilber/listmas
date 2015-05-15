@@ -33,7 +33,7 @@
 		    echo $e->getMessage();
 		    }
 
-		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode,shopListEnhanced FROM tblShoplist WHERE shoplistId=".$_GET['l']);
+		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode,shopListEnhanced,shopListImage FROM tblShoplist WHERE shoplistId=".$_GET['l']);
 		$stmt->execute();
 		if( $stmt->rowCount() <= 0 ){
 			//
@@ -52,7 +52,11 @@
 			$listUrl = $titleRS['shopListCode'];
 			$listEnhanced = $titleRS['shopListEnhanced'];
 
-			//echo "|".$listEnhanced."|";
+			if($titleRS['shopListImage']){
+				$social['image'] = $titleRS['shopListImage'];
+			}
+
+			//echo "|".$titleRS['shopListImage']."|";
 
 			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l'];
 			$listRS = $dbh->query($sql);
