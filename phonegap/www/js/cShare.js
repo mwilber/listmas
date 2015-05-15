@@ -20,6 +20,15 @@ function($scope, $http, ggActiveList) {
     
     //console.log('Prod Details', $scope.grocery);
     
+    // Update the local database
+    $scope.db.transaction(function (tx) {
+        tx.executeSql('ALTER TABLE tblShoplist ADD COLUMN shoplistImage INTEGER', [], function(tx, result){
+            console.log('added image col to local db');
+            //$scope.$apply();
+            //setTimeout(function(){$scope.$apply();}, 1000);
+        }, function(result, error){console.log(error);});
+    });
+    
     $scope.UpdateListDetails = function(){
             //console.log('Getting List', ggActiveList.GetActiveList());
             //if( response != undefined ) console.log(response.insertId);
@@ -34,9 +43,16 @@ function($scope, $http, ggActiveList) {
                         console.log($scope.list.shoplistName);
                         console.log(result.rows.item(0).shoplistUrl);
                         $scope.list.shoplistUrl = result.rows.item(0).shoplistUrl;
-                        console.log($scope.list.shoplistUrl);
+                        console.log(result.rows.item(0).shoplistUrl);
+                        $scope.list.shareImage = result.rows.item(0).shoplistImage;
+                        console.log($scope.list.shareImage);
                     }
                     //console.log('sharing:',$scope.list.length);
+                    
+                    if(!$scope.list.shareImage) $scope.list.shareImage = $scope.metadata.image;
+                    
+                    console.log('image:',$scope.list.shareImage);
+                    
                     if(typeof $scope.list.shoplistUrl === 'undefined'){ $scope.showHelp = true; $scope.publishCopy = "Publish"; }else{ $scope.showHelp = false; $scope.publishCopy = "Update"; }
                     //if($scope.showHelp){
                     //    console.log("showing help");
@@ -72,6 +88,7 @@ function($scope, $http, ggActiveList) {
                 list:{
                     shoplistId:0,
                     shoplistName:"",
+                    shareImage:""
                 },
                 prod:[],
             };
@@ -100,8 +117,8 @@ function($scope, $http, ggActiveList) {
                             alert('Something went wrong. Please try again.');
                         }else{
         			        $scope.db.transaction(function (tx) {
-    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=? WHERE shoplistId=?", 
-    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shoplistRemoteId], function(){
+    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=? WHERE shoplistId=?", 
+    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistRemoteId], function(){
                                         $scope.publishStatus = false;
                                         $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
                                         pubresult.show('modal');
@@ -130,7 +147,7 @@ function($scope, $http, ggActiveList) {
         }catch(exception){
             console.log("ga fail");
         }
-        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=360989144063992&link="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&picture="+escape($scope.metadata.image)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
+        var fbcontent = "https://www.facebook.com/dialog/feed?app_id=360989144063992&link="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&picture="+escape($scope.list.shareImage)+"&name="+escape($scope.metadata.title)+"&message="+escape($scope.metadata.message)+"&description="+escape($scope.metadata.description)+"&redirect_uri=https://facebook.com/";
         window.open(fbcontent, '_system');
         return false;
     };
@@ -174,7 +191,7 @@ function($scope, $http, ggActiveList) {
         }catch(exception){
             console.log("ga fail");
         }
-        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape('http://www.mylistmas.com/icons/icon_512.png')+"&description="+escape($scope.metadata.title)+escape('! ')+escape($scope.metadata.description)+escape('.');
+        var pncontent = "https://pinterest.com/pin/create/button/?url="+escape($scope.shareUrlRoot+$scope.list.shoplistUrl)+"&media="+escape($scope.list.shareImage)+"&description="+escape($scope.metadata.title)+escape('! ')+escape($scope.metadata.description)+escape('.');
         window.open(pncontent, '_system');
         return false;
     };

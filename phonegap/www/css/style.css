@@ -336,6 +336,11 @@ form label{
 	background:#0072b1;
 }
 
+.sharepreview{
+    width:70%;
+    margin:5% 15% 0% 15%;
+}
+
 .help{
     position:absolute;
     top:0px;

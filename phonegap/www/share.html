@@ -26,18 +26,19 @@
     </div>
     
     <div id="published" ng-if="list.shoplistUrl">
+        <img class="sharepreview" src="{{list.shareImage}}"/>
         <ons-list class="sharelist">
             <ons-list-item>
                 <ons-button class="em-btn" ng-click="EmShare()"><ons-icon icon="envelope"></ons-icon> Share with email</ons-button>
-            </ons-list-item>
-            <ons-list-item>
-                <ons-button class="tw-btn" ng-click="TwShare()"><ons-icon icon="twitter"></ons-icon> Share on Twitter</ons-button>
             </ons-list-item>
             <ons-list-item>
                 <ons-button class="fb-btn" ng-click="FbShare()"><ons-icon icon="facebook"></ons-icon> Share on Facebook</ons-button>
             </ons-list-item>
             <ons-list-item>
                 <ons-button class="pn-btn" ng-click="PnShare()"><ons-icon icon="pinterest"></ons-icon> Share on Pinterest</ons-button>
+            </ons-list-item>
+            <ons-list-item>
+                <ons-button class="tw-btn" ng-click="TwShare()"><ons-icon icon="twitter"></ons-icon> Share on Twitter</ons-button>
             </ons-list-item>
             <ons-list-item>
                 <ons-button class="gp-btn" ng-click="GpShare()"><ons-icon icon="google-plus"></ons-icon> Share on Google+</ons-button>
