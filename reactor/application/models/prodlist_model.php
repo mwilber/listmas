@@ -99,6 +99,9 @@ class ProdList_Model extends CI_Model
 		if(isset($options[$this->pk]))
 		$this->db->where($this->pk, $options[$this->pk]);
 
+		if(isset($options['tblProdlist.shopListId']))
+		$this->db->where('tblProdlist.shopListId', $options['tblProdlist.shopListId']);
+
 		// limit / offset
 		if(isset($options['limit']) && isset($options['offset']))
 		$this->db->limit($options['limit'], $options['offset']);
