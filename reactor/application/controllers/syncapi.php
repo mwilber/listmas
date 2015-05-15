@@ -231,17 +231,23 @@ class SyncAPI extends CI_Controller {
 				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId));
 			}
 
+			// Generate the mosiac
+			try{
+				$mosurl = $this->mosaic($slId);
+			}catch(Exception $e){
+				$mosurl = "http://www.mylistmas.com/icons/icon_512.png";
+			}
+
+			$this->shoplist_model->Update(array('shopListImage'=>$mosurl,'shopListId'=>$slId));
+
 			//IdObfuscator::encode($nId)
 			$this->_response->data = new stdClass();
 			$this->_response->data->shoplistId = $slId;
 			$this->_response->data->shoplistRemoteId = $obj->list->shoplistRemoteId;
 			//$this->_response->data->shoplistUrl = IdObfuscator::encode($slId);
 			$this->_response->data->shoplistUrl = $listCode;
-			try{
-				$this->_response->data->shareImage = $this->mosaic($slId);
-			}catch(Exception $e){
-				$this->_response->data->shareImage = "http://www.mylistmas.com/icons/icon_512.png";
-			}
+
+			$this->_response->data->shareImage = $mosurl;
 
 
 		$this->_JSONout();
