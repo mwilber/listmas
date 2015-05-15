@@ -191,6 +191,8 @@ class SyncAPI extends CI_Controller {
 		$this->load->model('prodlist_model');
 		$this->load->model('shoplist_model');
 
+		if(isset($obj->list)){
+
 			if( intval($obj->list->shoplistId) <= 0 ){
 				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName));
 				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListCode'=>IdObfuscator::encode($slId)));
@@ -256,7 +258,7 @@ class SyncAPI extends CI_Controller {
 
 			$this->_response->data->shareImage = $mosurl;
 
-
+		}
 		$this->_JSONout();
 
 		//list.shoplistId
