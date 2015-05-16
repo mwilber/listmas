@@ -1,5 +1,5 @@
-ggControllers.controller('ProdDetailCtrl', ['$scope', '$http', 'ggActiveProd', 
-function($scope, $http, ggActiveProd) {
+ggControllers.controller('ProdDetailCtrl', ['$scope', '$http', 'ggActiveProd', 'ggActiveList', 'ggProStatus',   
+function($scope, $http, ggActiveProd, ggActiveList, ggProStatus) {
    
     $scope.grocery = ggActiveProd.GetActiveProd();
     $scope.scanStatus = false;
@@ -33,6 +33,21 @@ function($scope, $http, ggActiveProd) {
             $scope.grocery.prodUnit = response.data.prodUnit;
             $scope.grocery.prodUpc = response.data.prodUpc;
         });
+    };
+    
+    $scope.SetRating = function(pRating){
+        if(ggProStatus.GetProStatus() == 1){
+            console.log(pRating, $scope.grocery.prodId, ggActiveList.GetActiveList());
+            $scope.db.transaction(function (tx) {
+                tx.executeSql('UPDATE tblProdlist SET prodQty=? WHERE prodId=? AND shoplistId=?', [pRating,$scope.grocery.prodId,ggActiveList.GetActiveList()], function(tx, result){
+                    $scope.grocery.prodRating = pRating;
+                    $scope.$apply();
+                    //setTimeout(function(){$scope.$apply();}, 1000);
+                }, function(result, error){console.log(error);});
+            });
+        }else{
+            alert('Upgrade to Pro to use this feature.');
+        }
     };
     
     $scope.SaveGrocery = function () {

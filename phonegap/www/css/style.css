@@ -237,6 +237,22 @@
     background-position: center center;
 }
 
+label.rating{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+ul.rating{
+    margin: 20px auto;
+  display: block;
+  clear: both;
+  padding: 0px;
+  width: 200px;
+  float: none;
+  font-size: 28px;
+}
+
 textarea.detail-input {
     height:100px;
 }

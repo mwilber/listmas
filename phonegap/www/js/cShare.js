@@ -1,5 +1,5 @@
-ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList', 
-function($scope, $http, ggActiveList) {
+ggControllers.controller('ShareCtrl', ['$scope', '$http', 'ggActiveList', 'ggProStatus', 
+function($scope, $http, ggActiveList, ggProStatus) {
    
     $scope.list = {};
     $scope.activeShopListId = 0;
@@ -88,6 +88,7 @@ function($scope, $http, ggActiveList) {
                 list:{
                     shoplistId:0,
                     shoplistName:"",
+                    shoplistEnhanced:ggProStatus.GetProStatus(),
                     shareImage:""
                 },
                 prod:[],
@@ -105,6 +106,7 @@ function($scope, $http, ggActiveList) {
                             prodDescription: result.rows.item(idx).prodDescription,
                             prodUrl: result.rows.item(idx).prodUrl,
                             prodUpc: result.rows.item(idx).prodUpc,
+                            prodQty: result.rows.item(idx).prodQty,
                         });
                     }
                     console.log(pubData);

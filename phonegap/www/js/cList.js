@@ -38,7 +38,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             console.log('Getting Product List', ggActiveList.GetActiveList());
             if( response != undefined ) console.log(response.insertId);
             $scope.db.transaction(function (tx) {
-                tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                tx.executeSql('SELECT * FROM tblProdlist LEFT JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=? ORDER BY tblProdlist.prodQty DESC', [ggActiveList.GetActiveList()], function(tx, result){
                     $scope.groceries = [ ];
                     for( var idx = 0; idx < result.rows.length; idx++){
                         $scope.groceries.push({
@@ -47,6 +47,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                             prodPhoto: result.rows.item(idx).prodPhoto,
                             prodDescription: result.rows.item(idx).prodDescription,
                             prodUrl: result.rows.item(idx).prodUrl,
+                            prodRating: result.rows.item(idx).prodQty,
                         });
                     }
                     if( $scope.groceries.length > 0 ) $scope.shareStatus = true;

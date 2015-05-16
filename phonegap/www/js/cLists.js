@@ -1,7 +1,7 @@
 var ggControllers = angular.module('ggControllers', []);
 
-ggControllers.controller('ShopListCtrl', ['$scope', '$filter', '$timeout', 'ggActiveList', 
-function($scope, $filter, $timeout, ggActiveList) {
+ggControllers.controller('ShopListCtrl', ['$scope', '$filter', '$timeout', 'ggActiveList', 'ggProStatus', 
+function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
     
    
     $scope.shoplists = [ ];
@@ -16,6 +16,12 @@ function($scope, $filter, $timeout, ggActiveList) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProdlist (prodlistId INTEGER PRIMARY KEY, prodlistRemoteId INTEGER, prodId INTEGER, shoplistId INTEGER, prodPrice REAL DEFAULT 0, prodQty REAL DEFAULT 0, prodlistTimeStamp INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
     });
+    
+    if( localStorage.getItem("proStatus") !== null ){
+        ggProStatus.SetProStatus(localStorage.getItem("proStatus"));
+    }else{
+        //TOTO: Set proStatus based on IAP
+    }
     
     if( localStorage.getItem("activeList") !== null ){
         ggActiveList.SetActiveList(localStorage.getItem("activeList"));
@@ -38,6 +44,10 @@ function($scope, $filter, $timeout, ggActiveList) {
             'clientId':device.uuid
         });
         ga('send', 'pageview', {'page': '/index.html'});  
+    };
+    
+    $scope.SetPro = function(pPro){
+        ggProStatus.SetProStatus(pPro);
     };
     
     $scope.DoDelete = function(pId, pName){

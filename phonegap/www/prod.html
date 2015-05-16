@@ -22,6 +22,15 @@
     
     <form class="detail-form">
         <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
+        <label class="rating">How much I want this</label>
+        <ul class="rating">
+            <li class="fa fa-ban" ng-click="SetRating(0)"></li>
+            <li class="fa" ng-class="(grocery.prodRating>0) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(1)"></li>
+            <li class="fa" ng-class="(grocery.prodRating>1) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(2)"></li>
+            <li class="fa" ng-class="(grocery.prodRating>2) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(3)"></li>
+            <li class="fa" ng-class="(grocery.prodRating>3) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(4)"></li>
+            <li class="fa" ng-class="(grocery.prodRating>4) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(5)"></li>
+        </ul>
         <div class="detail-photo" style="background-image:url({{grocery.prodPhoto}});"></div>
         <textarea class="detail-input" placeholder="Comment" type="text" ng-model="grocery.prodDescription"></textarea>
         <input class="detail-input" placeholder="URL" type="text" ng-model="grocery.prodUrl" ng-model-instant />

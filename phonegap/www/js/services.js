@@ -1,5 +1,22 @@
 var ggServices = angular.module('ggServices', []);
 
+ggServices.service('ggProStatus', [
+    function(){
+        
+        var proStatus = 0;
+
+        return {
+            GetProStatus: function () {
+                return proStatus;
+            },
+            SetProStatus: function(value) {
+                proStatus = value;
+                localStorage.setItem("proStatus", proStatus);
+            }
+        };
+    }
+]);
+
 ggServices.service('ggActiveList', [
     function(){
         
