@@ -194,10 +194,11 @@ class SyncAPI extends CI_Controller {
 		if(isset($obj->list)){
 
 			if( intval($obj->list->shoplistId) <= 0 ){
-				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName));
+				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced));
 				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListCode'=>IdObfuscator::encode($slId)));
 			}else{
 				$slId = intval($obj->list->shoplistId);
+				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shopListEnhanced));
 			}
 			$slTmp = $this->shoplist_model->Get(array('shopListId'=>$slId));
 			$slId = $slTmp->shopListId;
