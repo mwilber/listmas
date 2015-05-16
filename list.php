@@ -58,7 +58,7 @@
 
 			//echo "|".$titleRS['shopListImage']."|";
 
-			$sql = "SELECT * FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l']." ORDER BY tblProdlist.prodQty DESC";
+			$sql = "SELECT tblProdlist.*,tblShoplist.*,tblProd.*,tblNotify.notifyType,tblNotify.notifyText,tblNotify.notifyRead FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l']." ORDER BY tblProdlist.prodQty DESC";
 			$listRS = $dbh->query($sql);
 
 			$dbh = null;
@@ -167,6 +167,7 @@
 						<?php foreach( $listRS as $li): $snot = false; $sbuy = false; $sweb = false; $sbou = false; ?>
 							<li>
 								<div>
+									<?php //print_r($li); ?>
 									<div class="rtblock">
 										<?php if( $listEnhanced == 1 && $li['notifyType'] == 1 && $li['notifyRead'] == 0 ): $snot = true; ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button gotit" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
@@ -223,6 +224,7 @@
 										</div>
 									</div>
 									<div class="ltblock" onclick="ShowDetail(this)">
+
 										<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
 										<div class="prodname">
 											<div>
