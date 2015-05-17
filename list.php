@@ -58,10 +58,8 @@
 
 			//echo "|".$titleRS['shopListImage']."|";
 
-			$sql = "SELECT tblProdlist.*,tblShoplist.*,tblProd.*,tblNotify.notifyType,tblNotify.notifyText,tblNotify.notifyRead FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId LEFT JOIN tblNotify ON tblNotify.prodId=tblProdList.prodId WHERE tblProdlist.shoplistId=".$_GET['l']." ORDER BY tblProdlist.prodQty DESC";
+			$sql = "SELECT tblProdlist.*,tblShoplist.*,tblProd.* FROM tblProdlist JOIN tblShoplist ON tblProdlist.shoplistId=tblShoplist.shoplistId JOIN tblProd ON tblProdlist.prodId=tblProd.prodId WHERE tblProdlist.shoplistId=".$_GET['l']." ORDER BY tblProdlist.prodQty DESC";
 			$listRS = $dbh->query($sql);
-
-			$dbh = null;
 		}
 	}
 
@@ -130,7 +128,7 @@
 					prodId: pPid,
 					prodAppId: pApid
 				},function(response){
-					alert('notification sent');
+					window.location.reload(true);
 				});
 			}
 
@@ -164,54 +162,66 @@
 				<div class="content">
 					<?php if(isset($_GET['l'])): ?>
 					<ul class="linearlist">
-						<?php foreach( $listRS as $li): $snot = false; $sbuy = false; $sweb = false; $sbou = false; ?>
+						<?php foreach( $listRS as $li):
+							$snot = false; $sbuy = false; $sweb = false; $sbou = false;
+							$sql = "SELECT * FROM tblNotify WHERE prodId=".$li['prodId']." AND notifyType=1 AND notifyRead=0 ";
+							$nRS = $dbh->query($sql);
+							//print_r($nRS->rowCount());
+						?>
 							<li>
 								<div>
 									<?php //print_r($li); ?>
 									<div class="rtblock">
-										<?php if( $listEnhanced == 1 && $li['notifyType'] == 1 && $li['notifyRead'] == 0 ): $snot = true; ?>
+										<div class="modal boughtit">
+											<div class="dialog">
+												<p>Do you wish to notify the list owner that you bought this item?</p>
+												<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right:5%;">No</a>
+												<a class="button" href="#" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); return false;" style="background-color:#4eb94b;">Yes</a>
+											</div>
+										</div>
+										<?php if( $listEnhanced == 1 && $nRS->rowCount() > 0 ): $snot = true; ?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button gotit" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
-											Someone Got This
+											<i>Someone Got This</i>
 											<span class="fa fa-exclamation-triangle"></span>
 										</a>
 										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
-											Buy This
-											<span class="fa fa-money"></span>
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().find('.modal').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+											<i>Buy This</i>
+											<span class="fa fa-shopping-cart"></span>
 										</a>
 										<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
 										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
-											Web Page
-											<span class="fa fa-link"></span>
+											<i>Web Page</i>
+											<span class="fa fa-globe"></span>
 										</a>
 										<?php elseif($listEnhanced == 1): $sbou = true;?>
-										<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-											Bought It
-											<span class="fa fa-thumbs-o-up"></span>
+										<a href="#" class="prodbought button" onclick="$(this).parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+											<i>Tell Them I Got It</i>
+											<span class="fa fa-gift"></span>
 										</a>
 										<?php endif; ?>
 										<a href="#" class="prodbought button options" onclick="ShowDetail($(this).parent().parent().find('.detail-btn')); return false;">
-											Options
+											<i>Options</i>
 											<span class="fa fa-bars"></span>
 										</a>
 										<div class="hiddenopts">
 											<?php if( $li['prodUrl'] != "" ): ?>
 												<?php if(!$sweb): ?>
 												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
-													Web Page
-													<span class="fa fa-link"></span>
+													<i>Web Page</i>
+													<span class="fa fa-globe"></span>
 												</a>
 												<?php endif; ?>
-												<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy ): ?>
-												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
-													Buy This
-													<span class="fa fa-money"></span>
+												<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy && !$snot ): ?>
+												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().parent().find('.modal').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+													<i>Buy This</i>
+													<span class="fa fa-shopping-cart"></span>
 												</a>
 												<?php endif; ?>
-												<?php if($listEnhanced == 1 && !$sbou): ?>
-												<a href="#" class="prodbought button" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-													Bought It
-													<span class="fa fa-thumbs-o-up"></span>
+												<?php if($listEnhanced == 1 && !$sbou && !$snot): ?>
+												<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+													<i>Tell Them I Got It</i>
+													<span class="fa fa-gift"></span>
 												</a>
 												<?php endif; ?>
 											<?php endif; ?>
@@ -239,14 +249,10 @@
 							</li>
 						<?php endforeach; ?>
 					</ul>
-					<?php endif; ?>
+					<?php endif; $dbh = null;?>
 					<div class="clearfix"></div>
 				</div>
 			</div>
-
-			<?php foreach( $listRS as $li): ?>
-
-    <?php endforeach; ?>
 
 		<div class="clearfix"></div>
 
