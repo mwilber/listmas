@@ -193,87 +193,105 @@ class SyncAPI extends CI_Controller {
 
 		if(isset($obj->list)){
 
+			if( !isset($obj->list->shoplistCheckoff) ) $obj->list->shoplistCheckoff = 0;
+
 			if( intval($obj->list->shoplistId) <= 0 ){
-				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced));
+				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced,'shopListCheckoff'=>0));
 				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListCode'=>IdObfuscator::encode($slId)));
 			}else{
 				$slId = intval($obj->list->shoplistId);
 			}
 
-			//echo $obj->list->shopListEnhanced;
-
-			if( isset($obj->list->shoplistEnhanced) ){
-				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced));
-			}
+			// Check the list xfer state
 			$slTmp = $this->shoplist_model->Get(array('shopListId'=>$slId));
-			$slId = $slTmp->shopListId;
-			$listCode = $slTmp->shopListCode;
 
-			// Clear out existing prods
-			//$this->prodlist_model->DeleteList($slId);
+			if( $obj->list->shoplistCheckoff == $slTmp->shopListCheckoff ){
 
-			$listRS = $this->prodlist_model->Get(array('shopListId'=>$slId));
+				if($obj->list->shoplistCheckoff > 0){
+					// Wipe existing records
+					//echo "xfer here";
+					$this->prodlist_model->DeleteList($slId);
+				}
 
-			foreach( $listRS as $rsprod ){
+				//echo $obj->list->shopListEnhanced;
 
-				$foundRS = false;
+				if( isset($obj->list->shoplistEnhanced) ){
+					$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced));
+				}
+				$slTmp = $this->shoplist_model->Get(array('shopListId'=>$slId));
+				$slId = $slTmp->shopListId;
+				$listCode = $slTmp->shopListCode;
 
-				foreach( $obj->prod as $key=>$prod ){
+				// Clear out existing prods
+				//$this->prodlist_model->DeleteList($slId);
 
-					if( $prod->prodId == $rsprod->prodAppId ){
+				$listRS = $this->prodlist_model->Get(array('shopListId'=>$slId));
 
-						$foundRS = true;
-						$pId = $rsprod->prodId;
-						$fprod = $this->_ProcessProd($prod);
-						$fprod->prodId = $pId;
+				foreach( $listRS as $rsprod ){
 
-						if(isset($fprod->prodQty)){
-							$this->prodlist_model->UpdateQty(array('prodQty'=>$fprod->prodQty,'prodId'=>$fprod->prodId,'shopListId'=>$slId));
-							unset($fprod->prodQty);
+					$foundRS = false;
+
+					foreach( $obj->prod as $key=>$prod ){
+
+						if( $prod->prodId == $rsprod->prodAppId ){
+
+							$foundRS = true;
+							$pId = $rsprod->prodId;
+							$fprod = $this->_ProcessProd($prod);
+							$fprod->prodId = $pId;
+
+							if(isset($fprod->prodQty)){
+								$this->prodlist_model->UpdateQty(array('prodQty'=>$fprod->prodQty,'prodId'=>$fprod->prodId,'shopListId'=>$slId));
+								unset($fprod->prodQty);
+							}
+
+							$this->prod_model->UpdateB($fprod);
+							unset($obj->prod[$key]);
+							break;
 						}
+					}
 
-						$this->prod_model->UpdateB($fprod);
-						unset($obj->prod[$key]);
-						break;
+					if( !$foundRS ){
+						// Record not found in json so delete it
+						$this->prod_model->Delete($rsprod->prodId);
+						$this->prodlist_model->Delete($rsprod->prodListId);
 					}
 				}
+				// Add in any new items
+				foreach( $obj->prod as $key=>$prod ){
+					$fprod = $this->_ProcessProd($prod);
+					$prodQty = 0;
+					if(isset($fprod->prodQty)){
+						$prodQty = $fprod->prodQty;
+						unset($fprod->prodQty);
+					}
 
-				if( !$foundRS ){
-					// Record not found in json so delete it
-					$this->prod_model->Delete($rsprod->prodId);
-					$this->prodlist_model->Delete($rsprod->prodListId);
-				}
-			}
-			// Add in any new items
-			foreach( $obj->prod as $key=>$prod ){
-				$fprod = $this->_ProcessProd($prod);
-				$prodQty = 0;
-				if(isset($fprod->prodQty)){
-					$prodQty = $fprod->prodQty;
-					unset($fprod->prodQty);
+					$pId = $this->prod_model->Add($fprod);
+					$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId, 'prodQty'=>$prodQty));
 				}
 
-				$pId = $this->prod_model->Add($fprod);
-				$this->prodlist_model->Add(array('shoplistId'=>$slId,'prodId'=>$pId,'prodAppId'=>$prod->prodRemoteId, 'prodQty'=>$prodQty));
+				// Generate the mosiac
+				try{
+					$mosurl = $this->mosaic($slId);
+				}catch(Exception $e){
+					$mosurl = "http://www.mylistmas.com/icons/icon_512.png";
+				}
+
+				$this->shoplist_model->Update(array('shopListImage'=>$mosurl,'shopListId'=>$slId,'shopListCheckoff'=>0));
+
+				//IdObfuscator::encode($nId)
+				$this->_response->data = new stdClass();
+				$this->_response->data->shoplistId = $slId;
+				$this->_response->data->shoplistRemoteId = $obj->list->shoplistRemoteId;
+				//$this->_response->data->shoplistUrl = IdObfuscator::encode($slId);
+				$this->_response->data->shoplistUrl = $listCode;
+				$this->_response->data->shoplistCheckoff = 0;
+
+				$this->_response->data->shareImage = $mosurl;
+			}else{
+				$this->_response->error->type = -2;
+				$this->_response->error->message = "Invalid Pin";
 			}
-
-			// Generate the mosiac
-			try{
-				$mosurl = $this->mosaic($slId);
-			}catch(Exception $e){
-				$mosurl = "http://www.mylistmas.com/icons/icon_512.png";
-			}
-
-			$this->shoplist_model->Update(array('shopListImage'=>$mosurl,'shopListId'=>$slId));
-
-			//IdObfuscator::encode($nId)
-			$this->_response->data = new stdClass();
-			$this->_response->data->shoplistId = $slId;
-			$this->_response->data->shoplistRemoteId = $obj->list->shoplistRemoteId;
-			//$this->_response->data->shoplistUrl = IdObfuscator::encode($slId);
-			$this->_response->data->shoplistUrl = $listCode;
-
-			$this->_response->data->shareImage = $mosurl;
 
 		}else{
 			$this->_response->error->type = -1;
@@ -282,6 +300,47 @@ class SyncAPI extends CI_Controller {
 		$this->_JSONout();
 
 		//list.shoplistId
+	}
+
+
+	function xferlist(){
+		$json = file_get_contents('php://input');
+		$obj = json_decode($json);
+		$listCode = "";
+
+		$this->load->helpers('idobfuscator_helper');
+
+		$this->load->model('shoplist_model');
+
+		if(isset($obj->list)){
+
+			$slId = intval($obj->list->shoplistId);
+
+			// Set 4 digit number here
+			$xferid = rand(1000, 9999);
+			while(count($this->shoplist_model->Get(array('shopListCheckoff'=>$xferid))) > 0){
+				$xferid = rand(1000, 9999);
+			}
+			$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListCheckoff'=>$xferid));
+
+			$this->_response->data = $this->shoplist_model->Get(array('shopListId'=>$slId));
+		}
+		$this->_JSONout();
+	}
+
+	function restorelist($pPin){
+
+		$this->load->model('shoplist_model');
+		$this->load->model('prodlist_model');
+
+		if($pPin > 999){
+
+			$this->_response->list = $this->shoplist_model->Get(array('shopListCheckoff'=>$pPin))[0];
+			if(isset($this->_response->list->shopListId)){
+				$this->_response->prod = $this->prodlist_model->GetWithDetails(array('tblProdlist.shopListId'=>$this->_response->list->shopListId));
+			}
+		}
+		$this->_JSONout();
 	}
 
 }

@@ -1,0 +1,76 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.inappbrowser"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.phonegap.plugins.barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "com.phonegap.plugins.barcodescanner"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.camera": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "org.apache.cordova.statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.statusbar"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cc.fovea.cordova.purchase": {
+        "source": {
+            "type": "registry",
+            "id": "cc.fovea.cordova.purchase"
+        },
+        "is_top_level": true,
+        "variables": {
+            "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzrOgZ5i3cXMjMoTNw6+ruvGrzjCHg83Ms4voOHbHnd4p5RJIKkRxawofzWN5oz5zk6Kpi9t8x6xUCQcaqbK1dqnybsxRqn6Fi3jwhFJf///GBpAcLu95sMBk2vLx9i/3GNpKNQhKQiMClVk8lLtpX62ylL6b9n7pPR+3oSP44Vw5aVJp0fDdGbeBIT5VQUIskB/o124wRDAvHSOIAChbRdCv11g/MsyHNAG5U8xK9BntToMlXPppvdMiwzdTKjMvSIMTRSrs1eP9LmxaPRS6WeL0dXz/Prau5cPjNlGTZADz0O4RVc2C2wQuZA2rkx8UNmZdrchgh0L0U+blkHO9TwIDAQAB"
+        }
+    }
+}

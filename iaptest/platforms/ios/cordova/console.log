@@ -1,0 +1,193 @@
+2015-05-17 11:01:15.562 Listmas[2553:120717] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Data/Application/9F32BF22-7ABC-4613-A32F-6161912CBE25/Library/Cookies/Cookies.binarycookies
+2015-05-17 11:01:17.590 Listmas[2553:120717] Apache Cordova native platform version 3.8.0 is starting.
+2015-05-17 11:01:17.591 Listmas[2553:120717] Multi-tasking -> Device: YES, App: YES
+2015-05-17 11:01:17.674 Listmas[2553:120717] Unlimited access to network resources
+2015-05-17 11:01:17.737 Listmas[2553:120717] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-05-17 11:01:21.322 Listmas[2553:120717] Resetting plugins due to page load.
+2015-05-17 11:01:22.670 Listmas[2553:120717] ERROR: Plugin 'Monaca' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-05-17 11:01:22.670 Listmas[2553:120717] -[CDVCommandQueue executePending] [Line 159] FAILED pluginJSON = ["Monaca1638292427","Monaca","getRuntimeConfiguration",[]]
+2015-05-17 11:01:22.687 Listmas[2553:120717] Getting Shop Lists
+2015-05-17 11:01:22.688 Listmas[2553:120717] push [object Object]
+2015-05-17 11:01:23.678 Listmas[2553:120717] Finished load of: file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/index.html
+2015-05-17 11:01:56.122 Listmas[2553:120717] Adding List
+2015-05-17 11:01:56.122 Listmas[2553:120717] iossim
+2015-05-17 11:01:56.146 Listmas[2553:120717] Getting Shop Lists
+2015-05-17 11:01:56.444 Listmas[2553:120717] Getting Product List 1
+2015-05-17 11:01:56.612 Listmas[2553:120717] shareStatus true
+2015-05-17 11:01:56.969 Listmas[2553:120717] push [object Object]
+2015-05-17 11:01:57.077 Listmas[2553:120717] List notifications... [object Object]
+2015-05-17 11:01:57.078 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cList.js:321:26
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:02:01.316 Listmas[2553:120717] Updating search results
+2015-05-17 11:02:01.861 Listmas[2553:120717] push [object Object]
+2015-05-17 11:02:07.267 Listmas[2553:120717] Searching For
+2015-05-17 11:02:07.268 Listmas[2553:120717] ant
+2015-05-17 11:02:07.511 Listmas[2553:120717] [{"prodName":"TERRO Ant Killer Liquid Ant Baits (pre-filled) 6 Pack","prodPhoto":"http://ecx.images-amazon.com/images/I/51fam0zr1iL.jpg","prodUrl":"http://www.amazon.com/TERRO-Killer-Liquid-Baits-pre-filled/dp/B000HJBKMQ%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000HJBKMQ"},{"prodName":"Terro 1806 Outdoor Liquid Ant Baits","prodPhoto":"http://ecx.images-amazon.com/images/I/61ML37Y12VL.jpg","prodUrl":"http://www.amazon.com/Terro-1806-Outdoor-Liquid-Baits/dp/B004Q3QQNC%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004Q3QQNC"},{"prodName":"TERRO 600 1-Pound Ant Killer Dust","prodPhoto":"http://ecx.images-amazon.com/images/I/41YWmmaa-2L.jpg","prodUrl":"http://www.amazon.com/TERRO-600-1-Pound-Killer-Dust/dp/B001B1KH1Y%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB001B1KH1Y"},{"prodName":"4 Tubes Dupont Advion Ant Gel Bait w/ 1 Plunger (30 grams per Tube) ~~ Kill Argentine , Big Headed , Carpenter , Cornfield , Crazy , Field , Ghost , Harvester , Honey , Little Black , Odorous House , Pavement , Pharaoh , Pyramid , Red Imported Fire Ant , Rover , Thief and White Footed ~ Better then Maxforce Intice & Terro Best Pest Control for Ants On the Market !! 6666305","prodPhoto":"http://ecx.images-amazon.com/images/I/51CRMZOabuL.jpg","prodUrl":"http://www.amazon.com/Argentine-Carpenter-Cornfield-Harvester-Pavement/dp/B004NS0HT4%3FSubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004NS0HT4"},{"prodName":"TERRO 2 oz Liquid Ant Killer ll  T200","prodPhoto":"http://ecx.images-amazon.com/images/I/51nDDXAfmDL.jpg","prodUrl":"http://www.amazon.com/TERRO-Liquid-Ant-Killer-T200/dp/B0015031R8%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0015031R8"},{"prodName":"Hot Shot 2040W MaxAttrax Ant Bait, 4 Count, Case Pack of 1","prodPhoto":"http://ecx.images-amazon.com/images/I/61bj-9kgn-L.jpg","prodUrl":"http://www.amazon.com/Hot-Shot-2040W-MaxAttrax-Count/dp/B000ZZUNJS%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000ZZUNJS"},{"prodName":"Combat Ant Killing Gel 27grams","prodPhoto":"http://ecx.images-amazon.com/images/I/51XiAbHGIFL.jpg","prodUrl":"http://www.amazon.com/Combat-Ant-Killing-Gel-27grams/dp/B000BQT5IG%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000BQT5IG"},{"prodName":"TERRO T1812 Outdoor Liquid Ant Killer Bait Stakes","prodPhoto":"http://ecx.images-amazon.com/images/I/51T1hSCMbVL.jpg","prodUrl":"http://www.amazon.com/T1812-Outdoor-Liquid-Killer-Stakes/dp/B00GRTNRJ4%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00GRTNRJ4"},{"prodName":"TERRO T901-6 Ant Killer Plus 3lb. Shaker Bag","prodPhoto":"http://ecx.images-amazon.com/images/I/512LrDMc2pL.jpg","prodUrl":"http://www.amazon.com/TERRO-T901-6-Killer-Plus-Shaker/dp/B001B1KGCO%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB001B1KGCO"},{"prodName":"Peppermint Oil - Premium Quality 4 Oz 100% Pure & Natural Peppermint Essential Oil (Mentha Piperita) - Steam Distilled, Therapeutic Grade - Many Household Uses and Benefits - Perfect Aromatherapy Essential Oil - Supports Respiratory Health, Eases Stomach & Head Discomfort - Helps Relief From Stress, Migraines, Headaches & Anxiety - Refreshing and Relaxing - Promotes Healthy Skin, Prevents Clogging of Pores and Outbreak of Acne - Natural Insect Repellent, Helps to Keep SPIDERS, MICE, ROACHES, FLEAS & ANTS Away - Keeps Bug Diseases Away - Buy with Complete Confidence Now!","prodPhoto":"http://ecx.images-amazon.com/images/I/51rkF0F-4FL.jpg","prodUrl":"http://www.amazon.com/Peppermint-Oil-Therapeutic-Aromatherapy-Respiratory/dp/B00PV15BPW%3FSubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00PV15BPW"}]
+2015-05-17 11:02:07.512 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cSearch.js:34:30
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:02:18.957 Listmas[2553:120717] Adding Product
+2015-05-17 11:02:18.957 Listmas[2553:120717] Terro 1806 Outdoor Liquid Ant Baits
+2015-05-17 11:02:18.957 Listmas[2553:120717] http://www.amazon.com/Terro-1806-Outdoor-Liquid-Baits/dp/B004Q3QQNC%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004Q3QQNC
+2015-05-17 11:02:18.996 Listmas[2553:120717] Inserting into prodlist: 1
+2015-05-17 11:02:19.588 Listmas[2553:120717] Getting Product List 1
+2015-05-17 11:02:19.630 Listmas[2553:120717] shareStatus true
+2015-05-17 11:02:19.673 Listmas[2553:120717] List notifications... [object Object]
+2015-05-17 11:02:19.674 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cList.js:321:26
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:02:19.675 Listmas[2553:120717] List notifications... [object Object]
+2015-05-17 11:02:19.675 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cList.js:321:26
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:03:24.234 Listmas[2553:120717] added image col to local db
+2015-05-17 11:03:24.295 Listmas[2553:120717] iossim
+2015-05-17 11:03:24.296 Listmas[2553:120717] iossim
+2015-05-17 11:03:24.296 Listmas[2553:120717] null
+2015-05-17 11:03:24.296 Listmas[2553:120717] null
+2015-05-17 11:03:24.296 Listmas[2553:120717] null
+2015-05-17 11:03:24.296 Listmas[2553:120717] image: http://www.mylistmas.com/icons/icon_256.png
+2015-05-17 11:03:24.604 Listmas[2553:120717] push [object Object]
+2015-05-17 11:03:26.623 Listmas[2553:120717] Publishing...
+2015-05-17 11:03:26.687 Listmas[2553:120717] {"list":{"shoplistId":null,"shoplistName":"iossim","shoplistEnhanced":0,"shareImage":"","shoplistRemoteId":1},"prod":[{"prodId":1,"prodName":"Terro 1806 Outdoor Liquid Ant Baits","prodPhoto":"http://ecx.images-amazon.com/images/I/61ML37Y12VL.jpg","prodDescription":null,"prodUrl":"http://www.amazon.com/Terro-1806-Outdoor-Liquid-Baits/dp/B004Q3QQNC%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB004Q3QQNC","prodUpc":"","prodQty":0}]}
+2015-05-17 11:03:26.687 Listmas[2553:120717] iossim
+2015-05-17 11:03:26.687 Listmas[2553:120717] iossim
+2015-05-17 11:03:26.688 Listmas[2553:120717] null
+2015-05-17 11:03:26.688 Listmas[2553:120717] null
+2015-05-17 11:03:26.688 Listmas[2553:120717] null
+2015-05-17 11:03:26.688 Listmas[2553:120717] image: http://www.mylistmas.com/icons/icon_256.png
+2015-05-17 11:03:28.386 Listmas[2553:120717] Saving list... [object Object]
+2015-05-17 11:03:28.593 Listmas[2553:120717] iossim
+2015-05-17 11:03:28.593 Listmas[2553:120717] iossim
+2015-05-17 11:03:28.594 Listmas[2553:120717] YR6py9yUwDwSLOgwPQ:GoA
+2015-05-17 11:03:28.594 Listmas[2553:120717] YR6py9yUwDwSLOgwPQ:GoA
+2015-05-17 11:03:28.594 Listmas[2553:120717] http://s3.amazonaws.com/listmas/1431875007_614.jpg
+2015-05-17 11:03:28.594 Listmas[2553:120717] image: http://s3.amazonaws.com/listmas/1431875007_614.jpg
+2015-05-17 11:03:37.302 Listmas[2553:120717] Failed to load webpage with error: The URL can’t be shown
+2015-05-17 11:03:45.960 Listmas[2553:120717] Getting Product List 1
+2015-05-17 11:03:45.979 Listmas[2553:120717] shareStatus true
+2015-05-17 11:03:46.074 Listmas[2553:120717] List notifications... [object Object]
+2015-05-17 11:03:46.074 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cList.js:321:26
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:03:46.075 Listmas[2553:120717] List notifications... [object Object]
+2015-05-17 11:03:46.075 Listmas[2553:120717] ERROR: Error: [$rootScope:inprog] $digest already in progress
+http://errors.angularjs.org/1.2.10/$rootScope/inprog?p0=%24digest
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:32:2478
+beginPhase@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:31474
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4589
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/js/cList.js:321:26
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:4423
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+wrappedCallback@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:28514
+file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:29372
+$eval@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4259
+$digest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:2302
+$apply@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:35:4690
+done@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:5217
+completeRequest@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:8407
+onreadystatechange@file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/E1CB7DB1-3DA4-4815-9D86-E8ED6D2694FE/Listmas.app/www/components/loader.js:34:9344
+2015-05-17 11:12:23.913 Listmas[3118:125153] Apache Cordova native platform version 3.8.0 is starting.
+2015-05-17 11:12:23.916 Listmas[3118:125153] Multi-tasking -> Device: YES, App: YES
+2015-05-17 11:12:23.927 Listmas[3118:125153] Unlimited access to network resources
+2015-05-17 11:12:23.950 Listmas[3118:125153] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-05-17 11:12:24.427 Listmas[3118:125153] [CDVTimer][splashscreen] 318.310976ms
+2015-05-17 11:12:24.434 Listmas[3118:125153] [CDVTimer][statusbar] 5.896986ms
+2015-05-17 11:12:24.434 Listmas[3118:125153] [CDVTimer][TotalPluginStartup] 324.711978ms
+2015-05-17 11:12:24.952 Listmas[3118:125153] Resetting plugins due to page load.
+2015-05-17 11:12:25.452 Listmas[3118:125153] Finished load of: file:///Users/matt/Library/Developer/CoreSimulator/Devices/A61EF348-4DBB-4548-8974-F18F3FDDB1D9/data/Containers/Bundle/Application/6EA17060-3FCF-42BF-8D28-335A8A30E5BC/Listmas.app/www/index.html
+2015-05-17 11:12:25.664 Listmas[3118:125153] ERROR: Plugin 'Monaca' not found, or is not a CDVPlugin. Check your plugin mapping in config.xml.
+2015-05-17 11:12:25.665 Listmas[3118:125153] -[CDVCommandQueue executePending] [Line 159] FAILED pluginJSON = ["Monaca1140350646","Monaca","getRuntimeConfiguration",[]]
+2015-05-17 11:12:25.665 Listmas[3118:125153] Getting Shop Lists
+2015-05-17 11:12:25.665 Listmas[3118:125153] push [object Object]
+2015-05-17 11:12:25.786 Listmas[3118:125153] Getting Product List 1
+2015-05-17 11:12:25.896 Listmas[3118:125153] shareStatus true
+2015-05-17 11:12:26.183 Listmas[3118:125153] List notifications... [object Object]
+2015-05-17 11:12:26.184 Listmas[3118:125153] List notifications... [object Object]
+2015-05-17 11:12:26.236 Listmas[3118:125153] push [object Object]
+2015-05-17 11:12:33.753 Listmas[3118:125171] Camera.getPicture: source type 1 not available.
+2015-05-17 11:12:33.756 Listmas[3118:125153] Failed because: No camera available
+2015-05-17 11:12:35.540 Listmas[3118:125162] Camera.getPicture: source type 1 not available.
+2015-05-17 11:12:35.542 Listmas[3118:125153] Failed because: No camera available
+2015-05-17 11:12:38.882 Listmas[3118:125162] Camera.getPicture: source type 1 not available.
+2015-05-17 11:12:38.884 Listmas[3118:125153] Failed because: No camera available

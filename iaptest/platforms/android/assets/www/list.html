@@ -1,0 +1,79 @@
+<ons-page ng-controller="GroceryListCtrl">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="GoBack();"><ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>    
+        </div>
+        <div class="center">{{shoplistName}}</div>
+        <div class="right">
+            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon>Share</ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <ons-modal var="malt">
+        <div class="dialog">
+            <p>No product information could be found. Would you like to take a picture instead?</p>
+            <ons-button class="control-btn" ng-click="GetPhoto()"><ons-icon icon="camera"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="malt.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mdelete">
+        <div class="dialog">
+            <p>Do you want to delete the item: <strong>{{prodDeleteName}}</strong>?</p>
+            <ons-button class="control-btn delete-btn" ng-click="DeleteGrocery()"><ons-icon icon="trash-o"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mdelete.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mreminder">
+        <div class="dialog">
+            <p>Don't forget to press <strong>Publish</strong>, in the <strong>Share</strong> screen, to make these changes visible to those viewing your list.</p>
+            <ons-button class="control-btn close-btn" onclick="mreminder.hide()" style="width: 100%;"><ons-icon icon="check"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mbought">
+        <div class="dialog">
+            <p>Someone said they have bought this item: <strong>{{prodDeleteName}}</strong>. <br/><br/>Close this box to keep it on the list or press the <strong>Delete</strong> button to remove it.</p>
+            <ons-button class="control-btn delete-btn" ng-click="mbought.hide(); DoDelete(prodDeleteId, prodDeleteName);"><ons-icon icon="trash-o"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mbought.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mimg">
+        <div class="dialog">
+            <ons-list-item ng-repeat="image in metaurl.images track by $index">
+                <img src="{{image}}" width="100%" ng-click="AddUrl(metaurl.title, image, metaurl.link)"/>
+            </ons-list-item>
+            <ons-button class="control-btn close-btn" onclick="mimg.hide()" style="width: 100%;"><ons-icon icon="check"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-list class="prodlist">
+      <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing" ng-class="(grocery.prodBought=='true') ? 'done-true' : 'edit'">
+            <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
+            <span class="prodName" ng-class="(grocery.prodBought=='true') ? 'done-true' : ''">{{grocery.prodName}}</span>
+            <div class="prodPhoto" style="background-image:url({{grocery.prodPhoto}});"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->
+            </ons-gesture-detector>
+      </ons-list-item>
+    </ons-list>
+    
+    <div class="help hlist" ng-if="showHelp">
+        <div class="toolbar">
+            Add some items to your list. Then share it with family and friends.
+        </div>
+        <div class="footbar">
+            Add items to your list by scanning a UPC barcode, taking a photograph or searching amazon.com. Long-press an item to remove it from your list.
+        </div>
+    </div>
+    
+    <form class="foot_ctrl list_foot_ctrl">
+        <h3>Add Item</h3>
+        <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span><br/>UPC</ons-button>
+        <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus}}"><span class="fa fa-camera fa-lg"></span><br/>Photo</ons-button>
+        <ons-button class="capture-btn" ng-click="GetUrl()" disabled=""><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
+        <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
+    </form>
+
+</ons-page>
