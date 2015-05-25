@@ -1,7 +1,7 @@
 var ggControllers = angular.module('ggControllers', []);
 
-ggControllers.controller('ShopListCtrl', ['$scope', '$filter', '$timeout', 'ggActiveList', 'ggProStatus', 
-function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
+ggControllers.controller('ShopListCtrl', ['$scope', '$filter', '$timeout', '$http', 'ggActiveList', 'ggProStatus', 
+function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     
    
     $scope.shoplists = [ ];
@@ -14,7 +14,7 @@ function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
     $scope.db.transaction(function (tx) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProd (prodId INTEGER PRIMARY KEY, prodRemoteId INTEGER, prodName TEXT, prodDescription TEXT, prodPhoto TEXT, prodUrl TEXT, prodUpc TEXT, prodTimeStamp INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProdlist (prodlistId INTEGER PRIMARY KEY, prodlistRemoteId INTEGER, prodId INTEGER, shoplistId INTEGER, prodPrice REAL DEFAULT 0, prodQty REAL DEFAULT 0, prodlistTimeStamp INTEGER)");
-        tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
+        tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistImage TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
     });
     
     if( localStorage.getItem("proStatus") !== null ){
@@ -109,7 +109,7 @@ function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
             $scope.db.transaction(function (tx) {
                 console.log('Adding List');
                 console.log(listName);
-                tx.executeSql('INSERT INTO tblShoplist (shoplistName) VALUES ( ?)', [listName], function(tx, response){
+                tx.executeSql('INSERT INTO tblShoplist (shoplistName, shoplistCheckoff) VALUES ( ?, 0)', [listName], function(tx, response){
                     $scope.UpdateShopList();
                     ggActiveList.SetActiveList(response.insertId);
                     app.navi.pushPage('list.html');
@@ -121,6 +121,46 @@ function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
         $scope.formListText = '';
     };
     
+    $scope.RestoreList = function(){
+        var listpin = prompt("Enter the code you received when you submitted the list for transfer:");
+        $http.get('https://mylistmas.herokuapp.com/reactor/syncapi/restorelist/'+listpin).success(function(response){
+        //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+            console.log("restoring list...",response);
+            console.log(response.list);
+            if( response.list ){
+                $scope.db.transaction(function (tx) {
+                    tx.executeSql('INSERT INTO tblShoplist (shoplistRemoteId,shoplistName,shoplistUrl,shoplistCheckoff,shoplistImage) VALUES ( ?, ?, ?, ?, ?)', 
+                        [response.list.shopListId,response.list.shopListName,response.list.shopListCode,response.list.shopListCheckoff,response.list.shopListImage], 
+                        function(tx, result){
+                            
+                            $scope.UpdateShopList();
+                            ggActiveList.SetActiveList(result.insertId);
+                            console.log("prod",response)
+                            for( var idx=0; idx<response.prod.length; idx++){
+                                
+                                if( !response.prod[idx].prodDescription ) response.prod[idx].prodDescription = "";
+                                tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc, prodDescription) VALUES ( ?, ?, ?, ?, ?)', 
+                                    [response.prod[idx].prodName, response.prod[idx].prodPhoto, response.prod[idx].prodUrl, response.prod[idx].prodUpc, response.prod[idx].prodDescription], function(tx, response){
+                                        //$scope.UpdateGroceryList
+                                        console.log('Inserting into prodlist: '+response.insertId);
+                                        tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', 
+                                            [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList), 
+                                            function(result, error){console.log(error);}; 
+                                    }, function(result, error){console.log(error);});
+                                
+                                
+                            }
+                            //app.navi.pushPage('list.html');
+                    }, function(result, error){console.log(error);});
+                });
+            }
+
+        }).error(function(){
+            $scope.UpdateShopList();
+            alert('Something went wrong. Please try again. (3)');
+        });
+    };
+    
     $scope.SetActiveList = function(event){
         console.log('SetActiveList', event);
         ggActiveList.SetActiveList(event);
@@ -128,6 +168,7 @@ function($scope, $filter, $timeout, ggActiveList, ggProStatus) {
         app.navi.pushPage('list.html');
     };
     
+    $scope.SetPro(1);
     $scope.UpdateShopList();
     
 }]);

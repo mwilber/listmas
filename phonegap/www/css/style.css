@@ -156,6 +156,18 @@
     border: none;
 }
 
+.xfermessage{
+    padding:10% 10%;
+    text-align:justify;
+    color:#333;
+}
+
+.xfermessage h1{
+    font-size:60px;
+    text-align:center;
+    color:#555;
+}
+
 .infolist .list__item:first-child:last-child{
     border: none;
 }

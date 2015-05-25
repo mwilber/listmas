@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="com.greenzeta.listmas" version="1.0.3">
-  <name>Listmas</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.greenzeta.listmaspro" version="2.0.0">
+  <name>Listmas Pro</name>
   <description/>
   <author/>
   <preference name="loglevel" value="DEBUG"/>

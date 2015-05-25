@@ -12,6 +12,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.prodDeleteName = "";
     $scope.prodDeleteId = "";
     $scope.showHelp = false;
+    $scope.shoplistCheckoff = 0;
     
     app.navi.on('postpop',function(){
         try{
@@ -61,6 +62,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                 tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
                     $scope.shoplistName = result.rows.item(0).shoplistName;
                     $scope.shoplistUrl = result.rows.item(0).shoplistUrl;
+                    $scope.shoplistCheckoff = result.rows.item(0).shoplistCheckoff;
                     $scope.$apply();
                 }, function(result, error){console.log(error);});
             });

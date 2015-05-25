@@ -6,7 +6,7 @@
         </div>
         <div class="center">{{shoplistName}}</div>
         <div class="right">
-            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus"><ons-icon icon="share-alt"></ons-icon>Share</ons-toolbar-button>
+            <ons-toolbar-button ng-click="DoShare();" ng-if="shareStatus && (shoplistCheckoff >= 0)"><ons-icon icon="share-alt"></ons-icon>Share</ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -50,6 +50,16 @@
         </div>
     </ons-modal>
     
+    <div class="xfermessage" ng-if="shoplistCheckoff < 0">
+    
+        <p><strong>This list has been posted for transfer.</strong></p>
+        <p>To transfer this list to another device, press the Import List (<i class="fa fa-cloud-download"></i>) button on that device and enter this four digit code:</p>
+        <h1>{{-shoplistCheckoff}}</h1>
+    
+    </div>
+    
+    <div ng-if="shoplistCheckoff >= 0">
+    
     <ons-list class="prodlist">
       <ons-list-item ng-repeat="grocery in groceries" ng-controller="GroceryListing" ng-click="ShowDetails(grocery)" class="thumbnail grocery-listing" ng-class="(grocery.prodBought=='true') ? 'done-true' : 'edit'">
             <ons-gesture-detector ng-hold="DoDelete(grocery.prodId, grocery.prodName)" class="wrapper">
@@ -75,5 +85,7 @@
         <ons-button class="capture-btn" ng-click="GetUrl()" disabled=""><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
     </form>
+    
+    </div>
 
 </ons-page>

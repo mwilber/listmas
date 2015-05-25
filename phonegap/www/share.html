@@ -7,7 +7,7 @@
         </div>
         <div class="center">Share</div>
         <div class="right">
-            <!--<ons-toolbar-button ng-click="DeleteGrocery()" class="delete-btn"><ons-icon icon="trash-o"></ons-icon></ons-toolbar-button>-->
+            <ons-toolbar-button ng-click="xferwarn.show('modal');" class="xfer-btn"><ons-icon icon="upload"></ons-icon></ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -15,6 +15,14 @@
         <div class="dialog">
             <p>{{publishResultTxt}}</p>
             <ons-button class="wide-btn" onclick="pubresult.hide()"><ons-icon icon="check"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="xferwarn">
+        <div class="dialog">
+            <p>InsertTextHere</p>
+            <ons-button class="control-btn" ng-click="DoXfer()"><ons-icon icon="upload"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="xferwarn.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     

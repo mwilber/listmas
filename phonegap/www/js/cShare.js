@@ -98,6 +98,7 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     pubData.list.shoplistId = result.rows.item(0).shoplistRemoteId;
                     pubData.list.shoplistRemoteId = result.rows.item(0).shoplistId;
                     pubData.list.shoplistName = result.rows.item(0).shoplistName;
+                    pubData.list.shoplistCheckoff = result.rows.item(0).shoplistCheckoff;
                     for( var idx = 0; idx < result.rows.length; idx++){
                         pubData.prod.push({
                             prodId: result.rows.item(idx).prodId,
@@ -119,8 +120,8 @@ function($scope, $http, ggActiveList, ggProStatus) {
                             alert('Something went wrong. Please try again.');
                         }else{
         			        $scope.db.transaction(function (tx) {
-    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=? WHERE shoplistId=?", 
-    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistRemoteId], function(){
+    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=?, shoplistCheckoff=? WHERE shoplistId=?", 
+    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistCheckoff, response.data.shoplistRemoteId], function(){
                                         $scope.publishStatus = false;
                                         $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
                                         pubresult.show('modal');
@@ -141,6 +142,57 @@ function($scope, $http, ggActiveList, ggProStatus) {
                 }, function(result, error){ $scope.UpdateListDetails(); console.log(error);});
             });
             $scope.UpdateListDetails();
+    };
+    
+    $scope.DoXfer = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'xfer', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
+
+        console.log('Xferring...');
+        var pubData = {
+            list:{
+                shoplistId:0,
+                shoplistName:"",
+                shoplistEnhanced:ggProStatus.GetProStatus(),
+                shareImage:""
+            },
+            prod:[],
+        };
+        
+        $scope.db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                pubData.list.shoplistId = result.rows.item(0).shoplistRemoteId;
+                pubData.list.shoplistRemoteId = result.rows.item(0).shoplistId;
+                pubData.list.shoplistName = result.rows.item(0).shoplistName;
+                console.log(pubData);
+                $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/xferlist', pubData).success(function(response){
+                //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                    console.log("Xferring list...",response);
+                    response.data.shopListCheckoff = -(parseInt(response.data.shopListCheckoff, 10));
+                        console.log("SQL UPDATE", response.data.shopListCheckoff, response.data.shopListRemoteId);
+        		        $scope.db.transaction(function (tx) {
+        		            tx.executeSql("UPDATE tblShopList SET shoplistCheckoff=? WHERE shoplistId=?", 
+        		                [response.data.shopListCheckoff, ggActiveList.GetActiveList()], function(){
+                                    app.navi.resetToPage('lists.html');
+                                }, function(result, error){
+                                    $scope.UpdateListDetails();
+                                    alert('Something went wrong. Please try again. (2)');
+                                });
+        		        });
+
+                }).error(function(){
+                    $scope.publishStatus = false;
+                    $scope.UpdateListDetails();
+                    alert('Something went wrong. Please try again. (3)');
+                });
+            }, function(result, error){ $scope.UpdateListDetails(); console.log(error);});
+        });
+
+
+        $scope.UpdateListDetails();
     };
     
     $scope.FbShare = function(){
