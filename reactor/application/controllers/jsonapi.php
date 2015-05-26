@@ -397,8 +397,8 @@ class JSONAPI extends CI_Controller {
 
 			$pUrl = $pUrl."?tag=mwilbercom-20";
 		}
-		echo $pUrl;
-		die;
+		//echo $pUrl;
+		//die;
 		$this->_response->title = "";
 		$this->_response->description = "";
 		$this->_response->link = $pUrl;
