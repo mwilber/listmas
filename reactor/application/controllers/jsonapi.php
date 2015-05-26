@@ -387,7 +387,12 @@ class JSONAPI extends CI_Controller {
 	}
 
 	function getmeta($pUrl = ""){
-		$pUrl = base64_decode($pUrl);
+		$json = file_get_contents('php://input');
+		$obj = json_decode($json);
+
+		$pUrl = preg_replace('/tag=.*-20&/', 'tag=mwilbercom-20&', base64_decode($obj->link));
+		//echo $pUrl;
+		//die;
 		$this->_response->title = "";
 		$this->_response->description = "";
 		$this->_response->link = $pUrl;
