@@ -366,13 +366,17 @@ class JSONAPI extends CI_Controller {
 		echo $response->Items->Item[0]->ItemAttributes->Title;
 	}
 
-	function notify($pAction, $pOp){
+	function notify($pAction="", $pOp=""){
 
 		$this->load->model('notify_model');
 
+		$this->_response->data = array();
+
 		switch($pAction){
 			case "index":
-				$this->_response->data = $this->notify_model->Get(array('shoplistUrl'=>$pOp,'notifyRead'=>0));
+				if($pOp !=""){
+					$this->_response->data = $this->notify_model->Get(array('shoplistUrl'=>$pOp,'notifyRead'=>0));
+				}
 				break;
 			case "read":
 				$this->_response->data = $this->notify_model->Update(array('notifyId'=>$pOp,'notifyRead'=>1));
