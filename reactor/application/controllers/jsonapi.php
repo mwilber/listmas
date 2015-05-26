@@ -424,6 +424,11 @@ class JSONAPI extends CI_Controller {
 					array_push($this->_response->images, $meta->getAttribute('content'));
 					break;
 			}
+			switch($meta->getAttribute('name')){
+				case 'title':
+					$this->_response->title = $meta->getAttribute('content');
+					break;
+			}
 		}
 
 		// Get all of the iamges
