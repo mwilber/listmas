@@ -390,9 +390,15 @@ class JSONAPI extends CI_Controller {
 		$json = file_get_contents('php://input');
 		$obj = json_decode($json);
 
-		$pUrl = preg_replace('/tag=.*-20&/', 'tag=mwilbercom-20&', base64_decode($obj->link));
-		//echo $pUrl;
-		//die;
+		$pUrl = base64_decode($obj->link);
+
+		if (strpos($pUrl,'amazon.com') !== false) {
+			$pUrl = preg_replace('/\?.*/', '', $pUrl);
+
+			$pUrl = $pUrl."?tag=mwilbercom-20";
+		}
+		echo $pUrl;
+		die;
 		$this->_response->title = "";
 		$this->_response->description = "";
 		$this->_response->link = $pUrl;
