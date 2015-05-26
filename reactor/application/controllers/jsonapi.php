@@ -411,6 +411,10 @@ class JSONAPI extends CI_Controller {
 		$html = new DOMDocument();
 		@$html->loadHTML($sites_html);
 
+		foreach($html->getElementsByTagName('title') as $title) {
+			$this->_response->title = $title->textContent;
+		}
+
 		//Get all meta tags and loop through them.
 		foreach($html->getElementsByTagName('meta') as $meta) {
 		    switch($meta->getAttribute('property')){
@@ -424,11 +428,11 @@ class JSONAPI extends CI_Controller {
 					array_push($this->_response->images, $meta->getAttribute('content'));
 					break;
 			}
-			switch($meta->getAttribute('name')){
-				case 'title':
-					$this->_response->title = $meta->getAttribute('content');
-					break;
-			}
+			// switch($meta->getAttribute('name')){
+			// 	case 'title':
+			// 		$this->_response->title = $meta->getAttribute('content');
+			// 		break;
+			// }
 		}
 
 		// Get all of the iamges

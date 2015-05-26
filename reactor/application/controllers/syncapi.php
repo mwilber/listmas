@@ -126,7 +126,7 @@ class SyncAPI extends CI_Controller {
 		$tp = 0;
 		//Get the number of gaps
 		//echo ($tc*$tc)-(count($slTmp)+1);
-		if(($tc*$tc)-(count($slTmp)+1) > 0) $tp++;
+		//if(($tc*$tc)-(count($slTmp)+1) > 0) $tp++;
 
 		for($idx = 0; $idx<count($slTmp); $idx++){
 			if( $idx > ($tc*$tc) ) break;
@@ -147,10 +147,19 @@ class SyncAPI extends CI_Controller {
 			$twitterLayer->addLayer(($idx+1), $tileLayer, (($mw/$tc)*($tp%$tc)), (($mw/$tc)*floor($tp/$tc)), "LT");
 
 			$tp++;
-			if( $tp == (floor(($tc*$tc)/2)) ) $tp++;
-			if(($tc*$tc)-(count($slTmp)+1) > 0){
-				if( $tp%(floor( ($tc*$tc)/(($tc*$tc)-(count($slTmp)+1)) )) == 0) $tp++;
+
+			if( $tp >= (count($slTmp))/2 && $tp < ((count($slTmp))/2)+((($tc*$tc)-1)-count($slTmp)) ){
+				$tp+=(($tc*$tc))-count($slTmp);
+			}elseif($tp == (floor(($tc*$tc)/2))){
+				$tp++;
 			}
+
+			// if(($tc*$tc)-(count($slTmp)+1) > 0){
+			// 	//if( $tp%(floor( ($tc*$tc)/(($tc*$tc)-(count($slTmp)+1)) )) == 0) $tp++;
+			//
+			// 	if( $tp%(ceil( (($tc*$tc)-1)/((($tc*$tc-1))-count($slTmp)) )) == 0) $tp++;
+			// }
+			// if( $tp == (floor(($tc*$tc)/2)) ) $tp++;
 			//if( $tp == floor(($tc*$tc)/(($tc*$tc)-(count($slTmp)+1)))+1  ) $tp++;
 			//if( $tp%(($tc*$tc)-(count($slTmp)+1)) == 0 ) $tp++;
 		}
@@ -165,8 +174,8 @@ class SyncAPI extends CI_Controller {
 
 		$remotefile = $this->s3->upload(UPLOAD_DIR."/".$imageData, $imageData);
 
-		//header('Content-type: image/jpeg');
-		//imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
+		header('Content-type: image/jpeg');
+		imagejpeg($image, null, 95); // We chose to show a JPG with a quality of 95%
 
 		//Delete all the temp files
 		foreach(glob(UPLOAD_DIR.'/*_*.jpg') as $file)
