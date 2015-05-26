@@ -385,8 +385,7 @@ class JSONAPI extends CI_Controller {
 		$this->_JSONout();
 	}
 
-	function getmeta($pUrl){
-
+	function getmeta($pUrl = ""){
 		$pUrl = base64_decode($pUrl);
 		$this->_response->title = "";
 		$this->_response->description = "";
