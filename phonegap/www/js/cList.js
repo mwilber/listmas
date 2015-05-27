@@ -7,6 +7,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     $scope.activeShopListId = 0;
     $scope.scanStatus = false;
     $scope.shareStatus = true;
+    $scope.urlStatus = false;
     $scope.shoplistName = "List";
     $scope.shoplistUrl = "";
     $scope.prodDeleteName = "";
@@ -55,7 +56,6 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                     console.log('shareStatus', $scope.shareStatus);
                     if($scope.groceries.length > 0){ $scope.showHelp = false; }else{ $scope.showHelp = true; }
                     $scope.$apply();
-                    $scope.UpdateTotal();
                 }, function(result, error){console.log(error);});
             });
             $scope.db.transaction(function (tx) {
@@ -64,6 +64,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                     $scope.shoplistUrl = result.rows.item(0).shoplistUrl;
                     $scope.shoplistCheckoff = result.rows.item(0).shoplistCheckoff;
                     $scope.$apply();
+                    $scope.UpdateTotal();
                 }, function(result, error){console.log(error);});
             });
     };
@@ -257,10 +258,18 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
         //$scope.HandleUrl(testdata);
         
         var turl = prompt('Enter url');
-        turl = btoa(turl);
-        console.log('base64 url',turl);
         
-        $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/getmeta/'+turl).success($scope.HandleUrl);
+        if( turl ){
+            turl = btoa(turl);
+            console.log('base64 url',turl);
+            
+            $scope.urlStatus = true;
+            
+            $http.post('https://mylistmas.herokuapp.com/reactor/jsonapi/getmeta/',{link:turl}).success($scope.HandleUrl).error(function(){
+                alert('Url not found. Please try again.');
+                $scope.urlStatus = false;
+            });
+        }
     };
     
     $scope.HandleUrl = function(response){
@@ -272,6 +281,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             myImage.onload = $scope.HandleImage;
             myImage.src = response.images[idx];
         }
+        $scope.urlStatus = false;
         mimg.show('modal');
     };
     
@@ -302,7 +312,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
     };
     
     $scope.UpdateTotal = function(){
-        
+        //alert('notifications for: '+$scope.shoplistUrl);
         $http.get('https://mylistmas.herokuapp.com/reactor/jsonapi/notify/index/'+$scope.shoplistUrl).success(function(response){
         //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
             console.log("List notifications...",response);
@@ -396,7 +406,7 @@ function($scope, $filter, $timeout) {
         });
             
         }
-        $scope.UpdateTotal();
+        //$scope.UpdateTotal();
     };
     
     $scope.DebounceUpdates = function(pCallback) {

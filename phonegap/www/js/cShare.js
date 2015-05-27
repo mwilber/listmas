@@ -114,24 +114,29 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
                     //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
                         console.log("Saving list...",response);
-                        if (typeof response.data.shoplistUrl === "undefined") {
-                            $scope.publishStatus = false;
-                            $scope.UpdateListDetails();
-                            alert('Something went wrong. Please try again.');
+                        $scope.publishStatus = false;
+                        if( response.error.type == -2 ){
+                            alert('This list was transferred to another device and can no longer be published from here.');
                         }else{
-        			        $scope.db.transaction(function (tx) {
-    				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=?, shoplistCheckoff=? WHERE shoplistId=?", 
-    				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistCheckoff, response.data.shoplistRemoteId], function(){
-                                        $scope.publishStatus = false;
-                                        $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
-                                        pubresult.show('modal');
-                                        $scope.UpdateListDetails();
-                                    }, function(result, error){
-                                        $scope.publishStatus = false;
-                                        $scope.UpdateListDetails();
-                                        alert('Something went wrong. Please try again.');
-                                    });
-    				        });
+                            if (typeof response.data.shoplistUrl === "undefined") {
+                                $scope.publishStatus = false;
+                                $scope.UpdateListDetails();
+                                alert('Something went wrong. Please try again.');
+                            }else{
+            			        $scope.db.transaction(function (tx) {
+        				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=?, shoplistCheckoff=? WHERE shoplistId=?", 
+        				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistCheckoff, response.data.shoplistRemoteId], function(){
+                                            
+                                            $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
+                                            pubresult.show('modal');
+                                            $scope.UpdateListDetails();
+                                        }, function(result, error){
+                                            $scope.publishStatus = false;
+                                            $scope.UpdateListDetails();
+                                            alert('Something went wrong. Please try again.');
+                                        });
+        				        });
+                            }
                         }
                     }).error(function(){
                         $scope.publishStatus = false;
