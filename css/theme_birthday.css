@@ -1,0 +1,31 @@
+.birthday .clouds{
+    background:transparent;
+}
+
+.birthday .pgheader .sociallinks a {
+  color: #ffffff;
+}
+
+/*.panel h1, .popup h1 {
+  background: #003399;
+}*/
+
+.birthday .ground .bkg.one{
+    background: transparent url('../images/bkg_birthday_1.png') left top repeat-x;
+}
+
+.birthday .ground .bkg.two{
+    background: transparent url('../images/bkg_birthday_2.png') top center repeat-x;
+}
+
+.birthday .ground .bkg.three{
+    background: transparent url('../images/bkg_birthday_3.png') top center repeat-x;
+}
+
+.birthday .ground .bkg.four{
+    background: transparent url('../images/bkg_birthday_4.png') top center repeat-x;
+}
+
+.birthday .ground .bkg.five{
+    background: transparent url('../images/bkg_birthday_5.png') top center repeat-x;
+}

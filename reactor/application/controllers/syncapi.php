@@ -203,6 +203,8 @@ class SyncAPI extends CI_Controller {
 		if(isset($obj->list)){
 
 			if( !isset($obj->list->shoplistCheckoff) ) $obj->list->shoplistCheckoff = 0;
+			if( !isset($obj->list->shoplistEnhanced) ) $obj->list->shoplistEnhanced = 0;
+			if( !isset($obj->list->shoplistTheme) ) $obj->list->shoplistTheme = 0;
 
 			if( intval($obj->list->shoplistId) <= 0 ){
 				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced,'shopListCheckoff'=>0));
@@ -227,6 +229,10 @@ class SyncAPI extends CI_Controller {
 				if( isset($obj->list->shoplistEnhanced) ){
 					$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced));
 				}
+				if( isset($obj->list->shoplistTheme) ){
+					$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListName'=>$obj->list->shoplistName,'shopListTheme'=>$obj->list->shoplistTheme));
+				}
+
 				$slTmp = $this->shoplist_model->Get(array('shopListId'=>$slId));
 				$slId = $slTmp->shopListId;
 				$listCode = $slTmp->shopListCode;

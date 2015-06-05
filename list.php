@@ -3,6 +3,7 @@
 	$listTitle = "My Listmas";
 	$listUrl = "";
 	$listEnhanced = 0;
+	$listTheme = "";
 
 	$social = array();
 	$social['title'] = "Check Out My List";
@@ -33,7 +34,7 @@
 		    echo $e->getMessage();
 		    }
 
-		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode,shopListEnhanced,shopListImage FROM tblShoplist WHERE shoplistId=".$_GET['l']);
+		$stmt = $dbh->prepare("SELECT shoplistName,shopListCode,shopListEnhanced,shopListImage, shopListTheme FROM tblShoplist WHERE shoplistId=".$_GET['l']);
 		$stmt->execute();
 		if( $stmt->rowCount() <= 0 ){
 			//
@@ -51,6 +52,7 @@
 			$listTitle = $titleRS['shoplistName'];
 			$listUrl = $titleRS['shopListCode'];
 			$listEnhanced = $titleRS['shopListEnhanced'];
+			$listTheme = $titleRS['shopListTheme'];
 
 			if($titleRS['shopListImage']){
 				$social['image'] = $titleRS['shopListImage'];
@@ -113,6 +115,8 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/list.css" />
     <link rel="stylesheet" type="text/css" href="css/color.css" />
+	<link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
+	<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
     <title>My Listmas : $titleRS['shoplistName']</title>
 
     <script type="text/javascript">
@@ -134,7 +138,7 @@
 
 		</script>
     </head>
-    <body>
+    <body class="<?=$listTheme?>">
 			<!--<div id="background">-->
 				<div class="clouds scenery">
 					<div class="clouds">
@@ -257,12 +261,18 @@
 		<div class="clearfix"></div>
 
 		<div class="ground scenery">
-
+			<div class="bkg one"></div>
+			<div class="bkg two"></div>
+			<div class="bkg three"></div>
+			<div class="bkg four"></div>
+			<div class="bkg five"></div>
+			<!--
 			<?php for($idx = 0; $idx < 10; $idx++): ?>
 			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 160 , 250 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
 			<?php endfor; ?>
 			<img class="cabin" src="images/bkg_cabin.png" style="top:<?=mt_rand ( 45 , 55 )?>px; left:<?=((45)+mt_rand ( 0 , 9 ))?>%;"/>
 			<img class="cabin" src="images/bkg_snowman.png" style="top:<?=mt_rand ( 355 , 375 )?>px; left:<?=mt_rand ( 5 , 45 )?>%;"/>
+			-->
 		</div>
 
 		<div id="footer">

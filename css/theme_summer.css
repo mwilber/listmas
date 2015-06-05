@@ -1,0 +1,31 @@
+.summer .clouds{
+    background:transparent;
+}
+
+.summer .pgheader .sociallinks a {
+  color: #ffff66;
+}
+
+/*.panel h1, .popup h1 {
+  background: #003399;
+}*/
+
+.summer .ground .bkg.one{
+    background: transparent url('../images/bkg_summer_1.png') left top repeat-x;
+}
+
+.summer .ground .bkg.two{
+    background: transparent url('../images/bkg_summer_2.png') top center repeat-x;
+}
+
+.summer .ground .bkg.three{
+    background: transparent url('../images/bkg_summer_3.png') top center repeat-x;
+}
+
+.summer .ground .bkg.four{
+    background: transparent url('../images/bkg_summer_4.png') top center repeat-x;
+}
+
+.summer .ground .bkg.five{
+    background: transparent url('../images/bkg_summer_5.png') top center repeat-x;
+}
