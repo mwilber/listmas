@@ -141,7 +141,7 @@ class JSONAPI extends CI_Controller {
 
 		$response = simplexml_load_file($request);
 
-		//print_r($response->Items->Item[0]->DetailPageURL);
+		//print_r($response->Items->Item[0]->EditorialReviews->EditorialReview->Content);
 		//die;
 
 		if( isset($response->Items->Item[0]->ItemAttributes->Title ) ){
@@ -151,11 +151,15 @@ class JSONAPI extends CI_Controller {
 			for( $idx=0; $idx<10; $idx++){
 				if( isset($response->Items->Item[$idx]->ItemAttributes->Title) ){
 					$description = (string)$response->Items->Item[$idx]->ItemAttributes->Title;
+					$detail = "";
+					$image = "";
+					$pUrl = "";
+					if( isset($response->Items->Item[$idx]->EditorialReviews->EditorialReview->Content) ) $detail = (string)$response->Items->Item[$idx]->EditorialReviews->EditorialReview->Content;
 					if( isset($response->Items->Item[$idx]->LargeImage->URL) ) $image = (string)$response->Items->Item[$idx]->LargeImage->URL;
 					elseif( isset($response->Items->Item[$idx]->MediumImage->URL) ) $image = (string)$response->Items->Item[$idx]->MediumImage->URL;
 					if( isset($response->Items->Item[$idx]->DetailPageURL) ) $pUrl = (string)$response->Items->Item[$idx]->DetailPageURL;
 
-					$prodData = array('prodName'=>$description, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl);
+					$prodData = array('prodName'=>$description, 'prodDetail'=>$detail, 'prodPhoto'=>$image, 'prodUrl'=>$pUrl);
 					array_push($this->_response->data, (object)$prodData);
 					//$nId = $this->upc_model->Add($prodData);
 					//$this->_response->data = $this->upc_model->Get(array('upcId'=>$nId));
