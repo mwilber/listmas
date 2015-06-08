@@ -123,7 +123,7 @@
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
-    content: "\f055";
+    content: "\f105";
 }
 
 .list .list__item img, .list .list__item .prodPhoto{
@@ -137,11 +137,13 @@
 }
 
 .list .list__item span.prodName{
-    float: left;
-    display: block;
-    line-height: 1.25em;
-    /* width: 100%; */
-    margin-left: 60px;
+      float: left;
+  display: block;
+  line-height: 1.25em;
+  width: 70%;
+  margin-left: 60px;
+  height: 2.5em;
+  overflow: hidden;
 }
 
 .list .list__item .wrapper{
@@ -226,18 +228,36 @@
   line-height: 36px;
 }
 
+.share_foot_ctrl .button{
+    width: 32%;
+  border-right-width: 0px;
+  font-size: 9px;
+  line-height: 0px;
+  font-weight:normal;
+}
+
+.share_foot_ctrl .button.publish-btn-lg{
+    width:64%;
+}
+
+.share_foot_ctrl .button span.fa{
+      padding-right: 0px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
 .detail-form {
-    padding-bottom:100px;
+    margin: 30px 5% 75px 5%;
 }
 
 .detail-input {
-  width: 90%;
+  width: 100%;
   height: 20px;
   border: solid 1px #ccc;
   padding: 10px 0;
   font-size: 1em;
   text-indent: 5px;
-  margin:5px 5%;
+  margin:0px 0%;
 }
 
 .detail-photo{
@@ -252,7 +272,7 @@
 label.rating{
     width: 100%;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 ul.rating{
@@ -267,6 +287,7 @@ ul.rating{
 
 textarea.detail-input {
     height:100px;
+    margin: 15px 0%;
 }
 
 li input[type="checkbox"] {
@@ -276,6 +297,25 @@ li input[type="checkbox"] {
 form label{
     width:30%;
     float:left;
+}
+
+.search-detail {
+      margin: 0px 5% 75px 5%;
+}
+
+.search-detail .detail-name{
+      font-size: 18px;
+  margin: 10px 0px;
+}
+
+.search-detail .detail-photo{
+    
+}
+
+.search-detail .detail-detail{
+    text-align: justify;
+  font-size: 14px;
+  padding: 0% 3%;
 }
 
 .done-true {
@@ -367,6 +407,63 @@ form label{
 .sharepreview{
     width:70%;
     margin:5% 15% 0% 15%;
+}
+
+.floating-dialog{
+      position: absolute;
+  top: 5%;
+  height: 85%;
+  width: 80%;
+}
+
+.floating-dialog h1{
+      text-align: left;
+  text-transform: uppercase;
+  font-size: 24px;
+  margin: 0px 0px 20px 0px;
+}
+
+.floating-dialog .scrolllist{
+    height: 75%;
+  overflow: scroll;
+  list-style: none;
+  margin: 0px 0px 5% 0px;
+  padding: 0px;
+}
+
+.floating-dialog .scrolllist li{
+    margin: 0px 0px 10px 0px;
+}
+
+.url-dialog .text-input{
+      width: 100%;
+  border-color: #999;
+  color: #666;
+  font-size: 18px;
+}
+
+.scrolllist .themeselect{
+    width: 90%;
+    height: 109px;
+    background-size: cover;
+    background-position: center -110px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #000, 0px 0px 1px #000;
+    padding: 8px 5%;
+}
+
+.scrolllist .themeselect span.fa{
+      display: none;
+      float: right;
+      color: #4eb94b;
+      text-shadow: 0px 0px 1px #fff, 0px 0px 9px #ffe, 0px 0px 10px #ff0;
+      font-size: 32px;
+}
+
+.scrolllist .themeselect.selected span.fa{
+      display: block;
 }
 
 .help{

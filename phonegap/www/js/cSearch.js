@@ -1,5 +1,5 @@
-ggControllers.controller('SearchCtrl', ['$scope', '$filter', '$http', '$timeout', 'ggActiveList', 
-function($scope, $filter, $http, $timeout, ggActiveList) {
+ggControllers.controller('SearchCtrl', ['$scope', '$filter', '$http', '$timeout', 'ggActiveList', 'ggSearchProd', 
+function($scope, $filter, $http, $timeout, ggActiveList, ggSearchProd) {
     
    
     $scope.searchdata = [ ];
@@ -36,6 +36,13 @@ function($scope, $filter, $http, $timeout, ggActiveList) {
             });
         }
     };
+    
+    $scope.ShowDetail = function(pSearchProd){
+        ggSearchProd.SetSearchProd(pSearchProd);
+        app.navi.pushPage('searchprod.html');
+    };
+    
+    
     
     $scope.AddItem = function(pName, pPhoto, pUrl){
         $scope.db.transaction(function (tx) {

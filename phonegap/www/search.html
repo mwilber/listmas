@@ -12,7 +12,7 @@
     
     
     <ons-list>
-      <ons-list-item modifier="plus" ng-repeat="searchitem in searchdata" ng-click="AddItem(searchitem.prodName, searchitem.prodPhoto, searchitem.prodUrl)" class="thumbnail grocery-listing add">
+      <ons-list-item modifier="plus" ng-repeat="searchitem in searchdata" ng-click="ShowDetail(searchitem)" class="thumbnail grocery-listing add">
             <div class="wrapper">
             <span class="prodName" ng-class="">{{searchitem.prodName}}</span>
             <div class="prodPhoto" style="background-image:url({{searchitem.prodPhoto}});"></div><!--<img ng-src="{{grocery.prodPhoto}}"/>-->

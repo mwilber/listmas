@@ -26,6 +26,32 @@
         </div>
     </ons-modal>
     
+    <ons-modal var="mtheme">
+        <div class="dialog floating-dialog">
+            <h1>Choose a Theme:</h1>
+            <ul class="scrolllist">
+            <li>
+                <div class="themeselect" ng-class="(activeTheme=='cabin') ? 'selected' : ''" ng-click="ChangeTheme('cabin')" style="background-image:url('images/bkg_cabin.png');">Cabin in the Woods <span class="fa fa-check-circle"></span></div>
+            </li>
+            <li>
+                <div class="themeselect" ng-class="(activeTheme=='summer') ? 'selected' : ''" ng-click="ChangeTheme('summer')" style="background-image:url('images/bkg_summer.png');">Evening at the Beach <span class="fa fa-check-circle"></div>
+            </li>
+            <li>
+                <div class="themeselect" ng-class="(activeTheme=='birthday') ? 'selected' : ''" ng-click="ChangeTheme('birthday')" style="background-image:url('images/bkg_birthday.png');">Birthday Party <span class="fa fa-check-circle"></div>
+            </li>
+            </ul>
+            <ons-button class="control-btn close-btn" ng-click="ShowReminder()" style="width: 100%;"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mpreminder">
+        <div class="dialog">
+            <p>You need to publish your list to activate the new theme. Do you want to publish now?</p>
+            <ons-button class="control-btn publish-btn" ng-click="mpreminder.hide(); DoPublish();"><ons-icon icon="cloud-upload"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mpreminder.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
     <!--<form>
         <input class="detail-input" placeholder="Unpublished" type="text" ng-model="list.shoplistUrl" ng-model-instant />
     </form>-->
@@ -64,10 +90,11 @@
     </div>
     
     
-    <form class="foot_ctrl">
+    <form class="foot_ctrl share_foot_ctrl">
         <!--<h3></h3>-->
-        <ons-button class="publish-btn" ng-click="DoPublish()" should-spin="{{publishStatus}}" disabled="{{publishStatus}}" animation="zoom-in"><ons-icon icon="check"></ons-icon> Publish</ons-button>
-        <ons-button class="link-btn" ng-if="list.shoplistUrl" ng-click="ViewWebPage()"><ons-icon icon="globe"></ons-icon> View</ons-button>
+        <ons-button class="publish-btn" ng-class="(list.shoplistUrl) ? '' : 'publish-btn-lg'" ng-click="DoPublish()" should-spin="{{publishStatus}}" disabled="{{publishStatus}}" animation="zoom-in"><span class="fa fa-cloud-upload fa-lg"></span><br/>Publish</ons-button>
+        <ons-button class="theme-btn" ng-if="true" ng-click="PickTheme()"><span class="fa fa-image fa-lg"></span><br/> Theme</ons-button>
+        <ons-button class="link-btn" ng-if="list.shoplistUrl" ng-click="ViewWebPage()"><span class="fa fa-share-square-o fa-lg"></span><br/>View</ons-button>
         <!--<ons-button class="close-btn" ng-click="app.navi.popPage()"><ons-icon icon="times"></ons-icon></ons-button>-->
     </form>
 

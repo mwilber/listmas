@@ -14,7 +14,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     $scope.db.transaction(function (tx) {
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProd (prodId INTEGER PRIMARY KEY, prodRemoteId INTEGER, prodName TEXT, prodDescription TEXT, prodPhoto TEXT, prodUrl TEXT, prodUpc TEXT, prodTimeStamp INTEGER)");
         tx.executeSql("CREATE TABLE IF NOT EXISTS tblProdlist (prodlistId INTEGER PRIMARY KEY, prodlistRemoteId INTEGER, prodId INTEGER, shoplistId INTEGER, prodPrice REAL DEFAULT 0, prodQty REAL DEFAULT 0, prodlistTimeStamp INTEGER)");
-        tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistImage TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
+        tx.executeSql("CREATE TABLE IF NOT EXISTS tblShoplist (shoplistId INTEGER PRIMARY KEY, shoplistRemoteId INTEGER, shoplistName TEXT, shoplistUrl TEXT, shoplistImage TEXT, shoplistTheme TEXT, shoplistCheckoff INTEGER, storeId INTEGER, profileId INTEGER, shoplistTimeStamp INTEGER)");
     });
     
     if( localStorage.getItem("proStatus") !== null ){
@@ -26,6 +26,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     if( localStorage.getItem("activeList") !== null ){
         ggActiveList.SetActiveList(localStorage.getItem("activeList"));
         app.navi.pushPage('list.html');
+        //app.navi.pushPage('share.html');
     }
     
     app.navi.on('postpush',function(event){

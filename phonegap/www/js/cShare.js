@@ -16,14 +16,23 @@ function($scope, $http, ggActiveList, ggProStatus) {
         description:"Make your #wishlist with Listmas"
     };
     
+    $scope.activeTheme="cabin";
+    $scope.showReminder=false;
+    
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     
     //console.log('Prod Details', $scope.grocery);
+    //console.log('DA LIST', list.shoplistUrl);
     
     // Update the local database
     $scope.db.transaction(function (tx) {
         tx.executeSql('ALTER TABLE tblShoplist ADD COLUMN shoplistImage INTEGER', [], function(tx, result){
             console.log('added image col to local db');
+            //$scope.$apply();
+            //setTimeout(function(){$scope.$apply();}, 1000);
+        }, function(result, error){console.log(error);});
+        tx.executeSql('ALTER TABLE tblShoplist ADD COLUMN shoplistTheme INTEGER', [], function(tx, result){
+            console.log('added theme col to local db');
             //$scope.$apply();
             //setTimeout(function(){$scope.$apply();}, 1000);
         }, function(result, error){console.log(error);});
@@ -89,7 +98,8 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     shoplistId:0,
                     shoplistName:"",
                     shoplistEnhanced:ggProStatus.GetProStatus(),
-                    shareImage:""
+                    shareImage:"",
+                    shoplistTheme:""
                 },
                 prod:[],
             };
@@ -98,6 +108,7 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     pubData.list.shoplistId = result.rows.item(0).shoplistRemoteId;
                     pubData.list.shoplistRemoteId = result.rows.item(0).shoplistId;
                     pubData.list.shoplistName = result.rows.item(0).shoplistName;
+                    pubData.list.shoplistTheme = result.rows.item(0).shoplistTheme;
                     pubData.list.shoplistCheckoff = result.rows.item(0).shoplistCheckoff;
                     for( var idx = 0; idx < result.rows.length; idx++){
                         pubData.prod.push({
@@ -147,6 +158,57 @@ function($scope, $http, ggActiveList, ggProStatus) {
                 }, function(result, error){ $scope.UpdateListDetails(); console.log(error);});
             });
             $scope.UpdateListDetails();
+    };
+    
+    $scope.PickTheme = function(){
+        
+        $scope.db.transaction(function (tx) {
+            tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                $scope.activeTheme = result.rows.item(0).shoplistTheme;
+                $scope.$apply();
+            }, function(result, error){console.log(error);});
+            
+        });
+        
+        mtheme.show('modal');
+        
+    };
+    
+    $scope.ChangeTheme = function(pTheme){
+        
+        if( pTheme != $scope.activeTheme ){
+            
+            $scope.activeTheme=pTheme;
+            $scope.$apply();
+            
+            $scope.db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                    if( $scope.activeTheme == result.rows.item(0).shoplistTheme ){
+                        $scope.showReminder=false;
+                    }else{
+                        $scope.showReminder=true;
+                    }
+                }, function(result, error){console.log(error);});
+                
+            });
+        }
+    };
+    
+    $scope.ShowReminder = function(){
+        mtheme.hide();
+        if( $scope.showReminder ){
+            $scope.db.transaction(function (tx) {
+                tx.executeSql("UPDATE tblShopList SET shoplistTheme=? WHERE shoplistId=?", 
+                    [$scope.activeTheme, ggActiveList.GetActiveList()], function(){
+                        $scope.publishResultTxt = "Theme set!";
+                        mpreminder.show('modal');
+                        $scope.showReminder=false;
+                    }, function(result, error){
+                        alert('Something went wrong. Please try again.');
+                    });
+            });
+        }
+        
     };
     
     $scope.DoXfer = function(){
@@ -257,5 +319,6 @@ function($scope, $http, ggActiveList, ggProStatus) {
     
     $scope.UpdateListDetails();
     $scope.$apply();
+    
 
 }]);

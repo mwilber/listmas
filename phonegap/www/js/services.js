@@ -50,6 +50,22 @@ ggServices.service('ggActiveProd', [
     }
 ]);
 
+ggServices.service('ggSearchProd', [
+    function(){
+        
+        var searchProd = {};
+
+        return {
+            GetSearchProd: function () {
+                return searchProd;
+            },
+            SetSearchProd: function(value) {
+                searchProd = value;
+            }
+        };
+    }
+]);
+
 ggServices.service('ggDb', [
     function(){
         //alert('service start');

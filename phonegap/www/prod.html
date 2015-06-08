@@ -22,9 +22,9 @@
     
     <form class="detail-form">
         <input class="detail-input" placeholder="Name" type="text" ng-model="grocery.prodName" ng-model-instant />
-        <label class="rating">How much I want this</label>
+        <label class="rating">List Ranking</label>
         <ul class="rating">
-            <li class="fa fa-ban" ng-click="SetRating(0)"></li>
+            <li class="fa fa-circle" ng-click="SetRating(0)" style="color:#ccc;"></li>
             <li class="fa" ng-class="(grocery.prodRating>0) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(1)"></li>
             <li class="fa" ng-class="(grocery.prodRating>1) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(2)"></li>
             <li class="fa" ng-class="(grocery.prodRating>2) ? 'fa-star' : 'fa-star-o'" ng-click="SetRating(3)"></li>

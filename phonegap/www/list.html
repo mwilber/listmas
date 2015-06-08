@@ -41,12 +41,24 @@
         </div>
     </ons-modal>
     
+    <ons-modal var="murl">
+        <div class="dialog url-dialog">
+            <p>Enter a product page url:</p>
+            <p><input id="url-input" type="text" class="text-input" ng-model="searchUrl"/></p>
+            <ons-button class="control-btn search-btn" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}" ng-click="GetUrl();"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="murl.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
     <ons-modal var="mimg">
-        <div class="dialog">
-            <ons-list-item ng-repeat="image in metaurl.images track by $index">
-                <img src="{{image}}" width="100%" ng-click="AddUrl(metaurl.title, image, metaurl.link)"/>
-            </ons-list-item>
-            <ons-button class="control-btn close-btn" onclick="mimg.hide()" style="width: 100%;"><ons-icon icon="check"></ons-icon></ons-button>
+        <div class="dialog floating-dialog">
+        <h1>Choose an Image:</h1>
+            <ul class="scrolllist">
+                <li ng-repeat="image in metaurl.images track by $index">
+                    <img src="{{image}}" width="100%" ng-click="AddUrl(metaurl.title, image, metaurl.link)"/>
+                </li>
+            </ul>
+            <ons-button class="control-btn close-btn" onclick="mimg.hide()" style="width: 100%;"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
@@ -82,7 +94,7 @@
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus || urlStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span><br/>UPC</ons-button>
         <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-camera fa-lg"></span><br/>Photo</ons-button>
-        <ons-button class="capture-btn" ng-click="GetUrl()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
+        <ons-button class="capture-btn" ng-click="ShowUrlModal()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
     </form>
     
