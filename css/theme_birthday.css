@@ -15,21 +15,42 @@ body.birthday{
 }*/
 
 .birthday .ground .bkg.one{
-    background: transparent url('../images/bkg_birthday_1.png') left top repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_birthday_1.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .birthday .ground .bkg.two{
-    background: transparent url('../images/bkg_birthday_2.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_birthday_2.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .birthday .ground .bkg.three{
-    background: transparent url('../images/bkg_birthday_3.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_birthday_3.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .birthday .ground .bkg.four{
-    background: transparent url('../images/bkg_birthday_4.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_birthday_4.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .birthday .ground .bkg.five{
-    background: transparent url('../images/bkg_birthday_5.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_birthday_5.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+@media only screen and (max-width: 800px){
+    body.birthday .ground.scenery .bkg {
+        background-position: 50% 0%;
+    }
 }

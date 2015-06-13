@@ -18,7 +18,7 @@
 		include('reactor/application/helpers/idobfuscator_helper.php');
 
 		//
-		if($_SERVER["HTTP_HOST"] == "gibson.loc"){
+		if($_SERVER["HTTP_HOST"] == "gibson.loc" || $_SERVER["HTTP_HOST"] == "192.168.1.135"){
 			if( !is_numeric($_GET['l']) ) $_GET['l'] = IdObfuscator::decode($_GET['l']);
 		}else{
 			$_GET['l'] = IdObfuscator::decode($_GET['l']);
@@ -39,7 +39,7 @@
 		if( $stmt->rowCount() <= 0 ){
 			//
 			$rootpg = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . "/";
-			if( $_SERVER['HTTP_HOST'] == "gibson.loc" ){
+			if( $_SERVER['HTTP_HOST'] == "gibson.loc" || $_SERVER['HTTP_HOST'] == "192.168.1.135" ){
 				$rootpg .= "listmas/";
 			}
 			header("Location: ".$rootpg);
@@ -117,6 +117,7 @@
     <link rel="stylesheet" type="text/css" href="css/color.css" />
 	<link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
 	<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
+	<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
     <title>My Listmas : $titleRS['shoplistName']</title>
 
     <script type="text/javascript">

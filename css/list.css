@@ -992,23 +992,38 @@ width: 120%;
 }
 
 .ground .bkg.one{
-    background: transparent url('../images/bkg_cabin_1.png') left top repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_cabin_1.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .ground .bkg.two{
-    background: transparent url('../images/bkg_cabin_2.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_cabin_2.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .ground .bkg.three{
-    background: transparent url('../images/bkg_cabin_3.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_cabin_3.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .ground .bkg.four{
-    background: transparent url('../images/bkg_cabin_4.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_cabin_4.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .ground .bkg.five{
-    background: transparent url('../images/bkg_cabin_5.png') top center repeat-x;
+    background-color: transparent;
+    background-image:  url('../images/bkg_cabin_5.png');
+    background-position: center top;
+    background-repeat: repeat-x;
 }
 
 .tree{
@@ -1095,7 +1110,7 @@ width: 120%;
 	/* Styles */
 
   body{
-    background:#fff;
+    /*background:#fff;*/
   }
 
   .pgheader{
@@ -1116,7 +1131,7 @@ width: 120%;
 	}
 
 	.panel .content{
-		margin-bottom:50px;
+		margin-bottom:120px;
 	}
 
 
@@ -1184,7 +1199,12 @@ width: 120%;
 	}
 
   .scenery{
-    display:none;
+    /*display:none;*/
+    height:200px;
+  }
+
+  body .ground.scenery .bkg{
+      background-size: auto 200px;
   }
 
 
@@ -1272,6 +1292,13 @@ width: 120%;
   .panel .linearlist li .prodqr a{
     font-size: 8px;
     line-height: 10px;
+  }
+
+  #footer .policy {
+      font-size: 10px;
+    margin: 0px;
+    width: 50px;
+    padding: 0px 5px;
   }
 
 }

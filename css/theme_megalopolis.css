@@ -1,0 +1,64 @@
+body.megalopolis{
+    background: #1a0927; /* Old browsers */
+background: -moz-linear-gradient(top,  #1a0927 27%, #652a96 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, center top, left bottom, color-stop(27%,#1a0927), color-stop(100%,#652a96)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #1a0927 27%,#652a96 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #1a0927 27%,#652a96 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #1a0927 27%,#652a96 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #1a0927 27%,#652a96 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a0927', endColorstr='#652a96',GradientType=0 ); /* IE6-9 */
+
+}
+
+.megalopolis .clouds{
+    background:transparent;
+}
+
+.megalopolis .pgheader .sociallinks a {
+  color: #ffffff;
+}
+
+/*.panel h1, .popup h1 {
+  background: #003399;
+}*/
+
+.megalopolis .ground .bkg.one{
+    background-color: transparent;
+    background-image:  url('../images/bkg_megalopolis_1.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.megalopolis .ground .bkg.two{
+    background-color: transparent;
+    background-image:  url('../images/bkg_megalopolis_2.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.megalopolis .ground .bkg.three{
+    background-color: transparent;
+    background-image:  url('../images/bkg_megalopolis_3.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.megalopolis .ground .bkg.four{
+    background-color: transparent;
+    background-image:  url('../images/bkg_megalopolis_4.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.megalopolis .ground .bkg.five{
+    background-color: transparent;
+    background-image:  url('../images/bkg_megalopolis_5.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+@media only screen and (max-width: 800px){
+    body.megalopolis .ground.scenery .bkg {
+        background-position: 50% 0%;
+    }
+}
