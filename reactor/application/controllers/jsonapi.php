@@ -398,7 +398,11 @@ class JSONAPI extends CI_Controller {
 		$json = file_get_contents('php://input');
 		$obj = json_decode($json);
 
-		$pUrl = base64_decode($obj->link);
+		if(isset($obj->link)){
+			$pUrl = base64_decode($obj->link);
+		}else{
+			$pUrl = base64_decode($pUrl);
+		}
 
 		if (strpos($pUrl,'amazon.com') !== false) {
 			$pUrl = preg_replace('/\?.*/', '', $pUrl);
@@ -445,7 +449,9 @@ class JSONAPI extends CI_Controller {
 
 		// Get all of the iamges
 		foreach($html->getElementsByTagName('img') as $img) {
-			array_push($this->_response->images, $img->getAttribute('src'));
+			if (strpos($img->getAttribute('src'), ')') === FALSE){
+				array_push($this->_response->images, $img->getAttribute('src'));
+			}
 		}
 
 		//print_r($this->_response);
