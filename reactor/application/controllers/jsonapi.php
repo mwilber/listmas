@@ -449,7 +449,8 @@ class JSONAPI extends CI_Controller {
 
 		// Get all of the iamges
 		foreach($html->getElementsByTagName('img') as $img) {
-			if (strpos($img->getAttribute('src'), ')') === FALSE){
+			if (strpos($img->getAttribute('src'), ')') === FALSE &&
+				strpos($img->getAttribute('src'), '(') === FALSE){
 				array_push($this->_response->images, $img->getAttribute('src'));
 			}
 		}
