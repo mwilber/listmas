@@ -404,10 +404,17 @@ class JSONAPI extends CI_Controller {
 			$pUrl = base64_decode($pUrl);
 		}
 
+		//echo $pUrl;
+		//die;
+
+		// Site specific url corrections here
 		if (strpos($pUrl,'amazon.com') !== false) {
 			$pUrl = preg_replace('/\?.*/', '', $pUrl);
 
 			$pUrl = $pUrl."?tag=mwilbercom-20";
+		}elseif (strpos($pUrl,'ebay.com') !== false) {
+			$linkParts = explode('?', $pUrl);
+			$pUrl = $linkParts[0];
 		}
 		//echo $pUrl;
 		//die;
