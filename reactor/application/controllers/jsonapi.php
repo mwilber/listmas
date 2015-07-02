@@ -444,7 +444,7 @@ class JSONAPI extends CI_Controller {
 					$this->_response->description = $meta->getAttribute('content');
 					break;
 				case 'og:image':
-					array_push($this->_response->images, $meta->getAttribute('content'));
+					array_push($this->_response->images, preg_replace('/\?.*/', '', $meta->getAttribute('content')));
 					break;
 			}
 			// switch($meta->getAttribute('name')){
@@ -458,7 +458,7 @@ class JSONAPI extends CI_Controller {
 		foreach($html->getElementsByTagName('img') as $img) {
 			if (strpos($img->getAttribute('src'), ')') === FALSE &&
 				strpos($img->getAttribute('src'), '(') === FALSE){
-				array_push($this->_response->images, $img->getAttribute('src'));
+				array_push($this->_response->images, preg_replace('/\?.*/', '', $img->getAttribute('src')));
 			}
 		}
 

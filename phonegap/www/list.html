@@ -94,7 +94,7 @@
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus || urlStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span><br/>UPC</ons-button>
         <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-camera fa-lg"></span><br/>Photo</ons-button>
-        <ons-button class="capture-btn" ng-click="ShowUrlModal()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
+        <ons-button class="capture-btn" ng-click="TestUrl()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
     </form>
     
