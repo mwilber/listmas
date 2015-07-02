@@ -462,6 +462,12 @@ class JSONAPI extends CI_Controller {
 			}
 		}
 
+		foreach($this->_response->images as $key=>$tmpimg){
+			if (preg_match("#https?://#", $tmpimg) === 0) {
+			    $this->_response->images[$key] = 'http:'.$tmpimg;
+			}
+		}
+
 		//print_r($this->_response);
 		$this->_JSONout();
 	}
