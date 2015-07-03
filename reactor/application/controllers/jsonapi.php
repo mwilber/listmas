@@ -463,10 +463,21 @@ class JSONAPI extends CI_Controller {
 				//array_push($this->_response->images, preg_replace('/\?.*/', '', $img->getAttribute('src')));
 			}
 		}
+		$pos = strrpos($pUrl, "/");
 
 		foreach($this->_response->images as $key=>$tmpimg){
 			if (preg_match("#https?://#", $tmpimg) === 0) {
-			    $this->_response->images[$key] = 'http:'.$tmpimg;
+				if( substr($tmpimg, 0, 2) === "//" ){
+			    	$this->_response->images[$key] = 'http:'.$tmpimg;
+				}elseif( substr($tmpimg, 0, 2) === "/" ){
+					if ($pos !== false) { // note: three equal signs
+						$this->_response->images[$key] = substr($pUrl, 0, $pos).$tmpimg;
+					}
+				}else{
+					if ($pos !== false) { // note: three equal signs
+						$this->_response->images[$key] = substr($pUrl, 0, $pos)."/".$tmpimg;
+					}
+				}
 			}
 		}
 
