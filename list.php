@@ -201,7 +201,7 @@
 										</a>
 										<?php elseif($listEnhanced == 1): $sbou = true;?>
 										<a href="#" class="prodbought button" onclick="$(this).parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-											<i>Tell Them I Got It</i>
+											<i>Not Purchased</i>
 											<span class="fa fa-gift"></span>
 										</a>
 										<?php endif; ?>
@@ -225,7 +225,7 @@
 												<?php endif; ?>
 												<?php if($listEnhanced == 1 && !$sbou && !$snot): ?>
 												<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-													<i>Tell Them I Got It</i>
+													<i>Not Purchased</i>
 													<span class="fa fa-gift"></span>
 												</a>
 												<?php endif; ?>

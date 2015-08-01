@@ -89,30 +89,41 @@ body{
   font-size: 20px;
 }
 
-.content{
+#head .content{
   margin-top: 2%;
   margin-bottom: 250px;
 }
 
-.container p{
+#head p{
   margin: 20px 15px;
   text-align: justify;
   font-size: 0.9em;
-  line-height: 1.2em;
+  line-height: 1.3em;
 }
 
-.container h3{
+#head p a{
+    color: #fff;
+    font-size: 1.45em;
+    /*text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #f99;*/
+    border-bottom: dotted 1px #f99;
+    text-decoration: none;
+    line-height: 1.5em;
+}
+
+#head h3{
   margin: 20px 15px;
   text-align:center;
 }
 
-.container .storelinks{
+#head .storelinks{
   margin-top: 30px;
   height: 50px;
   text-align: center;
 }
 
-.container .storelinks a img{
+#head .storelinks a img{
   margin-bottom: 5px;
 }
 
@@ -134,7 +145,7 @@ body{
   display:none;
 }
 
-.content p.sample{
+#head .content p.sample{
   text-align:center;
   width:100%;
   margin: 20px 0px;
@@ -160,7 +171,7 @@ body{
   margin: 0px auto;
 }
 
-.container{
+#head{
   min-height:100%;
 }
 
@@ -170,7 +181,7 @@ body{
 
 
 #screenshot{
-  width:80%;
+  width:60%;
   max-width:200px;
   margin:25px 10% 0px 10%;
 }
@@ -214,6 +225,115 @@ body{
   float:left;
 }
 
+.content [class*="col"]{
+    /*overflow:hidden;*/
+}
+
+.container h1{
+    font-size:5em;
+    font-weight:bold;
+    color: #333;
+    margin-bottom:0px;
+    text-align: left;
+    border-bottom: solid 1px #ccc;
+}
+
+.container h2{
+    font-size:3em;
+    color: #666;
+    margin-top:80px;
+    margin-bottom: 10px;
+    text-align: right;
+    text-transform:capitalize;
+    position:relative;
+    z-index:100;
+}
+
+.container .subhead h2{
+    text-align:left;
+}
+
+.container a[href='#fullversion']{
+    font-size:0.25em;
+    color:#999;
+    text-align:left;
+}
+
+.container h3{
+    font-size: 4em;
+    font-weight: lighter;
+    color: #999;
+    text-align: left;
+}
+
+.container div{
+    text-align:right;
+}
+
+.container div img{
+    position:relative;
+    z-index:0;
+    border: solid 1px #ccc;
+}
+
+#head div img{
+    border:none;
+}
+
+#create, #share{
+    background:#fff;
+    color:#666;
+    padding:50px 0px;
+}
+
+#publish{
+    color:#6ff;
+    padding:50px 0px;
+}
+
+#publish h1{
+    color:#fee;
+}
+
+#publish h2{
+    color:#fbb;
+}
+
+#publish h3{
+    color:#f88;
+}
+
+#publish a[href='#fullversion']{
+    color:#f88;
+}
+
+#publish h1, #publish div img{
+    border-color:#f88;
+}
+
+#fullversion h2{
+    color: #fff;
+    font-size: 1.5em;
+    /* margin-bottom: 110px; */
+    text-align: center;
+    line-height: 1em;
+    margin: 40px 0px 10px 0px;
+}
+
+#fullversion div img{
+    border:none;
+}
+
+#fullversion .storelinks {
+    margin: 10px 0px 100px 0px;
+    height: 50px;
+    text-align: center;
+}
+
+#fullversion .storelinks a img {
+    margin-bottom: 5px;
+}
+
 
 #footer{
   position: fixed;
@@ -227,11 +347,11 @@ body{
 
 #footer .policy{
   background: rgba(255,255,255,0.8);
-  font-size: 12px;
+  font-size: 10px;
   color: #333;
   line-height: 12px;
-  margin-left: 10px;
-  padding: 3px 10px;
+  margin-left: 0px;
+  padding: 3px 5px;
   font-weight: bold;
   float: left;
 }
@@ -264,12 +384,80 @@ body{
   margin: 0px;
 }
 
+.pro img, .pro h3{
+    opacity:0.2;
+}
+
+.proh h2{
+    opacity:0.5;
+}
+
+#fullversion h2, .proh a{
+    display:none;
+}
+
+.content.pro::after{
+    content: "Coming Soon";
+    color: #000;
+    font-size: 4em;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 200px;
+    font-weight: bold;
+}
+
+#publish .content.pro::after{
+    color: #fff;
+}
+
 
 /* Tablet */
 @media only screen
   and (max-width : 800px) {
   /* Styles */
 
+  #head .screenshot{
+      display:none;
+  }
+
+  #head .storelinks{
+      min-height: 100px;
+  }
+
+  .ground img:nth-child(n+5){
+      display:none;
+  }
+
+  .container .subhead h2{
+      margin: 0px;
+    text-align: right;
+    line-height: 1.5em;
+    font-size: 1em;
+  }
+
+  .container a[href='#fullversion'] {
+    font-size: 1em;
+}
+
+.container h1 {
+    margin-left: 4%;
+}
+
+.container h2 {
+    margin-right: 4%;
+}
+
+.container h3 {
+    font-size: 2em;
+    margin: 10px 4%;
+}
+
+.container div.col7 img {
+    width: 92%;
+    margin: 0px 4%;
+}
 
   #footer{
     height: 28px;

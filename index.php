@@ -82,7 +82,7 @@
           </div>
         </div>
 
-        <div class="container">
+        <div id="head" class="container">
           <div class="content">
             <div class="col1">&nbsp;</div>
             <div class="col6 colcon">
@@ -90,27 +90,31 @@
                 <img src="images/logo.png" width="50%" height="50%"/>
                 <span>LISTMAS</span>
               </div>
-              <p class="sample">
-                <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
-              </p>
-              <p>
-                Listmas is a fun way to create holiday wish lists for yourself and loved ones. Add items to your list by shooting a photograph, scanning a UPC barcode, or searching amazon.com. Items added via search or barcode are automatically linked to their amazon.com product page. When your list is ready, share it on the web with family and friends. Add more items and re-publish your list at any time.
-              </p>
-              <p>
-                Listmas stores only information you enter in your list, it does not gather any personally identifiable information. Your lists are as private or public as you choose. Published lists receive a unique url which can be shared via email or social networks. Create a private list for a few family members, or have the world shower you with gifts. It’s up to you.
-              </p>
               <!--<h3>Coming soon to Apple iOS</h3>-->
               <div class="storelinks">
                 <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
                 <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
                 <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
               </div>
+              <div style="clear:both;"></div>
+              <!--<p class="sample">
+                <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
+            </p>-->
+              <p>
+                  <a href="#create">Create</a> your wishlist. <a href="#publish">Publish</a> it to mylistmas.com. <a href="#share">Share</a> your unique url with whomever you choose.
+              </p>
+              <p>
+                  Listmas was made with privacy in mind. There is no login, no email address required, no personal information is collected. Lists are managed entirely in your smartphone or tablet. When you publish your list to mylistmas.com, only the information you have entered in your list is sent. You receive a unique url to use however you wish. Share your list with family and friends or post it on social networks for the world to see.
+              </p>
+              <p>
+                  Scroll down to see all the features...
+              </p>
             </div>
-            <div class="col1">&nbsp;</div>
-            <div class="col3 colcon" style="text-align: center;">
+            <div class="col1 screenshot">&nbsp;</div>
+            <div class="col3 colcon screenshot" style="text-align: center;">
               <img id="screenshot" src="images/screenshot.png"/>
             </div>
-            <div class="col1">&nbsp;</div>
+            <div class="col1 screenshot">&nbsp;</div>
           </div>
         </div>
 
@@ -120,6 +124,257 @@
           <?php for($idx = 0; $idx < 10; $idx++): ?>
           <img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 20 , 80 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
           <?php endfor; ?>
+        </div>
+
+        <div id="create" name="create" class="container">
+            <div class="content">
+                <div class="col3"></div>
+                <div class="col9">
+                    <h1>Create</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <h2>Lists</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/list.png">
+                </div>
+                <div class="col3">
+                    <h3>As many as you like.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content">
+                <div class="col7">
+                    <h2>Photograph</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/photograph.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Exactly what you want.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content">
+                <div class="col7">
+                    <h2>Scan</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/scan.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Build your list while you're out.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content proh">
+                <div class="col7">
+                    <h2>Link</h2>
+                </div>
+            </div>
+            <div class="content pro">
+                <div class="col7">
+                    <img src="./images/link.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Add any item from the web.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content">
+                <div class="col7">
+                    <h2>Search</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/search.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Find products by name.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content proh">
+                <div class="col7">
+                    <h2>Rank</h2>
+                </div>
+                <div class="col5 subhead">
+                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
+                </div>
+            </div>
+            <div class="content pro">
+                <div class="col7">
+                    <img src="./images/rank.png">
+                </div>
+                <div class="col3">
+                    <h3>Put the stuff you really want on top.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+        </div>
+
+
+        <div id="publish" class="container">
+            <div class="content">
+                <div class="col3"></div>
+                <div class="col9">
+                    <h1>Publish</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <h2>Webpage</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/webpage.png">
+                </div>
+                <div class="col3">
+                    <h3>Get a unique url on the web.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content proh">
+                <div class="col7">
+                    <h2>Theme</h2>
+                </div>
+                <div class="col5 subhead">
+                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
+                </div>
+            </div>
+            <div class="content pro">
+                <div class="col7">
+                    <img src="./images/themes.jpg">
+                </div>
+                <div class="col3">
+                    <h3>A variety of visual styles to choose from.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content proh">
+                <div class="col7">
+                    <h2>Notification</h2>
+                </div>
+                <div class="col5 subhead">
+                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
+                </div>
+            </div>
+            <div class="content pro">
+                <div class="col7">
+                    <img src="./images/notification.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Viewers check off items on your list.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content proh">
+                <div class="col7">
+                    <h2>Transfer</h2>
+                </div>
+                <div class="col5 subhead">
+                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
+                </div>
+            </div>
+            <div class="content pro">
+                <div class="col7">
+                    <img src="./images/transfer.png">
+                </div>
+                <div class="col3">
+                    <h3>Keep your list when you change devices.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+        </div>
+
+
+        <div id="share" class="container">
+            <div class="content">
+                <div class="col3"></div>
+                <div class="col9">
+                    <h1>Share</h1>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <h2>Email</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/email.png">
+                </div>
+                <div class="col3">
+                    <h3>Privately email your list to family and friends.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content">
+                <div class="col7">
+                    <h2>Social</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/social.jpg">
+                </div>
+                <div class="col3">
+                    <h3>Share your list on public sites.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+
+            <div class="content">
+                <div class="col7">
+                    <h2>URL</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col7">
+                    <img src="./images/url.png">
+                </div>
+                <div class="col3">
+                    <h3>Send your list url out any way you wish.</h3>
+                </div>
+                <div class="col2"></div>
+            </div>
+        </div>
+
+        <div id="fullversion" name="fullversion" class="container">
+            <div class="content">
+                <div class="col12">
+                    <h2>* Some features require a one-time in app purchase.</h2>
+                </div>
+            </div>
+            <div class="content">
+                <div class="col12">
+                    <div class="storelinks">
+                      <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
+                      <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
+                      <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div id="footer">
