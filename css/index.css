@@ -396,7 +396,7 @@ body{
     display:none;
 }
 
-.content.pro::after{
+.content.pro::before {
     content: "Coming Soon";
     color: #000;
     font-size: 4em;
@@ -404,8 +404,9 @@ body{
     position: absolute;
     width: 100%;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 150px;
     font-weight: bold;
+    line-height: 1em;
 }
 
 #publish .content.pro::after{
@@ -457,6 +458,10 @@ body{
 .container div.col7 img {
     width: 92%;
     margin: 0px 4%;
+}
+
+.content.pro::before {
+    margin-top: 100px;
 }
 
   #footer{
