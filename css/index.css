@@ -409,7 +409,7 @@ body{
     line-height: 1em;
 }
 
-#publish .content.pro::after{
+#publish .content.pro::before{
     color: #fff;
 }
 
