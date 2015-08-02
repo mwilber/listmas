@@ -103,6 +103,14 @@ class JSONAPI extends CI_Controller {
 	}
 
 	function azsearch($pSearch = ""){
+
+		$json = file_get_contents('php://input');
+		$obj = json_decode($json);
+
+		if(isset($obj->search)){
+			$pSearch = base64_decode($obj->search);
+		}
+
 		$url="http://ecs.amazonaws.com/onca/xml?".
 			"Service=AWSECommerceService&".
 			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
@@ -116,7 +124,8 @@ class JSONAPI extends CI_Controller {
 			//"sort=XXX&".
 			"ResponseGroup=Medium";
 
-		//echo $url;
+		echo $url;
+		die;
 
 		$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
 		$host = parse_url($url,PHP_URL_HOST);
