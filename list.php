@@ -7,7 +7,7 @@
 
 	$social = array();
 	$social['title'] = "Check Out My List";
-	$social['description'] = "Make your #wishlist with Listmas";
+	$social['description'] = "Create, Publish and Share your #wishlist with Listmas.";
 	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
 	$social['link'] = "http://www.mylistmas.com".$_SERVER[REQUEST_URI];
 
