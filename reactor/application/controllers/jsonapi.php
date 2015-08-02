@@ -415,6 +415,8 @@ class JSONAPI extends CI_Controller {
 		}elseif (strpos($pUrl,'ebay.com') !== false) {
 			$linkParts = explode('?', $pUrl);
 			$pUrl = $linkParts[0];
+		}elseif (strpos($pUrl,'m.target.com') !== false) {
+			$pUrl = str_replace('m.target.com','www.target.com', $pUrl);
 		}
 		//echo $pUrl;
 		//die;
