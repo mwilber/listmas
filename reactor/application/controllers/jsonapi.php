@@ -124,8 +124,8 @@ class JSONAPI extends CI_Controller {
 			//"sort=XXX&".
 			"ResponseGroup=Medium";
 
-		echo $url;
-		die;
+		//echo $url;
+		//die;
 
 		$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
 		$host = parse_url($url,PHP_URL_HOST);
