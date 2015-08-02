@@ -1,5 +1,3 @@
-var ggControllers = angular.module('ggControllers', []);
-
 ggControllers.controller('ShopListCtrl', ['$scope', '$filter', '$timeout', '$http', 'ggActiveList', 'ggProStatus', 
 function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     
@@ -9,6 +7,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     $scope.listDeleteName = "";
     $scope.listDeleteId = "";
     $scope.showHelp = false;
+    $scope.proStatus = "<error>";
     
     $scope.db = openDatabase('listmas', '1.0', 'Mobile Client DB', 2 * 1024 * 1024);
     $scope.db.transaction(function (tx) {
@@ -49,6 +48,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     
     $scope.SetPro = function(pPro){
         ggProStatus.SetProStatus(pPro);
+        app.navi.resetToPage("lists.html");
     };
     
     $scope.DoDelete = function(pId, pName){
@@ -80,6 +80,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     };
     
     $scope.UpdateShopList = function(tx, response){
+            $scope.proStatus = ggProStatus.GetProStatus();
             console.log('Getting Shop Lists');
             if( response != undefined ) console.log(response.insertId);
             $scope.db.transaction(function (tx) {
@@ -123,43 +124,53 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
     };
     
     $scope.RestoreList = function(){
-        var listpin = prompt("Enter the code you received when you submitted the list for transfer:");
-        $http.get('https://mylistmas.herokuapp.com/reactor/syncapi/restorelist/'+listpin).success(function(response){
-        //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
-            console.log("restoring list...",response);
-            console.log(response.list);
-            if( response.list ){
-                $scope.db.transaction(function (tx) {
-                    tx.executeSql('INSERT INTO tblShoplist (shoplistRemoteId,shoplistName,shoplistUrl,shoplistCheckoff,shoplistImage) VALUES ( ?, ?, ?, ?, ?)', 
-                        [response.list.shopListId,response.list.shopListName,response.list.shopListCode,response.list.shopListCheckoff,response.list.shopListImage], 
-                        function(tx, result){
-                            
-                            $scope.UpdateShopList();
-                            ggActiveList.SetActiveList(result.insertId);
-                            console.log("prod",response)
-                            for( var idx=0; idx<response.prod.length; idx++){
+        //if( ggProStatus.GetProStatus() == 1 ){
+            var listpin = prompt("Enter the code you received when you submitted the list for transfer:");
+            $http.get('https://mylistmas.herokuapp.com/reactor/syncapi/restorelist/'+listpin).success(function(response){
+            //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                console.log("restoring list...",response);
+                console.log(response.list);
+                if( response.list ){
+                    $scope.db.transaction(function (tx) {
+                        tx.executeSql('INSERT INTO tblShoplist (shoplistRemoteId,shoplistName,shoplistUrl,shoplistCheckoff,shoplistImage) VALUES ( ?, ?, ?, ?, ?)', 
+                            [response.list.shopListId,response.list.shopListName,response.list.shopListCode,response.list.shopListCheckoff,response.list.shopListImage], 
+                            function(tx, result){
                                 
-                                if( !response.prod[idx].prodDescription ) response.prod[idx].prodDescription = "";
-                                tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc, prodDescription) VALUES ( ?, ?, ?, ?, ?)', 
-                                    [response.prod[idx].prodName, response.prod[idx].prodPhoto, response.prod[idx].prodUrl, response.prod[idx].prodUpc, response.prod[idx].prodDescription], function(tx, response){
-                                        //$scope.UpdateGroceryList
-                                        console.log('Inserting into prodlist: '+response.insertId);
-                                        tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', 
-                                            [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList), 
-                                            function(result, error){console.log(error);}; 
-                                    }, function(result, error){console.log(error);});
-                                
-                                
-                            }
-                            //app.navi.pushPage('list.html');
-                    }, function(result, error){console.log(error);});
-                });
-            }
-
-        }).error(function(){
-            $scope.UpdateShopList();
-            alert('Something went wrong. Please try again. (3)');
-        });
+                                $scope.UpdateShopList();
+                                ggActiveList.SetActiveList(result.insertId);
+                                console.log("prod",response)
+                                for( var idx=0; idx<response.prod.length; idx++){
+                                    
+                                    if( !response.prod[idx].prodDescription ) response.prod[idx].prodDescription = "";
+                                    tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc, prodDescription) VALUES ( ?, ?, ?, ?, ?)', 
+                                        [response.prod[idx].prodName, response.prod[idx].prodPhoto, response.prod[idx].prodUrl, response.prod[idx].prodUpc, response.prod[idx].prodDescription], 
+                                            function(blah){
+                                                return function(tx, responseb){
+                                                console.log("BLAH :P", blah);
+                                                //$scope.UpdateGroceryList
+                                                console.log('Inserting into prodlist: '+responseb.insertId);
+                                                tx.executeSql('INSERT INTO tblProdlist (prodId, shoplistId, prodQty) VALUES ( ?, ?, ?)', 
+                                                    [responseb.insertId,ggActiveList.GetActiveList(),blah], $scope.UpdateGroceryList), 
+                                                    function(result, error){console.log(error);}; 
+                                                };
+                                            }(response.prod[idx].prodQty), function(result, error){console.log(error);});
+                                    
+                                    
+                                }
+                                //app.navi.pushPage('list.html');
+                        }, function(result, error){console.log(error);});
+                    });
+                }else{
+                    alert('Invalid transfer code. You can find this code by opening the list on the previous device.')
+                }
+    
+            }).error(function(){
+                $scope.UpdateShopList();
+                alert('Something went wrong. Please try again. (3)');
+            });
+        //}else{
+        //    mpro.show('modal'); 
+        //}
     };
     
     $scope.SetActiveList = function(event){
@@ -169,7 +180,6 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggProStatus) {
         app.navi.pushPage('list.html');
     };
     
-    $scope.SetPro(1);
     $scope.UpdateShopList();
     
 }]);

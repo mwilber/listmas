@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget xmlns="http://www.w3.org/ns/widgets" id="com.greenzeta.listmaspro" version="2.0.0">
-  <name>Listmas Pro</name>
+<widget xmlns="http://www.w3.org/ns/widgets" id="com.greenzeta.listmas" version="2.1.2" android-versionCode="20020002">
+  <name>Listmas</name>
   <description/>
   <author/>
   <preference name="loglevel" value="DEBUG"/>
@@ -14,9 +14,9 @@
   </feature>
   <access origin="*"/>
   <preference name="KeepRunning" value="true"/>
-  <preference name="monaca:AndroidIsPackageNameSeparate" value="false"/>
+  <preference name="monaca:AndroidIsPackageNameSeparate" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
-  <preference name="monaca:WebViewEngine" value="default"/>
+  <preference name="monaca:WebViewEngine" value="crosswalk"/>
   <preference name="Orientation" value="default"/>
   <preference name="SplashScreenDelay" value="1000"/>
   <preference name="Fullscreen" value="false"/>

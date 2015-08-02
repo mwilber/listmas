@@ -28,14 +28,14 @@
     
     <ons-modal var="mreminder">
         <div class="dialog">
-            <p>Don't forget to press <strong>Publish</strong>, in the <strong>Share</strong> screen, to make these changes visible to those viewing your list.</p>
+            <p>Remember to visit the <strong><i class="fa fa-share-alt"></i> Share</strong> screen and <strong><i class="fa fa-cloud-upload"></i> Publish</strong> your changes to the web.</p>
             <ons-button class="control-btn close-btn" onclick="mreminder.hide()" style="width: 100%;"><ons-icon icon="check"></ons-icon></ons-button>
         </div>
     </ons-modal>
     
     <ons-modal var="mbought">
         <div class="dialog">
-            <p>Someone said they have bought this item: <strong>{{prodDeleteName}}</strong>. <br/><br/>Close this box to keep it on the list or press the <strong>Delete</strong> button to remove it.</p>
+            <p>Someone said they have bought this item: <strong>{{prodDeleteName}}</strong>. <br/><br/>Close this box to keep it on the list or press the <strong><i class="fa fa-trash-o"></i> Delete</strong> button to remove it.</p>
             <ons-button class="control-btn delete-btn" ng-click="mbought.hide(); DoDelete(prodDeleteId, prodDeleteName);"><ons-icon icon="trash-o"></ons-icon></ons-button>
             <ons-button class="control-btn close-btn" onclick="mbought.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
@@ -64,9 +64,10 @@
     
     <div class="xfermessage" ng-if="shoplistCheckoff < 0">
     
-        <p><strong>This list has been posted for transfer.</strong></p>
+        <p style="margin-top:0px"><strong>This list has been posted for transfer.</strong></p>
         <p>To transfer this list to another device, press the Import List (<i class="fa fa-cloud-download"></i>) button on that device and enter this four digit code:</p>
         <h1>{{-shoplistCheckoff}}</h1>
+        <p>* If you no longer wish to transfer this list, you may regain control by importing it back into this device.
     
     </div>
     
@@ -94,7 +95,7 @@
         <h3>Add Item</h3>
         <ons-button class="capture-btn" ng-click="ScanBarcode()" should-spin="{{scanStatus}}" disabled="{{scanStatus || urlStatus}}" animation="zoom-in"><span class="fa fa-barcode fa-lg"></span><br/>UPC</ons-button>
         <ons-button class="capture-btn" ng-click="GetPhoto()" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-camera fa-lg"></span><br/>Photo</ons-button>
-        <ons-button class="capture-btn" ng-click="TestUrl()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
+        <ons-button class="capture-btn" ng-click="ShowUrlModal()" should-spin="{{urlStatus}}" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-globe fa-lg"></span><br/>URL</ons-button>
         <ons-button class="capture-btn" ng-click="app.navi.pushPage('search.html');" disabled="{{scanStatus || urlStatus}}"><span class="fa fa-search fa-lg"></span><br/>Search</ons-button>
     </form>
     

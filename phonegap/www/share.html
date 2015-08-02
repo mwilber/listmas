@@ -7,7 +7,7 @@
         </div>
         <div class="center">Share</div>
         <div class="right">
-            <ons-toolbar-button ng-click="xferwarn.show('modal');" class="xfer-btn"><ons-icon icon="upload"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="WarnXfer()" class="xfer-btn"><ons-icon icon="upload"></ons-icon></ons-toolbar-button>
         </div>
     </ons-toolbar>
     
@@ -20,7 +20,13 @@
     
     <ons-modal var="xferwarn">
         <div class="dialog">
-            <p>InsertTextHere</p>
+            <p>
+                <strong><i class="fa fa-upload"></i> Mark List For Transfer?</strong>
+            </p>
+            <p>Transfer your list to another device. Use this if you change phones, or want to give control of the list to someone else.</p>
+            <p>
+                <strong>Warning:</strong> once your list is marked for transfer, it can no longer be edited on this device.
+            </p>
             <ons-button class="control-btn" ng-click="DoXfer()"><ons-icon icon="upload"></ons-icon></ons-button>
             <ons-button class="control-btn close-btn" onclick="xferwarn.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
@@ -52,6 +58,14 @@
             <p>You need to publish your list to activate the new theme. Do you want to publish now?</p>
             <ons-button class="control-btn publish-btn" ng-click="mpreminder.hide(); DoPublish();"><ons-icon icon="cloud-upload"></ons-icon></ons-button>
             <ons-button class="control-btn close-btn" onclick="mpreminder.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+    </ons-modal>
+    
+    <ons-modal var="mdirty">
+        <div class="dialog">
+            <p>You have made changes to this list. Do you want to publish now?</p>
+            <ons-button class="control-btn publish-btn" ng-click="mdirty.hide(); DoPublish();"><ons-icon icon="cloud-upload"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" ng-click="mdirty.hide()"><ons-icon icon="times"></ons-icon></ons-button>
         </div>
     </ons-modal>
     

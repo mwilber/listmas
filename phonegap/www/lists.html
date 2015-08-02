@@ -3,8 +3,11 @@
     <ons-toolbar>
         <div class="left">
             <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
-            <ons-toolbar-button ng-click="RestoreList()"><ons-icon icon="cloud-download"></ons-icon></ons-toolbar-button>
-            <ons-toolbar-button ng-click="SetPro(0)"><ons-icon icon="ban"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="RestoreList()" ng-show="proStatus == 1"><ons-icon icon="cloud-download"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="mpro.show('modal')" ng-show="proStatus != 1"><ons-icon icon="star"></ons-icon></ons-toolbar-button>
+            
+            <ons-toolbar-button ng-click="SetPro(1)" ng-show="proStatus != 1"><ons-icon icon="lock"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="SetPro(0)" ng-show="proStatus == 1"><ons-icon icon="unlock-alt"></ons-icon></ons-toolbar-button>
         </div>
         <div class="center"><img src="images/app_logo.png" width="44" height="44" /></div>
         <div class="right">

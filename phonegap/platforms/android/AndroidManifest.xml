@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:hardwareAccelerated="true" android:versionCode="1" android:versionName="2.0.0" android:windowSoftInputMode="adjustPan" package="com.greenzeta.listmaspro">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:hardwareAccelerated="true" android:versionCode="1" android:versionName="2.1.2" android:windowSoftInputMode="adjustPan" package="com.greenzeta.listmas">
   <supports-screens android:anyDensity="true" android:largeScreens="true" android:normalScreens="true" android:resizeable="true" android:smallScreens="true" android:xlargeScreens="true"/>
   <uses-permission android:name="android.permission.INTERNET"/>
-  <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="Listmas Pro">
-     <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="Listmas Pro" android:name="MainActivity" android:theme="@android:style/Theme.Black.NoTitleBar">
+  <application android:hardwareAccelerated="true" android:icon="@drawable/icon" android:label="Listmas">
+     <activity android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale" android:label="Listmas" android:name="MainActivity" android:theme="@android:style/Theme.Black.NoTitleBar">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
         <category android:name="android.intent.category.LAUNCHER"/>

@@ -152,10 +152,12 @@
 }
 
 .infolist .list__item{
-    line-height: 24px;
+    line-height: 22px;
     padding: 10px 20px;
     text-align: justify;
     border: none;
+    letter-spacing: 0px;
+    font-size: 14px;
 }
 
 .xfermessage{

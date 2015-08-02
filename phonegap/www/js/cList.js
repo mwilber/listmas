@@ -89,7 +89,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                 //$scope.UpdateGroceryList
                 console.log('Deleting from prodlist: '+$scope.prodDeleteId);
                 tx.executeSql('DELETE FROM tblProdlist WHERE prodId=?', [$scope.prodDeleteId], function(){$scope.UpdateGroceryList(); $scope.$apply(); mdelete.hide(); mreminder.show('modal'); }); 
-                
+                ggActiveList.MarkDirty();
             });
         });
         
@@ -115,7 +115,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             tx.executeSql('INSERT INTO tblProd (prodName) VALUES ( ?)', [prodName], function(tx, response){
                 //$scope.UpdateGroceryList
                 console.log('Inserting into prodlist: '+response.insertId);
-                tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], $scope.UpdateGroceryList);
+                tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(){ggActiveList.MarkDirty(); $scope.UpdateGroceryList();});
             });
         });
         $scope.formGroceryText = '';
@@ -164,6 +164,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                             }
                         console.log("Switching to detail");
                         console.log(tempGrocery);
+                        ggActiveList.MarkDirty();
                         ggActiveProd.SetActiveProd(tempGrocery);
                         //app.slidingMenu.setMainPage('prod.html', {closeMenu: true});
                         app.navi.pushPage('prod.html');
@@ -247,6 +248,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                             //});
                             
                         //});
+                        ggActiveList.MarkDirty();
                     }, function(result, error){console.log(error);});
                 });
             }
@@ -278,10 +280,6 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
                 $scope.urlStatus = false;
             });
         }
-    };
-    
-    $scope.TestUrl = function(){
-        //$scope.HandleUrl(JSON.parse('{"error":{"type":0,"message":""},"title":"Ecto Candle","description":"This item is no longer available.\u00c2\u00a0We have been very strict in the past about not bringing back limited edition items, but since we\'ve been receiving an overwhelming response to, we\'ve put together a survey to get an idea of what everyone thinks. Should we bring it back, make a different version (maybe the 90\'s version) or leave it in the archives? Sound off and if we get enough of a response, we may consider resurrecting it someday! Be sure to sign up for our mailing list (at the bottom of the page) to keep an eye out for it! [powr-poll","link":"http:\/\/horrordecor.net\/products\/ectocandle","images":["\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_lgandsm_medium.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/t\/4\/assets\/logo.png?3596342049699444800","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_lgandsm_1024x1024.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_lgandsm_small.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_lg_small.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_medium_a09f2586-2fd4-438b-8348-98985179d38d_small.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_lg_1024x1024.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/products\/ectocandle_medium_a09f2586-2fd4-438b-8348-98985179d38d_1024x1024.jpg?v=1431117249","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/t\/4\/assets\/icn_cc-visa.gif?3596342049699444800","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/t\/4\/assets\/icn_cc-mastercard.gif?3596342049699444800","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/t\/4\/assets\/icn_cc-amex.gif?3596342049699444800","\/\/cdn.shopify.com\/s\/files\/1\/0242\/1733\/t\/4\/assets\/icn_cc-discover.gif?3596342049699444800"]}'));
     };
     
     $scope.HandleUrl = function(response){
@@ -319,7 +317,7 @@ function($scope, $filter, $timeout, $http, ggActiveList, ggActiveProd) {
             console.log(prodUpc);
             tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [prodName, prodPhoto, prodUrl, prodUpc], function(tx, response){
                 console.log('Inserting into prodlist: '+response.insertId);
-                tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(tx, response){$scope.UpdateGroceryList(); mimg.hide();}), function(result, error){console.log(error);}; //function(tx, response){
+                tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(tx, response){ggActiveList.MarkDirty(); $scope.UpdateGroceryList(); mimg.hide();}), function(result, error){console.log(error);}; //function(tx, response){
             }, function(result, error){console.log(error);});
         });
     };

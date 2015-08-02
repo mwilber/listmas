@@ -7,11 +7,17 @@ ggServices.service('ggProStatus', [
 
         return {
             GetProStatus: function () {
-                return proStatus;
+                return localStorage.getItem("proStatus");
             },
             SetProStatus: function(value) {
-                proStatus = value;
-                localStorage.setItem("proStatus", proStatus);
+                localStorage.setItem("proStatus", value);
+            },
+            BuyPro: function(){
+                if( window.store ){
+                    store.order('com.greenzeta.listmas.pro');
+                }else{
+                    alert('In App Purchasing currently available only in iTunes App Store and Google Play Store.')
+                }
             }
         };
     }
@@ -21,6 +27,7 @@ ggServices.service('ggActiveList', [
     function(){
         
         var activeList = 0;
+        var listDirty = false;
 
         return {
             GetActiveList: function () {
@@ -28,8 +35,18 @@ ggServices.service('ggActiveList', [
             },
             SetActiveList: function(value) {
                 activeList = value;
+                listDirty = false;
                 localStorage.setItem("activeList", activeList);
-            }
+            },
+            MarkDirty: function(){
+                listDirty = true;
+            },
+            MarkClean: function(){
+                listDirty = false;
+            },
+            IsDirty: function(){
+                return listDirty;
+            },
         };
     }
 ]);

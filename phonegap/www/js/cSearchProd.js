@@ -17,7 +17,7 @@ function($scope, $http, ggSearchProd, ggActiveList, ggProStatus) {
             tx.executeSql('INSERT INTO tblProd (prodName, prodPhoto, prodUrl, prodUpc) VALUES ( ?, ?, ?, ?)', [pName, pPhoto, pUrl, ''], function(tx, response){
                 console.log('Inserting into prodlist: '+response.insertId);
                 tx.executeSql('INSERT INTO tblProdlist (prodId,shoplistId) VALUES ( ?, ?)', [response.insertId,ggActiveList.GetActiveList()], function(){ ggSearchProd.SetSearchProd({}); app.navi.popPage(); }), function(result, error){console.log(error);}; //function(tx, response){
-                
+                ggActiveList.MarkDirty();
             }, function(result, error){console.log(error);});
         });
         

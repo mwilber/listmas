@@ -13,7 +13,7 @@ function($scope, $http, ggActiveList, ggProStatus) {
         link:"http://www.mylistmas.com", 
         image:"http://www.mylistmas.com/icons/icon_256.png",
         message:"My Listmas",
-        description:"Make your #wishlist with Listmas"
+        description:"Create, Publish and Share your #wishlist with Listmas."
     };
     
     $scope.activeTheme="cabin";
@@ -62,7 +62,17 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     
                     console.log('image:',$scope.list.shareImage);
                     
-                    if(typeof $scope.list.shoplistUrl === 'undefined'){ $scope.showHelp = true; $scope.publishCopy = "Publish"; }else{ $scope.showHelp = false; $scope.publishCopy = "Update"; }
+                    if(!$scope.list.shoplistUrl){ 
+                        //alert('unpublished');
+                        $scope.showHelp = true; $scope.publishCopy = "Publish"; 
+                    }else{ 
+                        //alert('published');
+                        $scope.showHelp = false; $scope.publishCopy = "Update";
+                        if(ggActiveList.IsDirty()){
+                            ggActiveList.MarkClean();
+                            mdirty.show('modal');
+                        }
+                    }
                     //if($scope.showHelp){
                     //    console.log("showing help");
                     //}else{
@@ -137,7 +147,7 @@ function($scope, $http, ggActiveList, ggProStatus) {
             			        $scope.db.transaction(function (tx) {
         				            tx.executeSql("UPDATE tblShopList SET shoplistRemoteId=?, shoplistUrl=?, shoplistImage=?, shoplistCheckoff=? WHERE shoplistId=?", 
         				                [response.data.shoplistId, response.data.shoplistUrl, response.data.shareImage, response.data.shoplistCheckoff, response.data.shoplistRemoteId], function(){
-                                            
+                                            ggActiveList.MarkClean();
                                             $scope.publishResultTxt = "Your list has been published to mylistmas.com!";
                                             pubresult.show('modal');
                                             $scope.UpdateListDetails();
@@ -162,19 +172,24 @@ function($scope, $http, ggActiveList, ggProStatus) {
     
     $scope.PickTheme = function(){
         
-        $scope.db.transaction(function (tx) {
-            tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
-                $scope.activeTheme = result.rows.item(0).shoplistTheme;
-                $scope.$apply();
-            }, function(result, error){console.log(error);});
+        if( ggProStatus.GetProStatus() == 1 ){
+            $scope.db.transaction(function (tx) {
+                tx.executeSql('SELECT * FROM tblShoplist WHERE shoplistId=?', [ggActiveList.GetActiveList()], function(tx, result){
+                    $scope.activeTheme = result.rows.item(0).shoplistTheme;
+                    $scope.$apply();
+                }, function(result, error){console.log(error);});
+                
+            });
             
-        });
-        
-        mtheme.show('modal');
+            mtheme.show('modal');
+        }else{
+            mpro.show('modal'); 
+        }
         
     };
     
     $scope.ChangeTheme = function(pTheme){
+        
         
         if( pTheme != $scope.activeTheme ){
             
@@ -192,6 +207,7 @@ function($scope, $http, ggActiveList, ggProStatus) {
                 
             });
         }
+        
     };
     
     $scope.ShowReminder = function(){
@@ -208,7 +224,14 @@ function($scope, $http, ggActiveList, ggProStatus) {
                     });
             });
         }
-        
+    };
+    
+    $scope.WarnXfer = function(){
+        if( ggProStatus.GetProStatus() == 1 ){
+            xferwarn.show('modal');
+        }else{
+            mpro.show('modal'); 
+        }
     };
     
     $scope.DoXfer = function(){
