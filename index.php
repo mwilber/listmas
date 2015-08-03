@@ -52,6 +52,7 @@
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
         <link href='http://fonts.googleapis.com/css?family=Life+Savers:700|Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900,100' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     		<!-- HTML5 IE Enabling Script -->
     		<!--[if lt IE 9]>
