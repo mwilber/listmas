@@ -336,7 +336,7 @@
             </div>
             <div class="content">
                 <div class="col7">
-                    <img src="./images/social.jpg">
+                    <img src="./images/url.png">
                 </div>
                 <div class="col3">
                     <h3>Share your list on public sites.</h3>
@@ -351,7 +351,7 @@
             </div>
             <div class="content">
                 <div class="col7">
-                    <img src="./images/url.png">
+                    <img src="./images/social.jpg">
                 </div>
                 <div class="col3">
                     <h3>Send your list url out any way you wish.</h3>

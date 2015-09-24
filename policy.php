@@ -46,41 +46,59 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <!--<div id="background">-->
-          <div class="clouds scenery">
-            <div class="clouds">
-              <div class="clouds"></div>
-            </div>
-          </div>
-
-        <!--</div>-->
-
-        <div class="container">
-          <div class="content">
-            <div class="col2">&nbsp;</div>
-            <div class="col8">
-              <div id="logo">
-                <img src="images/logo.png" width="50%" height="50%"/>
-                <span>LISTMAS</span>
-              </div>
-              <h3 style="text-align:center;">Privacy Policy</h3>
-              <p>
-                Listmas stores only information you enter in your list. At no time will Listmas collect any personally identifiable information, unless you choose to enter that information as part of your list. Listmas does gather anonymous usage statistics for the purpose of tracking app use. These statistics do not contain any information about you or the contents of your list.
-              </p>
-              <p>
-                <a href="index.php" style="color:#fff;">Return to the home page</a>
-              </p>
-            </div>
-            <div class="col2">&nbsp;</div>
+        <div class="clouds scenery">
+          <div class="clouds">
+            <div class="clouds"></div>
           </div>
         </div>
 
-        <div class="clearfix"></div>
+      <!--</div>-->
 
-        <div class="ground scenery">
-          <?php for($idx = 0; $idx < 10; $idx++): ?>
-          <img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 20 , 80 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
-          <?php endfor; ?>
+      <div class="header">
+        <div class="sociallinks">
+          <a href="https://twitter.com/home?status=<?=urlencode($social['description'])?>:%20<?=urlencode($social['link'])?>" class="fa fa-twitter" target="_blank"></a>
+          <a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+          <a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=http://www.mylistmas.com/icons/icon_512.png&description=<?=urlencode($social['description'])?>" class="fa fa-pinterest" target="_blank"></a>
+          <a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
         </div>
+      </div>
+
+      <div id="head" class="container">
+        <div class="content">
+          <div class="col1">&nbsp;</div>
+          <div class="col6 colcon">
+            <div id="logo">
+              <img src="images/logo.png" width="50%" height="50%"/>
+              <span>LISTMAS</span>
+            </div>
+            <!--<h3>Coming soon to Apple iOS</h3>-->
+            <div style="clear:both;"></div>
+            <!--<p class="sample">
+              <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
+          </p>-->
+          <h3 style="text-align:center; color:#fff;">Privacy Policy</h3>
+          <p>
+            Listmas stores only information you enter in your list. At no time will the Listmas app or website collect any personally identifiable information that you do not expressly place in a list yourself. At no point will Listmas ever explicitly ask for your name, email address, physical address, telephone number, or any other personally identifiable information. At no point does information about your list leave your mobile device until you publish your list. Listmas does gather anonymous usage statistics. These statistics do not contain any information about you or the contents of your list.
+          </p>
+          <p>
+            <a href="index.php" style="color:#fff;">Return to the home page</a>
+          </p>
+          </div>
+          <div class="col1 screenshot">&nbsp;</div>
+          <div class="col3 colcon screenshot" style="text-align: center;">
+            <img id="screenshot" src="images/screenshot.png"/>
+          </div>
+          <div class="col1 screenshot">&nbsp;</div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="ground scenery">
+        <?php for($idx = 0; $idx < 10; $idx++): ?>
+        <img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 20 , 80 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
+        <?php endfor; ?>
+      </div>
 
         <div id="footer">
               <a href="#" onclick="window.open('http://www.greenzeta.com/home/listing/product', '_system'); ga('send', 'event', 'web', 'click', 'GreenZeta', 0); return false;" class="gz">

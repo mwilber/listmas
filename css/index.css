@@ -240,6 +240,7 @@ body{
 
 .container h2{
     font-size:3em;
+    font-weight: 400;
     color: #666;
     margin-top:80px;
     margin-bottom: 10px;
@@ -296,19 +297,19 @@ body{
 }
 
 #publish h2{
-    color:#fbb;
+    color:#fcc;
 }
 
 #publish h3{
-    color:#fbb;
+    color:#fcc;
 }
 
 #publish a[href='#fullversion']{
-    color:#f88;
+    color:#fcc;
 }
 
 #publish h1, #publish div img{
-    border-color:#f88;
+    border-color:#fcc;
 }
 
 #fullversion h2{
@@ -384,7 +385,7 @@ body{
   margin: 0px;
 }
 
-.pro img, .pro h3{
+/*.pro img, .pro h3{
     opacity:0.2;
 }
 
@@ -394,9 +395,9 @@ body{
 
 #fullversion h2, .proh a{
     display:none;
-}
+}*/
 
-.content.pro::before {
+/*.content.pro::before {
     content: "Coming Soon";
     color: #000;
     font-size: 4em;
@@ -407,7 +408,7 @@ body{
     margin-top: 150px;
     font-weight: bold;
     line-height: 1em;
-}
+}*/
 
 #publish .content.pro::before{
     color: #fff;

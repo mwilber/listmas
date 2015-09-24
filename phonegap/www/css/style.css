@@ -1,3 +1,7 @@
+.button{
+    z-index: 1000;
+}
+
 .dialog{
     color:#666;
     background:#fff;
@@ -58,7 +62,7 @@
 }
 
 .list__item:first-child:last-child {
-    border-top: none; 
+    border-top: none;
     border-bottom: 1px solid #ddd;
 }
 
@@ -311,7 +315,7 @@ form label{
 }
 
 .search-detail .detail-photo{
-    
+
 }
 
 .search-detail .detail-detail{
