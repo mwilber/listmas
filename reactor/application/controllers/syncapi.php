@@ -131,29 +131,33 @@ class SyncAPI extends CI_Controller {
 		for($idx = 0; $idx<count($slTmp); $idx++){
 			if( $idx > ($tc*$tc) ) break;
 			$filename = date("U")."_".rand(100, 999).".jpg";
-			file_put_contents(UPLOAD_DIR."/".$filename, file_get_contents($slTmp[$idx]->prodPhoto));
-			$tileLayer = new ImageWorkshop(array(
-			    'imageFromPath' => UPLOAD_DIR."/".$filename,
-			));
-			//echo (($mw/$tc)*floor($idx/$tc))."|";
+			if($slTmp[$idx]->prodPhoto != ""){
+				$size = getimagesize($slTmp[$idx]->prodPhoto);
+				if( $size[0] > 0 ){
+					file_put_contents(UPLOAD_DIR."/".$filename, file_get_contents($slTmp[$idx]->prodPhoto));
+					$tileLayer = new ImageWorkshop(array(
+					    'imageFromPath' => UPLOAD_DIR."/".$filename,
+					));
+					//echo (($mw/$tc)*floor($idx/$tc))."|";
 
-			if( $tileLayer->getWidth() > $tileLayer->getHeight() && $tileLayer->getHeight() < ($mw/$tc) ){
-				$tileLayer->resizeInPixel(null, ($mw/$tc)+50, true);
-			}elseif( $tileLayer->getWidth() < ($mw/$tc) ){
-				$tileLayer->resizeInPixel(($mw/$tc)+50, null, true);
+					if( $tileLayer->getWidth() > $tileLayer->getHeight() && $tileLayer->getHeight() < ($mw/$tc) ){
+						$tileLayer->resizeInPixel(null, ($mw/$tc)+50, true);
+					}elseif( $tileLayer->getWidth() < ($mw/$tc) ){
+						$tileLayer->resizeInPixel(($mw/$tc)+50, null, true);
+					}
+
+					$tileLayer->cropInPixel(($mw/$tc), ($mw/$tc), 0, 0, 'MM');
+					$twitterLayer->addLayer(($idx+1), $tileLayer, (($mw/$tc)*($tp%$tc)), (($mw/$tc)*floor($tp/$tc)), "LT");
+
+					$tp++;
+
+					if( $tp >= (count($slTmp))/2 && $tp < ((count($slTmp))/2)+((($tc*$tc)-1)-count($slTmp)) ){
+						$tp+=(($tc*$tc))-count($slTmp);
+					}elseif($tp == (floor(($tc*$tc)/2))){
+						$tp++;
+					}
+				}
 			}
-
-			$tileLayer->cropInPixel(($mw/$tc), ($mw/$tc), 0, 0, 'MM');
-			$twitterLayer->addLayer(($idx+1), $tileLayer, (($mw/$tc)*($tp%$tc)), (($mw/$tc)*floor($tp/$tc)), "LT");
-
-			$tp++;
-
-			if( $tp >= (count($slTmp))/2 && $tp < ((count($slTmp))/2)+((($tc*$tc)-1)-count($slTmp)) ){
-				$tp+=(($tc*$tc))-count($slTmp);
-			}elseif($tp == (floor(($tc*$tc)/2))){
-				$tp++;
-			}
-
 			// if(($tc*$tc)-(count($slTmp)+1) > 0){
 			// 	//if( $tp%(floor( ($tc*$tc)/(($tc*$tc)-(count($slTmp)+1)) )) == 0) $tp++;
 			//
@@ -189,6 +193,7 @@ class SyncAPI extends CI_Controller {
 
 	function shoplist(){
 		$json = file_get_contents('php://input');
+		//$json = '{"list":{"shoplistId":2241,"shoplistName":"cmas","shoplistEnhanced":"1","shareImage":"","shoplistTheme":null,"shoplistRemoteId":13,"shoplistCheckoff":9991},"prod":[{"prodId":143,"prodName":"Nike Men\'s LeBron XI BHM, BHM-ANTHRACITE/METALLIC GOLD-PURPLE VENOM, 9 M US","prodPhoto":"","prodDescription":"","prodUrl":"http://www.amazon.com/Nike-LeBron-BHM-ANTHRACITE-METALLIC-GOLD-PURPLE/dp/B00I7BUPJA%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D","prodUpc":"","prodQty":0},{"prodId":144,"prodName":"nike lebron XII EXT mens hi top trainers 748861 sneakers shoes (uk 9 us 9 eu 44, multi color university red white 900)","prodPhoto":"http://ecx.images-amazon.com/images/I/4170-eQrURL.jpg","prodDescription":"","prodUrl":"http://www.amazon.com/lebron-trainers-748861-sneakers-university/dp/B00PMPSZJG%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D16595","prodUpc":"","prodQty":0},{"prodId":145,"prodName":"Nike Air Foamposite One Nrg Style: 521286-800 Size: 9","prodPhoto":"http://ecx.images-amazon.com/images/I/41I0M9FS0ML.jpg","prodDescription":"","prodUrl":"http://www.amazon.com/Nike-Air-Foamposite-One-Style/dp/B00CLVOOTO%3Fpsc%3D1%26SubscriptionId%3DAKIAJNX6ZS7EMGNEGMFQ%26tag%3Dmwilbercom-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeA","prodUpc":"","prodQty":0}]}';
 		$obj = json_decode($json);
 		$listCode = "";
 
