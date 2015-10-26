@@ -487,11 +487,6 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 </IfModule>
 
 RewriteEngine On
-
-#RewriteCond %{HTTPS} !=on
-RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [NC]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^/?l/css/(.*?)/?$ css/$1 [L]
@@ -501,5 +496,3 @@ RewriteRule ^/?l/icons/(.*?)/?$ icons/$1 [L]
 RewriteRule ^/?l/fonts/(.*?)/?$ fonts/$1 [L]
 RewriteRule ^/?l/policy.php policy.php [L]
 RewriteRule ^/?l/(.*?)/?$ list.php?l=$1 [L]
-
-
