@@ -1,6 +1,6 @@
 <?php
 class IdObfuscator {
- 
+
     public static function encode($id) {
         if (!is_numeric($id) or $id < 1) {return FALSE;}
         $id = (int)$id;
@@ -15,13 +15,15 @@ class IdObfuscator {
         $hex      = $segment1.$segment2.$segment3;
         $bin      = pack('H*',$hex);
         $oid      = base64_encode($bin);
-        $oid      = str_replace(array('+','/','='),array('$',':',''),$oid);
+        $oid      = str_replace(array('+','/','='),array('-','_',''),$oid);
         return $oid;
     }
- 
+
     public static function decode($oid) {
-        if (!preg_match('/^[A-Z0-9\:\$]{21,23}$/i',$oid)) {return 0;}
-        $oid      = str_replace(array('$',':'),array('+','/'),$oid);
+        if (!preg_match('/^[A-Z0-9\_\-]{21,23}$/i',$oid) && !preg_match('/^[A-Z0-9\:\$]{21,23}$/i',$oid)) {return 0;}
+        $oid      = str_replace(array('-','_'),array('+','/'),$oid);
+		// Leaving this in for legacy IDs which contained $ and :
+		$oid      = str_replace(array('$',':'),array('+','/'),$oid);
         $bin      = base64_decode($oid);
         $hex      = unpack('H*',$bin); $hex = $hex[1];
         if (!preg_match('/^[0-9a-f]{32}$/',$hex)) {return 0;}
@@ -36,7 +38,7 @@ class IdObfuscator {
         $id       = abs($v1-$v2);
         return $id;
     }
- 
+
     private static function getHash($str,$len) {
         return substr(sha1($str.CRYPT_SALT),0,$len);
     }
