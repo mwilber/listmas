@@ -173,24 +173,30 @@
 							$nRS = $dbh->query($sql);
 							//print_r($nRS->rowCount());
 						?>
-							<li>
+							<li class="<?php if( $listEnhanced == 1 && $nRS->rowCount() > 0 ) echo "bought"; ?>">
 								<div>
 									<?php //print_r($li); ?>
 									<div class="rtblock">
 										<div class="modal boughtit">
 											<div class="dialog">
-												<p>Do you wish to notify the list owner that you bought this item?</p>
+												<p>Do you wish to notify the list owner that this item has been purchased?</p>
 												<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right:5%;">No</a>
 												<a class="button" href="#" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); return false;" style="background-color:#4eb94b;">Yes</a>
 											</div>
 										</div>
+										<div class="modal boughtalready">
+											<div class="dialog">
+												<p>Someone has notified the list owner that this item has been purchased.</p>
+												<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right: 0%; width: 90%;">Ok</a>
+											</div>
+										</div>
 										<?php if( $listEnhanced == 1 && $nRS->rowCount() > 0 ): $snot = true; ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button gotit" onclick="ga('send', 'event', 'list', 'click', 'buy', 0);">
-											<i>Someone Got This</i>
+										<a href="#" class="produrl button gotit" onclick="$(this).parent().find('.boughtalready').show(); ga('send', 'event', 'list', 'click', 'buy', 0); return false;">
+											<i>Item Purchased</i>
 											<span class="fa fa-exclamation-triangle"></span>
 										</a>
 										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().find('.modal').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
 											<i>Buy This</i>
 											<span class="fa fa-shopping-cart"></span>
 										</a>
@@ -200,7 +206,7 @@
 											<span class="fa fa-globe"></span>
 										</a>
 										<?php elseif($listEnhanced == 1): $sbou = true;?>
-										<a href="#" class="prodbought button" onclick="$(this).parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+										<a href="#" class="prodbought button" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
 											<i>Not Purchased</i>
 											<span class="fa fa-gift"></span>
 										</a>
@@ -218,13 +224,13 @@
 												</a>
 												<?php endif; ?>
 												<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy && !$snot ): ?>
-												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().parent().find('.modal').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
 													<i>Buy This</i>
 													<span class="fa fa-shopping-cart"></span>
 												</a>
 												<?php endif; ?>
 												<?php if($listEnhanced == 1 && !$sbou && !$snot): ?>
-												<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.modal').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+												<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
 													<i>Not Purchased</i>
 													<span class="fa fa-gift"></span>
 												</a>

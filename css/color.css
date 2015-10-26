@@ -37,6 +37,10 @@ a.postshare span {
 	border-bottom: solid 1px #ccc;
 }
 
+.panel .linearlist li.bought{
+	background:#dedede;
+}
+
 .panel .linearlist li .produrl span, .popup .linearlist li .produrl span{
 	color:#999;
 }
@@ -72,6 +76,7 @@ a.postshare span {
 
 .panel .linearlist li .button.gotit span{
 	background:#ff6666;
+	background: #e3343f;
 }
 
 .panel .linearlist li .button span{
