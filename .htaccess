@@ -489,7 +489,6 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 RewriteEngine On
 
 #RewriteCond %{HTTPS} !=on
-RewriteCond %{HTTP_HOST} !^gibson\..+$ [NC]
 RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
 RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [NC]
 
