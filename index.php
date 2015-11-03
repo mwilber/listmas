@@ -107,6 +107,9 @@
               <p>
                   Listmas was made with privacy in mind. There is no login, no email address required, no personal information is collected. Lists are managed entirely in your smartphone or tablet. When you publish your list to mylistmas.com, only the information you have entered in your list is sent. You receive a unique url to use however you wish. Share your list with family and friends or post it on social networks for the world to see.
               </p>
+			  <p style="text-align:center; margin-bottom:40px;">
+				  <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample">Sample List</a>
+			  </p>
               <p>
                   Scroll down to see all the features...
               </p>
@@ -129,234 +132,108 @@
 
         <div id="create" name="create" class="container">
             <div class="content">
-                <div class="col3"></div>
-                <div class="col9">
+                <div class="col12">
                     <h1>Create</h1>
                 </div>
             </div>
             <div class="content">
-                <div class="col7">
+                <div class="col3">
                     <h2>Lists</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
                     <img src="./images/list.png">
+					<h3>As many as you like.</h3>
                 </div>
                 <div class="col3">
-                    <h3>As many as you like.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content">
-                <div class="col7">
-                    <h2>Photograph</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+					<h2>Photograph</h2>
                     <img src="./images/photograph.jpg">
+					<h3>Exactly what you want.</h3>
                 </div>
                 <div class="col3">
-                    <h3>Exactly what you want.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content">
-                <div class="col7">
                     <h2>Scan</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
                     <img src="./images/scan.jpg">
+					<h3>Build your list while you're out.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Build your list while you're out.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content proh">
-                <div class="col7">
-                    <h2>Link</h2>
-                </div>
-            </div>
-            <div class="content pro">
-                <div class="col7">
+				<div class="col3">
+					<h2>Link</h2>
                     <img src="./images/link.jpg">
+					<h3>Add any item from the web.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Add any item from the web.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content">
-                <div class="col7">
-                    <h2>Search</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+			</div>
+			<div class="content">
+                <div class="col3">&nbsp;</div>
+				<div class="col3">
+					<h2>Search</h2>
                     <img src="./images/search.jpg">
+					<h3>Find products by name.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Find products by name.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content proh">
-                <div class="col7">
-                    <h2>Rank</h2>
-                </div>
-                <div class="col5 subhead">
-                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
-                </div>
-            </div>
-            <div class="content pro">
-                <div class="col7">
+				<div class="col3">
+					<h2>Rank</h2>
+					<a href="#fullversion">(Full Version)</a>
                     <img src="./images/rank.png">
+					<h3>Put the stuff you really want on top.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Put the stuff you really want on top.</h3>
-                </div>
-                <div class="col2"></div>
+				<div class="col3">&nbsp;</div>
             </div>
         </div>
 
 
         <div id="publish" class="container">
             <div class="content">
-                <div class="col3"></div>
-                <div class="col9">
+                <div class="col12">
                     <h1>Publish</h1>
                 </div>
             </div>
-            <div class="content">
-                <div class="col7">
-                    <h2>Webpage</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+			<div class="content">
+				<div class="col3">
+					<h2>Webpage</h2>
                     <img src="./images/webpage.png">
+					<h3>Get a unique url on the web.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Get a unique url on the web.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content proh">
-                <div class="col7">
-                    <h2>Theme</h2>
-                </div>
-                <div class="col5 subhead">
-                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
-                </div>
-            </div>
-            <div class="content pro">
-                <div class="col7">
+				<div class="col3">
+					<h2>Theme</h2>
+					<a href="#fullversion">(Full Version)</a>
                     <img src="./images/themes.jpg">
+					<h3>A variety of visual styles to choose from.</h3>
                 </div>
-                <div class="col3">
-                    <h3>A variety of visual styles to choose from.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content proh">
-                <div class="col7">
-                    <h2>Notification</h2>
-                </div>
-                <div class="col5 subhead">
-                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
-                </div>
-            </div>
-            <div class="content pro">
-                <div class="col7">
+				<div class="col3">
+					<h2>Notification</h2>
+					<a href="#fullversion">(Full Version)</a>
                     <img src="./images/notification.jpg">
+					<h3>Viewers check off items on your list.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Viewers check off items on your list.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content proh">
-                <div class="col7">
-                    <h2>Transfer</h2>
-                </div>
-                <div class="col5 subhead">
-                    <h2><a href="#fullversion">(Full Version Only)</a>&nbsp;</h2>
-                </div>
-            </div>
-            <div class="content pro">
-                <div class="col7">
+				<div class="col3">
+					<h2>Transfer</h2>
+					<a href="#fullversion">(Full Version)</a>
                     <img src="./images/transfer.png">
+					<h3>Keep your list when you change devices.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Keep your list when you change devices.</h3>
-                </div>
-                <div class="col2"></div>
             </div>
         </div>
 
 
         <div id="share" class="container">
             <div class="content">
-                <div class="col3"></div>
-                <div class="col9">
+                <div class="col12">
                     <h1>Share</h1>
                 </div>
             </div>
-            <div class="content">
-                <div class="col7">
-                    <h2>Email</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+			
+			<div class="content">
+				<div class="col3">
+					<h2>Email</h2>
                     <img src="./images/email.png">
+					<h3>Privately email your list to family and friends.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Privately email your list to family and friends.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content">
-                <div class="col7">
-                    <h2>Social</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+				<div class="col3">
+					<h2>Social</h2>
                     <img src="./images/url.png">
+					<h3>Share your list on public sites.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Share your list on public sites.</h3>
-                </div>
-                <div class="col2"></div>
-            </div>
-
-            <div class="content">
-                <div class="col7">
-                    <h2>URL</h2>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col7">
+				<div class="col3">
+					<h2>URL</h2>
                     <img src="./images/social.jpg">
+					<h3>Send your list url out any way you wish.</h3>
                 </div>
-                <div class="col3">
-                    <h3>Send your list url out any way you wish.</h3>
-                </div>
-                <div class="col2"></div>
+
             </div>
         </div>
 
