@@ -145,12 +145,12 @@
                 <div class="col3">
 					<h2>Photograph</h2>
                     <img src="./images/photograph.jpg">
-					<h3>Exactly what you want.</h3>
+					<h3>Take a picture of exactly what you want.</h3>
                 </div>
                 <div class="col3">
                     <h2>Scan</h2>
                     <img src="./images/scan.jpg">
-					<h3>Build your list while you're out.</h3>
+					<h3>Use UPC barcodes to build your list while you're out.</h3>
                 </div>
 				<div class="col3">
 					<h2>Link</h2>
@@ -204,7 +204,7 @@
 					<h2>Transfer</h2>
 					<a href="#fullversion">(Full Version)</a>
                     <img src="./images/transfer.png">
-					<h3>Keep your list when you change devices.</h3>
+					<h3>Maintain control of your list when you change devices.</h3>
                 </div>
             </div>
         </div>
