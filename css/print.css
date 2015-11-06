@@ -1,0 +1,114 @@
+@media only print {
+.print{
+	display:initial;
+}
+
+.sociallinks{
+	display:none;
+}
+
+.panel {
+    width: 100%;
+    margin: 0px;
+}
+
+.info, #print {
+    display: none;
+}
+
+.panel h1 {
+    background: #fff;
+    color: #000;
+	border-bottom:solid 1px #666;
+	width: 90%;
+    margin: 0% 5% 2% 5%;
+	padding: 2% 0%;
+	font-size: 1.5em;
+    line-height: 0.75em;
+}
+
+/*.panel h1 .dsk:before{
+	content:'My Listmas: ';
+	margin-left:10px;
+}*/
+
+.panel h1 .url{
+	font-size: 0.35em;
+    font-weight: normal;
+    line-height: 0.35em;
+    text-transform: lowercase;
+}
+
+.panel h1 a, .panel h1 br {
+	display:none;
+}
+
+.panel h1 br.print{
+	display:initial;
+}
+
+.panel .linearlist li .rtblock {
+    display: none;
+}
+
+.panel .linearlist li .ltblock {
+    width: 100%;
+}
+
+.panel .linearlist li .detail-btn {
+    display:none;
+}
+
+.panel .linearlist, .popup .linearlist {
+    width: 80%;
+    margin-left: 10%;
+}
+
+.panel .linearlist li{
+	padding:2% 0%;
+}
+
+.panel .linearlist li.bought {
+    background: #fff;
+}
+
+.panel .linearlist li .prodname {
+	font-size: 1em;
+}
+
+.panel .linearlist li.bought .prodname, .panel .linearlist li.bought .icon {
+    opacity: 0.80;
+	text-decoration: line-through;
+	font-size: 0.75em;
+}
+
+.panel .linearlist li .icon, .popup .linearlist li .icon {
+    display: none;
+}
+
+.panel .linearlist li .icon.print{
+	display: block;
+    width: 15%;
+    margin: 0% 5% 0% 5%;
+    padding: 0%;
+}
+
+.panel .linearlist li.bought .icon.print{
+	width:5%;
+	margin: 0% 10%;
+}
+
+.panel .linearlist li .prodname, .popup .linearlist li .prodname {
+    padding: 0%;
+    width: 70%;
+}
+
+#footer *, #footer a.gz{
+	display:none;
+}
+
+.ground{
+	display:none;
+}
+
+}

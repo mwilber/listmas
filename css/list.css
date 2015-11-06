@@ -255,7 +255,8 @@ html, body{
 	background:#999;
 	color:#eee;
 	font-weight:bold;
-	padding: 15px 0px 5px 0px;
+	padding: 15px 0px 15px 0px;
+    height: auto;
 }
 
 .panel .header{
@@ -358,6 +359,41 @@ font-weight: bold;
 	right: 0px;
   width: 40px;
 }
+
+#print {
+    display: block;
+    font-size: 14px;
+    line-height: 30px;
+    margin: -70px 25px 10px 0px;
+    width: auto;
+    vertical-align: bottom;
+    text-align: right;
+    padding-right: 0%;
+    color: #FFF;
+    text-decoration: none;
+	    float: right;
+}
+
+#print i {
+    font-style: normal;
+    vertical-align: bottom;
+}
+
+ #print span.fa {
+    padding: 0px 0px;
+    font-size: 20px;
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 45px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin-left: 5px;
+	background: #fff;
+    color: #e3343f;
+}
+
 
 /*.popup{
     color:#161008;
@@ -1094,6 +1130,10 @@ width: 100%;
 	font-family: serif;
 	padding: 0px 15px 4px 15px;
 	margin: 0px;
+}
+
+.print, .panel .linearlist li .icon.print{
+	display:none;
 }
 
 
