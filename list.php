@@ -7,8 +7,8 @@
 
 	$social = array();
 	$social['title'] = "Check Out My List";
-	$social['description'] = "Create, Publish and Share your #wishlist with Listmas.";
-	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
+	$social['description'] = "Listmas was made with privacy in mind. No personal info is collected. Create, Publish and Share your #wishlist ";
+  	$social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
 	$social['link'] = "http://www.mylistmas.com".$_SERVER[REQUEST_URI];
 
 	if(isset($_GET['l'])){
