@@ -2,7 +2,7 @@
 
   $social = array();
   $social['title'] = "My Listmas";
-  $social['description'] = "Listmas was made with privacy in mind. There is no login and no personal information is collected. Create, Publish and Share your #wishlist with Listmas.";
+  $social['description'] = "Create, Publish and Share your #wishlist with Listmas.";
   $social['image'] = "http://www.mylistmas.com/icons/icon_256.png";
   $social['link'] = "http://www.mylistmas.com/";
 
