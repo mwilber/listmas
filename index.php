@@ -278,7 +278,7 @@
 			});
 			var docheight = $("body").height();
 			// Override detected height
-			docheight = 3000;
+			docheight = 3200;
 			FB.Canvas.setSize({ width: 810, height: docheight });
 			}
 		</script> 
