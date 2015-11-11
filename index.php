@@ -108,7 +108,7 @@
                   Listmas was made with privacy in mind. There is no login, no email address required, no personal information is collected. Lists are managed entirely in your smartphone or tablet. When you publish your list to mylistmas.com, only the information you have entered in your list is sent. You receive a unique url to use however you wish. Share your list with family and friends or post it on social networks for the world to see.
               </p>
 			  <p style="text-align:center; margin-bottom:40px;">
-				  <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample">Sample List</a>
+				  <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Sample List</a>
 			  </p>
               <p>
                   Scroll down to see all the features...
