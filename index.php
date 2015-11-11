@@ -51,8 +51,8 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
-        <link href='http://fonts.googleapis.com/css?family=Life+Savers:700|Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700,900,100' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Life+Savers:700|Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lato:400,300,700,900,100' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     		<!-- HTML5 IE Enabling Script -->
     		<!--[if lt IE 9]>
@@ -62,7 +62,7 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-		<script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+		<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
 		<script type="text/javascript">
 			window.fbAsyncInit = function() {
 			FB.init({
