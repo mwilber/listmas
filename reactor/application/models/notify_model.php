@@ -13,6 +13,7 @@ class Notify_Model extends CI_Model
         'notifyType' => array('label'=>'Type','type'=>'int'),
 		'notifyText' => array('label'=>'Text','type'=>'varchar','constraint'=>1000),
         'notifyRead' => array('label'=>'Read','type'=>'int'),
+		'notifyDateAdded' => array('label'=>'Date','type'=>'datetime'),
 		);
 
 

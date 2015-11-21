@@ -30,7 +30,7 @@
 	<?if(isset($records) && is_array($records) && count($records)>0):?>
 		<?foreach($records as $record):?>
 		<tr>
-			<td><?=$record->$pk?></td>
+			<td><a href="http://gibson.loc/listmas/l/<?=$record->$pk?>" target="_blank"><?=$record->$pk?></a></td>
 			<?php foreach( $fields as $name=>$props ): ?>
 			<?php if(substr_compare($name, 'Id', -2, 2) === 0): ?>
 				<td class="join" ref="<?=base_url()?><?=substr($name, 0, -2);?>/detail/<?=$record->$name?>"><a href='<?=base_url()?><?=substr($name, 0, -2);?>/edit/<?=$record->$name?>' ><?=$record->$name?></a></td>
