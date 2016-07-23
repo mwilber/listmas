@@ -151,41 +151,38 @@
                 </div>
             </div>
             <div class="content">
-                <div class="col3">
+                <div class="col4">
                     <h2>Lists</h2>
-                    <img src="./images/list.png">
+                    <div class="badgeb fa fa-list"></div>
 					<h3>As many as you like.</h3>
                 </div>
-                <div class="col3">
+                <div class="col4">
 					<h2>Photograph</h2>
-                    <img src="./images/photograph.jpg">
+                    <div class="badgeb fa fa-camera"></div>
 					<h3>Take a picture of exactly what you want.</h3>
                 </div>
-                <div class="col3">
+                <div class="col4">
                     <h2>Scan</h2>
-                    <img src="./images/scan.jpg">
+                    <div class="badgeb fa fa-barcode"></div>
 					<h3>Use UPC barcodes to build your list while you're out.</h3>
                 </div>
-				<div class="col3">
+            </div>
+            <div class="content">
+				<div class="col4">
 					<h2>Link</h2>
-                    <img src="./images/link.jpg">
+                    <div class="badgeb fa fa-link"></div>
 					<h3>Add any item from the web.</h3>
                 </div>
-			</div>
-			<div class="content">
-                <div class="col3">&nbsp;</div>
-				<div class="col3">
+				<div class="col4">
 					<h2>Search</h2>
-                    <img src="./images/search.jpg">
+                    <div class="badgeb fa fa-search"></div>
 					<h3>Find products by name.</h3>
                 </div>
-				<div class="col3">
+				<div class="col4">
 					<h2>Rank</h2>
-					<a href="#fullversion">(Full Version)</a>
-                    <img src="./images/rank.png">
+                    <div class="badgeb fa fa-star"></div>
 					<h3>Put the stuff you really want on top.</h3>
                 </div>
-				<div class="col3">&nbsp;</div>
             </div>
         </div>
 
@@ -197,29 +194,27 @@
                 </div>
             </div>
 			<div class="content">
-				<div class="col3">
+				<div class="col4">
 					<h2>Webpage</h2>
-                    <img src="./images/webpage.png">
+                    <div class="badgeb fa fa-globe"></div>
 					<h3>Get a unique url on the web.</h3>
                 </div>
-				<div class="col3">
+				<div class="col4">
 					<h2>Theme</h2>
-					<a href="#fullversion">(Full Version)</a>
-                    <img src="./images/themes.jpg">
+					<!--<a href="#fullversion">(Purchase Additional Themes)</a>-->
+                    <div class="badgeb fa fa-birthday-cake"></div>
 					<h3>A variety of visual styles to choose from.</h3>
                 </div>
-				<div class="col3">
+				<div class="col4">
 					<h2>Notification</h2>
-					<a href="#fullversion">(Full Version)</a>
-                    <img src="./images/notification.jpg">
+					<div class="badgeb fa fa-check-square-o"></div>
 					<h3>Viewers check off items on your list.</h3>
                 </div>
-				<div class="col3">
+				<!--<div class="col3">
 					<h2>Transfer</h2>
-					<a href="#fullversion">(Full Version)</a>
-                    <img src="./images/transfer.png">
+					<div class="badgeb fa fa-cloud-download"></div>
 					<h3>Maintain control of your list when you change devices.</h3>
-                </div>
+                </div>-->
             </div>
         </div>
 
@@ -232,19 +227,19 @@
             </div>
 			
 			<div class="content">
-				<div class="col3">
+				<div class="col4">
 					<h2>Email</h2>
-                    <img src="./images/email.png">
+                    <div class="badgeb fa fa-envelope"></div>
 					<h3>Privately email your list to family and friends.</h3>
                 </div>
-				<div class="col3">
+				<div class="col4">
 					<h2>Social</h2>
-                    <img src="./images/url.png">
+                    <div class="badgeb fa fa-globe"></div>
 					<h3>Share your list on public sites.</h3>
                 </div>
-				<div class="col3">
+				<div class="col4">
 					<h2>URL</h2>
-                    <img src="./images/social.jpg">
+                   <div class="badgeb fa fa-send"></div>
 					<h3>Send your list url out any way you wish.</h3>
                 </div>
 
@@ -254,7 +249,7 @@
         <div id="fullversion" name="fullversion" class="container">
             <div class="content">
                 <div class="col12">
-                    <h2>* Some features require a one-time in app purchase.</h2>
+                    <h2>* Additional themes can be added with a one-time in app purchase.</h2>
                 </div>
             </div>
             <div class="content">

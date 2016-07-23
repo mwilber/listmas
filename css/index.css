@@ -197,6 +197,39 @@ body{
   margin:25px 10% 0px 10%;
 }
 
+.container div.badge{
+    width:60%;
+    height:auto;
+    padding-bottom:60%;
+    max-width:200px;
+    max-height:200px;
+    margin:25px 20% 0px 20%;
+    border-radius:50%;
+    background-color:#e3343f;
+    text-align:center;
+    color:#fff;
+    font-size:100px;
+    line-height:100px;
+    clear:both;
+}
+
+
+.container div.badgeb{
+    text-align: center;
+    vertical-align: middle;
+    background-color: #e3343f;
+    color: #fff;
+    padding: 36px 40px;
+    margin: 0px 15%;
+    border-radius: 50%;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+#publish.container div.badgeb{
+    color: #e3343f;
+    background-color: #fff;
+}
 
 #background{
 
@@ -252,16 +285,15 @@ body{
 }
 
 .container h2{
-    font-size:2em;
+        width: 100%;
+    font-size:3em;
     font-weight: 400;
     color: #666;
-    margin-top:50px;
-    margin-bottom: 10px;
-    text-align: right;
+    margin:50px 0% 0px 0%;
+    text-align: center;
     text-transform:capitalize;
     position:relative;
     z-index:100;
-	margin-right: 15%;
 	float:right;
 	clear:both;
 	line-height: 1.5em;
@@ -272,29 +304,31 @@ body{
 }
 
 .container a[href='#fullversion']{
-    font-size:0.75em;
-    color:#636363;
-    text-align:left;
-	float:right;
-	clear:both;
-	margin-right: 15%;
-	margin-top: -1.5em;
-    margin-bottom: .5em;
+    font-size: 12px;
+    color: #636363;
+    text-align: center;
+    float: none;
+    clear: both;
+    /* margin-right: 15%; */
+    margin-top: 0;
+    margin-bottom: 0px;
+    display: block;
+    width: 100%;
+    line-height: 0px;
 	
 }
 
 .container h3{
-	float: right;
-    font-size: 1.25em;
+	    font-size: 1.25em;
     font-weight: 400;
     color: #666;
-    text-align: right;
-    width: 75%;
-	margin-right: 15%;
+    text-align: center;
+    width: 70%;
+    margin: 10px 15%;
 }
 
 .container div{
-    text-align:right;
+    text-align:center;
 }
 
 .container div img{
