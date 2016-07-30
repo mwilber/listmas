@@ -273,8 +273,10 @@ class SyncAPI extends CI_Controller {
 
 					if( !$foundRS ){
 						// Record not found in json so delete it
-						$this->prod_model->Delete($rsprod->prodId);
-						$this->prodlist_model->Delete($rsprod->prodListId);
+						//$this->prod_model->Delete($rsprod->prodId);
+						//$this->prodlist_model->Delete($rsprod->prodListId);
+						//Deleting was a bad idea. Orphan the prod instead
+						$this->prodlist_model->Update(array('prodListId'=>$rsprod->prodListId,'shopListId'=>-($rsprod->shopListId)));
 					}
 				}
 				// Add in any new items
