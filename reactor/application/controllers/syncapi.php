@@ -211,7 +211,7 @@ class SyncAPI extends CI_Controller {
 			if( !isset($obj->list->shoplistEnhanced) ) $obj->list->shoplistEnhanced = 0;
 			if( !isset($obj->list->shoplistTheme) ) $obj->list->shoplistTheme = 0;
 
-			if( intval($obj->list->shoplistId) <= 0 ){
+			if( intval($obj->list->shoplistId) <= 300 ){
 				$slId = $this->shoplist_model->Add(array('shopListName'=>$obj->list->shoplistName,'shopListEnhanced'=>$obj->list->shoplistEnhanced,'shopListCheckoff'=>0));
 				$this->shoplist_model->Update(array('shopListId'=>$slId,'shopListCode'=>IdObfuscator::encode($slId)));
 			}else{
@@ -226,7 +226,7 @@ class SyncAPI extends CI_Controller {
 				if($obj->list->shoplistCheckoff > 0){
 					// Wipe existing records
 					//echo "xfer here";
-					$this->prodlist_model->DeleteList($slId);
+					//$this->prodlist_model->DeleteList($slId);
 				}
 
 				//echo $obj->list->shopListEnhanced;
