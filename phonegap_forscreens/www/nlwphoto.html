@@ -1,0 +1,28 @@
+<ons-page ng-controller="nlw" ng-init="InitPhoto()">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.navi.popPage();"> <ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center"><img src="images/app_logo.png" width="44" height="44" /></div>
+        <div class="right">
+            <ons-toolbar-button ng-click="app.navi.pushPage('nlwtheme.html');"> <ons-icon icon="chevron-right"></ons-icon></ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <h1>List Photo</h1>
+    <div id="spacializer" ng-style="{'width':(canvasWidth*canvasScale)+'px','height':(canvasHeight*canvasScale)+'px'}">    
+        <div id="zoomctrl" style="{{ctrlStyle}}">
+            <ons-button ng-click="gzFrame.ZoomIn()" ng-if="!canvasHide"><span class="fa fa-plus fa-lg"></span></ons-button>
+            <ons-button ng-click="gzFrame.ZoomOut()" ng-if="!canvasHide"><span class="fa fa-minus fa-lg"></span></ons-button>
+        </div>
+        <canvas id="picturizer" width="{{canvasWidth}}" height="{{canvasHeight}}" style="{{canvasStyle}}"></canvas>
+    </div>
+
+    <form class="foot_ctrl">
+        <ons-button ng-click="GetPicture()"><span class="fa fa-camera fa-lg"></span><span class="label">Camera</span></ons-button>
+        <ons-button ng-click="GetGallery()"><span class="fa fa-picture-o fa-lg"></span><span class="label">Gallery</span></ons-button>
+        <ons-button class="wide-btn next" ng-click="AddPhoto()">Next</ons-button>
+    </form>
+
+</ons-page>

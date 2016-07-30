@@ -3,6 +3,12 @@
     <ons-toolbar>
         <div class="left">
             <!--<ons-toolbar-button ng-click="app.slidingMenu.toggleMenu()"><ons-icon icon="bars"></ons-icon></ons-toolbar-button>-->
+            <!--<ons-toolbar-button ng-click="SetPro(1)" ng-show="proStatus != 1"><ons-icon icon="lock"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button ng-click="SetPro(0)" ng-show="proStatus == 1"><ons-icon icon="unlock-alt"></ons-icon></ons-toolbar-button>-->
+            <!--
+            <ons-toolbar-button ng-click="ShowXferModal()" ng-show="proStatus == 1"><ons-icon icon="cloud-download"></ons-icon></ons-toolbar-button>
+            <ons-toolbar-button id="btn-upgrade" ng-click="UnlockImport()" ng-show="proStatus != 1"><ons-icon icon="star"></ons-icon>Upgrade</ons-toolbar-button>
+            -->
         </div>
         <div class="center"><img src="images/app_logo.png" width="44" height="44" /></div>
         <div class="right">
@@ -19,27 +25,24 @@
         
     </ons-modal>
     
+    <ons-modal var="mxfer">
+        <div class="dialog">
+            <h2 style="margin:0px 0px 10px 0px;"><i class="fa fa-cloud-download"></i> Import List</h2>
+            <p>Enter the code you received when you submitted the list for transfer:</p>
+            <p><input id="xfer-input" type="number" class="text-input" ng-model="xferPin"/></p>
+            <ons-button class="control-btn delete-btn" ng-click="RestoreList()"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mxfer.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+        
+    </ons-modal>
+    
     <ons-list>
       <ons-list-item modifier="chevron" ng-repeat="shoplist in shoplists" ng-click="SetActiveList(shoplist.shoplistId)" class="thumbnail grocery-listing">
-            <ons-gesture-detector ng-hold="DoDelete(shoplist.shoplistId, shoplist.shoplistName)">
-            <span ng-class="">{{shoplist.shoplistName}}</span>
+            <ons-gesture-detector ng-if="shoplist.shoplistName!='74362.1541'" ng-hold="DoDelete(shoplist.shoplistId, shoplist.shoplistName)">
+            <img class="lists-theme" ng-src="images/bkg_{{shoplist.shoplistTheme}}.png"/>
+            <span class="lists-name" ng-class="">{{shoplist.shoplistName}}</span>
             </ons-gesture-detector>
             <ons-button ng-if="shoplist.shoplistName=='74362.1541'" class="add-btn" ng-click="app.navi.pushPage('dev.html')">Dev</ons-button>
-      </ons-list-item>
-      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
-            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
-            <span ng-class="">Lia</span>
-            </ons-gesture-detector>
-      </ons-list-item>
-      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
-            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
-            <span ng-class="">Lizzy</span>
-            </ons-gesture-detector>
-      </ons-list-item>
-      <ons-list-item modifier="chevron" class="thumbnail grocery-listing">
-            <ons-gesture-detector ng-hold="DoDelete(0, 0)">
-            <span ng-class="">Matt</span>
-            </ons-gesture-detector>
       </ons-list-item>
     </ons-list>
     
@@ -48,7 +51,7 @@
             Name your list and add it to start.
         </div>-->
         <div class="footbar">
-            Start by making a list. Enter a name and press the + button to begin.
+            Start by adding a list.
         </div>
     </div>
     
@@ -58,9 +61,11 @@
         <ons-button ng-click="ClearDb()">Clear DB</ons-button>
     </form>-->
     <form class="foot_ctrl">
-        <h3>Make a list</h3>
+        <!--<h3>Make a list</h3>
         <input class="add-input" placeholder="List Name..." type="text" ng-model="formListText" ng-model-instant />
-        <ons-button class="add-btn" ng-click="AddList()"><span class="fa fa-plus fa-lg"></span></ons-button>
+        <ons-button ng-click="ShowXferModal()"><ons-icon icon="cloud-download"></ons-icon> Import List</ons-button>-->
+        <!--<ons-button class="wide-btn" id="btn-upgrade" ng-click="UnlockImport()" ng-show="proStatus != 1"><ons-icon icon="star"></ons-icon> Upgrade</ons-button>-->
+        <ons-button class="wide-btn" ng-click="NewList()"><span class="fa fa-plus fa-lg"></span> New List</ons-button>
     </form>
 
 </ons-page>

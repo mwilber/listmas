@@ -1,0 +1,41 @@
+<ons-page ng-controller="nlw">
+
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="app.navi.popPage();"> <ons-icon icon="chevron-left"></ons-icon></ons-toolbar-button>
+        </div>
+        <div class="center"><img src="images/app_logo.png" width="44" height="44" /></div>
+        <div class="right">
+            <ons-toolbar-button ng-click="app.navi.pushPage('nlwphoto.html');"> <ons-icon icon="chevron-right"></ons-icon></ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    
+    <ons-modal var="modal">
+        <div class="dialog">
+            <p>Do you want to delete the list: <strong>{{listDeleteName}}</strong>?</p>
+            <ons-button class="control-btn delete-btn" ng-click="DeleteList()"><ons-icon icon="trash-o"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="modal.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+        
+    </ons-modal>
+    
+    <ons-modal var="mxfer">
+        <div class="dialog">
+            <h2 style="margin:0px 0px 10px 0px;"><i class="fa fa-cloud-download"></i> Import List</h2>
+            <p>Enter the code you received when you submitted the list for transfer:</p>
+            <p><input id="xfer-input" type="number" class="text-input" ng-model="xferPin"/></p>
+            <ons-button class="control-btn delete-btn" ng-click="RestoreList()"><ons-icon icon="check"></ons-icon></ons-button>
+            <ons-button class="control-btn close-btn" onclick="mxfer.hide()"><ons-icon icon="times"></ons-icon></ons-button>
+        </div>
+        
+    </ons-modal>
+    
+    <h1>List Description</h1>
+    <input class="add-input" placeholder="Description..." type="text" ng-model="listDesc" ng-model-instant />
+
+    <form class="foot_ctrl">
+        
+        <ons-button class="wide-btn next" ng-click="AddDescription()">Next</ons-button>
+    </form>
+
+</ons-page>

@@ -1,5 +1,8 @@
-ggControllers.controller('InfoCtrl', ['$scope', '$http', 
-function($scope, $http) {
+ggControllers.controller('InfoCtrl', ['$scope', '$http', 'ggProStatus', 
+function($scope, $http, ggProStatus) {
+    
+    $scope.proStatus = ggProStatus.GetProStatus();
+    $scope.restoreStatus = false;
    
     
     $scope.ViewGZPage = function(){
@@ -8,7 +11,22 @@ function($scope, $http) {
         }catch(exception){
             console.log("ga fail");
         }
-        window.open('http://www.greenzeta.com/home/listing/product', '_system', 'location=no');
+        window.open('http://apps.greenzeta.com/', '_system', 'location=no');
+    };
+    
+    $scope.ViewGZHomePage = function(){
+        try{
+            ga('send', 'event', 'button', 'click', 'gzprod', 0);
+        }catch(exception){
+            console.log("ga fail");
+        }
+        window.open('http://www.greenzeta.com/', '_system', 'location=no');
+    };
+    
+    $scope.RestorePurchase = function(){
+        //alert('trying');
+        $scope.restoreStatus = true;
+        ggProStatus.Restore();
     };
     
     

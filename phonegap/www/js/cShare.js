@@ -132,8 +132,8 @@ function($scope, $http, ggActiveList, ggProStatus) {
                         });
                     }
                     console.log(pubData);
-                    $http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
-                    //$http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
+                    //$http.post('https://mylistmas.herokuapp.com/reactor/syncapi/shoplist', pubData).success(function(response){
+                    $http.post('http://gibson.loc/listmas/reactor/syncapi/shoplist', pubData).success(function(response){
                         console.log("Saving list...",response);
                         $scope.publishStatus = false;
                         if( response.error.type == -2 ){

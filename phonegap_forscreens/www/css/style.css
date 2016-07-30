@@ -1,3 +1,18 @@
+
+.button{
+    z-index: 1000;
+}
+
+#btn-upgrade span{
+    font-size:12px;
+    font-weight:bold;
+}
+
+#btn-upgrade .fa{
+    font-size: 2em;
+    line-height: 1em;
+}
+
 .dialog{
     color:#666;
     background:#fff;
@@ -7,6 +22,10 @@
     white-space: normal;
     text-align: justify;
     margin-left: 5%;
+}
+
+.dialog h2{
+    text-transform: uppercase;
 }
 
 .dialog p{
@@ -25,6 +44,14 @@
     font-weight: bold;
 }
 
+.dialog .scrolllist .control-btn{
+    text-align: left;
+}
+
+.dialog .control-btn .ons-icon, .dialog .control-btn .fa{
+    margin: 0px 10px;
+}
+
 .dialog .control-btn:first{
     margin-right:4%;
 }
@@ -34,21 +61,77 @@
     text-align: center;
 }
 
+.dialog .proh{
+    margin-bottom: 20px;
+}
+
+.dialog .proh .col2{
+    margin-top: 35px;
+    
+}
+
+.dialog .proh img{
+    width: 90%;
+    max-width: 360px;
+    border: solid 1px #666;
+    margin-left: 4%;
+}
+
+.dialog .proh h2{
+    margin: 0px 4%;
+    font-size: 22px;
+    line-height: 24px;
+    color:#555;
+}
+
+.dialog .proh h3{
+    margin: 0px 7%;
+    font-size: 16px;
+    color: #333;
+    line-height: 20px;
+}
+
 .navigation-bar {
     text-transform: uppercase;
+    -webkit-box-shadow: 0px -5px 25px 5px rgba(50,0,0,0.85);
+    box-shadow: 0px -5px 25px 5px rgba(50,0,0,0.85);
+}
+.iOS .navigation-bar {
+    padding-top: 15px;
+    height: 60px;
+}
+
+.iOS ons-toolbar ~ .page__content {
+    padding-top: 60px;
+}
+
+.navigation-bar .toolbar-button span, .back-button__label span{
+    font-size:12px;
+    font-weight: bold;
 }
 
 .navigation-bar__title{
     font-weight:bold;
 }
 
+.lists-theme{
+    height:40px;
+    float:left;
+}
+
+.lists-name{
+    float:left;
+    margin-left:60px;
+}
+
 .list{
-    padding-bottom:100px;
+    padding-bottom:60px;
     border:none;
 }
 
 .list .list__item{
-    min-height:50px;
+    height:80px;
+    min-height:80px;
     padding:10px;
     border:none;
     border-bottom: 1px solid #ddd;
@@ -63,7 +146,8 @@
 }
 
 .sharelist.list .list__item{
-    min-height:50px;
+    height: 47px;
+    min-height:40px;
     padding:10px 10px 0px 10px;
     border:none;
     border: none;
@@ -88,6 +172,44 @@
     content: "\f040";
 }
 
+.list__item.done-true:before {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    color: #f99;
+    line-height: 28px;
+    height: 28px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f06a";
+}
+
+.list__item.add:before {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    color: #ddd;
+    line-height: 28px;
+    height: 28px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 28px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    content: "\f105";
+}
+
 .list .list__item img, .list .list__item .prodPhoto{
     width: 50px;
     height: 50px;
@@ -96,14 +218,33 @@
     position: absolute;
     background-size: cover;
     background-position: center center;
+        margin-top: 5px;
 }
 
 .list .list__item span.prodName{
+      float: left;
+  display: block;
+  line-height: 1.25em;
+  width: 70%;
+  margin-left: 60px;
+  height: 2.5em;
+  overflow: hidden;
+}
+
+.list .list__item span.prodRating{
     float: left;
     display: block;
-    line-height: 1.25em;
-    /* width: 100%; */
+    line-height: 1em;
+    width: 70%;
     margin-left: 60px;
+    height: 1em;
+    overflow: hidden;
+    font-size: 0.75em;
+    color: #555;
+}
+
+.list .list__item span.prodRating .fa{
+    color:#999;
 }
 
 .list .list__item .wrapper{
@@ -112,15 +253,56 @@
 }
 
 .infolist .list__item{
-    line-height: 24px;
+    line-height: 22px;
     padding: 10px 20px;
     text-align: justify;
     border: none;
+    letter-spacing: 0px;
+    font-size: 14px;
+    height: auto;
+}
+
+.xfermessage{
+    padding:10% 10%;
+    text-align:justify;
+    color:#333;
+}
+
+.xfermessage h1{
+    font-size:60px;
+    text-align:center;
+    color:#555;
 }
 
 .infolist .list__item:first-child:last-child{
     border: none;
 }
+
+.nlwpage{
+    width:90%;
+    padding:0% 5%;
+}
+
+.nlwpage input{
+    width:100%;
+}
+
+.nlwpage p{
+    float:left;
+    clear:both;
+    text-align: justify;
+}
+
+.nlwpage .scrolllist{
+    float:left;
+    width:105%;
+    padding:0px;
+    padding-bottom:75px;
+    list-style: none;
+    margin:0px;
+}
+
+
 
 .foot_ctrl{
     position:fixed;
@@ -128,7 +310,9 @@
     left:0px;
     width: 100%;
     background: #eee;
-    text-transform : uppercase;
+    -webkit-box-shadow: 0px 7px 7px 5px rgba(0,20,0,1);
+    box-shadow: 0px 7px 7px 5px rgba(0,20,0,1);
+    /*text-transform : uppercase;*/ 
     z-index:2000 !important;
 }
 
@@ -158,22 +342,64 @@
     width: 100%;
 }
 
+.foot_ctrl .button.next {
+    text-align: center;
+}
+
+.foot_ctrl .button.next:after {
+    display: inline-block;
+    float:right;
+    font-family: FontAwesome;
+    content:"\f054";
+    text-align:right;
+    font-size: 1.33333333em;
+    font-weight: normal;
+}
+
 .foot_ctrl .button span.fa{
     padding-right:10px;
 }
 
+.list_foot_ctrl .button {
+    width: 23%;
+    border-right-width: 0px;
+    font-weight:normal;
+}
+
+.list_foot_ctrl .button span.fa{
+      padding-right: 0px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.share_foot_ctrl .button{
+    width: 98%;
+  border-right-width: 0px;
+  font-weight:normal;
+}
+
+.share_foot_ctrl .button.publish-btn-lg{
+    width:64%;
+}
+
+.share_foot_ctrl .button span.fa{
+      padding-right: 0px;
+  font-size: 24px;
+  line-height: 36px;
+}
+
 .detail-form {
-    padding-bottom:100px;
+    margin: 30px 5% 75px 5%;
 }
 
 .detail-input {
-  width: 90%;
+  width: 100%;
   height: 20px;
   border: solid 1px #ccc;
   padding: 10px 0;
   font-size: 1em;
   text-indent: 5px;
-  margin:5px 5%;
+  margin:0px 0%;
 }
 
 .detail-photo{
@@ -185,8 +411,25 @@
     background-position: center center;
 }
 
+label.rating{
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+ul.rating{
+    margin: 20px auto;
+  display: block;
+  clear: both;
+  padding: 0px;
+  width: 200px;
+  float: none;
+  font-size: 28px;
+}
+
 textarea.detail-input {
     height:100px;
+    margin: 15px 0%;
 }
 
 li input[type="checkbox"] {
@@ -194,26 +437,44 @@ li input[type="checkbox"] {
 }
 
 form label{
-    
     width:30%;
     float:left;
 }
 
+.search-detail {
+      margin: 0px 5% 75px 5%;
+}
+
+.search-detail .detail-name{
+      font-size: 18px;
+  margin: 10px 0px;
+}
+
+.search-detail .detail-photo{
+    
+}
+
+.search-detail .detail-detail{
+    text-align: justify;
+    font-size: 14px;
+    padding: 20px 3%;
+}
+
 .done-true {
-    text-decoration: line-through;
-    color: #ccc;
+    /*text-decoration: line-through;*/
+    color: #f33;
 }
 
 .add-input {
-    width: 66%;
+    width: 68%;
     height: 40px;
     float: left;
     border: none;
-    padding: 5px 0;
+    padding: 4px 0;
     font-size: 20px;
     text-indent: 5px;
-    border: none;
-    margin: 5px;
+    border: solid 1px #ccc;
+    margin: 1%;
 }
 .add-btn, .foot_ctrl .add-btn {
     width: 26%;
@@ -221,7 +482,7 @@ form label{
     height: 50px;
     text-align: center;
     line-height: 32px;
-    margin: 5px;
+    margin: 1%;
     padding: 10px 0;
     font-size: 14px;
 }
@@ -232,7 +493,7 @@ form label{
 
 .zeta{
     text-transform: lowercase;
-    font-family: serif;
+    font-family: 'ZetaGreek', serif;
     font-size: 30px;
     padding-right: 10px;
     line-height: 0px;
@@ -257,7 +518,7 @@ form label{
 
 .sharelist .button.em-btn{
     color:#fff;
-    background:#999;
+    background:#666666;
 }
 
 .sharelist .button.fb-btn{
@@ -268,6 +529,11 @@ form label{
 .sharelist .button.tw-btn{
 	color:#fff;
 	background:#00aced;
+}
+
+.sharelist .button.tx-btn{
+    color:#fff;
+    background:#666666;
 }
 
 .sharelist .button.gp-btn{
@@ -285,6 +551,100 @@ form label{
 	background:#0072b1;
 }
 
+.sharepreview{
+    width:70%;
+    margin:5% 15% 0% 15%;
+}
+
+.floating-dialog{
+      position: absolute;
+  top: 5%;
+  height: 85%;
+  width: 80%;
+}
+
+.floating-dialog h1{
+      text-align: left;
+  /*text-transform: uppercase;*/
+  font-size: 24px;
+  margin: 0px 0px 20px 0px;
+}
+
+.floating-dialog .scrolllist{
+    height: 75%;
+  overflow: scroll;
+  list-style: none;
+  margin: 0px 0px 5% 0px;
+  padding: 0px;
+}
+
+.floating-dialog .scrolllist li{
+    margin: 0px 0px 10px 0px;
+}
+
+.url-dialog .text-input{
+      width: 100%;
+  border-color: #999;
+  color: #666;
+  font-size: 18px;
+}
+
+.nlwpage .scrolllist li{
+    float:left;
+    width:50%;
+    margin-bottom:5%;
+}
+
+.nlwpage .scrolllist li.buypro{
+    width:100%;
+}
+
+.scrolllist .themeselect{
+    width: 80%;
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #000, 0px 0px 1px #000;
+    padding: 0px 5% 90% 5%;
+    background-color: #3c9339;
+}
+
+.nlwpage .scrolllist li.buypro .themeselect{
+    width: 85%;
+    padding-bottom: 25%;
+    background-size: contain;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.scrolllist .themeselect.disabled{
+    opacity: 0.5;
+}
+
+
+.scrolllist label{
+    display: block;
+    width:90%;
+}
+
+.scrolllist .themeselect span.fa{
+      display: none;
+      float: right;
+      color: #4eb94b;
+      text-shadow: 0px 0px 1px #fff, 0px 0px 19px #ffe, 0px 0px 20px #ffc;
+      font-size: 50px;
+      margin: -10px -15px;
+}
+
+.scrolllist .themeselect.selected span.fa{
+      display: block;
+}
+
 .help{
     position:absolute;
     top:0px;
@@ -298,7 +658,7 @@ form label{
 .help .footbar, .help .toolbar{
     position:absolute;
     left:5%;
-    bottom:125px;
+    bottom:80px;
     width:80%;
     height:auto;
     padding:5%;
@@ -357,4 +717,58 @@ form label{
 
 .help.hshare .footbar:after{
     left:20%;
+}
+
+#xfer-input{
+    width: 100%;
+    border: 1px solid #666;
+    font-size: 36px;
+    height: auto;
+    color: #666;
+}
+
+#spacializer{
+    width:94%;
+    margin-left:3%;
+    overflow: hidden;
+}
+
+#spacializer h2{
+    position:absolute;
+    top:30%;
+    width:94%;
+    text-align: center;
+}
+
+#volumizer{
+    /*position: absolute;
+    left:0%;
+    top:50%;*/
+    border: solid 1px rgba(255,255,255,0.85);
+}
+
+#picturizer{
+    background:#eee url('../images/photo_bkg.png');
+    border: solid 1px rgba(255,255,255,0.85);
+}
+
+#zoomctrl{
+    position: absolute;
+    z-index: 100;
+    width: 75%;
+    padding-left: 20%;
+}
+
+#zoomctrl .button {
+    width: 25%;
+    margin: 0% 5%;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 35px;
+    font-size: 14px;
+    font-weight: bold;
+    background: rgba(255,255,255,0.70);
+    color: #bb5500;
 }

@@ -9103,15 +9103,13 @@ window.monaca = window.monaca || {};
             }
 
             if (isIOS) {
-            	try{
                 var head = message.substr(0, 5);
                 if (window.monaca.isDeviceReady !== true || (head != 'ERROR' && head != 'WARN:')) {
                     var xhr = new XMLHttpRequest();
                     var path = "monaca://log?level=" + encodeURIComponent(level) + "&message=" + encodeURIComponent(message);
-                    xhr.open("GET", path);
+                    //xhr.open("GET", path);
                     //xhr.send();
                 }
-                }catch(exception){}
             } else {
                 window.console[level](message);
             }
