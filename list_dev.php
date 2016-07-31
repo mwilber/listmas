@@ -111,14 +111,13 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
 		<link href='fonts/opensans_regular_macroman/stylesheet.css' rel='stylesheet' type='text/css'>
 		<link href='fonts/opensans_bold_macroman' rel='stylesheet' type='text/css'>
-		<link type="text/css" href="css/jquery.jscrollpane.css" rel="stylesheet" media="all" />
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/list.css" />
-    <link rel="stylesheet" type="text/css" href="css/color.css" />
-	<link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
-	<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
-	<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
-	<link rel="stylesheet" type="text/css" href="css/print.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/list_dev.css" />
+		<link rel="stylesheet" type="text/css" href="css/color.css" />
+		<link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
+		<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
+		<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
+		<link rel="stylesheet" type="text/css" href="css/print.css" />
     <title>My Listmas : $titleRS['shoplistName']</title>
 
     <script type="text/javascript">
@@ -141,152 +140,133 @@
 		</script>
     </head>
     <body class="<?=$listTheme?>">
-			<!--<div id="background">-->
-				<div class="clouds scenery">
-					<div class="clouds">
-						<div class="clouds"></div>
-					</div>
-				</div>
 
-				<div class="pgheader">
-					<div class="sociallinks">
-						<a href="https://twitter.com/home?status=<?=urlencode($social['title'])?>:%20<?=urlencode($social['link'])?>%20<?=urlencode($social['description'])?>" class="fa fa-twitter" target="_blank"></a>
-						<a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
-						<a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=<?=urlencode($social['image'])?>&description=<?=urlencode($social['title'])?><?=urlencode('! ')?><?=urlencode($social['description'])?><?=urlencode('.')?>" class="fa fa-pinterest" target="_blank"></a>
-						<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
-					</div>
+		<div id="header" class="header">
+			<div class="pg-wrap">
+				<div class="sociallinks">
+					<a href="https://twitter.com/home?status=<?=urlencode($social['title'])?>:%20<?=urlencode($social['link'])?>%20<?=urlencode($social['description'])?>" class="fa fa-twitter" target="_blank"></a>
+					<a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+					<a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=<?=urlencode($social['image'])?>&description=<?=urlencode($social['title'])?><?=urlencode('! ')?><?=urlencode($social['description'])?><?=urlencode('.')?>" class="fa fa-pinterest" target="_blank"></a>
+					<a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
+					<a class="showapp" href="http://www.mylistmas.com" target="_blank">Made with Listmas! Get the App <span class="fa fa-mobile-phone"></span></a>
 				</div>
-
-			<!--</div>-->
-      <div id="header" class="header">
-				<img id="logo" src="icons/icon_256.png" height="100%">
-      	<a class="showapp fa fa-mobile-phone" style="" target="_blank"> <span style="font-size:18px;">Get the App!</span></a>
-      </div>
-			<div id="home" class="panel" style="display:block;">
-				<a class="info" href="/index.php"><i class="fa fa-info-circle"></i></a>
-				<h1 class="name"><a href="/index.php"><img src="images/logo.png" height="75"/></a><br/><img class="print" src="icons/icon_48.png" style="margin-right:10px;"/><span class="dsk"><?=$listTitle?></span>
-					<br class="print"/><span class="print url"><?=$social['link']?></span>
-				</h1>
-				<a id="print" class="button" href="javascript:window.print();">
-					<i>Print</i> <span class="fa fa-print"></span>
-				</a>
-				<div class="content">
-					<?php if(isset($_GET['l'])): ?>
+				<a href="http://www.mylistmas.com" target="_blank"><img id="logo" src="images/logo.png"></a>
+				<h1><?=$listTitle?> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis lectus quis nulla tempus euismod. Vivamus pulvinar, tortor in ullamcorper pharetra, neque sapien sodales neque, sed laoreet lorem velit eu est. Duis id porta arcu. Sed ipsum eros, gravida sed imperdiet sit amet, suscipit vel risus. Nullam molestie mauris et vulputate viverra. Duis venenatis id justo lacinia viverra. Integer ornare ullamcorper neque. Morbi eget dictum ante.</h1>
+			</div>
+		</div>
+		<div class="theme-bkg">
+			<?php if(isset($_GET['l'])): ?>
+			<div class="ground-spacer">
+			<div class="list_bkg">
+				<div class="list pg-wrap">
 					<ul class="linearlist">
 						<?php foreach( $listRS as $li):
 							$snot = false; $sbuy = false; $sweb = false; $sbou = false;
 							$sql = "SELECT * FROM tblNotify WHERE prodId=".$li['prodId']." AND notifyType=1 AND notifyRead=0 ";
 							$nRS = $dbh->query($sql);
-							//print_r($nRS->rowCount());
 						?>
 							<li class="<?php if( $listEnhanced == 1 && $nRS->rowCount() > 0 ) echo "bought"; ?>">
-								<div>
-									<?php //print_r($li); ?>
-									<div class="rtblock">
-										<div class="modal boughtit">
-											<div class="dialog">
-												<p>Do you wish to notify the list owner that this item has been purchased?</p>
-												<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right:5%;">No</a>
-												<a class="button" href="#" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); return false;" style="background-color:#4eb94b;">Yes</a>
-											</div>
+								<div class="rtblock">
+								
+								
+								
+								
+								
+									<div class="modal boughtit">
+										<div class="dialog">
+											<p>Do you wish to notify the list owner that this item has been purchased?</p>
+											<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right:5%;">No</a>
+											<a class="button" href="#" onclick="NotifyBought('<?=$listUrl?>',<?=$li['prodId']?>,<?=$li['prodAppId']?>); return false;" style="background-color:#4eb94b;">Yes</a>
 										</div>
-										<div class="modal boughtalready">
-											<div class="dialog">
-												<p>Someone has notified the list owner that this item has been purchased.</p>
-												<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right: 0%; width: 90%;">Ok</a>
-											</div>
+									</div>
+									<div class="modal boughtalready">
+										<div class="dialog">
+											<p>Someone has notified the list owner that this item has been purchased.</p>
+											<a class="button" href="#" onclick="$(this).parent().parent().hide(); return false;" style="margin-right: 0%; width: 90%;">Ok</a>
 										</div>
-										<?php if( $listEnhanced == 1 && $nRS->rowCount() > 0 ): $snot = true; ?>
-										<a href="#" class="produrl button gotit" onclick="$(this).parent().find('.boughtalready').show(); ga('send', 'event', 'list', 'click', 'buy', 0); return false;">
-											<i>Item Purchased</i>
-											<span class="fa fa-exclamation-triangle"></span>
-										</a>
-										<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
-											<i>Buy This</i>
-											<span class="fa fa-shopping-cart"></span>
-										</a>
-										<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
-										<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
-											<i>Web Page</i>
-											<span class="fa fa-globe"></span>
-										</a>
-										<?php elseif($listEnhanced == 1): $sbou = true;?>
-										<a href="#" class="prodbought button" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-											<i>Not Purchased</i>
-											<span class="fa fa-gift"></span>
-										</a>
-										<?php endif; ?>
-										<a href="#" class="prodbought button options" onclick="ShowDetail($(this).parent().parent().find('.detail-btn')); return false;">
-											<i>More Options</i>
-											<span class="fa fa-bars"></span>
-										</a>
-										<div class="hiddenopts">
-											<?php if( $li['prodUrl'] != "" ): ?>
-												<?php if(!$sweb): ?>
-												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
-													<i>Web Page</i>
-													<span class="fa fa-globe"></span>
-												</a>
-												<?php endif; ?>
-												<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy && !$snot ): ?>
-												<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
-													<i>Buy This</i>
-													<span class="fa fa-shopping-cart"></span>
-												</a>
-												<?php endif; ?>
-												<?php if($listEnhanced == 1 && !$sbou && !$snot): ?>
-												<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
-													<i>Not Purchased</i>
-													<span class="fa fa-gift"></span>
-												</a>
-												<?php endif; ?>
+									</div>
+
+
+									<?php if( $nRS->rowCount() > 0 ): $snot = true; ?>
+									<a href="#" class="produrl button gotit" onclick="$(this).parent().find('.boughtalready').show(); ga('send', 'event', 'list', 'click', 'buy', 0); return false;">
+										<i>Item Purchased</i>
+										<span class="fa fa-exclamation-triangle"></span>
+									</a>
+									<?php elseif( strpos($li['prodUrl'], "amazon") > 1 ): $sbuy = true; ?>
+									<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+										<i>Buy This</i>
+										<span class="fa fa-shopping-cart"></span>
+									</a>
+									<?php elseif( $li['prodUrl'] != "" ): $sweb = true;?>
+									<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
+										<i>Web Page</i>
+										<span class="fa fa-globe"></span>
+									</a>
+									<?php else: $sbou = true;?>
+									<a href="#" class="prodbought button" onclick="$(this).parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+										<i>Not Purchased</i>
+										<span class="fa fa-gift"></span>
+									</a>
+									<?php endif; ?>
+									
+									<div class="hiddenopts">
+										<?php if( $li['prodUrl'] != "" ): ?>
+											<?php if(!$sweb): ?>
+											<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button info" onclick="ga('send', 'event', 'list', 'click', 'info', 0);">
+												<i>Web Page</i>
+												<span class="fa fa-globe"></span>
+											</a>
 											<?php endif; ?>
+											<?php if( strpos($li['prodUrl'], "amazon") > 1 && !$sbuy && !$snot ): ?>
+											<a href="<?=$li['prodUrl']?>" target="_blank" class="produrl button buy" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'list', 'click', 'buy', 0);">
+												<i>Buy This</i>
+												<span class="fa fa-shopping-cart"></span>
+											</a>
+											<?php endif; ?>
+											<?php if(!$sbou && !$snot): ?>
+											<a href="#" class="prodbought button" onclick="$(this).parent().parent().find('.boughtit').show(); ga('send', 'event', 'notify', 'click', 'bought', 0); return false;">
+												<i>Not Purchased</i>
+												<span class="fa fa-gift"></span>
+											</a>
+											<?php endif; ?>
+										<?php endif; ?>
 
-
-											<!--<div class="prodqr">
-												<img src="https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=qr/<?=$li['prodId']?>&choe=UTF-8"/>
-												<a href="/qr.php">Scan this QR code with the Listmas app to add this item to your own list. Click here for more information.</a>
-											</div>-->
-										</div>
 									</div>
-									<div class="ltblock" onclick="ShowDetail(this)">
-
-										<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
-										<img class="icon print" src="<?=$li['prodPhoto']?>"/>
-										<div class="prodname">
-											<div>
-											<?=$li['prodName']?>
-											<br/>
-											<span class="description"><?=$li['prodDescription']?></span>
-											</div>
-										</div>
-									</div>
-									<div class="detail-btn fa fa-angle-down" onclick="ShowDetail(this)"></div>
+								
+									<a href="#" class="prodbought button options" onclick="ShowDetail($(this).parent().parent().find('.detail-btn')); return false;">
+										<i>More Options</i>
+										<span class="fa fa-bars"></span>
+									</a>
+								
+								
 								</div>
+								<div class="ltblock" onclick="ShowDetail(this)">
+
+									<div class="icon" style="background-image:url('<?=$li['prodPhoto']?>')"></div>
+									<img class="icon print" src="<?=$li['prodPhoto']?>"/>
+									<div class="prodname">
+										<div>
+										<?=$li['prodName']?>
+										<br/>
+										<span class="description"><?=$li['prodDescription']?></span>
+										</div>
+									</div>
+								</div>
+								<div class="detail-btn fa fa-angle-down" onclick="ShowDetail(this)"></div>
 							</li>
 						<?php endforeach; ?>
 					</ul>
-					<?php endif; $dbh = null;?>
-					<div class="clearfix"></div>
+				</div>
 				</div>
 			</div>
-
-		<div class="clearfix"></div>
-
+			<?php endif; $dbh = null;?>
+		</div>
 		<div class="ground scenery">
 			<div class="bkg one"></div>
 			<div class="bkg two"></div>
 			<div class="bkg three"></div>
 			<div class="bkg four"></div>
 			<div class="bkg five"></div>
-			<!--
-			<?php for($idx = 0; $idx < 10; $idx++): ?>
-			<img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 160 , 250 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
-			<?php endfor; ?>
-			<img class="cabin" src="images/bkg_cabin.png" style="top:<?=mt_rand ( 45 , 55 )?>px; left:<?=((45)+mt_rand ( 0 , 9 ))?>%;"/>
-			<img class="cabin" src="images/bkg_snowman.png" style="top:<?=mt_rand ( 355 , 375 )?>px; left:<?=mt_rand ( 5 , 45 )?>%;"/>
-			-->
 		</div>
 
 		<div id="footer">
