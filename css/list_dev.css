@@ -140,7 +140,7 @@ body{
 	font-size: 24px;
 	float:left;
 	margin-bottom:1px;
-	background:rgba(255,255,255,0.65);
+	background:rgba(255,255,255,0.75);
 	position:relative;
 }
 
@@ -194,7 +194,8 @@ body{
 	text-align: center;
 	width: 100%;
 	font-size: 28px;
-  cursor:pointer;
+	cursor:pointer;
+	color: rgba(0,0,0,0.5);
 }
 
 .linearlist li .icon{
@@ -204,8 +205,8 @@ body{
 	margin: 0px 2% 2% 2%;
 	padding:5px;
 	color:#FAF6F1;
-	width: 8%;
-    padding: 8%;
+	width: 20%;
+    padding-bottom: 20%;
     box-sizing: border-box;
     position: relative;
 	background-size: cover;
@@ -213,11 +214,19 @@ body{
 	background-repeat: no-repeat;
 }
 
+.linearlist li .rtblock a.button.gotit span.fa {
+    background: #e3343f;
+}
+
+.linearlist li.bought .prodname, .linearlist li.bought .icon{
+	opacity:0.5;
+}
+
 
 .linearlist li .rtblock{
 	display: block;
 	position: absolute;
-	bottom: 20px;
+	top: 10px;
 	right: 0px;
 	float: right;
 	font-size: 20px;
@@ -261,7 +270,7 @@ body{
 
 .linearlist .modal{
     display:none;
-    position:fixed;
+    position:absolute;
     top:0px;
     left:0px;
     width:100%;
@@ -271,29 +280,32 @@ body{
 }
 
 .linearlist .modal .dialog{
-    position:fixed;
-    top:30%;
+    position:absolute;
+    top:10%;
     left:50%;
-    width:250px;
-    height:auto;
-    z-index:5000;
-    margin-left:-150px;
-    padding:0px 25px;
+    width: 300px;
+    height: auto;
+    z-index: 5000;
+    margin-left: -165px;
+    padding: 0px 15px;
     background-color:#fff;
     color:#666;
     border-radius: 15px;
+	-webkit-box-shadow: 2px 10px 50px 10px rgba(0,0,0,0.9);
+	box-shadow: 2px 10px 50px 10px rgba(0,0,0,0.9);
 }
 
 .linearlist .modal .dialog p{
-    font-size: 20px;
+        font-size: 14px;
     text-align: justify;
-    margin: 25px 0%;
+    margin: 15px 0%;
+    line-height: 15px;
 }
 
 .linearlist .modal .dialog .button{
     display: block;
     float: left;
-    width: 35%;
+    width: 37%;
     margin: 0% 0% 5% 0%;
     background-color: #666;
     padding: 4% 5%;
@@ -308,7 +320,7 @@ body{
 	List item expansion
 */
 
-.linearlist li, .linearlist li .icon{
+.linearlist li, .linearlist li .icon, .linearlist li .rtblock a{
 	-webkit-transition: all 500ms ease-in-out;
 	-moz-transition: all 500ms ease-in-out;
 	-ms-transition: all 500ms ease-in-out;
@@ -342,6 +354,7 @@ body{
 .linearlist li.expand .rtblock .hiddenopts{
 	display:block;
 }
+
 
 /*
 	Print exceptions
@@ -427,4 +440,202 @@ body{
   padding: 3px 5px;
   font-weight: bold;
   float: left;
+}
+
+/* Tablet */
+@media only screen and (max-width : 800px) {
+
+	.header{
+		height:85px;
+	}
+
+	.header .pg-wrap {
+    height: 60px;
+}
+
+	.header h1 {
+		height: 40px;
+		width: calc(60% - 85px);
+		font-size: 18px;
+		line-height: 20px;
+		margin-top: 12px;
+	}
+
+	.header #logo {
+		width: 50px;
+		height: 50px;
+		float: left;
+		margin: 7px 15px 7px 20px;
+	}
+
+	.header .sociallinks {
+		margin-top: 5px;
+	}
+
+	.header .sociallinks a {
+		width: 40px;
+		font-size: 20px;
+	}
+
+	.theme-bkg {
+		margin-bottom: -350px;
+	}
+
+	.list_bkg {
+		padding-top: 85px;
+	}
+
+	.linearlist li .ltblock {
+    	width: 65%;
+	}
+
+
+	.linearlist li .prodname {
+		    font-size: 18px;
+		line-height: 20px;
+		padding: 0px 0% 5px 3%;
+		width: 70%;
+	}
+
+	.linearlist li .rtblock {
+		top: 20px;
+	}
+
+	.linearlist li .rtblock a.button {
+		font-size: 12px;
+		line-height: 24px;
+		margin: 0px 0px 5px 0px;
+	}
+
+	.linearlist li .rtblock a.button span.fa {
+		font-size: 16px;
+		line-height: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+
+	.ground-spacer {
+		padding-bottom: 350px;
+	}
+
+	.ground{
+		height:350px;
+	}
+
+	.ground .bkg{
+		height:350px;
+	}
+
+	.ground.scenery .bkg{
+		background-size: auto 350px;
+	}
+}
+
+/* Phone */
+@media only screen and (max-width : 600px) {
+
+	.header{
+		height:55px;
+	}
+
+	.header .pg-wrap {
+		height: 35px;
+		padding: 10px 0px;
+	}
+
+	.header h1 {
+		    height: 28px;
+    width: calc(60% - 55px);
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 2px;
+	}
+
+	.header #logo {
+		    width: 35px;
+    height: 35px;
+    float: left;
+    margin: 0px 10px 0px 10px;
+	}
+
+	.header .sociallinks {
+		margin-top: 0px;
+	}
+
+	.header .sociallinks a {
+		    width: 20px;
+    	font-size: 14px;
+	}
+
+	.header .sociallinks a.showapp {
+		font-size: 6px;
+		margin-top: 5px;
+	}
+
+	.header .sociallinks a.showapp span {
+		font-size: 18px;
+		margin: 0px 5px 0px 5px;
+	}
+
+	.theme-bkg {
+		margin-bottom: -200px;
+	}
+
+	.list_bkg {
+		padding-top: 55px;
+	}
+
+	.linearlist li .icon {
+	    width: 28%;
+	    padding-bottom: 28%;
+	}
+
+	.linearlist li .prodname {
+		font-size: 14px;
+		line-height: 14px;
+		padding: 0px 0% 5px 2%;
+		height: 52px;
+		overflow: hidden;
+		width: 65%;
+	}
+
+	.linearlist li .prodname span {
+		font-size: 12px;
+		font-weight: bold;
+	}
+
+	.linearlist li .rtblock {
+		top: 10px;
+    	margin-right: 0px;
+	}
+
+	.linearlist li .rtblock a.button {
+		font-size: 8px;
+		line-height: 24px;
+		margin: 0px 0px 5px 0px;
+	}
+
+	.linearlist li .rtblock a.button span.fa {
+		    font-size: 12px;
+		line-height: 35px;
+		width: 35px;
+		height: 35px;
+	}
+
+	.ground-spacer {
+		padding-bottom: 200px;
+	}
+
+	.ground{
+		height:200px;
+	}
+
+	.ground .bkg{
+		height:200px;
+	}
+
+	.ground.scenery .bkg{
+		background-size: auto 200px;
+	}
 }

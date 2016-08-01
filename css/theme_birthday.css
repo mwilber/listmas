@@ -1,5 +1,10 @@
-body.birthday{
+body.birthday .theme-bkg{
     background:#33BDF2;
+}
+
+.birthday .header{
+    background:rgb(45,50,150);
+    color: #ffffff;
 }
 
 .birthday .clouds{
