@@ -151,7 +151,7 @@
 					<a class="showapp" href="http://www.mylistmas.com" target="_blank">Made with Listmas! Get the App <span class="fa fa-mobile-phone"></span></a>
 				</div>
 				<a href="http://www.mylistmas.com" target="_blank"><img id="logo" src="images/logo.png"><img id="printlogo" class="print" src="icons/icon_512.png"></a>
-				<h1><?=$listTitle?> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum, urna vitae mollis ullamcorper, nisl leo dapibus justo, eget fermentum orci ligula eget est. Proin vestibulum tortor a ligula imperdiet luctus. Nam lobortis nulla sed libero congue, et viverra justo mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed eleifend ac nisl vitae interdum. Curabitur commodo eget eros ac mattis. Vestibulum purus ante, hendrerit eget dictum a, vehicula et neque. Quisque lacinia ligula quis magna sollicitudin pulvinar. Donec et neque ultrices, eleifend arcu ac, rhoncus orci.</h1>
+				<h1><?=$listTitle?></h1>
 				<h2 class="print">Create, Publish, Share your Wishlist with Listmas<br/><span>mylistmas.com</span></h2>
 			</div>
 		</div>
