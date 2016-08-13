@@ -117,6 +117,7 @@
 		<link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
+		<link rel="stylesheet" type="text/css" href="css/theme_space.css" />
 		<link rel="stylesheet" type="text/css" href="css/print.css" />
     <title>My Listmas : $titleRS['shoplistName']</title>
 

@@ -144,6 +144,14 @@ body{
 	position:relative;
 }
 
+.linearlist li:first-of-type{
+	padding-top:40px;
+}
+
+.linearlist li:first-of-type .rtblock {
+    top: 30px;
+}
+
 .linearlist li .ltblock{
   display: block;
   float: left;
