@@ -1,0 +1,61 @@
+body.hohoho .theme-bkg{
+    background: #062225 url('../images/bkg_hohoho_0.png');
+}
+
+.hohoho .header, .hohoho .header .pg-wrap, .hohoho .header a{
+    background:#4e8a97;
+    color: #e1f0f3;
+}
+
+.hohoho .clouds{
+    background:transparent;
+}
+
+.hohoho .linearlist li {
+    background: rgba(255,255,255,0.9);
+}
+
+/*.panel h1, .popup h1 {
+  background: #003399;
+}*/
+
+.hohoho .ground .bkg.one{
+    background-color: #062225;
+    background-image:  none;
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.hohoho .ground .bkg.two{
+    background-color: transparent;
+    background-image:  url('../images/bkg_hohoho_1.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.hohoho .ground .bkg.three{
+    background-color: transparent;
+    background-image:  url('../images/bkg_hohoho_2.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.hohoho .ground .bkg.four{
+    background-color: transparent;
+    background-image:  url('../images/bkg_hohoho_3.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.hohoho .ground .bkg.five{
+    background-color: transparent;
+    background-image:  url('../images/bkg_hohoho_4.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+@media only screen and (max-width: 800px){
+    body.hohoho .ground.scenery .bkg {
+        background-position: 50% 0%;
+    }
+}

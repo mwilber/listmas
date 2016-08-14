@@ -1,0 +1,75 @@
+body.princess .theme-bkg{
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8c6dc+0,aedaf5+100 */
+    background: #f8c6dc; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f8c6dc 0%, #aedaf5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top,  #f8c6dc 0%,#aedaf5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom,  #f8c6dc 0%,#aedaf5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f8c6dc', endColorstr='#aedaf5',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+.princess .header, .princess .header .pg-wrap, .princess .header a{
+    background:#32a1da;
+    color: #fff;
+}
+
+.princess .clouds{
+    background:transparent;
+}
+
+/*.panel h1, .popup h1 {
+  background: #003399;
+}*/
+
+.princess .ground .bkg.one{
+    background-color: transparent;
+    background-image:  url('../images/bkg_princess_1.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.princess .ground .bkg.two{
+    background-color: transparent;
+    background-image:  url('../images/bkg_princess_2.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.princess .ground .bkg.three{
+    background-color: transparent;
+    background-image:  url('../images/bkg_princess_3.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.princess .ground .bkg.four{
+    background-color: transparent;
+    background-image:  url('../images/bkg_princess_4.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+.princess .ground .bkg.five{
+    background-color: transparent;
+    background-image:  url('../images/bkg_princess_5.png');
+    background-position: center top;
+    background-repeat: repeat-x;
+}
+
+@media only screen and (max-width: 800px){
+    body.princess .ground.scenery .bkg {
+        background-position: 50% 0%;
+    }
+    body.princess .ground.scenery{
+        background: #00356b; /* Old browsers */
+        background: -moz-linear-gradient(top,  #00356b 0%, #1e5799 28%, #fcc 52%, #ff96d6 75%); /* FF3.6+ */
+        background: -webkit-gradient(linear, center top, left bottom, color-stop(0%,#00356b), color-stop(28%,#1e5799), color-stop(52%,#fcc), color-stop(75%,#ff96d6)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #00356b 0%,#1e5799 28%,#fcc 52%,#ff96d6 75%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #00356b 0%,#1e5799 28%,#fcc 52%,#ff96d6 75%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #00356b 0%,#1e5799 28%,#fcc 52%,#ff96d6 75%); /* IE10+ */
+        background: linear-gradient(to bottom, #00356b 0%,#1e5799 28%,#fcc 52%,#ff96d6 75%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00356b', endColorstr='#ff96d6',GradientType=0 ); /* IE6-9 */
+
+    }
+}
