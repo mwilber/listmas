@@ -1,4 +1,5 @@
-body.princess .theme-bkg{
+body.princess .theme-bkg,
+.container.princess{
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f8c6dc+0,aedaf5+100 */
     background: #f8c6dc; /* Old browsers */
     background: -moz-linear-gradient(top,  #f8c6dc 0%, #aedaf5 100%); /* FF3.6-15 */

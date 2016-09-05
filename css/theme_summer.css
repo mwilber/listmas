@@ -1,4 +1,5 @@
-body.summer .theme-bkg{
+body.summer .theme-bkg,
+.container.summer{
     background: #00356b; /* Old browsers */
     background: -moz-linear-gradient(top,  #00356b 0%, #1e5799 70%, #fcc 80%, #ff96d6 95%); /* FF3.6+ */
     background: -webkit-gradient(linear, center top, left bottom, color-stop(0%,#00356b), color-stop(70%,#1e5799), color-stop(80%,#fcc), color-stop(95%,#ff96d6)); /* Chrome,Safari4+ */

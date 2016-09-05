@@ -50,17 +50,10 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/index.css">
-        <link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
-		<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
-		<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
-		<link rel="stylesheet" type="text/css" href="css/theme_space.css" />
-		<link rel="stylesheet" type="text/css" href="css/theme_princess.css" />
-		<link rel="stylesheet" type="text/css" href="css/theme_hohoho.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
         <link href='//fonts.googleapis.com/css?family=Life+Savers:700|Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Lato:400,300,700,900,100' rel='stylesheet' type='text/css'>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        
     		<!-- HTML5 IE Enabling Script -->
     		<!--[if lt IE 9]>
     		<script src="js/vendor/html5shiv.min.js"></script>
@@ -146,14 +139,12 @@
         <div class="clearfix"></div>
 
         <div class="ground scenery">
-			<div class="bkg one"></div>
-			<div class="bkg two"></div>
-			<div class="bkg three"></div>
-			<div class="bkg four"></div>
-			<div class="bkg five"></div>
-		</div>
+          <?php for($idx = 0; $idx < 10; $idx++): ?>
+          <img class="tree" src="images/bkg_tree.png" style="top:<?=mt_rand ( 20 , 80 )?>px; left:<?=((10*$idx)+mt_rand ( 0 , 9 ))?>%;"/>
+          <?php endfor; ?>
+        </div>
 
-        <div id="create" name="create" class="container hohoho">
+        <div id="create" name="create" class="container">
             <div class="content">
                 <div class="col12">
                     <h1>Create</h1>
@@ -193,18 +184,10 @@
 					<h3>Put the stuff you really want on top.</h3>
                 </div>
             </div>
-
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
-            </div>
         </div>
 
 
-        <div id="publish" class="container princess">
+        <div id="publish" class="container">
             <div class="content">
                 <div class="col12">
                     <h1>Publish</h1>
@@ -227,19 +210,16 @@
 					<div class="badgeb fa fa-check-square-o"></div>
 					<h3>Viewers check off items on your list.</h3>
                 </div>
-
-            </div>
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
+				<!--<div class="col3">
+					<h2>Transfer</h2>
+					<div class="badgeb fa fa-cloud-download"></div>
+					<h3>Maintain control of your list when you change devices.</h3>
+                </div>-->
             </div>
         </div>
 
 
-        <div id="share" class="container summer">
+        <div id="share" class="container">
             <div class="content">
                 <div class="col12">
                     <h1>Share</h1>
@@ -264,16 +244,9 @@
                 </div>
 
             </div>
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
-            </div>
         </div>
 
-        <div id="fullversion" name="fullversion" class="container space">
+        <div id="fullversion" name="fullversion" class="container">
             <div class="content">
                 <div class="col12">
                     <h2>* Additional themes can be added with a one-time in app purchase.</h2>
@@ -287,14 +260,6 @@
                       <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
             </div>
 
         </div>

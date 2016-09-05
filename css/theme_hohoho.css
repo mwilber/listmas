@@ -1,4 +1,5 @@
-body.hohoho .theme-bkg{
+body.hohoho .theme-bkg,
+.container.hohoho{
     background: #062225 url('../images/bkg_hohoho_0.png');
 }
 
