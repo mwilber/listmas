@@ -1,4 +1,5 @@
-body.space .theme-bkg{
+body.space .theme-bkg,
+.container.space{
     background: #1a1b1a url('../images/bkg_space_0.png');
 }
 

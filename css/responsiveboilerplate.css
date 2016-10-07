@@ -422,7 +422,7 @@ a:focus {
 /* General small screen Mobile down size from 768px, display all columns in block
 ============================================================================================== */
 
-@media handheld, only screen and (max-width: 768px) {
+@media handheld, only screen and (max-width: 567px) {
   body {
     font-size: 1.0;
     -webkit-text-size-adjust: none;

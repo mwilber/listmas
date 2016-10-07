@@ -66,7 +66,7 @@
     		<script src="js/vendor/html5shiv.min.js"></script>
     		<![endif]-->
 
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 		<!-- Facebook Pixel Code -->
 		<script>
 		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?

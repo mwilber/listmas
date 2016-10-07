@@ -3,18 +3,36 @@
 	//var pScale = 200;
 
 	jQuery(document).ready(function($) {
-		$(window).scroll(function(){
+		
 
-			DoParallax();
+		if (Modernizr.touch) { 
+			// $('body').css('transition', 'all 100ms');
+			// $('#create').css('transition', 'all 100ms');
 
-		});
+			// $(window).on({
+			// 	'touchmove': function(e) { 
+			// 		DoParallax();
+			// 	}
+			// });
+
+			//$('body').css('background-attachment', 'fixed');
+			//$('#create').css('background-attachment', 'fixed');
+			//$('#publish').css('background-attachment', 'fixed');
+			//$('#share').css('background-attachment', 'fixed');
+		}else{
+			// $(window).on({
+			// 	'scroll': function(e) { 
+			// 		DoParallax();
+			// 	}
+			// });
+		}
 
 		function DoParallax(){
 
-			SetParallax($('body'), 100);
-			SetParallax($('#create'), 60);
-			//SetParallax($('#publish'), 100);
-			//SetParallax($('#share'), 100);
+			SetParallax($('body'), 30);
+			SetParallax($('#create'), 20);
+			//SetParallax($('#publish'), 30);
+			//SetParallax($('#share'), 30);
 
 			//$.each($('.container'),function(){
 			//	SetParallax(this, 100);
@@ -66,7 +84,25 @@
 			
 		}
 
-		DoParallax();
+		//DoParallax();
+		$('#fullpage').fullpage({
+				anchors: ['homepage', 'createpage', 'publishpage','sharepage','downloadpage'],
+				navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['Info', 'Create', 'Publish', 'Share', 'Download'],
+				onLeave: function(index, nextIndex, direction){
+					//
+				},
+				afterLoad: function(anchorLink, index){
+					$('.animate').removeClass('animate');
+					if( anchorLink == "createpage" ){
+						$('.create-frame').addClass('animate');
+					}
+				},
+				//afterRender: function(){alert('a render');},
+				//afterResize: function(){alert('a resize');},
+				//afterSlideLoad: function(anchorLink, index, slideAnchor, slideIndex){alert('a s load');},
+			});
 	});
 
 //}(jQuery))
