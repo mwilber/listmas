@@ -160,7 +160,7 @@
                     <div class="col5">
                         <h2>Create</h2>
                         <p>
-                            Listmas was made with anonymity in mind. There is no login, no personal information is collected. Lists are managed entirely in your smartphone or tablet. Choose a visual theme to personalize your list. <strong>Search</strong> online, <strong>Snap</strong> a photo, <strong>Scan</strong> a barcode, <strong>Link</strong> to a web page, or just type something in. Add some comments and rank your items. 
+                            Listmas was made with anonymity in mind. There is no login, no personal information is collected.<!-- Lists are managed entirely in your smartphone or tablet.--> Choose a visual theme to personalize your list. <strong>Search</strong> online, <strong>Snap</strong> a photo, <strong>Scan</strong> a barcode, <strong>Link</strong> to a web page, or just type something in. Add some comments and rank your items. 
                         </p>
                     </div>
                     <div class="col1">&nbsp;</div>
@@ -219,7 +219,7 @@
 
             <div id="share" name="share" class="container section summer">
                 <div class="content">
-                    <div class="col2">&nbsp;</div>
+                    <div class="col1">&nbsp;</div>
                     <div class="col4 mooring">
                         <div class="floater">
                             <h2>Share</h2>
@@ -231,6 +231,7 @@
                     <div class="col6">
                         <img src="images/share_burst.png" class="screenshot"/>
                     </div>
+                    <div class="col1">&nbsp;</div>
                 </div>
                 <div class="ground scenery">
                     <div class="bkg one"></div>

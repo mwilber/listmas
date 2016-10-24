@@ -314,7 +314,7 @@ body{
   }
 
 @media only screen
-  and (max-width : 768px) {
+  and (max-width : 568px) {
   /* Styles */
 
   .no-mobile{
