@@ -155,9 +155,9 @@
     }
 
     .container .content .create-frame{
-         width: 70%;
-        padding-bottom: 40%;
-            margin: 0% 20% 25% 10%;
+         width: 80%;
+        padding-bottom: 60%;
+            margin: 0% 20% 25% 5%;
     }
 
     .container .content p {
@@ -198,12 +198,12 @@
         margin-top: 100px;
     }
 
-    .container.summer .content .mooring {
+    .container .content .mooring {
         position: relative;
         padding-bottom: 20px;
     }
 
-    .container.summer .content .floater {
+    .container .content .floater {
         position: relative;
         top: 50%;
         transform: none;
@@ -211,7 +211,7 @@
         -webkit-transform: none;
     }
 
-    .container.summer .content .screenshot{
+    .container .content .screenshot{
             width: 100%;
         margin: 0%;
     }   

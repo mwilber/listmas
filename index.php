@@ -203,7 +203,7 @@
                         <p>
                              When you publish to mylistmas.com, only your list is sent. There is no persoanally identifable information. Receive a unique url to share.
                         </p>
-                        <p style="text-align:center; margin-bottom:40px;">
+                        <p style="text-align:center;">
                             <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Example List</a>
                         </p>
                         </div>

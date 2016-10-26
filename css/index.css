@@ -102,6 +102,10 @@ body{
     position:relative;
 }
 
+#fp-nav.right {
+    right: 2%;
+}
+
 #fp-nav{
     background-color:rgba(227,52,63,0.8);
     border-radius:50px;
