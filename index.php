@@ -160,14 +160,15 @@
             <div id="create" name="create" class="container section hohoho">
                 <div class="content">
                     <div class="col1">&nbsp;</div>
-                    <div class="col5">
-                        <h2>Create</h2>
-                        <p>
-                            <!-- Lists are managed entirely in your smartphone or tablet.--> Choose a visual theme to personalize your list. <strong>Search</strong> online, <strong>Snap</strong> a photo, <strong>Scan</strong> a barcode, <strong>Link</strong> to a web page, or just type something in. Add some comments and rank your items. 
-                        </p>
+                    <div class="col4 mooring">
+                        <div class="floater">
+                            <h2>Create</h2>
+                            <p>
+                                <!-- Lists are managed entirely in your smartphone or tablet.--> Choose a visual theme to personalize your list. <strong>Search</strong> online, <strong>Snap</strong> a photo, <strong>Scan</strong> a barcode, <strong>Link</strong> to a web page, or just type something in. Add some comments and rank your items. 
+                            </p>
+                        </div>
                     </div>
-                    <div class="col1">&nbsp;</div>
-                    <div class="col4">
+                    <div class="col6">
                         <div class="create-frame">
                             <div id="create_00" class="create-shot"></div>
                             <div id="create_01" class="create-shot"></div>
@@ -193,10 +194,11 @@
             <div id="publish" name="publish" class="container section princess">
                 <div class="content">
                     <div class="col1">&nbsp;</div>
-                    <div class="col5 no-mobile">
-                        <img src="images/publish_01.jpg" class="screenshot"/>
+                    <div class="col6 no-mobile">
+                        <img src="images/publish_01.png" class="screenshot"/>
                     </div>
-                    <div class="col5">
+                    <div class="col4 mooring">
+                        <div class="floater">
                         <h2>Publish</h2>
                         <p>
                              When you publish to mylistmas.com, only your list is sent. There is no persoanally identifable information. Receive a unique url to share.
@@ -204,9 +206,10 @@
                         <p style="text-align:center; margin-bottom:40px;">
                             <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Example List</a>
                         </p>
+                        </div>
                     </div>
-                    <div class="col5 mobile">
-                        <img src="images/publish_01.jpg" class="screenshot"/>
+                    <div class="col6 mobile">
+                        <img src="images/publish_01.png" class="screenshot"/>
                     </div>
                     <div class="col1">&nbsp;</div>
                 </div>

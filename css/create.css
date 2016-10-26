@@ -1,8 +1,9 @@
 .create-frame{
 	position:relative;
-	width:100%;
+	width:80%;
 	height:auto;
-	padding-bottom:80%;
+  margin: 0% 10%;
+	padding-bottom:60%;
 	overflow:hidden;
   border: solid 3px #fff;
 }

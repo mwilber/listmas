@@ -7,6 +7,10 @@
     border:solid 3px #fff;
 }
 
+#publish.container .content .screenshot{
+    border:none;
+}
+
 .container.summer .content .screenshot{
     border:none;
 }
@@ -27,12 +31,12 @@
   color:#000000;
 }
 
-.container.summer .content .mooring{
+.container .content .mooring{
     position:relative;
     padding-bottom:25%;
 }
 
-.container.summer .content .floater{
+.container .content .floater{
     position:absolute;
     top:50%;
     transform: translateY(-50%);
