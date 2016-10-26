@@ -49,7 +49,11 @@
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
         <link rel="icon" href="/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="css/normalize.min.css">
+        <link rel="stylesheet" href="css/jquery.fullPage.css">
         <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/content.css">
+        <link rel="stylesheet" href="css/create.css">
+        <link rel="stylesheet" href="css/ground.css">
         <link rel="stylesheet" type="text/css" href="css/theme_summer.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme_birthday.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme_megalopolis.css" />
@@ -57,8 +61,9 @@
 		<link rel="stylesheet" type="text/css" href="css/theme_princess.css" />
 		<link rel="stylesheet" type="text/css" href="css/theme_hohoho.css" />
         <link rel="stylesheet" type="text/css" media="all" href="css/responsiveboilerplate.css">
-        <link href='//fonts.googleapis.com/css?family=Life+Savers:700|Open+Sans:400,800,700' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Lato:400,300,700,900,100' rel='stylesheet' type='text/css'>
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,700" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         
     		<!-- HTML5 IE Enabling Script -->
@@ -87,214 +92,178 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
         <!--<div id="background">-->
-          <div class="clouds scenery">
+          <!--<div class="clouds scenery">
             <div class="clouds">
               <div class="clouds"></div>
             </div>
-          </div>
+          </div>-->
 
         <!--</div>-->
 
         <div class="header">
-          <div class="sociallinks">
-            <a href="https://twitter.com/home?status=<?=urlencode($social['description'])?>:%20<?=urlencode($social['link'])?>" class="fa fa-twitter" target="_blank"></a>
-            <a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
-            <a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=http://www.mylistmas.com/icons/icon_512.png&description=<?=urlencode($social['description'])?>" class="fa fa-pinterest" target="_blank"></a>
-            <a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
-          </div>
-        </div>
-
-        <div id="head" class="container">
-          <div class="content">
-            <div class="col1">&nbsp;</div>
-            <div class="col6 colcon">
-              <div id="logo">
-                <img src="images/logo.png" width="50%" height="50%"/>
+            <div id="logo">
+                <img src="images/logo.png"/>
                 <span>LISTMAS</span>
-              </div>
-              <!--<h3>Coming soon to Apple iOS</h3>-->
-              <div class="storelinks">
-                <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
-                <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
-                <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
-              </div>
-              <div style="clear:both;"></div>
-              <!--<p class="sample">
-                <a href="http://www.mylistmas.com/l/V1FxbDL0CuCAbgdcdD4t4Q">View A Sample List</a>
-            </p>-->
-              <p>
-                  <a href="#create">Create</a> your wishlist. <a href="#publish">Publish</a> it to mylistmas.com. <a href="#share">Share</a> your unique url with whomever you choose.
-              </p>
-              <p>
-                  Listmas was made with privacy in mind. There is no login, no email address required, no personal information is collected. Lists are managed entirely in your smartphone or tablet. When you publish your list to mylistmas.com, only the information you have entered in your list is sent. You receive a unique url to use however you wish. Share your list with family and friends or post it on social networks for the world to see.
-              </p>
-			  <p style="text-align:center; margin-bottom:40px;">
-				  <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Sample List</a>
-			  </p>
-              <p>
-                  Scroll down to see all the features...
-              </p>
             </div>
-            <div class="col1 screenshot">&nbsp;</div>
-            <div class="col3 colcon screenshot" style="text-align: center;">
-              <img id="screenshot" src="images/screenshot.png"/>
-            </div>
-            <div class="col1 screenshot">&nbsp;</div>
-          </div>
-        </div>
-
-        <div class="clearfix"></div>
-
-        <div class="ground scenery">
-			<div class="bkg one"></div>
-			<div class="bkg two"></div>
-			<div class="bkg three"></div>
-			<div class="bkg four"></div>
-			<div class="bkg five"></div>
-		</div>
-
-        <div id="create" name="create" class="container hohoho">
-            <div class="content">
-                <div class="col12">
-                    <h1>Create</h1>
-                </div>
-            </div>
-            <div class="content">
-                <div class="col4">
-                    <h2>Lists</h2>
-                    <div class="badgeb fa fa-list"></div>
-					<h3>As many as you like.</h3>
-                </div>
-                <div class="col4">
-					<h2>Photograph</h2>
-                    <div class="badgeb fa fa-camera"></div>
-					<h3>Take a picture of exactly what you want.</h3>
-                </div>
-                <div class="col4">
-                    <h2>Scan</h2>
-                    <div class="badgeb fa fa-barcode"></div>
-					<h3>Use UPC barcodes to build your list while you're out.</h3>
-                </div>
-            </div>
-            <div class="content">
-				<div class="col4">
-					<h2>Link</h2>
-                    <div class="badgeb fa fa-link"></div>
-					<h3>Add any item from the web.</h3>
-                </div>
-				<div class="col4">
-					<h2>Search</h2>
-                    <div class="badgeb fa fa-search"></div>
-					<h3>Find products by name.</h3>
-                </div>
-				<div class="col4">
-					<h2>Rank</h2>
-                    <div class="badgeb fa fa-star"></div>
-					<h3>Put the stuff you really want on top.</h3>
-                </div>
-            </div>
-
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
+            <div class="sociallinks">
+                <a href="https://twitter.com/home?status=<?=urlencode($social['description'])?>:%20<?=urlencode($social['link'])?>" class="fa fa-twitter" target="_blank"></a>
+                <a href="https://plus.google.com/share?url=<?=urlencode($social['link'])?>" class="fa fa-google-plus" target="_blank"></a>
+                <a href="https://pinterest.com/pin/create/button/?url=<?=urlencode($social['link'])?>&media=http://www.mylistmas.com/icons/icon_512.png&description=<?=urlencode($social['description'])?>" class="fa fa-pinterest" target="_blank"></a>
+                <a href="https://www.facebook.com/dialog/feed?app_id=360989144063992&link=<?=urlencode($social['link'])?>&picture=<?=urlencode($social['image'])?>&name=<?=urlencode($social['title'])?>&message=&description=<?=urlencode($social['description'])?>&redirect_uri=https://facebook.com/" class="fa fa-facebook" target="_blank"></a>
             </div>
         </div>
 
+        <div id="fullpage">
 
-        <div id="publish" class="container princess">
-            <div class="content">
-                <div class="col12">
-                    <h1>Publish</h1>
+            <div id="head" name="info" class="container section info">
+                <div class="content">
+                    <div class="col1">&nbsp;</div>
+                    <div class="col10 colcon">
+                        <p class="copy-index">
+                            <a href="#create">Create</a> your wishlist. 
+                            <br/>
+                            <a href="#publish">Publish</a> to mylistmas.com.
+                            <br/>
+                            <a href="#share">Share</a> your unique url.
+                        </p>
+                        <div class="storelinks">
+                            <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmasa" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
+                            <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
+                            <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
+                        </div>
+                    </div>
+                    <!--<div class="col1">&nbsp;</div>
+                    <div class="col4">
+                        
+                        <p>
+                            Listmas was made with privacy in mind. There is no login, no email address required, no personal information is collected. Lists are managed entirely in your smartphone or tablet. When you publish your list to mylistmas.com, only the information you have entered in your list is sent. You receive a unique url to use however you wish. Share your list with family and friends or post it on social networks for the world to see.
+                        </p>-->
+                        <!--<p style="text-align:center; margin-bottom:40px;">
+                            <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Example List</a>
+                        </p>
+                    </div>-->
+                    <div class="col1">&nbsp;</div>
+                </div>
+                <div class="ground scenery">
+                    <div class="bkg one"></div>
+                    <div class="bkg two"></div>
+                    <div class="bkg three"></div>
+                    <div class="bkg four"></div>
+                    <div class="bkg five"></div>
                 </div>
             </div>
-			<div class="content">
-				<div class="col4">
-					<h2>Webpage</h2>
-                    <div class="badgeb fa fa-globe"></div>
-					<h3>Get a unique url on the web.</h3>
-                </div>
-				<div class="col4">
-					<h2>Theme</h2>
-					<!--<a href="#fullversion">(Purchase Additional Themes)</a>-->
-                    <div class="badgeb fa fa-birthday-cake"></div>
-					<h3>A variety of visual styles to choose from.</h3>
-                </div>
-				<div class="col4">
-					<h2>Notification</h2>
-					<div class="badgeb fa fa-check-square-o"></div>
-					<h3>Viewers check off items on your list.</h3>
-                </div>
 
+
+            <div id="create" name="create" class="container section hohoho">
+                <div class="content">
+                    <div class="col1">&nbsp;</div>
+                    <div class="col5">
+                        <h2>Create</h2>
+                        <p>
+                            <!-- Lists are managed entirely in your smartphone or tablet.--> Choose a visual theme to personalize your list. <strong>Search</strong> online, <strong>Snap</strong> a photo, <strong>Scan</strong> a barcode, <strong>Link</strong> to a web page, or just type something in. Add some comments and rank your items. 
+                        </p>
+                    </div>
+                    <div class="col1">&nbsp;</div>
+                    <div class="col4">
+                        <div class="create-frame">
+                            <div id="create_00" class="create-shot"></div>
+                            <div id="create_01" class="create-shot"></div>
+                            <div id="create_02" class="create-shot"></div>
+                            <div id="create_03" class="create-shot"></div>
+                            <div id="create_04" class="create-shot"></div>
+                            <div id="create_05" class="create-shot"></div>
+                            <div id="create_06" class="create-shot"></div>
+                        </div>
+                    </div>
+                    <div class="col1">&nbsp;</div>
+                </div>
+                <div class="ground scenery">
+                    <div class="bkg one"></div>
+                    <div class="bkg two"></div>
+                    <div class="bkg three"></div>
+                    <div class="bkg four"></div>
+                    <div class="bkg five"></div>
+                </div>
             </div>
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
-            </div>
-        </div>
 
 
-        <div id="share" class="container summer">
-            <div class="content">
-                <div class="col12">
-                    <h1>Share</h1>
+            <div id="publish" name="publish" class="container section princess">
+                <div class="content">
+                    <div class="col1">&nbsp;</div>
+                    <div class="col5 no-mobile">
+                        <img src="images/publish_01.jpg" class="screenshot"/>
+                    </div>
+                    <div class="col5">
+                        <h2>Publish</h2>
+                        <p>
+                             When you publish to mylistmas.com, only your list is sent. There is no persoanally identifable information. Receive a unique url to share.
+                        </p>
+                        <p style="text-align:center; margin-bottom:40px;">
+                            <a href="http://www.mylistmas.com/l/NEfnBif3nTDlHfl5H0Dc_Q" class="sample" target="_blank">Example List</a>
+                        </p>
+                    </div>
+                    <div class="col5 mobile">
+                        <img src="images/publish_01.jpg" class="screenshot"/>
+                    </div>
+                    <div class="col1">&nbsp;</div>
+                </div>
+                <div class="ground scenery">
+                    <div class="bkg one"></div>
+                    <div class="bkg two"></div>
+                    <div class="bkg three"></div>
+                    <div class="bkg four"></div>
+                    <div class="bkg five"></div>
                 </div>
             </div>
-			
-			<div class="content">
-				<div class="col4">
-					<h2>Email</h2>
-                    <div class="badgeb fa fa-envelope"></div>
-					<h3>Privately email your list to family and friends.</h3>
-                </div>
-				<div class="col4">
-					<h2>Social</h2>
-                    <div class="badgeb fa fa-globe"></div>
-					<h3>Share your list on public sites.</h3>
-                </div>
-				<div class="col4">
-					<h2>URL</h2>
-                   <div class="badgeb fa fa-send"></div>
-					<h3>Send your list url out any way you wish.</h3>
-                </div>
 
-            </div>
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
-            </div>
-        </div>
 
-        <div id="fullversion" name="fullversion" class="container space">
-            <div class="content">
-                <div class="col12">
-                    <h2>* Additional themes can be added with a one-time in app purchase.</h2>
+            <div id="share" name="share" class="container section summer">
+                <div class="content">
+                    <div class="col1">&nbsp;</div>
+                    <div class="col4 mooring">
+                        <div class="floater">
+                            <h2>Share</h2>
+                            <p>
+                                Email or text your list to family and friends. Post it on social networks for the world to see. How you share your list is up to you. Follow up on your list with the app to see items checked off.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col6">
+                        <img src="images/share_burst.png" class="screenshot"/>
+                    </div>
+                    <div class="col1">&nbsp;</div>
+                </div>
+                <div class="ground scenery">
+                    <div class="bkg one"></div>
+                    <div class="bkg two"></div>
+                    <div class="bkg three"></div>
+                    <div class="bkg four"></div>
+                    <div class="bkg five"></div>
                 </div>
             </div>
-            <div class="content">
-                <div class="col12">
-                    <div class="storelinks">
-                      <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmas" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
-                      <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
-                      <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
+
+            <div id="fullversion" name="download" class="container section space">
+                <div class="content">
+                    <div class="col12">
+                        <div class="vizor">
+                            <h2>Download</h2>
+                            
+                            <div class="storelinks">
+                                <a id="" style="" href="https://play.google.com/store/apps/details?id=com.greenzeta.listmasa" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'googleplay', 0);"><img src="images/playstore.png" style=""/></a>
+                                <a id="" style="" href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=935516617&mt=8" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'applestore', 0);"><img src="images/appstore.png" style=""/></a>
+                                <a id="" style="" href="http://www.amazon.com/GreenZeta-Listmas/dp/B00PE4ZJV2/?tag=listmas04-20" target="_blank" onclick="ga('send', 'event', 'web', 'click', 'amazonappstore', 0);"><img src="images/amazonstore.png" style=""/></a>
+                            </div>
+                            <p>* Additional themes require a one time in-app purchase.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="ground scenery">
-                <div class="bkg one"></div>
-                <div class="bkg two"></div>
-                <div class="bkg three"></div>
-                <div class="bkg four"></div>
-                <div class="bkg five"></div>
+                <div class="ground scenery">
+                    <div class="bkg one"></div>
+                    <div class="bkg two"></div>
+                    <div class="bkg three"></div>
+                    <div class="bkg four"></div>
+                    <div class="bkg five"></div>
+                </div>
             </div>
 
         </div>
@@ -311,7 +280,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 
-        <script src="js/plugins.js"></script>
+        <script src="js/vendor/jquery.fullPage.min.js"></script>
         <script src="js/main.js"></script>
 		
 		<script type="text/javascript" src="//connect.facebook.net/en_US/all.js"></script>
@@ -343,7 +312,7 @@
 
 		</script>
 
-    <div id="fb-root"></div>
+        <div id="fb-root"></div>
 
     </body>
 </html>
