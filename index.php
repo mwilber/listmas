@@ -24,7 +24,10 @@
         <meta property="og:image" content="<?=$social['image']?>" />
         <meta property="og:site_name" content="<?=$social['title']?>" />
         <meta property="fb:admins" content="631337813" />
+        <meta property="fb:app_id" content="360989144063992" />
         <meta property="og:description" content="<?=$social['description']?>" />
+
+        
 
         <!-- Twitter Summary Card -->
         <!--<meta name="twitter:card" content="summary">
