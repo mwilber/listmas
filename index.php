@@ -3,7 +3,8 @@
   $social = array();
   $social['title'] = "My Listmas";
   $social['description'] = "Listmas was made with privacy in mind. No personal info is collected. Create, Publish and Share your #wishlist ";
-  $social['image'] = "http://www.mylistmas.com/images/og_share_24.png";
+  //$social['image'] = "http://www.mylistmas.com/images/og_share_24.png";
+  $social['image'] = "http://www.mylistmas.com/images/facebook_ad_tgiving_2016.png";
   $social['link'] = "http://www.mylistmas.com/";
 
 ?>
