@@ -18,7 +18,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title><?=$social['title']?></title>
         <meta name="description" content="<?=$social['description']?>">
-        <meta name="author" content="Matthew Wilber">
+        <meta name="author" content="GreenZeta">
         <meta property="og:title" content="<?=$social['title']?>" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="<?=$social['link']?>" />
