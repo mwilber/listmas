@@ -25,8 +25,8 @@
  * @filesource
  */
 
- $config['aws_key'] 			= '16XFM5XP3R8F62RVHQ82';
-$config['aws_secret'] 		= '6hJniq/ndhgN/zuMI7de4jnVg2SGGVhO/sH4DdCS';
+$config['aws_key'] 			= 'AKIAJHX4T77NEOGXPQVQ';
+$config['aws_secret'] 		= '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';
 $config['aws_bucket'] 		= 'listmas';
 $config['aws_filetype'] 	= 'image/jpeg';
 
