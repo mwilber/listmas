@@ -113,7 +113,7 @@ class JSONAPI extends CI_Controller {
 
 		$url="http://ecs.amazonaws.com/onca/xml?".
 			"Service=AWSECommerceService&".
-			"AWSAccessKeyId=AKIAJNX6ZS7EMGNEGMFQ&".
+			"AWSAccessKeyId=AKIAJX24HEPP7T7XFELQ&".
 			"AssociateTag=mwilbercom-20&".
 			"Operation=ItemSearch&".
 			"Keywords=".urlencode($pSearch)."&".
@@ -127,7 +127,7 @@ class JSONAPI extends CI_Controller {
 		//echo $url;
 		//die;
 
-		$secret = 'A2LBiaHMB8ZI3/koCja2ilE3LjkgmeqJWtiYGi4Z';
+		$secret = 'd4EqJheigzhMDwtCd1JyRfOrhdQASHLw5JMRN5Ia';
 		$host = parse_url($url,PHP_URL_HOST);
 		$timestamp = gmstrftime("%Y-%m-%dT%H:%M:%S.000Z");
 		$url=$url. "&Timestamp=" . $timestamp;
